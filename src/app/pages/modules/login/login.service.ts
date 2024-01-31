@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class LoginService {
 
-    private user = 'https://erp-ransa-backend.onrender.com/area';
+    private user = 'https://erp-ransa-backend.onrender.com/representante';
 
     constructor(
         private http: HttpClient,

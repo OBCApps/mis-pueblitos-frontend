@@ -2,3 +2,10 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+
+.global-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

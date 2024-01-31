@@ -19,10 +19,8 @@ export class LoginComponent {
 
   ngOnInit() {
     console.log("XXXXXX");
-
     this.getServiceDev()
   }
-
 
   getServiceDev() {
     this.loginService.getUsers().subscribe(
