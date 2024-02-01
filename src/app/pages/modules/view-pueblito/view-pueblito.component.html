@@ -1,0 +1,124 @@
+<div class="relative w-full">
+    <!-- NAVAR COMPONENT -->
+    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full">
+        <app-navar></app-navar>
+    </div>
+    <!-- IMAGEN O VIDEO -->
+    <img src="./../../../../assets/img-1.jpeg" class="block w-full h-[90vh] bg-cover" alt="...">
+
+    <!-- TAGS LUGAR -->
+    <div class="absolute -bottom-14 md:-bottom-16 left-1/2 transform -translate-x-1/2 w-full md:w-[80vw] p-3 md:p-0">
+        <form class="grid grid-cols-4 gap-4  p-4 bg-transparent rounded-lg">
+            <div class="col-span-2 md:col-span-1"><!-- h-36 w-36 -->
+                <div class="h-36 w-36 flex flex-col justify-center items-center rounded-xl bg-red-100"
+                    style="box-shadow: 0px 4px 4px 0px #00000040;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path fill-rule="evenodd"
+                            d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    ANCASH
+
+                </div>
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <div class="h-36 w-36 flex flex-col justify-center items-center rounded-xl bg-red-100"
+                    style="box-shadow: 0px 4px 4px 0px #00000040;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path fill-rule="evenodd"
+                            d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    3 359 m
+
+                </div>
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <div class="h-36 w-36 flex flex-col justify-center items-center rounded-xl bg-red-100"
+                    style="box-shadow: 0px 4px 4px 0px #00000040;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path fill-rule="evenodd"
+                            d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    1000
+
+                </div>
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <div class="h-36 w-36 flex flex-col justify-center items-center rounded-xl bg-red-100"
+                    style="box-shadow: 0px 4px 4px 0px #00000040;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path fill-rule="evenodd"
+                            d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    +80
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<br><br><br>
+
+<div class="mini-side-var">
+    <div class="flex">
+        <div class="{{view_sidebar == 'small' ?   'w-[10vw] md:w-[5vw]' : 'w-[20vw] md:w-[15vw]'}} bg-red-100 h-screen">
+            <ul class="space-y-2 font-medium">
+                <li *ngIf="view_sidebar == 'small'" class="global-center" (click)="change_sidebar('big')">
+                    <a class="flex items-center p-2 text-black rounded-lg  group">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd"
+                                d="M13.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L11.69 12 4.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                clip-rule="evenodd" />
+                            <path fill-rule="evenodd"
+                                d="M19.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06L17.69 12l-6.97-6.97a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </li>
+                <li *ngIf="view_sidebar == 'big'" class="global-center" (click)="change_sidebar('small')">
+                    <a class="flex items-center p-2 text-black rounded-lg  group">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd"
+                                d="M10.72 11.47a.75.75 0 0 0 0 1.06l7.5 7.5a.75.75 0 1 0 1.06-1.06L12.31 12l6.97-6.97a.75.75 0 0 0-1.06-1.06l-7.5 7.5Z"
+                                clip-rule="evenodd" />
+                            <path fill-rule="evenodd"
+                                d="M4.72 11.47a.75.75 0 0 0 0 1.06l7.5 7.5a.75.75 0 1 0 1.06-1.06L6.31 12l6.97-6.97a.75.75 0 0 0-1.06-1.06l-7.5 7.5Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        
+                    </a>
+                </li>
+                @for (item of [0, 1, 2, 3, 4]; track $index) {
+                <li class="global-center">
+                    <a class="flex items-center p-2 text-black rounded-lg  group">
+                        <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 22 21">
+                            <path
+                                d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
+                            <path
+                                d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
+                        </svg>
+                    </a>
+                    <label *ngIf="view_sidebar == 'big'">Festividades</label>
+                </li>
+                }
+
+
+            </ul>
+
+        </div>
+        <div class="w-[90vw] md:w-[95vw] bg-blue-100">
+            asfsd
+        </div>
+    </div>
+
+</div>
+
+<div class="big-side-var">
+
+</div>

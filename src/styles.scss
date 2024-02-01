@@ -11,3 +11,19 @@
     align-items: center;
     justify-content: center;
 }
+
+// Design scroll 
+
+
+.global-scroll-y {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.global-scroll-y::-webkit-scrollbar {
+    width: 4px;
+}
+
+.global-scroll-y::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 2px;
+}
