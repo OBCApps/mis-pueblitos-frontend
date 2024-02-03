@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import * as moment from 'moment';
 import { CarouselModule } from 'primeng/carousel';
+import moment from 'moment';
 
 @Component({
   selector: 'app-calendar-desktop',
@@ -15,34 +15,7 @@ export class CalendarDesktopComponent {
   anioElegido: any = new Date().getFullYear();
   mesElegido: any = new Date().getMonth() + 1;
   actualDay: any = new Date().getDate();
-  responsiveOptions = [
-
-    {
-      breakpoint: '1536px',
-      numVisible: 1,
-      numScroll: 1
-    },
-    {
-      breakpoint: '1280px',
-      numVisible: 1,
-      numScroll: 1
-    },
-    {
-      breakpoint: '1024px',
-      numVisible: 1,
-      numScroll: 1
-    },
-    {
-      breakpoint: '768px',
-      numVisible: 1,
-      numScroll: 1
-    },
-    {
-      breakpoint: '640px',
-      numVisible: 1,
-      numScroll: 1
-    }
-  ];
+ 
   monthSelect: any[] = []; // Los dias del mes a mostrar
   dateSelect: any; // La fecha que se estra traendo los dias a mostrar
   dateValue: any = new Date(); // La data seleccionada (el click)
@@ -71,7 +44,7 @@ export class CalendarDesktopComponent {
 
     const arrayDays = Object.keys([...Array(numberDays)]).map((a: any) => {
       a = parseInt(a) + 1;
-      const dayObject = moment.utc(`${year}-${month}-${a}`);
+      const dayObject = moment(`${year}-${month}-${a}`);
       return {
         name: dayObject.format("dddd"),
         value: a,
