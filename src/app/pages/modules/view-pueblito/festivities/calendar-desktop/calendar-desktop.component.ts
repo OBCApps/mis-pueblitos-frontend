@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CarouselModule } from 'primeng/carousel';
 import moment from 'moment';
+import { CaruselComponent } from '../carusel/carusel.component';
 
 @Component({
   selector: 'app-calendar-desktop',
   standalone: true,
-  imports: [FormsModule, CommonModule, CarouselModule],
+  imports: [ CaruselComponent,FormsModule, CommonModule, CarouselModule],
   templateUrl: './calendar-desktop.component.html',
   styleUrl: './calendar-desktop.component.scss'
 })
