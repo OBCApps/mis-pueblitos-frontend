@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
+import { CalendarDesktopComponent } from './calendar-desktop/calendar-desktop.component';
 
 @Component({
   selector: 'app-festivities',
   standalone: true,
-  imports: [CarouselModule],
+  imports: [CarouselModule, CalendarDesktopComponent],
   templateUrl: './festivities.component.html',
   styleUrl: './festivities.component.scss'
 })

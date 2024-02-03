@@ -1,0 +1,63 @@
+.calendar {
+
+    .searchs {
+        padding: 1.2%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #2261C5;
+        color: white;
+
+    }
+    
+
+    .days {
+        ol {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            margin: 0;
+            padding: 0;
+
+            .desing-head-days {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-left: 1px solid black;
+            }
+
+            .desing-card-day {
+                /* padding: 2%;
+                margin-top: 10%;
+                margin-left: 15%;
+                margin-right: 15%;
+                opacity: 0.7; */
+                border: 1px solid black;
+                /* .day-name {
+                    font-size: .7em;
+                    color: #2261C5;
+                    font-weight: 900;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: 1px solid red;
+                } */
+
+               /*  .day-number {
+                    height: 7vh;
+                    font-size: 1.5em;
+                    color: #2261C5;
+                    font-weight: bold;
+                    border: 1px solid #2261C5;
+                    text-align: center;
+                    border-radius: 7px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                } */
+            }
+
+
+        }
+    }
+}
