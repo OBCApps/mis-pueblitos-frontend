@@ -18,9 +18,11 @@ module.exports = {
         color_7: '#7cb305',
         color_8: '#5b8c00',
         color_9: '#3f6600',
-        color_10:'#254000',
-      },  
+        color_10: '#254000',
+      },
     },
   },
-  plugins: [],  
+  plugins: [
+    require('flowbite/plugin')
+  ]
 }
