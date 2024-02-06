@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-carusel',
@@ -8,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './carusel.component.scss'
 })
 export class CaruselComponent {
-
+  @Input() events: any[] = [];
+  ngOnInit(){
+    console.log("INPUT", this.events);    
+  }
 }

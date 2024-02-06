@@ -14,6 +14,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+
   responsiveOptions = [
     
     {
@@ -42,4 +43,6 @@ export class HomeComponent {
       numScroll: 1
     }
   ];
+
+  
 }

@@ -32,6 +32,7 @@ export const routes: Routes = [
                 path: 'festivities',
                 component: FestivitiesComponent
             },
+            
         ]
     },
     {

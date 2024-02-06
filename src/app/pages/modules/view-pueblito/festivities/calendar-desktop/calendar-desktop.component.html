@@ -9,7 +9,7 @@
 
         </div>
         <span class="uppercase text-xl text-white">
-            {{ dateSelect | date: 'MMMM YYYY'}}
+            {{ dateSelect | date: 'MMMM, YYYY'}}
         </span>
         <div (click)="changeMonth(1)">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
@@ -36,8 +36,11 @@
 
                     <div class="carusel w-full">
 
-                        <div class="bg-red-100">
-                            <app-carusel></app-carusel>                                                        
+                        <div *ngIf="day.events.length!= 0" class="bg-red-100 p-6">
+                            <app-carusel [events]="day.events"></app-carusel>
+                        </div>
+                        <div *ngIf="day.events.length== 0" class="bg-blue-400 h-[40vh]">
+                            x
                         </div>
 
                     </div>

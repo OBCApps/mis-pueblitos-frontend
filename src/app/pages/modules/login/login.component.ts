@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LoginService } from './login.service';
 import { CommonModule } from '@angular/common';
-import { config } from '../../../app.config.server';
 
 
 @Component({
@@ -14,7 +13,7 @@ import { config } from '../../../app.config.server';
 })
 export class LoginComponent {
   constructor(
-    private loginService: LoginService,
+    private loginService : LoginService
   ) { console.log("XXXXXX"); }
 
   ngOnInit() {
@@ -39,4 +38,7 @@ export class LoginComponent {
 
     })
   } */
+
+  
+
 }
