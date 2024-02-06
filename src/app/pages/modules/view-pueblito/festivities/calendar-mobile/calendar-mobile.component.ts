@@ -7,7 +7,7 @@ import { CaruselComponent } from '../carusel/carusel.component';
 @Component({
   selector: 'app-calendar-mobile',
   standalone: true,
-  imports: [CarouselModule, NgFor , CaruselComponent],
+  imports: [CarouselModule, NgFor, CaruselComponent],
   templateUrl: './calendar-mobile.component.html',
   styleUrl: './calendar-mobile.component.scss'
 })
@@ -48,7 +48,7 @@ export class CalendarMobileComponent {
     });
     this.dateSelect = startDate;
     this.monthSelect = arrayDays;
-    
+
     this.functAgendaMes()
   }
 
@@ -225,7 +225,7 @@ export class CalendarMobileComponent {
     this.monthSelect.forEach((item1) => {
       const item2 = data.find((item2: any) => {
         let p1 = moment.utc(item2.fecha);
-        let p2 = moment.utc(item1.fecha);        
+        let p2 = moment.utc(item1.fecha);
         // Comparar fechas con Moment.js
         return p1.isSame(p2, 'day');
       });
@@ -253,16 +253,20 @@ export class CalendarMobileComponent {
 
     this.monthSelect = result;
     console.log("FINAL: ", this.monthSelect);
+    this.partHorario(this.monthSelect[0])
   }
 
-  viewDaysParts : any [] = []
-  partHorario (item : any ){
-    
-    this.viewDaysParts =  this.monthSelect.filter(i => {
-      const dia = new Date(i.fecha).getDate();
-      return dia >= item.value && dia < item.value + 6;
-    });
+  viewDaysParts: any[] = []
+  partHorario(item: any) {
+    this.viewDaysParts = [];
+    setTimeout(() => {
+      this.viewDaysParts = this.monthSelect.filter(i => {
+        const dia = new Date(i.fecha).getDate();
+        return dia >= item.value && dia < item.value + 6;
+      });
+    }, 500)
+
     console.log(this.viewDaysParts);
-    
+
   }
 }

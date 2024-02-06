@@ -18,7 +18,8 @@ export class CaruselComponent {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
   carusel_form: any;
-  ngOnInit() {
+  ngOnInit() {    
+    
     setTimeout(() => {
       this.activateCarusel()
     }, 200);
@@ -51,13 +52,13 @@ export class CaruselComponent {
 
           // callback functions
           onNext: () => {
-            //console.log('next slider item is shown');
+            //console.log('next');
           },
           onPrev: () => {
-            //console.log('previous slider item is shown');
+            //console.log('prev');
           },
           onChange: () => {
-            //console.log('new slider item has been shown');
+            //console.log('change');
           },
         };
 
@@ -67,7 +68,9 @@ export class CaruselComponent {
           override: true
         };
         this.carusel_form = new Carousel(carouselElement, items, options, instanceOptions);
+        this.carusel_form.pause();
         this.carusel_form.cycle();
+        
       }
     }
 
@@ -80,5 +83,13 @@ export class CaruselComponent {
 
   next(): void {
     this.carusel_form.next();
+  }
+  ngOnDestroy() {
+    // Lógica para destruir el carrusel
+    console.log("DESROSS");
+
+    if (this.carusel_form) {
+      this.carusel_form.destroy();  // Suponiendo que tu carrusel tiene un método destroy
+    }
   }
 }
