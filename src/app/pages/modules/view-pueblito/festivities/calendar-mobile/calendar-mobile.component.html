@@ -39,13 +39,14 @@
 <div class="grid grid-cols-2 gap-4">
 
     @for (item of viewDaysParts; track $index) {
-    <div class="border-2 w-full">
-        {{item.value}}
-        <div *ngIf="item.events.length!= 0" class="bg-red-100 p-6">
+    <div class="border-2 w-full shadow-xl rounded-lg">
+        
+        <p class="px-2">{{item.value}}</p>
+        <div *ngIf="item.events.length!= 0" class="p-2 ">
             <app-carusel [events]="item.events" [uniqueID]="item.value.toString()+'MOBILE'"></app-carusel>
         </div>
-        <div *ngIf="item.events.length== 0" class="bg-blue-400 h-[40vh]">
-            x
+        <div *ngIf="item.events.length== 0" class="text-xs text-center p-2 text-gray-500">
+            Sin evento
         </div>
 
     </div>

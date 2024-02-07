@@ -1,29 +1,44 @@
-<div class="bg-red-100">
+<div class="">
     <div id="carousel-example-{{this.uniqueID}}" class="relative w-full">
 
-        <div class="relative h-56 overflow-hidden rounded-lg sm:h-64 xl:h-80 2xl:h-96">
+        <div class="relative h-56 overflow-hidden rounded-lg ">
 
             <div *ngFor="let item of events; let i = index" id="carousel-item-{{this.uniqueID}}-{{i + 1}}"
                 class="hidden duration-700 ease-in-out">
-                <div class="flex flex-col items-center">
-                    <img [src]="item.img" class="block w-full" alt="...">
-                    <h1 class="">{{item.name_subevent}}</h1>
+                <div class="flex flex-col items-center  ">
+                    <img [src]="item.img" class="block w-full h-32  rounded-lg" alt="...">
+                    <h1 class="text-red-500 text-xs text-center font-semibold leading-4 w-full">{{item.name_subevent}}</h1>
+                    <div class="flex items-center justify-start text-left w-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                          </svg>
+                          
+                        <h1 class="text-xs">{{item.location}}</h1>
+                    </div>
+                    <a class="flex items-center justify-start text-left w-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                          </svg>
+                          
+                        <h1 class="text-xs">{{item.range_subevent}}</h1>
+                    </a>
                 </div>
             </div>
         </div>
 
-        <div class="absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse">
+        <div class="hidden absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse">
             @for (item of events; track $index) {
             <button id="carousel-indicator-{{this.uniqueID}}-{{$index+1}}" type="button" class="h-3 w-3 rounded-full"
                 aria-current="true" aria-label="Slide 1"></button>
             }
         </div>
-        <div class="flex items-center justify-between">
+        <!-- <div class="flex items-center justify-between">
             <button id="data-carousel-prev-{{this.uniqueID}}" type="button" (click)="prev()"
                 class="group left-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none">
                 <span
                     class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70">
-                    <svg class="h-4 w-4 text-white dark:text-gray-800" aria-hidden="true"
+                    <svg class="h-4 w-4 text-gray-800" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M5 1 1 5l4 4" />
@@ -35,7 +50,7 @@
                 class="group right-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none">
                 <span
                     class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70">
-                    <svg class="h-4 w-4 text-white dark:text-gray-800" aria-hidden="true"
+                    <svg class="h-4 w-4 text-gray-800" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 9 4-4-4-4" />
@@ -43,6 +58,38 @@
                     <span class="hidden">Next</span>
                 </span>
             </button>
+        </div> -->
+
+        <div class="flex items-center justify-between">
+            <div>
+                <button id="data-carousel-prev-{{this.uniqueID}}" class="group" type="button" (click)="prev()">
+                    <span
+                        class="inline-flex h-10 w-10 items-center justify-center rounded-full  group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70">
+                        <svg class="h-4 w-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 1 1 5l4 4" />
+                        </svg>
+                        <span class="hidden">Previous</span>
+                    </span>
+                </button>
+            </div>
+            <div>
+                {{current+1}}/{{events.length}}
+            </div>
+            <div>
+                <button id="data-carousel-next-{{this.uniqueID}}" class="group" type="button" (click)="next()" class="">
+                    <span
+                        class="inline-flex h-10 w-10 items-center justify-center rounded-full  group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70">
+                        <svg class="h-4 w-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 9 4-4-4-4" />
+                        </svg>
+                        <span class="hidden">Next</span>
+                    </span>
+                </button>
+            </div>
         </div>
     </div>
 </div>

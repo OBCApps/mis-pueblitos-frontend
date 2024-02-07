@@ -24,7 +24,7 @@ export class CaruselComponent {
       this.activateCarusel()
     }, 200);
   }
-
+  current : any = 0;
   activateCarusel() {
     if (isPlatformBrowser(this.platformId)) {
       const carouselElement = document.getElementById(`carousel-example-${this.uniqueID}`);
@@ -57,8 +57,9 @@ export class CaruselComponent {
           onPrev: () => {
             //console.log('prev');
           },
-          onChange: () => {
-            //console.log('change');
+          onChange: (position) => {
+            this.current = position._activeItem.position
+            
           },
         };
 
