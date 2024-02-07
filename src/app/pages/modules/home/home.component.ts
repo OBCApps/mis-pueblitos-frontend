@@ -5,9 +5,10 @@ import { DialogModule } from 'primeng/dialog';
 import { CarouselModule } from 'primeng/carousel';
 import { NavarComponent } from '../../navar/navar.component';
 import { FooterComponent } from '../../footer/footer.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { HomeService } from '../../../services/home.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { LugarService } from '../../../services/lugar.service';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -19,6 +20,8 @@ export class HomeComponent {
   constructor(
     private homeService: HomeService,
     private fb: FormBuilder,
+    private router: Router,
+    private lugarService: LugarService,
   ) {
 
   }
@@ -61,6 +64,19 @@ export class HomeComponent {
     this.loadMoreSearch(this.searchValueForm.value)
   }
 
+  goToRoute(item: any){
+    this.lugarService.getLugares(item.id).subscribe(
+      (response: any) => {
+        localStorage.setItem('lugar', JSON.stringify(response));
+        console.log('Lugar:', localStorage.getItem('lugar'));
+        this.router.navigate(['/pueblitos']);
+      },
+      (err) => {
+        console.log('Error:', err);
+      }
+    );
+
+  }
 
 
   // ------------------  CALL SERVICES ------------------ \\

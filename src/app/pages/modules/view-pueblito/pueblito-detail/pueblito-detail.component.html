@@ -10,18 +10,20 @@
 
   <div class="grid grid-cols-5 gap-2 p-1 md:mx-10">
     <div class="col-span-5 md:col-span-3 flex flex-col justify-center items-start pr-5">
-      <h3 class="text-[#33425B] text-[24px] font-bold tracking-tight">
+      <h3 class="text-[#33425B] md:text-[24px] text-[20px] font-bold tracking-tight">
         Conoce {{ lugarDetalle.nombre }}
       </h3>
       <p class="text-[#29252C]">{{ lugarDetalle.descripcion }}</p>
     </div>
     <div class="col-span-5 md:col-span-2 global-center">
-      <img class="rounded-3xl" src="{{ lugarDetalle.video }}" alt="..." />
+      <video controls width="auto" height="auto">
+        <source class="rounded-3xl" src="{{ lugarDetalle.video }}" type="video/mp4">
+      </video>
     </div>
   </div>
 
   <div class="mt-9">
-    <h3 class="text-[#33425B] text-[24px] font-bold tracking-tight text-center mb-9">
+    <h3 class="text-[#33425B] md:text-[34px] text-[30px] font-bold tracking-tight text-center mb-9">
       ¿Porqué visitarlo?
     </h3>
 
@@ -31,24 +33,24 @@
     <div class="grid grid-cols-5 p-1 md:mx-10">
       <div
         class="flex flex-col justify-center md:items-start items-center col-span-5 md:col-span-3"
-        [ngClass]="{ 'pr-5 pl-0': even, 'pr-0 pl-5': !even }"
+        [ngClass]="{ 'md:pr-5 md:pl-0': even, 'md:pr-0 md:pl-5': !even }"
       >
-        <h3 class="text-[#33425B] text-[24px] font-bold tracking-tight">
+        <h3 class="text-[#33425B] md:text-[24px] text-[20px] font-bold tracking-tight">
           {{ item.nombre }}
         </h3>
-        <p>
+        <p class="md:text-left text-justify">
           {{ item.descripcion }}
         </p>
       </div>
       <div
         class="col-span-5 md:col-span-2 global-center"
         [ngClass]="{
-          'order-first md:order-none': !even,
-          'order-last md:order-none': even
+          'md:order-first md:order-none': !even,
+          'md:order-last md:order-none': even
         }"
       >
         <img
-          class="w-[370px] h-[305px] rounded-3xl"
+          class="md:w-[370px] md:h-[305px] w-[350px] h-[285px] md:my-0 my-5 rounded-3xl"
           src="{{ item.foto }}"
           alt="{{ item.nombre }}"
         />
@@ -63,7 +65,7 @@
   </div>
 
   <div class="mt-9">
-    <h3 class="text-[#33425B] text-[24px] font-bold tracking-tight text-center mb-9">
+    <h3 class="text-[#33425B] md:text-[24px] text-[20px] font-bold tracking-tight text-center mb-9">
       {{ lugarDetalle.nombre }} en vista del mundo
     </h3>
 
@@ -76,18 +78,18 @@
       <ng-template let-item pTemplate="item">
         <div
           routerLink="/pueblitos/97d1a344-6c48-422c-b790-e44f5a10497f"
-          class="flex flex-col h-[337px] items-center bg-white border border-gray-200 m-2 rounded-lg shadow hover:bg-gray-100"
+          class="flex flex-col h-[380px] items-center bg-white border border-gray-200 m-2 rounded-lg shadow hover:bg-gray-100"
         >
           <img
-            class="object-cover w-full rounded-t-lg h-[177px]"
+            class="object-cover w-full rounded-t-lg md:h-[177px] h-[170px]"
             src="{{ item.foto }}"
             alt="{{ item.nombre }}"
           />
-          <div class="flex flex-col justify-between p-4 leading-normal">
-            <h5 class="text-[24px] font-bold tracking-tight text-black">
+          <div class="flex flex-col justify-between md:p-4 p-2 leading-normal">
+            <h5 class="md:text-[24px] text-[20px] font-bold tracking-tight text-black">
               {{ item.titulo }}
             </h5>
-            <p class="text-[13px] text-[#29252C]">
+            <p class="md:text-[13px] text-[11px] text-[#29252C]">
               {{ item.descripcion }}
             </p>
           </div>

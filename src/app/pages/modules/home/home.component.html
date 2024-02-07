@@ -51,7 +51,7 @@
 @if (list_pueblitos_encontrados.length > 0) {
     <div class="p-20 pt-0 bg-fondo">
         <h1 class="text-center text-xl font-bold text-secondary">Destinos</h1><br>
-    
+
         <p-carousel [value]="list_pueblitos_encontrados" [numVisible]="4" [numScroll]="2" [circular]="false"
             [responsiveOptions]="responsiveOptions">
             <ng-template let-item pTemplate="item">
@@ -100,7 +100,10 @@
     <p-carousel [value]="more_search" [numVisible]="4" [numScroll]="2" [circular]="false"
         [responsiveOptions]="responsiveOptions">
         <ng-template let-item pTemplate="item">
-            <div routerLink="/pueblitos"
+          <!-- routerLink="/pueblitos"
+                [queryParams]="{id: item.id}" -->
+            <div
+                (click)="goToRoute(item)"
                 class="border-1 surface-border border-round m-2 text-center md:mx-5 rounded-lg">
                 <div class="global-center">
                     <div class="buscadosCard w-80 h-96 rounded-3xl bg-cover  flex justify-start items-end"

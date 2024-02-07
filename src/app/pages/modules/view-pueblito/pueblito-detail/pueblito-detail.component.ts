@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FooterComponent } from '../../../footer/footer.component';
-import { LugarService } from '../../../../services/lugar.service';
-import { ActivatedRoute } from '@angular/router';
 import { CarouselModule } from 'primeng/carousel';
 
 @Component({
@@ -12,12 +10,13 @@ import { CarouselModule } from 'primeng/carousel';
   styleUrl: './pueblito-detail.component.scss'
 })
 export class PueblitoDetailComponent implements OnInit {
-  constructor(private lugarService: LugarService,
-    private route: ActivatedRoute) {}
+  constructor() {}
 
   ngOnInit() {
     this.loading = true;
-    this.lugarDetalle = JSON.parse(localStorage.getItem('lugar') || '{}');
+    if (localStorage.getItem('lugar')) {
+      this.lugarDetalle = JSON.parse(localStorage.getItem('lugar') || '{}');
+    }
     console.log('PueblitoDetailComponent:', this.lugarDetalle);
     this.loading = false;
   }
