@@ -1,23 +1,23 @@
  
 
     <!-- HEADER -->
-    <div class="flex flex-col h-fit items-center bg-fondo">
+    <div class="flex flex-col h-fit items-center w-full bg-fondo">
         <div class="w-full h-[90vh] bg-cover"style="background-image: url('./../../../assets/chacas.jpg')">
-    <div class="w-full h-full bg-neutral-900 flex flex-col  gap-36 justify-start items-center bg-opacity-30">
+    <div class="w-full h-full bg-terceary flex flex-col gap-10 md:gap-36 justify-start items-center bg-opacity-50">
         <div class="nav-header p-5 h-24 w-full">
             <app-navar></app-navar>
         </div>
-        <div class="texto w-fit h-80 flex-col justify-center items-center text-center gap-14">
+        <div class="texto w-fit h-fit flex-col justify-center items-center text-center gap-14">
             <div class="Bienvenido">
-                <span class="text-fondo text-4xl font-normal font-['Battambang']">Bienvenido a </span>
-                <span class="text-primary text-4xl font-normal font-['Battambang']">Mis Pueblitos</span>
+                <span class="text-fondo  text-xl md:text-4xl font-normal font-['Battambang']">Bienvenido a </span>
+                <span class="text-primary text-xl md:text-4xl font-normal font-['Battambang']">Mis Pueblitos</span>
             </div>
-            <div class="p-10 text-fondo text-6xl font-bold font-['Montserrat'] uppercase">Tu sitio ideal para conocer mas sobre los pueblitos mágicos en el Perú</div>
+            <div class="p-8 text-fondo text-5xl md:text-6xl font-extrabold font-['Montserrat'] uppercase">Tu sitio ideal para conocer mas sobre los pueblitos mágicos en el Perú</div>
         </div>
             </div>
     </div>
     <!-- BUSCADOR -->
-        <div class="relative transform bottom-20  bg-fondo w-fit  h-fit border p-6 rounded-3xl shadow justify-start items-center gap-10 flex font-['Battambang'] flex-col md:flex-row">
+        <div class="relative transform bottom-20  bg-fondo w-fit  h-fit border p-6 rounded-3xl shadow justify-start items-center gap-6 md:gap-10  flex font-['Battambang'] flex-col md:flex-row">
             <div class="Departamento">
                 <label for="countries" class="block text-neutral-900 text-opacity-50 text-base font-normal ">Departamentos</label>
                 <select id="countries"
@@ -32,7 +32,7 @@
             <div class="Pueblo">
                 <label for="countries" class="block text-neutral-900 text-opacity-50 text-base font-normal ">Pueblos</label>
                 <select id="countries"
-                    class="w-72 h-16 p-5 rounded-3xl border border-neutral-900 justify-start items-center gap-2.5 text-primary text-base font-bold focus:ring-red-500 focus:border-red-500">
+                    class="w-72 md:w-60 h-16 p-5 rounded-3xl border border-neutral-900 justify-start items-center gap-2.5 text-primary text-base font-bold focus:ring-red-500 focus:border-red-500">
                     <option>Seleccione un Pueblo</option>
                     <option>United States</option>
                     <option>Canada</option>
@@ -40,23 +40,23 @@
                     <option>Germany</option>
                 </select>
             </div>
-            <button routerLink="/department" type="button" class="w-52 h-20 p-5 bg-primary rounded-2xl justify-center items-center gap-4 inline-flex text-fondo text-xl font-normal hover:bg-red-600">
+            <button routerLink="/department" type="button" class="w-full md:w-fit h-fit p-5 bg-primary rounded-2xl justify-center items-center gap-4 inline-flex text-fondo text-xl font-normal hover:bg-red-600">
                 <svg class="w-6 h-6 text-fondo dark:text-fondo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
-                  </svg>Buscar Pueblo
+                  </svg><div class="text block md:hidden lg:block ">Buscar Pueblos</div>
             </button>
         </div>
     </div>
   
     <!-- LOS MAS BUSCADOS --> 
-    <div class="p-20 pt-0 bg-fondo">
-    <h1 class="text-center text-xl font-bold text-secondary">Los mas buscados</h1><br>
+    <div class="p-6 md:p-20 pt-0 md:pt-0 bg-fondo font-['Battambang']">
+    <h1 class="text-center text-4xl font-extrabold text-secondary">Los mas buscados</h1><br>
     <p-carousel [value]="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, ]" [numVisible]="4" [numScroll]="2" [circular]="false"
         [responsiveOptions]="responsiveOptions">
         <ng-template let-item pTemplate="item">
             <div routerLink="/pueblitos" class="border-1 surface-border border-round m-2 text-center md:mx-5 rounded-lg">
                 <div class="global-center">
-                    <div class="buscadosCard w-80 h-96 rounded-3xl bg-cover  flex justify-start items-end" style="background-image: url('./../../../assets/chacas.jpg')">
+                    <div class="buscadosCard w-60 md:w-80 h-96 rounded-3xl bg-cover bg-center  flex justify-start items-end" style="background-image: url('./../../../assets/chacas.jpg')">
                         <div class="w-full h-40 p-5 bg-gradient-to-t from-terceary rounded-3xl flex justify-start items-end text-fondo">
                             Chacas
                         </div>
@@ -64,12 +64,34 @@
                 </div>
             </div>
         </ng-template>
+       <!-- <ng-template pTemplate="footer">
+            
+            <button
+            type="button"
+            class="w-fit h-fit p-2.5 bg-terceary bg-opacity-10 rounded-full justify-center items-center"
+          >
+          <svg class="w-6 h-6 text-primary " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="m15 19-7-7 7-7"/>
+          </svg>
+          </button>
+          <button
+            type="button"
+            class="w-fit h-fit p-2.5 bg-terceary bg-opacity-10 rounded-full justify-center items-center"
+          >
+          <svg class="w-6 h-6 text-primary " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="m9 5 7 7-7 7"/>
+          </svg>
+          </button>
+        </ng-template>--> 
     </p-carousel>
+    
 <div class="global-center">
-    <button type="button"
-        class="focus:outline-none text-fondo bg-primary hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-primary dark:hover:bg-red-600 dark:focus:ring-red-700">
-        Ver todos
-    </button>
+    <button
+    type="submit"
+    class="bg-primary hover:bg-red-600 w-fit md:w-fit text-fondo text-base font-normal py-2 px-4 rounded-xl"
+  >
+    Ver todos
+  </button>
 </div>
 </div>
   
