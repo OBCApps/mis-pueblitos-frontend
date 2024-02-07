@@ -1,8 +1,8 @@
 import { NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
-import { CarouselModule } from 'primeng/carousel';
+import { Carousel, CarouselModule } from 'primeng/carousel';
 import { NavarComponent } from '../../navar/navar.component';
 import { FooterComponent } from '../../footer/footer.component';
 import { Router, RouterLink } from '@angular/router';
