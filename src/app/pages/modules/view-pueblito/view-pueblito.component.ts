@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { NavarComponent } from '../../navar/navar.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 import { FooterComponent } from '../../footer/footer.component';
 import { LugarService } from '../../../services/lugar.service';
@@ -21,15 +21,20 @@ import { LugarService } from '../../../services/lugar.service';
 export class ViewPueblitoComponent implements OnInit {
   constructor(
     private lugarService: LugarService,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) { }
 
   ngOnInit() {
     this.loading = true;
-    if (localStorage.getItem('lugar')) {
-      this.lugarDetalle = JSON.parse(localStorage.getItem('lugar') || '{}');
+
+    if (isPlatformBrowser(this.platformId)) {
+      if (localStorage.getItem('lugar')) {
+        this.lugarDetalle = JSON.parse(localStorage.getItem('lugar'));
+      }
+      console.log('PueblitoDetailComponent:', this.lugarDetalle);
     }
-    console.log('PueblitoDetailComponent:', this.lugarDetalle);
+
     this.loading = false;
   }
 
