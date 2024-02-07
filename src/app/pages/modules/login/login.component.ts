@@ -14,10 +14,10 @@ import { CommonModule } from '@angular/common';
 export class LoginComponent {
   constructor(
     private loginService : LoginService
-  ) { console.log("XXXXXX"); }
+  ) { }
 
   ngOnInit() {
-    console.log("XXXXXX");
+    
     this.getServiceDev()
   }
 
@@ -31,7 +31,8 @@ export class LoginComponent {
         //this.error_function("Error de Logeo")
       }
     )
-  }/* 
+  }
+  /* 
 
   get2(){
     http.get<config>().subscribe (config => {
