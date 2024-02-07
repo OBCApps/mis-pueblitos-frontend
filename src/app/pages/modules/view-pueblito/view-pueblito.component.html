@@ -4,7 +4,7 @@
         <app-navar></app-navar>
     </div>
     <!-- IMAGEN O VIDEO -->
-    <img src="./../../../../assets/img-1.jpeg" class="block w-full h-[90vh] bg-cover" alt="...">
+    <img src="{{lugarDetalle.foto}}" class="block w-full h-[90vh] bg-cover" alt="...">
 
     <!-- TAGS LUGAR -->
     <div class="absolute -bottom-14 md:-bottom-16 left-1/2 transform -translate-x-1/2 w-full  md:p-0">
@@ -154,7 +154,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class=" {{view_sidebar == false ?   'w-[85vw] md:w-[96.5vw]' : 'w-[50vw] md:w-[86vw]'}} p-2">
         <router-outlet></router-outlet>
     </div>

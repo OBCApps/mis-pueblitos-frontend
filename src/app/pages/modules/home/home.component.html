@@ -50,7 +50,7 @@
     <p-carousel [value]="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, ]" [numVisible]="4" [numScroll]="2" [circular]="false"
         [responsiveOptions]="responsiveOptions">
         <ng-template let-item pTemplate="item">
-            <div routerLink="/pueblitos" class="border-1 surface-border border-round m-2 text-center md:mx-5 bg-red-100 rounded-lg">
+            <div routerLink="/pueblitos" [queryParams]="{ id: '97d1a344-6c48-422c-b790-e44f5a10497f' }" class="border-1 surface-border border-round m-2 text-center md:mx-5 bg-red-100 rounded-lg">
                 <div class="global-center">
                     <img src="./../../../../assets/img-2.jpeg" class="h-[40vh] w-full rounded-lg">
 
