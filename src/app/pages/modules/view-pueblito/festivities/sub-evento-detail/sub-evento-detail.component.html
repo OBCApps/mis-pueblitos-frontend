@@ -1,0 +1,68 @@
+<!--
+
+  {
+  "id": "f6ea26a4-2c9b-4990-a12e-835777f5d897",
+  "nombre": "Dia Central Chacas",
+  "descripcion": "a",
+  "foto": "https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80",
+  "dia": "2024-02-07",
+  "horaInicio": "17:25:17-05",
+  "horaFin": "21:29:24-05",
+  "eventoId": "7c5cb606-d304-4197-a8fc-fc204b404366",
+  "evento": {
+    "id": "7c5cb606-d304-4197-a8fc-fc204b404366",
+    "nombre": "salida",
+    "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis iaculis neque, sit amet malesuada ligula auctor nec. Nullam sodales ligula vestibulum, lobortis elit eu, tempus quam. Nam ultricies molestie ipsum eget sagittis. Maecenas pretium mauris non ex tincidunt, nec laoreet nunc cursus. Quisque pharetra aliquet felis ac faucibus. Quisque auctor odio tincidunt diam dignissim dapibus. Sed hendrerit a arcu interdum ultrices.",
+    "foto": "https://s3-alpha-sig.figma.com/img/ccf9/222a/5bb91c1ac597839819996fcb48745dd5?Expires=1708300800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SN1hY-b8q7sKQo13P1Chd334dh9z8pb-~slJIq7GulHLqztzCcr7Vmg7YkVigcmJBOvYHleVr4~cvVXyNnl8YtoQNay5hGqnaMVzTXc6hIGTXJMAXgdZ5sETO3MHDSgDNiE1o3UJnjXu0MgnfWSMU7mi~y~rdkFSugjVScGdfwsDdXbM1ey8qIP5u5mZKoe4Ui-LND-4~iUspBTWwIPlUD4iFoZaSla~P0MkCMqEvI0HBE5hCP~TsQMZiKgTc6nAD7PKHtelOrCZ3JDCk5wA60JxIGagCb~nO1btp1GKp4pCMycYnMgzxxIOI-dKossgFc0XOygyGEyJFe9sRpPZSw__",
+    "ubicacionExacta": "salida",
+    "fechaInicio": "2024-02-27",
+    "fechaFin": "2024-03-27",
+    "lugarId": "97d1a344-6c48-422c-b790-e44f5a10497f",
+    "lugar": {
+      "id": "97d1a344-6c48-422c-b790-e44f5a10497f",
+      "nombre": "Chacas",
+      "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus hendrerit turpis. Integer cursus, lorem in egestas mollis, sapien tortor accumsan nulla, sit amet imperdiet nisl ex id purus. Cras fringilla, mi non auctor vulputate, justo lacus malesuada erat, at maximus justo massa sed lorem. Nullam auctor quis justo quis efficitur. Vestibulum tincidunt a mauris egestas convallis. Donec posuere pharetra efficitur. Nunc elit est, laoreet at sapien nec, consequat fringilla quam. Donec at iaculis neque. Curabitur scelerisque eleifend accumsan.",
+      "foto": "https://s3-alpha-sig.figma.com/img/8b4f/da8c/f6c8987541c40cc8f6b485f492cc7c28?Expires=1708300800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=nWI5~fEpu8ocFfCH4aJv9kBf0ZxrRZwukKLh2RCJ-H4Sccne7y85IJViqrlzdp7YfxIOpReDG~H2AFofV1nAMDbjyElHe2VVgIxmjpf0zQufHb9XQMfvBknXMwCiiGAR59vvzggRbFpQfyj9ag3HTDZgvIGOefofGExcwgaNnTjJrwXeP56ZShJDLPzUqlkdQmWwDyuooodtSMAtbU9uXEPyGN9Ig0uAl7Q3-80wbey7Bcq1FCJwUfnuGvMi~~D2G6YgppXXACYrSlupExRcZgeKkNU4iR8N9Ghlxlc3U8U9bxNhqr3T~rFQX~2UevGBaI5VOZ3-dUGQqpdoXj9quQ__",
+      "video": "https://www.youtube.com/watch?v=4vdFlZMkKKQ",
+      "masDestacado": true,
+      "departamentoId": "f6d74603-a708-4916-a358-6279e375db44"
+    }
+  },
+  "subEventoDetalles": []
+}
+
+-->
+@if (loading) {
+<div class="flex items-center justify-center h-96">
+  <div
+    class="w-16 h-16 border-t-2 border-b-2 border-gray-900 rounded-full animate-spin"
+  ></div>
+</div>
+} @else {
+<div class="grid grid-cols-5 gap-2 p-1 md:mx-10">
+  <div class="col-span-5 md:col-span-2 global-center">
+    <img
+      class="md:w-[370px] md:h-[305px] w-[350px] h-[285px] md:my-0 my-5 rounded-3xl"
+      src="{{ subEvento.evento.foto }}"
+      alt="{{ subEvento.evento.nombre }}"
+    />
+  </div>
+  <div
+    class="col-span-5 md:col-span-3 flex flex-col justify-center items-start pr-5"
+  >
+    <h3
+      class="text-[#33425B] md:text-[24px] text-[20px] font-bold tracking-tight"
+    >
+      {{ subEvento.evento.nombre }}
+    </h3>
+    <p class="text-[#29252C]">{{ subEvento.evento.descripcion }}</p>
+    <p>{{subEvento.evento.lugar.nombre}}</p>
+    <p>{{subEvento.evento.fechaInicio}} - {{subEvento.evento.fechaFin}}</p>
+  </div>
+</div>
+
+<h4>{{dia}} {{subEvento.dia}}</h4>
+@for (subEventoDetail of subEvento.subEventoDetalles; track subEventoDetail.id) {
+
+}
+}

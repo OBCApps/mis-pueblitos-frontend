@@ -6,40 +6,41 @@ import { ViewPueblitoComponent } from './pages/modules/view-pueblito/view-puebli
 import { ViewDepartmentComponent } from './pages/modules/view-department/view-department.component';
 import { PueblitoDetailComponent } from './pages/modules/view-pueblito/pueblito-detail/pueblito-detail.component';
 import { FestivitiesComponent } from './pages/modules/view-pueblito/festivities/festivities.component';
+import { SubEventoDetailComponent } from './pages/modules/view-pueblito/festivities/sub-evento-detail/sub-evento-detail.component';
 
 export const routes: Routes = [
-    {
+  {
+    path: '',
+    component: HomeComponent,
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
+    path: 'pueblitos',
+    component: ViewPueblitoComponent,
+    children: [
+      {
         path: '',
-        component: HomeComponent
-    },
-    {
-        path: 'home',
-        component: HomeComponent
-    },
-    {
-        path: 'pueblitos',
-        component: ViewPueblitoComponent,
-        children : [
-            {
-                path: '',
-                component: PueblitoDetailComponent
-            },
-            {
-                path: 'meet',
-                component: PueblitoDetailComponent
-            },
-            {
-                path: 'festivities',
-                component: FestivitiesComponent
-            },
-            
-        ]
-    },
-    {
-        path: 'department',
-        component: ViewDepartmentComponent
-    },
-
-
-
+        component: PueblitoDetailComponent,
+      },
+      {
+        path: 'meet',
+        component: PueblitoDetailComponent,
+      },
+      {
+        path: 'subeventodetail',
+        component: SubEventoDetailComponent,
+      },
+      {
+        path: 'festivities',
+        component: FestivitiesComponent,
+      },
+    ],
+  },
+  {
+    path: 'department',
+    component: ViewDepartmentComponent,
+  },
 ];
