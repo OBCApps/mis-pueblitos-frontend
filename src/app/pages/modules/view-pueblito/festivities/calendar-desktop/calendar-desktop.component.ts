@@ -1,18 +1,23 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CarouselModule } from 'primeng/carousel';
 import moment from 'moment';
 import { CaruselComponent } from '../carusel/carusel.component';
 import { FestivitiesService } from '../../../../../services/festivities.service';
+import { register } from 'swiper/element/bundle';
+
+register();
 
 @Component({
   selector: 'app-calendar-desktop',
   standalone: true,
   imports: [CaruselComponent, FormsModule, CommonModule, CarouselModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './calendar-desktop.component.html',
   styleUrl: './calendar-desktop.component.scss'
 })
+
 export class CalendarDesktopComponent {
   anioElegido: any = new Date().getFullYear();
   mesElegido: any = new Date().getMonth() + 1;
@@ -40,7 +45,7 @@ export class CalendarDesktopComponent {
   }
 
   getDaysFromDate(month: any, year: any) {
-    this.monthSelect = []
+    //this.monthSelect = []
     const data = {
       "mes": month.toString(),
       "anio": year.toString(),
@@ -103,156 +108,7 @@ export class CalendarDesktopComponent {
   }
 
 
-  days_month = [
-    {
-      fecha: '2024-02-01',
-      events: [
-        {
-          name_subevent: 'Dia Central Chacas',
-          name_father: 'Fiesta Patronal Chacas',
-          location: 'Chacas',
-          img: 'https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80',
 
-          range_subevent: "18/01 - 25/01",
-        },
-        {
-          name_subevent: 'Aniversario Amauta Atusparia',
-          name_father: 'Fiesta Patronal Chacas',
-          location: 'Chacas',
-          img: 'https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80',
-
-          range_subevent: "18/01 - 25/01",
-        },
-      ]
-    },
-    {
-      fecha: '2024-02-02',
-      events: [
-        {
-          name_subevent: 'Carrera de Cientas Chacas',
-          name_father: 'Fiesta Patronal Chacas',
-          location: 'Chacas',
-          img: 'https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80',
-
-          range_subevent: "18/01 - 25/01",
-        },
-        {
-          name_subevent: '1ra Tarde Taurina Chacas',
-          name_father: 'Fiesta Patronal Chacas',
-          location: 'Chacas',
-          img: 'https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80',
-
-          range_subevent: "18/01 - 25/01",
-        },
-      ]
-    },
-    {
-      fecha: '2024-02-03',
-      events: [
-        {
-          name_subevent: '2ra Tarde Taurina Chacas',
-          name_father: 'Fiesta Patronal Chacas',
-          location: 'Chacas',
-          img: 'https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80',
-
-          range_subevent: "18/01 - 25/01",
-        },
-        {
-          name_subevent: '3ra Tarde Taurina Chacas',
-          name_father: 'Fiesta Patronal Chacas',
-          location: 'Chacas',
-          img: 'https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80',
-
-          range_subevent: "18/01 - 25/01",
-        },
-      ]
-    },
-    {
-      fecha: '2024-02-14',
-      events: [
-        {
-          name_subevent: '2ra Tarde Taurina Chacas',
-          name_father: 'Fiesta Patronal Chacas',
-          location: 'Chacas',
-          img: 'https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80',
-
-          range_subevent: "18/01 - 25/01",
-        },
-        {
-          name_subevent: '3ra Tarde Taurina Chacas',
-          name_father: 'Fiesta Patronal Chacas',
-          location: 'Chacas',
-          img: 'https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80',
-
-          range_subevent: "18/01 - 25/01",
-        },
-      ]
-    },
-    {
-      fecha: '2024-02-15',
-      events: [
-        {
-          name_subevent: '2ra Tarde Taurina Chacas',
-          name_father: 'Fiesta Patronal Chacas',
-          location: 'Chacas',
-          img: 'https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80',
-
-          range_subevent: "18/01 - 25/01",
-        },
-        {
-          name_subevent: '3ra Tarde Taurina Chacas',
-          name_father: 'Fiesta Patronal Chacas',
-          location: 'Chacas',
-          img: 'https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80',
-
-          range_subevent: "18/01 - 25/01",
-        },
-      ]
-    },
-    {
-      fecha: '2024-02-28',
-      events: [
-        {
-          name_subevent: '2ra Tarde Taurina Chacas',
-          name_father: 'Fiesta Patronal Chacas',
-          location: 'Chacas',
-          img: 'https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80',
-
-          range_subevent: "18/01 - 25/01",
-        },
-        {
-          name_subevent: '3ra Tarde Taurina Chacas',
-          name_father: 'Fiesta Patronal Chacas',
-          location: 'Chacas',
-          img: 'https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80',
-
-          range_subevent: "18/01 - 25/01",
-        },
-      ]
-    },
-    {
-      fecha: '2024-02-22',
-      events: [
-        {
-          name_subevent: '2ra Tarde Taurina Chacas',
-          name_father: 'Fiesta Patronal Chacas',
-          location: 'Chacas',
-          img: 'https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80',
-
-          range_subevent: "18/01 - 25/01",
-        },
-        {
-          name_subevent: '3ra Tarde Taurina Chacas',
-          name_father: 'Fiesta Patronal Chacas',
-          location: 'Chacas',
-          img: 'https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80',
-
-          range_subevent: "18/01 - 25/01",
-        },
-      ]
-    }
-
-  ]
 
   functAgendaMes(days: any, month_selected: any) {
     const data = days;
@@ -285,38 +141,10 @@ export class CalendarDesktopComponent {
         });
       }
     });
-    setTimeout(() => {
-      this.monthSelect = result;
-    }, 1000)
-    
+
+    this.monthSelect = result;
+
     //console.log("FINAL: ", this.monthSelect);
   }
-  responsiveOptions = [
 
-    {
-      breakpoint: '1536px',
-      numVisible: 1,
-      numScroll: 1
-    },
-    {
-      breakpoint: '1280px',
-      numVisible: 1,
-      numScroll: 1
-    },
-    {
-      breakpoint: '1024px',
-      numVisible: 1,
-      numScroll: 1
-    },
-    {
-      breakpoint: '768px',
-      numVisible: 1,
-      numScroll: 1
-    },
-    {
-      breakpoint: '640px',
-      numVisible: 1,
-      numScroll: 1
-    }
-  ];
 }
