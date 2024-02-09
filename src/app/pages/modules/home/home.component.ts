@@ -9,6 +9,7 @@ import { Router, RouterLink } from '@angular/router';
 import { HomeService } from '../../../services/home.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LugarService } from '../../../services/lugar.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -64,11 +65,13 @@ export class HomeComponent {
     this.loadMoreSearch(this.searchValueForm.value)
   }
 
-  goToRoute(item: any){
+  goToRoute(item: any) {
+    console.log("ITEM: ", item);
+
     this.lugarService.getLugares(item.id).subscribe(
       (response: any) => {
         localStorage.setItem('lugar', JSON.stringify(response));
-        console.log('Lugar:', localStorage.getItem('lugar'));
+        console.log('RESPONDE:', localStorage.getItem('lugar'));
         this.router.navigate(['/pueblitos']);
       },
       (err) => {
@@ -96,7 +99,10 @@ export class HomeComponent {
     this.homeService.get_list_lugar(idDepartamento).subscribe(
       response => {
         this.list_lugares = response;
-        this.list_pueblitos_encontrados = response
+        //this.list_pueblitos_encontrados = response
+        /* if (response.length == 0) {
+          Swal.fire("No se encontró!");
+        } */
       }, err => {
 
       }
@@ -108,7 +114,16 @@ export class HomeComponent {
     this.list_pueblitos_encontrados = []
     this.homeService.search_listado_pueblitos(form).subscribe(
       (response: any) => {
-        this.list_pueblitos_encontrados = response;
+        //this.list_pueblitos_encontrados = response ? response : [] ;
+        /* if (this.list_lugares.length == 0) {
+          if (form.lugarId == "") { // no ingreso el lugar
+            this.goToDepartments(form.departamentoId)
+          } else if (form.lugarId != "" && form.departamentoId != "") {
+            this.goToRoute(response[0])
+          }
+        } else {
+          Swal.fire("No se encontró!");
+        } */
       },
       err => {
       }
@@ -125,5 +140,14 @@ export class HomeComponent {
       err => {
       }
     )
+  }
+
+  goToDepartments(department: any) {
+    console.log("DEPA: ", department);
+
+    const queryParamsObject = {
+      departmentId: department.id,
+    };
+    this.router.navigate(['/department'], { queryParams: queryParamsObject });
   }
 }
