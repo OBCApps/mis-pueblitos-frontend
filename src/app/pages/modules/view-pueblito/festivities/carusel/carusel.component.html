@@ -6,7 +6,7 @@
             <div *ngFor="let item of events; let i = index" id="carousel-item-{{this.uniqueID}}-{{i + 1}}"
                 class="hidden duration-700 ease-in-out">
                 <div class="flex flex-col items-center  ">
-                    <img [src]="item.img" class="block w-full h-32  rounded-lg" alt="...">
+                    <!-- <img [src]="item.img" class="block w-full h-32  rounded-lg" alt="..."> -->
                     <h1 class="text-red-500 text-xs text-center font-semibold leading-4 w-full">{{item.name_subevent}}</h1>
                     <div class="flex items-center justify-start text-left w-full">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
