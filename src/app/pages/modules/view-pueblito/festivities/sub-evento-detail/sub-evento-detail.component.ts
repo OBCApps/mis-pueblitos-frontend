@@ -38,6 +38,8 @@ export class SubEventoDetailComponent {
   getSubEvento(id: any) {
     this.subEventoService.getEvento(id).subscribe((response) => {
       this.evento = response;
+      console.log("response", response);
+      
       this.evento.subEventos.forEach((subEvento) => {
         const date = moment(subEvento.dia).toDate();
         const diaSemana = moment(date).locale('es').format('dddd');
