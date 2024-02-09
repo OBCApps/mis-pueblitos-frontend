@@ -6,7 +6,7 @@ import { ViewPueblitoComponent } from './pages/modules/view-pueblito/view-puebli
 import { ViewDepartmentComponent } from './pages/modules/view-department/view-department.component';
 import { PueblitoDetailComponent } from './pages/modules/view-pueblito/pueblito-detail/pueblito-detail.component';
 import { FestivitiesComponent } from './pages/modules/view-pueblito/festivities/festivities.component';
-
+import { AboutUsComponent } from './pages/modules/about-us/about-us.component';
 export const routes: Routes = [
     {
         path: '',
@@ -39,7 +39,10 @@ export const routes: Routes = [
         path: 'department',
         component: ViewDepartmentComponent
     },
-
+    {
+        path: 'about',
+        component: AboutUsComponent
+    }
 
 
 ];
