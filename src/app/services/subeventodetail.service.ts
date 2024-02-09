@@ -6,8 +6,16 @@ import { API_SERVER } from '../../environments/environment.prod';
 @Injectable({
   providedIn: 'root',
 })
-export class SubEventoDetailService {
+export class EventoService {
   constructor(private http: HttpClient) {}
+
+  getEvento(id:any): Observable<any> {
+    return this.http.get(`${API_SERVER}/evento/${id}`).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
 
   getSubEvento(id:any): Observable<any> {
     return this.http.get(`${API_SERVER}/sub-evento/${id}`).pipe(
