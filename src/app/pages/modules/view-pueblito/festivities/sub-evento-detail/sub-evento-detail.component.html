@@ -1,0 +1,48 @@
+@if (loading) {
+<div class="flex items-center justify-center h-96">
+  <div
+    class="w-16 h-16 border-t-2 border-b-2 border-gray-900 rounded-full animate-spin"
+  ></div>
+</div>
+} @else {
+<div class="grid grid-cols-5 gap-2 p-1 md:mx-10">
+  <div class="col-span-5 md:col-span-2 global-center">
+    <img
+      class="md:w-[370px] md:h-[305px] w-[350px] h-[285px] md:my-0 my-5 rounded-3xl"
+      src="{{ evento.foto }}"
+      alt="{{ evento.nombre }}"
+    />
+  </div>
+  <div
+    class="col-span-5 md:col-span-3 flex flex-col justify-center items-start pr-5"
+  >
+    <h3
+      class="text-[#33425B] md:text-[24px] text-[20px] font-bold tracking-tight"
+    >
+      {{ evento.nombre }}
+    </h3>
+    <p class="text-[#29252C]">{{ evento.descripcion }}</p>
+    <p>{{ evento.lugar.nombre }}</p>
+    <p>{{ evento.fechaInicio }} - {{ evento.fechaFin }}</p>
+  </div>
+  <div class="pl-1 col-span-5 md:col-span-5">
+    @for (subEvento of list_sub_eventos; track subEvento.fecha) {
+    <h3
+      class="text-[#33425B] md:text-[24px] text-[20px] font-bold tracking-tight"
+    >
+      {{ subEvento.fecha }}
+    </h3>
+    <ul class="list-disc">
+      @for (subEVentoDetalle of subEvento.subEventoDetalles; track
+      subEVentoDetalle.id) {
+      <li>
+        {{ subEVentoDetalle.horaInicio }} - {{ subEVentoDetalle.detalle }}
+      </li>
+      }
+    </ul>
+
+    }
+  </div>
+</div>
+
+}

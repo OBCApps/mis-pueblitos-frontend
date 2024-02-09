@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { LanguagesService } from '../../services/languages.service';
 import { CommonModule } from '@angular/common';
@@ -8,14 +8,15 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 @Component({
   selector: 'app-navar',
   standalone: true,
-  imports: [CommonModule, TranslateModule, ],
+  imports: [CommonModule, TranslateModule, RouterLink ],
   templateUrl: './navar.component.html',
   styleUrl: './navar.component.scss'
 })
 export class NavarComponent {
   constructor(
     public translate: LanguagesService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private router : Router
   ) {
     this.changeLanguage(this.list_languages[0])
   }
@@ -40,5 +41,9 @@ export class NavarComponent {
   changeLanguage(language: any) {
     this.selected = language
     this.translate.changeLanguage(language.value);
+  }
+
+  goToAbout(){
+    this.router.navigate(['/about'])
   }
 }

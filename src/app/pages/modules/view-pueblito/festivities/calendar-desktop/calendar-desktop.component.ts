@@ -6,6 +6,7 @@ import moment from 'moment';
 import { CaruselComponent } from '../carusel/carusel.component';
 import { FestivitiesService } from '../../../../../services/festivities.service';
 import { register } from 'swiper/element/bundle';
+import { Router } from '@angular/router';
 
 register();
 
@@ -29,6 +30,7 @@ export class CalendarDesktopComponent {
   week: any = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
   constructor(
     private festivitiesService: FestivitiesService,
+    private router: Router,
   ) { }
 
 
@@ -147,4 +149,12 @@ export class CalendarDesktopComponent {
     //console.log("FINAL: ", this.monthSelect);
   }
 
+  goToSubEventoDetail(item: any) {
+    console.log("item: ", item);
+    const queryParamsObject = {
+      id_father: item.id_father,
+    };
+    this.router.navigate(['pueblitos/subeventodetail'], { queryParams: queryParamsObject });
+
+  }
 }

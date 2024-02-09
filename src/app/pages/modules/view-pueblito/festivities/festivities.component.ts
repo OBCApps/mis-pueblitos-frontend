@@ -5,11 +5,12 @@ import { CalendarMobileComponent } from './calendar-mobile/calendar-mobile.compo
 import { CalendarListComponent } from './calendar-list/calendar-list.component';
 import { CaruselComponent } from './carusel/carusel.component';
 import { DetailEventComponent } from '../detail-event/detail-event.component';
+import { SubEventoDetailComponent } from './sub-evento-detail/sub-evento-detail.component';
 
 @Component({
   selector: 'app-festivities',
   standalone: true,
-  imports: [CaruselComponent, CarouselModule, CalendarDesktopComponent, CalendarMobileComponent, CalendarListComponent, DetailEventComponent],
+  imports: [CaruselComponent, CarouselModule, CalendarDesktopComponent, CalendarMobileComponent, CalendarListComponent, DetailEventComponent,SubEventoDetailComponent],
   templateUrl: './festivities.component.html',
   styleUrl: './festivities.component.scss'
 })
