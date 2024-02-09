@@ -22,8 +22,17 @@ export class CaruselComponent {
     
     setTimeout(() => {
       this.activateCarusel()
-    }, 200);
+    }, 500);
   }
+
+  ngAfterViewchecked() {    
+    
+    setTimeout(() => {
+      this.activateCarusel()
+    }, 500);
+  }
+
+  
   current : any = 0;
   activateCarusel() {
     if (isPlatformBrowser(this.platformId)) {

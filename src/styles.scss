@@ -6,6 +6,7 @@
 
 
 
+
 .global-center {
     display: flex;
     align-items: center;
@@ -19,6 +20,7 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
+
 .global-scroll-y::-webkit-scrollbar {
     width: 4px;
 }
