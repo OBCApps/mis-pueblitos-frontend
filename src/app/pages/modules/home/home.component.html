@@ -7,7 +7,7 @@
             </div>
             <div class="texto w-fit h-fit flex-col justify-center items-center text-center gap-14">
                 <div class="Bienvenido">
-                    <span class="text-fondo  text-xl md:text-4xl font-normal font-['Battambang']">BienvenidoXD a </span>
+                    <span class="text-fondo  text-xl md:text-4xl font-normal font-['Battambang']">Bienvenido a </span>
                     <span class="text-primary text-xl md:text-4xl font-normal font-['Battambang']">Mis Pueblitos</span>
                 </div>
                 <div class="p-8 text-fondo text-5xl md:text-6xl font-extrabold font-['Montserrat'] uppercase">Tu sitio
@@ -38,7 +38,7 @@
                 <option *ngFor="let item of list_lugares" [value]="item.id"> {{item.nombre}}</option>
             </select>
         </div>
-        <button type="submit" [disabled]="!searchValueForm.valid"
+        <button type="submit" 
             class="w-52 h-20 p-5 bg-primary rounded-2xl justify-center items-center gap-4 inline-flex text-fondo text-xl font-normal hover:bg-red-600">
             <svg class="w-6 h-6 text-fondo dark:text-fondo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                 fill="none" viewBox="0 0 24 24">
@@ -85,7 +85,7 @@
         <ng-template let-item pTemplate="item">
             <!-- routerLink="/pueblitos"
                 [queryParams]="{id: item.id}" -->
-            <div (click)="goToRoute(item)"
+            <div (click)="goToRoute(item.id)"
                 class="border-1 surface-border border-round m-2 text-center md:mx-5 rounded-lg">
                 <div class="global-center">
                     <div class="buscadosCard w-60 md:w-80 h-96 rounded-3xl bg-cover bg-center  flex justify-start items-end"

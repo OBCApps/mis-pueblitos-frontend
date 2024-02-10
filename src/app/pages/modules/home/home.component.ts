@@ -62,16 +62,13 @@ export class HomeComponent {
 
   ngOnInit() {
     this.load_list_departament()
-    this.loadMoreSearch(this.searchValueForm.value)
+    this.loadMoreSearch()
   }
 
-  goToRoute(item: any) {
-    console.log("ITEM: ", item);
-
-    this.lugarService.getLugares(item.id).subscribe(
+  goToRoute(idLugar: any) {
+    this.lugarService.getLugares(idLugar).subscribe(
       (response: any) => {
         localStorage.setItem('lugar', JSON.stringify(response));
-        console.log('RESPONDE:', localStorage.getItem('lugar'));
         this.router.navigate(['/pueblitos']);
       },
       (err) => {
@@ -111,29 +108,21 @@ export class HomeComponent {
 
   list_pueblitos_encontrados: any[] = []
   search_lugar(form: any) {
-    this.list_pueblitos_encontrados = []
-    this.homeService.search_listado_pueblitos(form).subscribe(
-      (response: any) => {
-        //this.list_pueblitos_encontrados = response ? response : [] ;
-        /* if (this.list_lugares.length == 0) {
-          if (form.lugarId == "") { // no ingreso el lugar
-            this.goToDepartments(form.departamentoId)
-          } else if (form.lugarId != "" && form.departamentoId != "") {
-            this.goToRoute(response[0])
-          }
-        } else {
-          Swal.fire("No se encontró!");
-        } */
-      },
-      err => {
-      }
-    )
+    if (form.departamentoId && !form.lugarId) {
+      this.goToDepartments(form);
+    } else if (form.departamentoId && form.lugarId) {
+      this.goToRoute(form.lugarId)
+    } else {
+      Swal.fire('Seleccione un departamento o lugar')
+    }
   }
 
+
+
   more_search: any[] = []
-  loadMoreSearch(form) {
+  loadMoreSearch() {
     this.more_search = []
-    this.homeService.search_listado_pueblitos(form).subscribe(
+    this.homeService.get_pueblitos_destacados().subscribe(
       (response: any) => {
         this.more_search = response;
       },
@@ -142,11 +131,9 @@ export class HomeComponent {
     )
   }
 
-  goToDepartments(department: any) {
-    console.log("DEPA: ", department);
-
+  goToDepartments(form: any) {
     const queryParamsObject = {
-      departmentId: department.id,
+      departmentId: form.departamentoId,
     };
     this.router.navigate(['/department'], { queryParams: queryParamsObject });
   }
