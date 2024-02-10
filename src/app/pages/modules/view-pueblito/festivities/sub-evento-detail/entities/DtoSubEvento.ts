@@ -41,6 +41,32 @@ export class DtoSubEvento {
     masDestacado: boolean;
     departamentoId: string;
   };
+  subEventosPorDia: {
+    fecha: [
+      {
+        id: string,
+        nombre: string,
+        descripcion: string,
+        foto: string,
+        dia: string,
+        horaInicio: string,
+        horaFin: string,
+        eventoId: string,
+        subEventoDetalles: [
+          {
+            id: string,
+            detalle: string,
+            organizador: string,
+            foto: string,
+            recomendaciones: string,
+            horaInicio: string,
+            horaFin: string,
+            subEventoId: string
+          }
+        ]
+      },
+    ]
+  }
 }
 
 

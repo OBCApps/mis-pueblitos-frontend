@@ -26,21 +26,13 @@
     <p>{{ evento.fechaInicio }} - {{ evento.fechaFin }}</p>
   </div>
   <div class="pl-1 col-span-5 md:col-span-5">
-    @for (subEvento of list_sub_eventos; track subEvento.fecha) {
-    <h3
-      class="text-[#33425B] md:text-[24px] text-[20px] font-bold tracking-tight"
-    >
-      {{ subEvento.fecha }}
-    </h3>
-    <ul class="list-disc">
-      @for (subEVentoDetalle of subEvento.subEventoDetalles; track
-      subEVentoDetalle.id) {
-      <li>
-        {{ subEVentoDetalle.horaInicio }} - {{ subEVentoDetalle.detalle }}
-      </li>
+    @for (dia of dias; track dia.id) {
+      <h3 class="text-[#33425B] md:text-[24px] text-[20px] font-bold tracking-tight">dia {{ dia }}</h3>
+      @for (subEvento of evento.subEventosPorDia[dia]; track subEvento.id) {
+        @for (subEventoDetalle of subEvento.subEventoDetalles; track subEventoDetalle.id) {
+          <h5>{{formatHora(subEventoDetalle.horaInicio)}} - {{subEventoDetalle.detalle}} </h5>
+        }
       }
-    </ul>
-
     }
   </div>
 </div>
