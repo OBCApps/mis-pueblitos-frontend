@@ -16,66 +16,41 @@ export class SubEventoDetailComponent {
   constructor(
     private readonly subEventoService: EventoService,
     private route: ActivatedRoute
-    ) { }
-  dia: any = 'Sábado';
+  ) {}
   evento: DtoSubEvento = new DtoSubEvento();
   loading: Boolean = false;
-  list_sub_eventos: ListSubEventos[] = [];
+  dias: any[] = [];
 
   ngOnInit() {
     this.loading = true;
 
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       const id_father = params['id_father'];
       this.getSubEvento(id_father);
     });
+  }
 
+  formatHora(hora: string){
+    return moment(hora, 'HH:mm').format('h:mm');
 
+  }
 
+  formatFecha(fecha: string){
+    return moment(fecha).format('DD/MM');
+  }
 
+  formatDia(dia: string){
+    return `${dia[0].toUpperCase()}${dia.slice(1)}`
   }
 
   getSubEvento(id: any) {
     this.subEventoService.getEvento(id).subscribe((response) => {
       this.evento = response;
-      console.log("response", response);
-      
-      this.evento.subEventos.forEach((subEvento) => {
-        const date = moment(subEvento.dia).toDate();
-        const diaSemana = moment(date).locale('es').format('dddd');
-        const diaMes = moment(date).locale('es').format('D [de] MMMM');
-        const formattedDate = `${diaSemana} ${diaMes}`;
-        const existingEventIndex = this.list_sub_eventos.findIndex(
-          (evento) => evento.fecha === formattedDate
-        );
-        if (existingEventIndex !== -1) {
-          this.subEventoService
-            .getSubEvento(subEvento.id)
-            .subscribe((response) => {
-              for (let i = 0; i < response.subEventoDetalles.length; i++) {
-                response.subEventoDetalles[i].horaInicio = `${response.subEventoDetalles[i].horaInicio.split(':')[0]
-                  }:${response.subEventoDetalles[i].horaInicio.split(':')[1]}`;
-              }
-              this.list_sub_eventos[existingEventIndex].subEventoDetalles.push(
-                ...response.subEventoDetalles
-              );
-            });
-        } else {
-          this.subEventoService
-            .getSubEvento(subEvento.id)
-            .subscribe((response) => {
-              for (let i = 0; i < response.subEventoDetalles.length; i++) {
-                response.subEventoDetalles[i].horaInicio = `${response.subEventoDetalles[i].horaInicio.split(':')[0]
-                  }:${response.subEventoDetalles[i].horaInicio.split(':')[1]}`;
-              }
-              this.list_sub_eventos.push({
-                fecha: formattedDate,
-                subEventoDetalles: response.subEventoDetalles,
-              });
-            });
-        }
-      });
-      console.log(this.list_sub_eventos);
+      this.evento.subEventosPorDia;
+
+      console.log('response', response);
+      this.dias = Object.keys(this.evento.subEventosPorDia);
+      console.log('dias', this.dias);
       this.loading = false;
     });
   }
