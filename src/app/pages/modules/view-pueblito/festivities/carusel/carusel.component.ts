@@ -96,7 +96,7 @@ export class CaruselComponent {
   }
   ngOnDestroy() {
     // Lógica para destruir el carrusel
-    console.log("DESROSS");
+    //console.log("DESROSS");
 
     if (this.carusel_form) {
       this.carusel_form.destroy();  // Suponiendo que tu carrusel tiene un método destroy
