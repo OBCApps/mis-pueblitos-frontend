@@ -123,7 +123,9 @@ export class HomeComponent {
   loadMoreSearch() {
     this.more_search = []
     this.homeService.get_pueblitos_destacados().subscribe(
-      (response: any) => {
+      (response: any[]) => {
+        console.log("RESPONSE: ", response);
+        
         this.more_search = response;
       },
       err => {

@@ -1,13 +1,17 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
+import { API_SERVER } from "../../../../environments/environment.prod";
+import { Observable, map } from "rxjs";
+import { DtoViewDepartmentAndLugares } from "./structures/DtoViewDepartmentAndLugares";
 
 
 @Injectable({
     providedIn: 'root'
 })
-export class  ViewDepartmentService{
+export class ViewDepartmentService {
 
-    private Department = 'https://mis-pueblitos-backend.onrender.com/departamento';
+    private SERVER_LUGAR = API_SERVER + '/lugar';
+
 
     constructor(
         private http: HttpClient,
@@ -15,24 +19,12 @@ export class  ViewDepartmentService{
     ) { }
 
 
-    getDepartments() {
-        
-        return this.http.get(this.Department);
+    get_list_lugaresDepartment(idDepartment: any): Observable<DtoViewDepartmentAndLugares> {
+        return this.http.get<DtoViewDepartmentAndLugares>(this.SERVER_LUGAR + '/departamento/' + idDepartment).pipe(
+            map((response) => { return response })
+        );
     }
 
-    createDepartments(data : any) {
-           
-        return this.http.post(this.Department, data);
-    }
-
-    updateDepartments(data : any) {
-         
-        return this.http.put(this.Department, data);
-    }
-
-    deleteDepartments(data : any) {           
-        return this.http.delete(this.Department + '/' + data.id);
-    }
 
 
 

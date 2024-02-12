@@ -83,8 +83,7 @@
     <p-carousel [value]="more_search" [numVisible]="4" [numScroll]="2" [circular]="false"
         [responsiveOptions]="responsiveOptions">
         <ng-template let-item pTemplate="item">
-            <!-- routerLink="/pueblitos"
-                [queryParams]="{id: item.id}" -->
+            
             <div (click)="goToRoute(item.id)"
                 class="border-1 surface-border border-round m-2 text-center md:mx-5 rounded-lg">
                 <div class="global-center">
@@ -98,25 +97,7 @@
                 </div>
             </div>
         </ng-template>
-        <!-- <ng-template pTemplate="footer">
-            
-            <button
-            type="button"
-            class="w-fit h-fit p-2.5 bg-terceary bg-opacity-10 rounded-full justify-center items-center"
-          >
-          <svg class="w-6 h-6 text-primary " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="m15 19-7-7 7-7"/>
-          </svg>
-          </button>
-          <button
-            type="button"
-            class="w-fit h-fit p-2.5 bg-terceary bg-opacity-10 rounded-full justify-center items-center"
-          >
-          <svg class="w-6 h-6 text-primary " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="m9 5 7 7-7 7"/>
-          </svg>
-          </button>
-        </ng-template>-->
+        
     </p-carousel>
     <div class="global-center">
         <button type="submit"

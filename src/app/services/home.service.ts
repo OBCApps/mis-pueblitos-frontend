@@ -23,7 +23,7 @@ export class HomeService {
   }
 
   get_list_lugar(data: any): Observable<any> {
-    return this.http.get<any>(this.SERVER_LUGAR + '/departamento/' + data).pipe(
+    return this.http.get<any>(this.SERVER_LUGAR + '/departamentoSelector/' + data).pipe(
       map((response) => { return response })
     );
   }
@@ -34,8 +34,8 @@ export class HomeService {
     );
   }
 
-  get_pueblitos_destacados(): Observable<any> {
-    return this.http.get<any>(this.SERVER_LUGAR + '/moreSearch').pipe(
+  get_pueblitos_destacados(): Observable<any[]> {
+    return this.http.get<any[]>(this.SERVER_LUGAR + '/moreSearch').pipe(
       map((response) => { return response })
     );
   }
