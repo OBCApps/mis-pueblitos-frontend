@@ -35,6 +35,14 @@ export class SubEventoDetailComponent {
 
   }
 
+  formatFecha(fecha: string){
+    return moment(fecha).format('DD/MM');
+  }
+
+  formatDia(dia: string){
+    return `${dia[0].toUpperCase()}${dia.slice(1)}`
+  }
+
   getSubEvento(id: any) {
     this.subEventoService.getEvento(id).subscribe((response) => {
       this.evento = response;
