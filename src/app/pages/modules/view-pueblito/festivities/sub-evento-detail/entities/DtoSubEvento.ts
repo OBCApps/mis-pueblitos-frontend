@@ -7,68 +7,22 @@ export class DtoSubEvento {
   fechaInicio: string;
   fechaFin: string;
   lugarId: string;
-  subEventos: [
-    {
-      diaSemana: string;
-      id: string;
-      nombre: string;
-      descripcion: string;
-      foto: string;
-      dia: string;
-      horaInicio: string;
-      horaFin: string;
-      eventoId: string;
-      subEventoDetalles: [
-        {
-          id: string;
-          detalle: string;
-          organizador: string;
-          foto: string;
-          recomendaciones: string;
-          horaInicio: string;
-          horaFin: string;
-          subEventoId: string;
-        }
-      ];
-    }
-  ];
-  lugar: {
-    id: string;
-    nombre: string;
-    descripcion: string;
-    foto: string;
-    video: string;
-    masDestacado: boolean;
-    departamentoId: string;
-  };
+  lugarNombre: string;
   subEventosPorDia: {
     fecha: [
       {
-        id: string,
-        nombre: string,
-        descripcion: string,
-        foto: string,
-        dia: string,
-        horaInicio: string,
-        horaFin: string,
-        eventoId: string,
-        subEventoDetalles: [
-          {
-            id: string,
-            detalle: string,
-            organizador: string,
-            foto: string,
-            recomendaciones: string,
-            horaInicio: string,
-            horaFin: string,
-            subEventoId: string
-          }
-        ]
-      },
-    ]
-  }
+        id: string;
+        detalle: string;
+        organizador: string;
+        foto: string;
+        recomendaciones: string;
+        horaInicio: string;
+        horaFin: string;
+        subEventoId: string;
+      }
+    ];
+  };
 }
-
 
 export class ListSubEventos {
   fecha: string;
