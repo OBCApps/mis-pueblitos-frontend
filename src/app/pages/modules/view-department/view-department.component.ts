@@ -4,13 +4,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ViewDepartmentService } from './view-department.service';
 import { DtoViewDepartmentAndLugares } from './structures/DtoViewDepartmentAndLugares';
 import { LugarService } from '../../../services/lugar.service';
+import { FooterComponent } from "../../footer/footer.component";
 
 @Component({
-  selector: 'app-view-department',
-  standalone: true,
-  imports: [NavarComponent],
-  templateUrl: './view-department.component.html',
-  styleUrl: './view-department.component.scss'
+    selector: 'app-view-department',
+    standalone: true,
+    templateUrl: './view-department.component.html',
+    styleUrl: './view-department.component.scss',
+    imports: [NavarComponent, FooterComponent]
 })
 export class ViewDepartmentComponent {
   constructor(
