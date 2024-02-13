@@ -1,5 +1,5 @@
 import { NgFor } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, ViewChild } from '@angular/core';
 import moment from 'moment';
 import { CarouselModule } from 'primeng/carousel';
 import { CaruselComponent } from '../carusel/carusel.component';
@@ -29,10 +29,18 @@ export class CalendarMobileComponent {
   constructor(
     private festivitiesService: FestivitiesService,
     private router: Router
-  ) {}
+  ) { }
   ngOnInit() {
     this.getDaysFromDate(this.mesElegido, this.anioElegido)
+    //this.selectInit()
   }
+
+  /* async selectInit(){
+    await this.getDaysFromDate(this.mesElegido, this.anioElegido);
+    this.partHorario(1)
+  } */
+
+
   goToSubEventoDetail(item: any) {
     console.log('item: ', item);
     const queryParamsObject = {
@@ -74,8 +82,10 @@ export class CalendarMobileComponent {
         this.dateSelect = startDate;
         //this.monthSelect = arrayDays;
         this.functAgendaMes(response, arrayDays);
+        console.log("XXXX");
+
       },
-      (err) => {}
+      (err) => { }
     );
   }
   //days_month: any[] = []
@@ -84,7 +94,7 @@ export class CalendarMobileComponent {
       (response: any) => {
         this.functAgendaMes(response, month_selected);
       },
-      (err) => {}
+      (err) => { }
     );
   }
 
@@ -145,16 +155,27 @@ export class CalendarMobileComponent {
   }
 
   viewDaysParts: any[] = []
+  selectedDay: any = 1;
   partHorario(item: any) {
+    console.log("XXD");
     this.viewDaysParts = [];
-    setTimeout(() => {
-      this.viewDaysParts = this.monthSelect.filter(i => {
-        const dia = new Date(i.fecha).getDate();
-        return dia >= item.value && dia < item.value + 6;
-      });
-    }, 500)
 
-    console.log(this.viewDaysParts);
+    this.viewDaysParts = this.monthSelect.filter(i => {
+      const dia = new Date(i.fecha).getDate();
+
+      return dia >= item.value && dia < item.value + 6;
+    });
+    this.selectedDay = item.value
+
+    const container = document.getElementById('diasContainer');
+    if (container) {
+      console.log("DESLIZA");
+
+      container.scrollTo({ left: (item.value - 1) * 55, behavior: 'smooth' });
+    }
+
 
   }
+
+
 }

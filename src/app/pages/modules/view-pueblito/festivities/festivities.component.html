@@ -67,19 +67,19 @@
 
 
         <div class="hidden md:flex col-span-6 md:col-span-2 global-center">
-            <div class="flex border rounded-lg p-1">
-                <div class="">
+            <div class="flex ">
+                <div class="{{tab_selected == 'list' ? 'bg-primary text-white':'bg-white text-black cursor-pointer'}} border border-black p-3 rounded-l-lg">
                     <svg (click)="change_tabs('list')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                        fill="currentColor" class="w-8 h-8 font-bold">
+                        fill="currentColor" class="w-5 h-5 font-bold">
                         <path fill-rule="evenodd"
                             d="M2.625 6.75a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875 0A.75.75 0 0 1 8.25 6h12a.75.75 0 0 1 0 1.5h-12a.75.75 0 0 1-.75-.75ZM2.625 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0ZM7.5 12a.75.75 0 0 1 .75-.75h12a.75.75 0 0 1 0 1.5h-12A.75.75 0 0 1 7.5 12Zm-4.875 5.25a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875 0a.75.75 0 0 1 .75-.75h12a.75.75 0 0 1 0 1.5h-12a.75.75 0 0 1-.75-.75Z"
                             clip-rule="evenodd" />
                     </svg>
 
                 </div>
-                <div class="border-l">
+                <div class="{{tab_selected == 'calendar' ? 'bg-primary text-white':'bg-white text-black cursor-pointer'}} border border-black p-3 rounded-r-lg" >
                     <svg (click)="change_tabs('calendar')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                        fill="currentColor" class="w-8 h-8 font-bold">
+                        fill="currentColor" class="w-5 h-5 font-bold">
                         <path
                             d="M12.75 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM7.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM8.25 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM9.75 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM10.5 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM12.75 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM14.25 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 13.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" />
                         <path fill-rule="evenodd"
