@@ -1,22 +1,22 @@
 <div class="calendar pt-2">
-    <div class="searchs">
+    <div class="flex items-center justify-start font-bold py-3 ">
+       
+        <span class="uppercase text-xl ">
+            {{ dateSelect | date: 'MMMM, YYYY'}}
+        </span>
         <div (click)="changeMonth(-1)">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                <path fill-rule="evenodd"
-                    d="M7.28 7.72a.75.75 0 0 1 0 1.06l-2.47 2.47H21a.75.75 0 0 1 0 1.5H4.81l2.47 2.47a.75.75 0 1 1-1.06 1.06l-3.75-3.75a.75.75 0 0 1 0-1.06l3.75-3.75a.75.75 0 0 1 1.06 0Z"
-                    clip-rule="evenodd" />
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-7 h-7 cursor-pointer">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
             </svg>
 
         </div>
-        <span class="uppercase text-xl text-white">
-            {{ dateSelect | date: 'MMMM, YYYY'}}
-        </span>
         <div (click)="changeMonth(1)">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                <path fill-rule="evenodd"
-                    d="M16.72 7.72a.75.75 0 0 1 1.06 0l3.75 3.75a.75.75 0 0 1 0 1.06l-3.75 3.75a.75.75 0 1 1-1.06-1.06l2.47-2.47H3a.75.75 0 0 1 0-1.5h16.19l-2.47-2.47a.75.75 0 0 1 0-1.06Z"
-                    clip-rule="evenodd" />
-            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 cursor-pointer">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+              </svg>
+              
 
         </div>
     </div>
@@ -24,7 +24,7 @@
 
     <div class="days" *ngIf="monthSelect.length > 0">
         <ol>
-            <li *ngFor="let day of week" class="desing-head-days">
+            <li *ngFor="let day of week" class="desing-head-days text-center border">
                 {{ day }}
             </li>
             <li [style.gridColumnStart]="first ? day?.indexWeek : 'auto '"
@@ -32,9 +32,9 @@
                 <div class="desing-card-day  ">
 
 
-                    <div class="carusel p-1">
+                    <div class="carusel p-2 border">
                         <!-- <span>{{day?.value}}</span> -->
-                        <div *ngIf="day.events.length!= 0" class="h-[35vh] bg-white shadow-lg border rounded-3xl">
+                        <div *ngIf="day.events.length!= 0" class="h-[35vh] bg-white shadow-lg border rounded-lg">
 
                             <swiper-container class=" h-full w-36  p-1" pagination="true" navigation="false"
                                 grap-cursor="true" slide-per-view="auto" coverflow-effect-rotate="0"
@@ -42,9 +42,10 @@
                                 coverflow-effect-slide-shadows="false">
 
                                 <swiper-slide *ngFor="let item of day.events" (click)="goToSubEventoDetail(item)">
-                                    <img src="https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80" class="block h-24 rounded-lg" alt="...">
+                                    <img src="https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
+                                        class="block h-24 rounded-lg" alt="...">
                                     <!-- <img [src]="item.img" class="block h-24 rounded-lg" alt="..."> -->
-                                    
+
 
                                     <h1 class="text-red-500 text-xs text-center font-semibold leading-4 w-full">
                                         {{item.name_subevent}}</h1>
@@ -72,8 +73,8 @@
                             </swiper-container>
 
                         </div>
-                        <div *ngIf="day.events.length== 0" class="bg-blue-400 h-[35vh]">
-                            x
+                        <div *ngIf="day.events.length== 0" class="bg-primary h-[35vh] rounded-lg text-center">
+                            Sin evento
                         </div>
 
                     </div>
