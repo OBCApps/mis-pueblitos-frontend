@@ -14,36 +14,34 @@
     />
   </div>
   <div
-    class="col-span-5 md:col-span-3 flex flex-col justify-center items-start pr-5"
+    class="col-span-5 md:col-span-3 flex flex-col justify-center md:items-start pl-3"
   >
     <h3
-      class="text-[#33425B] md:text-[24px] text-[20px] font-bold tracking-tight"
+      class="text-[#33425B] md:text-[24px] text-[20px] w-full text-center md:w-fit md:text-left font-bold tracking-tight"
     >
       {{ evento.nombre }}
     </h3>
-    <p class="text-[#29252C]">{{ evento.descripcion }}</p>
-    <div class="flex flex-row p-3">
+    <p class="text-[#29252C] text-justify md:text-left">{{ evento.descripcion }}</p>
+    <div class="flex flex-row py-2">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#F33535" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
       </svg>
-      <p>{{ evento.lugar.nombre }}</p>
+      <p>{{ evento.lugarNombre }}</p>
     </div>
-    <div class="flex flex-row p-3">
+    <div class="flex flex-row py-2">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#F33535" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
       </svg>
       <p>{{ formatFecha(evento.fechaInicio) }} - {{ formatFecha(evento.fechaFin) }}</p>
     </div>
   </div>
-  <div class="pl-3 col-span-5 md:col-span-5 ">
+  <div class="pl-3 col-span-5 md:col-span-5">
     @for (dia of dias; track dia.id) {
       <h3 class="text-[#33425B] md:text-[24px] text-center md:text-left text-[20px] font-bold tracking-tight">{{ formatDia(dia) }}</h3>
-      <ul class="list-disc md:pl-4 pl-2 py-2">
+      <ul class="md:pl-4 p-2 text-justify md:text-left">
         @for (subEvento of evento.subEventosPorDia[dia]; track subEvento.id) {
-          @for (subEventoDetalle of subEvento.subEventoDetalles; track subEventoDetalle.id) {
-            <li>{{formatHora(subEventoDetalle.horaInicio)}} - {{subEventoDetalle.detalle}}</li>
-          }
+          <li>• {{formatHora(subEvento.horaInicio)}} - {{subEvento.detalle}}</li>
         }
       </ul>
 

@@ -31,7 +31,17 @@ export class SubEventoDetailComponent {
   }
 
   formatHora(hora: string){
-    return moment(hora, 'HH:mm').format('h:mm');
+
+    // Dividir la cadena en partes: hora, minutos y zona horaria
+    // 21:18:11-05
+    const partes = hora.split(':');
+    const horaParte = partes[0];
+    const minutosParte = partes[1];
+
+    // Formatear la hora y los minutos en formato de 24 horas
+    const horaFormateada = `${horaParte}:${minutosParte}`;
+
+    return horaFormateada;
 
   }
 
@@ -46,8 +56,6 @@ export class SubEventoDetailComponent {
   getSubEvento(id: any) {
     this.subEventoService.getEvento(id).subscribe((response) => {
       this.evento = response;
-      this.evento.subEventosPorDia;
-
       console.log('response', response);
       this.dias = Object.keys(this.evento.subEventosPorDia);
       console.log('dias', this.dias);
