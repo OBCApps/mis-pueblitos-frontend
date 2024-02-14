@@ -1,0 +1,21 @@
+.sidebar {
+    transition: all .4s ease-in-out;
+
+    .open {
+        display: block;
+    }
+
+    .close {
+        display: none;
+    }
+
+    &:hover {
+        .close {
+            display: block;
+        }
+
+        .open {
+            display: none;
+        }
+    }
+}

@@ -65,8 +65,8 @@
 <br><br><br>
 
 
-<div class="min-h-screen flex">
-    <div class="sidebar min-h-screen {{view_sidebar == false ?   'w-[15vw] md:w-[3.5vw]' : 'w-[50vw] md:w-[14vw]'}}   overflow-hidden border-r bg-gray-100 hover:bg-white  hover:shadow-lg">
+<!-- <div class="min-h-screen flex">
+    <div class="sidebar min-h-screen  {{view_sidebar == false ?   'w-[15vw] md:w-[3.5vw]' : 'w-[50vw] md:w-[14vw]'}}   overflow-hidden border-r bg-gray-100 hover:bg-white  hover:shadow-lg">
         <div class="flex h-screen flex-col justify-between pt-2 pb-6">
             <div>
                 <div class="w-max p-2.5" (click)="change_sidebar()">
@@ -156,6 +156,142 @@
     </div>
 
     <div class=" {{view_sidebar == false ?   'w-[85vw] md:w-[96.5vw]' : 'w-[50vw] md:w-[86vw]'}} p-2">
+        <router-outlet></router-outlet>
+    </div>
+</div> -->
+
+<!-- <div class="min-h-screen flex">
+    <div class="sidebar min-h-screen absolute  {{view_sidebar == false ?   'w-[12vw] md:w-[3.5vw]' : 'w-[50vw] md:w-[14vw]'}}   overflow-hidden border-r bg-gray-100 hover:bg-white  hover:shadow-lg"
+        style="z-index: 99999999999999999;">
+        <div class="flex h-screen flex-col justify-between pt-2 pb-6">
+            <div>
+                <div class="flex items-center justify-end p-2.5 " (click)="change_sidebar()">
+                    <svg *ngIf="!view_sidebar" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                    </svg>
+                    <svg *ngIf="view_sidebar" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+                    </svg>
+
+                </div>
+                <ul class="mt-6 space-y-2 tracking-wide">
+                    <li class="min-w-max py-2">
+                        <a routerLink="/pueblitos/meet" aria-label="dashboard" class="flex items-center font-bold"
+                            [class.border-b]="title === 'location'" [class.border-black]="title === 'location'">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                            </svg>
+                            <span >Chacas</span>
+                            class="{{view_sidebar == false ? 'hidden' : 'mx-2'}}"
+                        </a>
+                    </li>
+
+                    <li class="min-w-max py-2">
+                        <a routerLink="/pueblitos/festivities" aria-label="dashboard"
+                            class="flex items-center font-bold" [class.border-b]="title === 'festivities'"
+                            [class.border-black]="title === 'festivities'">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+                            </svg>
+                            <span>Festividades</span>
+                             class="{{view_sidebar == false ? 'hidden' : 'mx-2'}}"
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="ml-[15vw] w-[85vw] h-screen p-2 overflow-y-auto">
+        <router-outlet></router-outlet>
+    </div>
+</div> -->
+
+<div class="flex">
+    <div class="min-h-screen ">
+        <div
+            class="sidebar min-h-screen w-[3.35rem] overflow-hidden border-r hover:w-56  hover:bg-white hover:shadow-lg">
+            <div class="flex h-screen flex-col justify-between pt-2 pb-6">
+                <div>
+                    <div class="flex items-center justify-end">
+
+
+                        <div class="open ">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                            </svg>
+                        </div>
+                        <div class="close">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+                            </svg>
+
+                        </div>
+                    </div>
+                    <ul class="mt-6 space-y-2 tracking-wide">
+                        <li class="min-w-max">
+                            <a routerLink="/pueblitos/meet" aria-label="dashboard"
+                                [class]="title=='location' ? sideSelected : sideNotSelected">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                                </svg>
+                                <span [class]="title=='location' ? textSelected : textNotSelected">Chacas</span>
+                            </a>
+                        </li>
+                        <li class="min-w-max">
+                            <a routerLink="/pueblitos/festivities"
+                                [class]="title=='festivities' ? sideSelected : sideNotSelected">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+                                </svg>
+                                <span [class]="title=='festivities' ? textSelected : textNotSelected">Festividades
+                                </span>
+                            </a>
+                        </li>
+
+
+                        <li class="min-w-max">
+                            <a routerLink="/pueblitos/tips" [class]="title=='tips' ? sideSelected : sideNotSelected">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+                                </svg>
+                                <span [class]="title=='tips' ? textSelected : textNotSelected">Tips Viajeros</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="px-3" style="width: calc(100% - 3.35rem);">
         <router-outlet></router-outlet>
     </div>
 </div>

@@ -1,9 +1,10 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { NavarComponent } from '../../navar/navar.component';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { CommonModule, NgClass, isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 import { FooterComponent } from '../../footer/footer.component';
 import { LugarService } from '../../../services/lugar.service';
+import { TitleService } from './view-pueblito.service';
 
 @Component({
   selector: 'app-view-pueblito',
@@ -14,28 +15,34 @@ import { LugarService } from '../../../services/lugar.service';
     RouterOutlet,
     RouterLink,
     FooterComponent,
+    NgClass
   ],
   templateUrl: './view-pueblito.component.html',
   styleUrl: './view-pueblito.component.scss',
 })
 export class ViewPueblitoComponent implements OnInit {
+  sideSelected: any = 'relative flex items-center space-x-4 border-b border-black from-sky-600 to-cyan-400 px-4 py-3 text-black'
+  sideNotSelected: any = 'bg group flex items-center space-x-4 rounded-full px-4 py-3 text-gray-600'
+
+  textSelected: any = '-mr-1 font-medium';
+  textNotSelected: any = 'group-hover:text-gray-700';
   constructor(
     private lugarService: LugarService,
     private route: ActivatedRoute,
-    @Inject(PLATFORM_ID) private platformId: Object
+    private titleService: TitleService
+
   ) { }
+  title: any = '';
 
   ngOnInit() {
     this.loading = true;
+    this.titleService.title$.subscribe((newTitle: any) => {
+      setTimeout(() => {
+        this.updateTitle(newTitle.sidebar);
+      });
+    });
 
-    if (isPlatformBrowser(this.platformId)) {
-      if (localStorage.getItem('lugar')) {
-        this.lugarDetalle = JSON.parse(localStorage.getItem('lugar'));
-      }
-      console.log('PueblitoDetailComponent:', this.lugarDetalle);
-    }
 
-    this.loading = false;
   }
 
   view_sidebar: boolean = false;
@@ -45,5 +52,9 @@ export class ViewPueblitoComponent implements OnInit {
 
   loading = false;
   lugarDetalle: any = {};
+  private updateTitle(newTitle: any) {
+    this.title = newTitle;
+    console.log("titel", this.title);
 
+  }
 }
