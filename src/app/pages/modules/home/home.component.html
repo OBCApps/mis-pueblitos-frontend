@@ -38,13 +38,13 @@
                 <option *ngFor="let item of list_lugares" [value]="item.id"> {{item.nombre}}</option>
             </select>
         </div>
-        <button type="submit" 
+        <button type="submit"
             class="w-52 h-20 p-5 bg-primary rounded-2xl justify-center items-center gap-4 inline-flex text-fondo text-xl font-normal hover:bg-red-600">
             <svg class="w-6 h-6 text-fondo dark:text-fondo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                 fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
                     d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
-            </svg>Buscar Pueblo
+            </svg>Buscar
         </button>
     </form>
 </div>
@@ -70,9 +70,9 @@
             </div>
         </ng-template>
     </p-carousel>
-  
+
 </div>
-} 
+}
  -->
 
 <!-- LOS MAS BUSCADOS -->
@@ -83,7 +83,7 @@
     <p-carousel [value]="more_search" [numVisible]="4" [numScroll]="2" [circular]="false"
         [responsiveOptions]="responsiveOptions">
         <ng-template let-item pTemplate="item">
-            
+
             <div (click)="goToRoute(item.id)"
                 class="border-1 surface-border border-round m-2 text-center md:mx-5 rounded-lg">
                 <div class="global-center">
@@ -97,7 +97,7 @@
                 </div>
             </div>
         </ng-template>
-        
+
     </p-carousel>
     <div class="global-center">
         <button type="submit"
@@ -105,6 +105,7 @@
             Ver todos
         </button>
     </div>
+
 </div>
 } @else {
 <div class="global-center">
