@@ -1,11 +1,12 @@
-import { NgFor } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, ViewChild } from '@angular/core';
+import { NgFor, isPlatformBrowser } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
 import moment from 'moment';
 import { CarouselModule } from 'primeng/carousel';
 import { CaruselComponent } from '../carusel/carusel.component';
 import { register } from 'swiper/element';
 import { Router } from '@angular/router';
 import { FestivitiesService } from '../../../../../services/festivities.service';
+import { LoadingService } from '../../../../../functions/loadings/loading-service.service';
 register();
 
 @Component({
@@ -26,11 +27,15 @@ export class CalendarMobileComponent {
   dateSelect: any; // La fecha que se esta traendo los dias a mostrar
 
   week: any = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
+  typeCharge : any ;
   constructor(
     private festivitiesService: FestivitiesService,
-    private router: Router
+    private router: Router,
+    private loading : LoadingService,
+    @Inject(PLATFORM_ID) private platformId: Object,
   ) { }
   ngOnInit() {
+    this.typeCharge = 'init'
     this.getDaysFromDate(this.mesElegido, this.anioElegido)
     //this.selectInit()
   }
@@ -52,6 +57,7 @@ export class CalendarMobileComponent {
     });
   }
   getDaysFromDate(month: any, year: any) {
+    this.loading.show()
     //this.monthSelect = []
     const data = {
       mes: month.toString(),
@@ -85,7 +91,9 @@ export class CalendarMobileComponent {
         console.log("XXXX");
 
       },
-      (err) => { }
+      (err) => {
+        this.loading.hide()
+       }
     );
   }
   //days_month: any[] = []
@@ -103,19 +111,18 @@ export class CalendarMobileComponent {
       const prevDate = this.dateSelect.clone().subtract(1, 'month');
       this.anioElegido = Number(prevDate.format('YYYY'));
       this.mesElegido = Number(prevDate.format('MM'));
-      console.log(this.mesElegido);
+      console.log(this.mesElegido);      
       this.getDaysFromDate(prevDate.format('MM'), prevDate.format('YYYY'));
     } else {
       const nextDate = this.dateSelect.clone().add(1, 'month');
       this.anioElegido = Number(nextDate.format('YYYY'));
       this.mesElegido = Number(nextDate.format('MM'));
-      console.log(this.mesElegido);
-
+      console.log(this.mesElegido);      
       this.getDaysFromDate(nextDate.format('MM'), nextDate.format('YYYY'));
     }
   }
 
-  functAgendaMes(days: any, month_selected: any) {
+  functAgendaMes(days: any, month_selected: any ) {
     const data = days;
     const result: any[] = [];
 
@@ -150,14 +157,20 @@ export class CalendarMobileComponent {
     });
 
     this.monthSelect = result;
+    this.loading.hide()
 
+    if(this.typeCharge == 'init'){ // Identificar la primera carga para hacer la primera particion
+      this.partHorario(this.monthSelect[0]);
+      this.typeCharge = 'past'
+    } 
+    
     //console.log("FINAL: ", this.monthSelect);
   }
 
   viewDaysParts: any[] = []
   selectedDay: any = 1;
   partHorario(item: any) {
-    console.log("XXD");
+    
     this.viewDaysParts = [];
 
     this.viewDaysParts = this.monthSelect.filter(i => {
@@ -166,13 +179,15 @@ export class CalendarMobileComponent {
       return dia >= item.value && dia < item.value + 6;
     });
     this.selectedDay = item.value
-
-    const container = document.getElementById('diasContainer');
-    if (container) {
-      console.log("DESLIZA");
-
-      container.scrollTo({ left: (item.value - 1) * 55, behavior: 'smooth' });
+    if (isPlatformBrowser(this.platformId)) {
+      const container = document.getElementById('diasContainer');
+      if (container) {
+        
+  
+        container.scrollTo({ left: (item.value - 1) * 55, behavior: 'smooth' });
+      }
     }
+    
 
 
   }

@@ -2,6 +2,7 @@ import { Component, importProvidersFrom } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { LoadingsComponent } from './functions/loadings/loadings.component';
 
 
 
@@ -9,7 +10,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, TranslateModule],
+  imports: [CommonModule, RouterOutlet, TranslateModule, LoadingsComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

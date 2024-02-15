@@ -10,6 +10,7 @@ import { HomeService } from '../../../services/home.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LugarService } from '../../../services/lugar.service';
 import Swal from 'sweetalert2';
+import { LoadingService } from '../../../functions/loadings/loading-service.service';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -23,6 +24,7 @@ export class HomeComponent {
     private fb: FormBuilder,
     private router: Router,
     private lugarService: LugarService,
+    private loading: LoadingService
   ) {
 
   }
@@ -66,12 +68,15 @@ export class HomeComponent {
   }
 
   goToRoute(idLugar: any) {
+    this.loading.show()
     this.lugarService.getLugares(idLugar).subscribe(
       (response: any) => {
         localStorage.setItem('lugar', JSON.stringify(response));
+        this.loading.hide()
         this.router.navigate(['/pueblitos']);
       },
       (err) => {
+        this.loading.hide()
         console.log('Error:', err);
       }
     );
@@ -82,11 +87,13 @@ export class HomeComponent {
   // ------------------  CALL SERVICES ------------------ \\
   list_department: any[] = []
   load_list_departament() {
+    this.loading.show()
     this.homeService.get_list_department().subscribe(
       response => {
+        this.loading.hide()
         this.list_department = response;
       }, err => {
-
+        this.loading.hide()
       }
     )
   }
@@ -125,7 +132,7 @@ export class HomeComponent {
     this.homeService.get_pueblitos_destacados().subscribe(
       (response: any[]) => {
         console.log("RESPONSE: ", response);
-        
+
         this.more_search = response;
       },
       err => {

@@ -7,6 +7,7 @@ import { CaruselComponent } from '../carusel/carusel.component';
 import { FestivitiesService } from '../../../../../services/festivities.service';
 import { register } from 'swiper/element/bundle';
 import { Router } from '@angular/router';
+import { LoadingService } from '../../../../../functions/loadings/loading-service.service';
 
 register();
 
@@ -37,7 +38,8 @@ export class CalendarDesktopComponent {
   ];
   constructor(
     private festivitiesService: FestivitiesService,
-    private router: Router
+    private router: Router,
+    private loading: LoadingService,
   ) {}
 
   ngOnInit() {
@@ -53,6 +55,7 @@ export class CalendarDesktopComponent {
   }
 
   getDaysFromDate(month: any, year: any) {
+    this.loading.show()
     //this.monthSelect = []
     const data = {
       mes: month.toString(),
@@ -149,7 +152,7 @@ export class CalendarDesktopComponent {
     });
 
     this.monthSelect = result;
-
+    this.loading.hide()
     //console.log("FINAL: ", this.monthSelect);
   }
 

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FestivitiesService } from '../../../../../services/festivities.service';
 import { Router } from '@angular/router';
 import moment from 'moment';
+import { LoadingService } from '../../../../../functions/loadings/loading-service.service';
 
 @Component({
   selector: 'app-calendar-list',
@@ -30,7 +31,8 @@ export class CalendarListComponent {
   ];
   constructor(
     private festivitiesService: FestivitiesService,
-    private router: Router
+    private router: Router,
+    private loading: LoadingService,
   ) {}
 
   ngOnInit() {
@@ -46,6 +48,7 @@ export class CalendarListComponent {
   }
 
   getDaysFromDate(month: any, year: any) {
+    this.loading.show()
     //this.monthSelect = []
     const data = {
       mes: month.toString(),
@@ -142,11 +145,11 @@ export class CalendarListComponent {
     });
 
     this.monthSelect = result;
-
+    this.loading.hide()
     console.log("FINAL: ", this.monthSelect);
   }
 
-  goToSubEventoDetail(item: any) {
+  goToSubEventoDetail(item: any) {  
     console.log('item: ', item);
     const queryParamsObject = {
       id_father: item.id_father,
