@@ -36,6 +36,10 @@ export class ViewPueblitoComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
+    if (typeof localStorage !== 'undefined') {
+      this.lugarDetalle = localStorage.getItem('lugar');
+      this.lugarDetalle = JSON.parse(this.lugarDetalle);
+    }
     this.titleService.title$.subscribe((newTitle: any) => {
       setTimeout(() => {
         this.updateTitle(newTitle.sidebar);
@@ -57,4 +61,5 @@ export class ViewPueblitoComponent implements OnInit {
     console.log("titel", this.title);
 
   }
+
 }
