@@ -22,20 +22,11 @@ export class TipsViajerosComponent {
     lng: this.longitud,
   };
   zoom = 18;
-  /*------------------------------------------
-    --------------------------------------------
-    moveMap()
-    --------------------------------------------
-    --------------------------------------------*/
+
   moveMap(event: google.maps.MapMouseEvent) {
     if (event.latLng != null) this.center = event.latLng.toJSON();
   }
 
-  /*------------------------------------------
-  --------------------------------------------
-  move()
-  --------------------------------------------
-  --------------------------------------------*/
   move(event: google.maps.MapMouseEvent) {
     if (event.latLng != null) this.display = event.latLng.toJSON();
   }
@@ -60,7 +51,6 @@ export class TipsViajerosComponent {
             lng: this.longitud,
           };
           this.keys = Object.keys(this.tips.llevarTemporada);
-
           this.loading = false;
         });
     }
