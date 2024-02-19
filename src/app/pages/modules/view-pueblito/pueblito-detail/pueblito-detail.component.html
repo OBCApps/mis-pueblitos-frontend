@@ -14,9 +14,8 @@
     <p class="text-[#29252C]">{{ lugarDetalle.descripcion }}</p>
   </div>
   <div class="col-span-5 md:col-span-2 global-center">
-    <video controls width="auto" height="auto">
-      <source class="rounded-3xl" src="{{ lugarDetalle.video }}" type="video/mp4">
-    </video>
+    <iframe height="300" [src]="urlSegura" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
   </div>
 </div>
 
@@ -59,7 +58,7 @@
     {{ lugarDetalle.nombre }} en vista del mundo
   </h3>
 
-  <p-carousel [value]="this.lugarDetalle.vistasdelmundo" [numVisible]="3" [numScroll]="2" [circular]="false" 
+  <p-carousel [value]="this.lugarDetalle.vistasdelmundo" [numVisible]="3" [numScroll]="2" [circular]="false"
     [responsiveOptions]="responsiveOptions">
     <ng-template let-item pTemplate="item">
       <div routerLink="/pueblitos/97d1a344-6c48-422c-b790-e44f5a10497f"

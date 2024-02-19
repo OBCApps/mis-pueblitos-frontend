@@ -3,6 +3,7 @@ import { FooterComponent } from '../../../footer/footer.component';
 import { CarouselModule } from 'primeng/carousel';
 import { isPlatformBrowser } from '@angular/common';
 import { TitleService } from '../view-pueblito.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pueblito-detail',
@@ -14,7 +15,8 @@ import { TitleService } from '../view-pueblito.service';
 export class PueblitoDetailComponent implements OnInit {
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    private titleService: TitleService
+    private titleService: TitleService,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {
@@ -22,6 +24,7 @@ export class PueblitoDetailComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       if (localStorage.getItem('lugar')) {
         this.lugarDetalle = JSON.parse(localStorage.getItem('lugar') || '{}');
+        this.urlSegura = this.sanitizer.bypassSecurityTrustResourceUrl(this.lugarDetalle.video);
       }
     }
     console.log('PueblitoDetailComponent:', this.lugarDetalle);
@@ -36,10 +39,10 @@ export class PueblitoDetailComponent implements OnInit {
 
   loading = false;
   lugarDetalle: any = {};
-
+  urlSegura: any = '';
   transferedDataToNavar(value : any): void {
     console.log("CAMBIO");
-    
+
     this.titleService.setTitle(value);
   }
   responsiveOptions = [
