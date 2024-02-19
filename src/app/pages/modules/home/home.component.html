@@ -78,9 +78,9 @@
             </div>
         </ng-template>
     </p-carousel>
-  
+
 </div>
-} 
+}
  -->
 
 <!-- LOS MAS BUSCADOS -->
@@ -91,7 +91,7 @@
     <p-carousel [value]="more_search" [numVisible]="4" [numScroll]="2" [circular]="false"
         [responsiveOptions]="responsiveOptions">
         <ng-template let-item pTemplate="item">
-            
+
             <div (click)="goToRoute(item.id)"
                 class="border-1 surface-border border-round m-2 text-center md:mx-5 rounded-lg">
                 <div class="global-center">
@@ -105,7 +105,7 @@
                 </div>
             </div>
         </ng-template>
-        
+
     </p-carousel>
    <!-- <div class="global-center">
         <button type="submit"

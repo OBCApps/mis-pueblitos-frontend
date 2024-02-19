@@ -8,6 +8,7 @@ import { PueblitoDetailComponent } from './pages/modules/view-pueblito/pueblito-
 import { FestivitiesComponent } from './pages/modules/view-pueblito/festivities/festivities.component';
 import { AboutUsComponent } from './pages/modules/about-us/about-us.component';
 import { SubEventoDetailComponent } from './pages/modules/view-pueblito/festivities/sub-evento-detail/sub-evento-detail.component';
+import { TipsViajerosComponent } from './pages/modules/view-pueblito/tips-viajeros/tips-viajeros.component';
 
 export const routes: Routes = [
   {
@@ -24,11 +25,11 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: PueblitoDetailComponent
+        component: PueblitoDetailComponent,
       },
       {
         path: 'meet',
-        component: PueblitoDetailComponent
+        component: PueblitoDetailComponent,
       },
       {
         path: 'subeventodetail',
@@ -36,18 +37,20 @@ export const routes: Routes = [
       },
       {
         path: 'festivities',
-        component: FestivitiesComponent
+        component: FestivitiesComponent,
       },
-
-    ]
+      {
+        path: 'tipsviajero',
+        component: TipsViajerosComponent,
+      },
+    ],
   },
   {
     path: 'department',
-    component: ViewDepartmentComponent
+    component: ViewDepartmentComponent,
   },
   {
     path: 'about',
-    component: AboutUsComponent
-  }
-  
-]
+    component: AboutUsComponent,
+  },
+];
