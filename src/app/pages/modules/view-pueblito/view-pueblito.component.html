@@ -221,15 +221,13 @@
 </div> -->
 
 <div class="flex">
-    <div class="min-h-screen ">
+    <div class="min-h-screen absolute md:relative z-10 md:z-0">
         <div
             class="sidebar min-h-screen w-[3.35rem] overflow-hidden border-r hover:w-56  hover:bg-white hover:shadow-lg">
             <div class="flex h-screen flex-col justify-between pt-2 pb-6">
                 <div>
                     <div class="flex items-center justify-end">
-
-
-                        <div class="open ">
+                        <div class="open">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -289,7 +287,7 @@
         </div>
 
     </div>
-    <div class="px-3" style="width: calc(100% - 3.35rem);">
+    <div class="px-3 z-0 ml-[3.35rem] md:ml-0" style="width: calc(100% - 3.35rem);">
         <router-outlet></router-outlet>
     </div>
 </div>
