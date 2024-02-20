@@ -18,6 +18,6 @@ import { LoadingsComponent } from './functions/loadings/loadings.component';
 
 export class AppComponent {
   title = 'mis-pueblitos-frontend';
-  
+
 
 }
