@@ -1,41 +1,44 @@
-<div class="flex items-center justify-start font-bold py-3 ">
+<div class="flex items-center gap-8 justify-start font-bold py-3 ">
 
-    <span class="uppercase text-xl ">
+    <span class="text-secondary uppercase text-2xl font-black font-Battambang leading-loose ">
         {{ dateSelect | date: 'MMMM, YYYY'}}
     </span>
+    <div class="flex gap-2">
     <div (click)="changeMonth(-1)">
 
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-            class="w-7 h-7 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-7 h-7 cursor-pointer">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
         </svg>
 
     </div>
     <div (click)="changeMonth(1)">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-            class="w-7 h-7 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 cursor-pointer">
             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-        </svg>
-
+          </svg>
+          
 
     </div>
 </div>
-<div  id="diasContainer"  class='flex justify-start md:justify-center rounded-lg overflow-x-auto mx-auto py-4 px-2  md:mx-12 mb-10' >
+</div>
+<div  id="diasContainer"  class='flex justify-start md:justify-center bg-fondo rounded-lg shadow overflow-x-auto mx-auto py-4 gap-2 px-2  md:mx-12 mb-8' >
 
     <div *ngFor="let item of monthSelect" (click)="partHorario(item)" 
-        class='{{item.value == selectedDay ? "bg-primary" : "bg-white"}} flex group font-Battambang hover:bg-red-600 hover:shadow-lg hover-dark-shadow rounded-full mx-1 transition-all	duration-300	 cursor-pointer justify-center w-16'>
-        <div class='flex items-center px-4 py-4'>
-            <div class='text-center'>
+        class='{{item.value == selectedDay ? "bg-primary" : "bg-fondo"}} flex group font-Battambang hover:bg-red-600 hover:shadow-lg hover-dark-shadow rounded-xl mx-1 transition-all	duration-300	 cursor-pointer justify-center w-16'>
+        <div class='flex items-center p-4'>
+            <div class='text-center flex flex-col gap-2 text-terceary font-bold uppercase'>
+               <p
+                    class=' group-hover:text-gray-100 mt-3 group-hover:font-bold transition-all	duration-300'>
+                    {{item.value}}
+                </p> 
                 <p
-                    class='text-gray-900 group-hover:text-gray-100 text-sm transition-all  group-hover:font-semibold duration-300'>
+                    class='group-hover:text-gray-100 text-sm transition-all  group-hover:font-semibold duration-300'>
                     {{item.name.slice(0,3)}}
                 </p>
-                <p
-                    class='text-gray-900 group-hover:text-gray-100 mt-3 group-hover:font-bold transition-all	duration-300'>
-                    {{item.value}}
-                </p>
+                
             </div>
         </div>
+        <div></div>
     </div>
 
 
@@ -59,14 +62,14 @@
 
 </div>
 
-<div class="grid grid-cols-2 gap-4">
+<div class="grid grid-cols-2 mb-8 gap-4 font-Battambang">
 
     @for (item of viewDaysParts; track $index) {
     <div class="border-2 w-full shadow-xl rounded-lg">
 
         <p class="px-2">{{item.value}}</p>
         <div *ngIf="item.events.length!= 0" class="col-span-1 ">
-            <swiper-container class="bg-red-400 h-full col-span-1 mb-5" pagination="true" navigation="false" grap-cursor="true"
+            <swiper-container class="h-64 col-span-1 mb-5" pagination="true" navigation="false" grap-cursor="true"
                 slide-per-view="auto" coverflow-effect-rotate="0" coverflow-effect-stretch="0"
                 coverflow-effect-depth="200" coverflow-effect-slide-shadows="false">
                 <swiper-slide *ngFor="let item of item.events" (click)="goToSubEventoDetail(item)" class="w-fit flex flex-col gap-4 p-4">
