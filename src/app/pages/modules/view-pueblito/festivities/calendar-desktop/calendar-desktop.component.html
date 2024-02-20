@@ -1,7 +1,7 @@
 <div class="calendar pt-2">
     <div class="flex items-center justify-start font-bold py-3 ">
        
-        <span class="uppercase text-xl ">
+        <span class="text-primary text-2xl font-black font-Battambang leading-loose ">
             {{ dateSelect | date: 'MMMM, YYYY'}}
         </span>
         <div (click)="changeMonth(-1)">
@@ -47,7 +47,7 @@
                                     <!-- <img [src]="item.img" class="block h-24 rounded-lg" alt="..."> -->
 
 
-                                    <h1 class="text-center text-primary text-base font-bold font-['Battambang'] ">
+                                    <h1 class="text-center text-primary text-base font-bold font-Battambang">
                                         {{item.name_subevent}}</h1>
                                         <div class="w-ful h-fit flex flex-col gap-2">
                                     <div class="flex items-center justify-start text-left gap-2 w-full">
@@ -59,7 +59,7 @@
                                                 d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                                         </svg>
 
-                                        <h1 class="text-black text-base font-normal font-['Battambang'] leading-none">{{item.location}}</h1>
+                                        <h1 class="text-black text-base font-normal font-Battambang leading-none">{{item.location}}</h1>
                                     </div>
                                     <div class="flex items-center justify-start text-left gap-2 w-full">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -68,14 +68,14 @@
                                                 d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                         </svg>
 
-                                        <h1 class="text-black text-base font-normal font-['Battambang'] leading-none">{{item.name_father}}</h1>
+                                        <h1 class="text-black text-base font-normal font-Battambang leading-none">{{item.name_father}}</h1>
                                     </div>
                                 </div>
                                 </swiper-slide>
                             </swiper-container>
 
                         </div>
-                        <div *ngIf="day.events.length== 0" class="bg-primary h-72 flex text-fondo rounded-3xl items-center justify-center justify-items-center text-center">
+                        <div *ngIf="day.events.length== 0" class="bg-primary h-72 flex text-fondo rounded-3xl items-center justify-center justify-items-center font-Battambang text-center">
                             Sin evento
                         </div>
 
