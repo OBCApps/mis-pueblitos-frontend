@@ -5,6 +5,7 @@ import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 import { FooterComponent } from '../../footer/footer.component';
 import { LugarService } from '../../../services/lugar.service';
 import { TitleService } from './view-pueblito.service';
+import { BreadCrumbComponent } from '../../bread-crumb/bread-crumb.component';
 
 @Component({
   selector: 'app-view-pueblito',
@@ -15,7 +16,8 @@ import { TitleService } from './view-pueblito.service';
     RouterOutlet,
     RouterLink,
     FooterComponent,
-    NgClass
+    NgClass,
+    BreadCrumbComponent,
   ],
   templateUrl: './view-pueblito.component.html',
   styleUrl: './view-pueblito.component.scss',

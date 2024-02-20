@@ -5,13 +5,14 @@ import { ViewDepartmentService } from './view-department.service';
 import { DtoViewDepartmentAndLugares } from './structures/DtoViewDepartmentAndLugares';
 import { LugarService } from '../../../services/lugar.service';
 import { FooterComponent } from "../../footer/footer.component";
+import { BreadCrumbComponent } from '../../bread-crumb/bread-crumb.component';
 
 @Component({
     selector: 'app-view-department',
     standalone: true,
     templateUrl: './view-department.component.html',
     styleUrl: './view-department.component.scss',
-    imports: [NavarComponent, FooterComponent]
+    imports: [NavarComponent, FooterComponent,BreadCrumbComponent]
 })
 export class ViewDepartmentComponent {
   constructor(
