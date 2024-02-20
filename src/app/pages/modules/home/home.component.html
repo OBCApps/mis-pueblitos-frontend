@@ -1,31 +1,18 @@
 <!-- HEADER -->
 <div class="flex flex-col h-fit items-center w-full bg-fondo">
-  <div
-    class="w-full h-fit bg-center bg-cover"
-    style="background-image: url('./../../../assets/chacas.jpg')"
-  >
-    <div
-      class="w-full h-full bg-terceary flex flex-col justify-start items-center bg-opacity-50"
-    >
+  <div class="w-full h-fit bg-center bg-cover" style="background-image: url('./../../../assets/chacas.jpg')">
+    <div class="w-full h-full bg-terceary flex flex-col justify-start items-center bg-opacity-50">
       <div class="nav-header p-5 h-fit w-full">
         <app-navar></app-navar>
       </div>
       <div
-        class="w-fit h-fit flex flex-col text-center mx-4 my-20 md:mx-8 md:my-20 lg:mx-20 lg:my-40 xl:mx-40 xl:my-40 gap-6 md:gap-10"
-      >
+        class="w-fit h-fit flex flex-col text-center mx-4 my-20 md:mx-8 md:my-20 lg:mx-20 lg:my-40 xl:mx-40 xl:my-40 gap-6 md:gap-10">
         <div class="Bienvenido">
-          <span
-            class="text-fondo text-xl md:text-4xl font-normal font-['Battambang']"
-            >Bienvenido a
+          <span class="text-fondo text-xl md:text-4xl font-normal font-['Battambang']">Bienvenido a
           </span>
-          <span
-            class="text-primary text-xl md:text-4xl font-normal font-['Battambang']"
-            >Mis Pueblitos</span
-          >
+          <span class="text-primary text-xl md:text-4xl font-normal font-['Battambang']">Mis Pueblitos</span>
         </div>
-        <div
-          class="p-8 text-fondo text-4xl md:text-6xl font-extrabold font-['Montserrat'] uppercase"
-        >
+        <div class="p-8 text-fondo text-4xl md:text-6xl font-extrabold font-['Montserrat'] uppercase">
           Tu sitio ideal para conocer mas sobre los pueblitos mágicos en el Perú
         </div>
       </div>
@@ -33,26 +20,15 @@
   </div>
 
   <!-- BUSCADOR -->
-  <form
-    [formGroup]="searchValueForm"
-    (submit)="search_lugar(searchValueForm.value)"
-    class="relative transform bottom-20 bg-fondo w-fit h-fit border p-6 rounded-3xl shadow justify-start items-center gap-6 lg:gap-10 flex font-['Battambang'] flex-col md:flex-row"
-  >
+  <form [formGroup]="searchValueForm" (submit)="search_lugar(searchValueForm.value)"
+    class="relative transform bottom-20 bg-fondo w-fit h-fit border p-6 rounded-3xl shadow justify-start items-center gap-6 lg:gap-10 flex font-['Battambang'] flex-col md:flex-row">
     <div class="Departamento">
-      <label
-        for="department"
-        class="block text-neutral-900 text-opacity-50 text-base font-normal"
-        >Departamentos</label
-      >
+      <label for="department" class="block text-neutral-900 text-opacity-50 text-base font-normal">Departamentos</label>
 
-      <select
-        id="department"
-        formControlName="departamentoId"
-        (ngModelChange)="
+      <select id="department" formControlName="departamentoId" (ngModelChange)="
           load_list_lugar(searchValueForm.get('departamentoId').value)
         "
-        class="w-72 h-16 p-5 rounded-3xl border border-neutral-900 justify-start items-center gap-2.5 text-primary text-base font-bold focus:ring-red-500 focus:border-red-500"
-      >
+        class="w-72 h-16 p-5 rounded-3xl border border-neutral-900 justify-start items-center gap-2.5 text-primary text-base font-bold focus:ring-red-500 focus:border-red-500">
         <option value="" disabled>Seleccione un Departamento</option>
         <option *ngFor="let item of list_department" [value]="item.id">
           {{ item.nombre }}
@@ -60,39 +36,21 @@
       </select>
     </div>
     <div class="Pueblo">
-      <label
-        for="lugar"
-        class="block text-neutral-900 text-opacity-50 text-base font-normal"
-        >Pueblos</label
-      >
-      <select
-        id="lugar"
-        formControlName="lugarId"
-        class="w-72 h-16 p-5 rounded-3xl border border-neutral-900 justify-start items-center gap-2.5 text-primary text-base font-bold focus:ring-red-500 focus:border-red-500"
-      >
+      <label for="lugar" class="block text-neutral-900 text-opacity-50 text-base font-normal">Pueblos</label>
+      <select id="lugar" formControlName="lugarId"
+        class="w-72 h-16 p-5 rounded-3xl border border-neutral-900 justify-start items-center gap-2.5 text-primary text-base font-bold focus:ring-red-500 focus:border-red-500">
         <option value="" disabled>Seleccione un Pueblo</option>
         <option *ngFor="let item of list_lugares" [value]="item.id">
           {{ item.nombre }}
         </option>
       </select>
     </div>
-    <button
-      type="submit"
-      class="w-full xl:w-fit h-20 p-5 bg-primary rounded-2xl justify-center items-center gap-4 inline-flex text-fondo text-xl font-normal hover:bg-red-600"
-    >
-      <svg
-        class="w-6 h-6 text-fondo dark:text-fondo"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-width="2"
-          d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
-        />
+    <button type="submit"
+      class="w-full xl:w-fit h-20 p-5 bg-primary rounded-2xl justify-center items-center gap-4 inline-flex text-fondo text-xl font-normal hover:bg-red-600">
+      <svg class="w-6 h-6 text-fondo dark:text-fondo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+        viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+          d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
       </svg>
       <span class="md:hidden lg:block">Buscar</span>
     </button>
@@ -133,28 +91,16 @@
   </h1>
   <br />
 
-  <p-carousel
-    [value]="more_search"
-    [numVisible]="4"
-    [numScroll]="2"
-    [circular]="false"
-    [responsiveOptions]="responsiveOptions"
-  >
+  <p-carousel [value]="more_search" [numVisible]="4" [numScroll]="2" [circular]="false"
+    [responsiveOptions]="responsiveOptions">
     <ng-template let-item pTemplate="item">
-      <div
-        (click)="goToRoute(item.id)"
-        class="border-1 surface-border border-round m-2 text-center md:mx-5 rounded-lg"
-      >
+      <div (click)="goToRoute(item.id)" class="border-1 surface-border border-round m-2 text-center md:mx-5 rounded-lg">
         <div class="global-center">
-          <div
-            class="buscadosCard w-60 md:w-80 h-96 rounded-3xl bg-cover bg-center flex justify-start items-end"
-            style="
+          <div class="buscadosCard w-60 md:w-80 h-96 rounded-3xl bg-cover bg-center flex justify-start items-end" style="
               background-image: url('https://s3-alpha-sig.figma.com/img/8b4f/da8c/f6c8987541c40cc8f6b485f492cc7c28?Expires=1708300800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=nWI5~fEpu8ocFfCH4aJv9kBf0ZxrRZwukKLh2RCJ-H4Sccne7y85IJViqrlzdp7YfxIOpReDG~H2AFofV1nAMDbjyElHe2VVgIxmjpf0zQufHb9XQMfvBknXMwCiiGAR59vvzggRbFpQfyj9ag3HTDZgvIGOefofGExcwgaNnTjJrwXeP56ZShJDLPzUqlkdQmWwDyuooodtSMAtbU9uXEPyGN9Ig0uAl7Q3-80wbey7Bcq1FCJwUfnuGvMi~~D2G6YgppXXACYrSlupExRcZgeKkNU4iR8N9Ghlxlc3U8U9bxNhqr3T~rFQX~2UevGBaI5VOZ3-dUGQqpdoXj9quQ__');
-            "
-          >
+            ">
             <div
-              class="w-full h-40 p-5 bg-gradient-to-t from-terceary rounded-3xl flex justify-start items-end text-fondo"
-            >
+              class="w-full h-40 p-5 bg-gradient-to-t from-terceary rounded-3xl flex justify-start items-end text-fondo">
               {{ item.nombre }}
             </div>
           </div>
@@ -169,50 +115,33 @@
         </button>
     </div>-->
 </div>
-<div [class]="modal_style">
-  <div class="w-[500px] h-[462px] relative">
+
+<div [class]="modal_style" class="bg-black bg-opacity-50 fixed inset-0">
+  <div class="w-[500px] h-[462px] relative shadow-lg">
     <app-modal-redes-sociales></app-modal-redes-sociales>
     <div class="absolute top-0 right-0 mt-6 mr-6">
-      <div
-      (click)="close_modal()"
-        class="cursor-pointer p-2.5 bg-zinc-800 bg-opacity-50 rounded-[36px] justify-center items-center gap-2.5 inline-flex"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="#FFFFFF"
-          class="w-5 h-5"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M6 18 18 6M6 6l12 12"
-          />
+      <div (click)="close_modal()"
+        class="cursor-pointer p-2.5 bg-zinc-800 bg-opacity-50 rounded-[36px] justify-center items-center gap-2.5 inline-flex">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#FFFFFF"
+          class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
         </svg>
       </div>
     </div>
   </div>
 </div>
+
 } @else {
 <div class="global-center">
   <div role="status">
-    <svg
-      aria-hidden="true"
-      class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
-      viewBox="0 0 100 101"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+      viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-        fill="currentColor"
-      />
+        fill="currentColor" />
       <path
         d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-        fill="currentFill"
-      />
+        fill="currentFill" />
     </svg>
     <span class="sr-only">Loading...</span>
   </div>
