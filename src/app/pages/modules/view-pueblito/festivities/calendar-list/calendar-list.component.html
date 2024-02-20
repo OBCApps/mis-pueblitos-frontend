@@ -20,17 +20,17 @@
     </div>
 </div>
 @for (item of monthSelect; track $index) {
-<div *ngIf="item.events.length != 0" class="p-5 mb-4 border border-gray-100 rounded-lg bg-gray-50 ">
+<div *ngIf="item.events.length != 0" class="p-0 md:p-5 mb-4 border border-gray-100 rounded-lg bg-gray-50 ">
     <time class="text-lg font-semibold text-gray-900 ">{{item.fecha | date: 'dd MMMM'}}</time>
     <ol class="mt-3 divide-y divider-gray-200 ">
 
         
             <li class="flex flex-col gap-8 py-8" *ngFor="let item of item.events" (click)="goToSubEventoDetail(item)">
                 
-                <div class="items-center flex gap-6 p-6 sm:flex shadow-lg bg-fondo rounded-3xl w-full h-52 hover:bg-gray-100 ">
-                    <img class="w-40 h-40 mb-3 me-3 sm:mb-0 rounded-3xl" src="./assets/img-2.jpeg"
+                <div class="items-center flex gap-4 md:gap-6 p-4 md:p-6 sm:flex shadow-lg bg-fondo rounded-3xl w-full h-fit md:h-52 hover:bg-gray-100 ">
+                    <img class="h-20 w-20 md:w-40 md:h-40 mb-3 me-3 sm:mb-0 rounded-3xl" src="./assets/img-2.jpeg"
                         alt="Jese Leos image" />
-                    <div class=" flex flex-col gap-2 text-base font-['Battambang']">
+                    <div class=" flex flex-col gap-2 text-base font-Battambang">
                         <div class="font-bold text-primary "> {{item.name_subevent}} </div>
                         <div class="font-normal text-terceary">{{item.name_father}}</div>
                         <div class="inline-flex gap-2 items-center text-terceary font-normal">

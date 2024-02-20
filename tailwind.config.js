@@ -8,6 +8,10 @@ module.exports = {
   content: [],
   theme: {
     extend: {
+      fontFamily:{
+        Montserrat: ["Montserrat", "sans-serif"],
+        Battambang: ["Battambang", "system-ui"]
+      },
       colors: {
         primary: '#F33535',
         fondo: '#FEFBFB',
