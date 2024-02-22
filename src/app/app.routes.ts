@@ -14,18 +14,22 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    data: { breadcrumb: 'Home' }
   },
   {
     path: 'home',
     component: HomeComponent,
+    data: { breadcrumb: 'Home' }
   },
   {
     path: 'pueblitos',
     component: ViewPueblitoComponent,
+    data: { breadcrumb: 'pueblitos' },
     children: [
       {
         path: '',
         component: PueblitoDetailComponent,
+
       },
       {
         path: 'meet',
@@ -34,23 +38,28 @@ export const routes: Routes = [
       {
         path: 'subeventodetail',
         component: SubEventoDetailComponent,
+        data: { breadcrumb: 'subeventodetail' }
       },
       {
         path: 'festivities',
         component: FestivitiesComponent,
+        data: { breadcrumb: 'festivities' }
       },
       {
         path: 'tipsviajero',
         component: TipsViajerosComponent,
+        data: { breadcrumb: 'tipsviajero' }
       },
     ],
   },
   {
     path: 'department',
     component: ViewDepartmentComponent,
+    data: { breadcrumb: 'department' }
   },
   {
     path: 'about',
     component: AboutUsComponent,
+    data: { breadcrumb: 'about' }
   },
 ];

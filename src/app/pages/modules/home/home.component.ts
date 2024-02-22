@@ -97,7 +97,7 @@ export class HomeComponent {
   }
 
   close_modal() {
-    this.modal_style="fixed w-full h-full inset-x-0 top-[-1000px] global-center transition-all duration-1000 ease-in-out";
+    this.modal_style="fixed w-full h-full inset-x-0 -top-full global-center transition-all duration-1000 ease-in-out";
   }
 
   // ------------------  CALL SERVICES ------------------ \\

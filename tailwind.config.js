@@ -28,6 +28,14 @@ module.exports = {
         color_9: '#3f6600',
         color_10: '#254000',
       },
+      width: {
+        '500':'50vw',
+      },
+      screens: {
+        'xxxs': '251px',
+        'xxs': '325px',
+        'xs': '380px',
+      },
     },
   },
   plugins: [

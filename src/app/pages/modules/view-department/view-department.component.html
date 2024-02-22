@@ -30,7 +30,8 @@
   </div>
 </div>
 <!-- buscador y filtros -->
-
+<body class="bg-fondo h-fit">
+  <app-bread-crumb></app-bread-crumb>
   @if (departmentAndLugares.lugares.length != 0) {
   <!--<div class="bg-fondo file:searchs m-4 md:m-8 lg:m-20 xl:mx-40 xl:my-24">
     <p class="text-terceary text-2xl font-bold font-['Battambang']">Mostrando 3 de 34 resultados</p>
@@ -78,7 +79,7 @@
   <div
     class="grid grid-cols-1 md:grid-cols-2 bg-fondo m-4 md:m-8 lg:m-20 max-w-7xl xl:mx-auto xl:my-24 gap-4 xl:gap-10"
   >
-  
+
     <div class="flex flex-col gap-8">
       <h3 class="text-secondary text-4xl font-bold font-Battambang">
         {{ item.nombre }}
@@ -106,7 +107,7 @@
     </div>
   </div>
   } }
- 
-</div>
+
+</body>
 <!-- Footer -->
 <div><app-footer></app-footer></div>
