@@ -26,6 +26,9 @@ export class BreadCrumbComponent implements OnInit {
       .subscribe(() => {
         this.breadcrumbs = this.buildBreadCrumb(this.activatedRoute.root);
       });
+
+
+
   }
 
   /**
@@ -68,7 +71,7 @@ export class BreadCrumbComponent implements OnInit {
       return this.buildBreadCrumb(route.firstChild, nextUrl, newBreadcrumbs);
     }
     newBreadcrumbs.unshift({
-      label: 'Home',
+      label: 'Inicio',
       url: '/',
     });
     return newBreadcrumbs;
@@ -78,5 +81,18 @@ export class BreadCrumbComponent implements OnInit {
     // si es la ultima ruta en el breadcrumb es la actual
     return this.breadcrumbs[this.breadcrumbs.length - 1].url === url;
 
+  }
+
+
+  changeName(input: any) {
+    //console.log("INPUT: ", input);
+    /* if(input == 'pueblitos') {
+      const loca = JSON.parse(localStorage.getItem('lugar')).nombre;
+      return loca ;
+    } else {
+      return input;
+    } */
+    return input;
+    
   }
 }
