@@ -7,15 +7,15 @@
         
         <div class="flex items-center md:order-2 gap-2 md:gap-4 space-x-1 md:space-x-0 rtl:space-x-reverse">
             <button type="button" (click)="goToAbout()"
-            class="hidden md:block bg-primary hover:bg-red-600 w-fit md:w-fit text-fondo text-base font-normal py-3 px-4 rounded-xl">
+            class="block bg-primary hover:bg-red-600 w-fit md:w-fit text-fondo text-base font-normal py-3 px-4 rounded-xl">
             Nosotros
         </button>
              
-            <button type="button" data-dropdown-toggle="language-dropdown-menu"
+           <!-- <button type="button" data-dropdown-toggle="language-dropdown-menu"
                 class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
                 <div class="w-8 h-8"[innerHTML]="selected.icon"></div>
-                <!-- {{selected.name | translate}} -->
-            </button>
+                {{selected.name | translate}} 
+            </button> 
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700"
                 id="language-dropdown-menu">
                 <ul class="py-2 font-medium" role="none">
@@ -30,7 +30,7 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div>-->
            <!--  <button data-collapse-toggle="navbar-language" type="button"
                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 aria-controls="navbar-language" aria-expanded="false">
