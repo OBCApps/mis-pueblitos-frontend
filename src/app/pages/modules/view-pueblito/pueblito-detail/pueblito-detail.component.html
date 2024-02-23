@@ -95,20 +95,20 @@
     <ng-template let-item pTemplate="item">
       <div
         routerLink="/pueblitos/97d1a344-6c48-422c-b790-e44f5a10497f"
-        class="flex flex-col h-[380px] items-center bg-white border border-gray-200 m-2 rounded-3xl shadow hover:bg-gray-100"
+        class="flex flex-col h-fit items-center bg-white border border-gray-200 m-2 rounded-3xl shadow hover:bg-gray-100"
       >
         <img
           class="object-cover w-full rounded-t-3xl md:h-[177px] h-[170px]"
           src="{{ item.foto }}"
           alt="{{ item.nombre }}"
         />
-        <div class="flex flex-col justify-between md:p-4 p-2 leading-normal">
+        <div class="flex flex-col justify-between gap-4 md:p-5 p-2 leading-normal">
           <h5
-            class="md:text-[24px] text-[20px] font-bold tracking-tight text-black"
+            class="md:text-2xl text-xl font-bold tracking-tight text-black"
           >
             {{ item.titulo }}
           </h5>
-          <p class="md:text-[13px] text-[11px] text-[#29252C]">
+          <p class="md:text-base text-xs text-[#29252C]">
             {{ item.descripcion }}
           </p>
         </div>
