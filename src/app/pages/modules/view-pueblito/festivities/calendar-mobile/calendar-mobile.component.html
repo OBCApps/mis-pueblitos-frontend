@@ -73,9 +73,8 @@
                 slide-per-view="auto" coverflow-effect-rotate="0" coverflow-effect-stretch="0"
                 coverflow-effect-depth="200" coverflow-effect-slide-shadows="false">
                 <swiper-slide *ngFor="let item of item.events" (click)="goToSubEventoDetail(item)" class="w-fit flex flex-col gap-4 p-4">
-                    <img src="https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80"
-                        class="block w-28 h-24 rounded-3xl" alt="...">
-                    <!-- <img [src]="item.img" class="block h-24 rounded-lg" alt="..."> -->
+                    
+                    <img [src]="item.img" class="block h-24 rounded-lg" alt="...">
 
                     <div class="flex flex-col gap-2">
                     <h1 class=" text-primary text-xs font-bold font-Battambang text-center">

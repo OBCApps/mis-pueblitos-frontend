@@ -1,3 +1,4 @@
+<div class="grid grid-cols-1 gap-8 font-Battambang">
 @if (loading) {
 
 <div class="flex items-center justify-center h-96">
@@ -8,20 +9,21 @@
 
 } @else {
 
-<div class="grid grid-cols-5 gap-2 p-1 md:mx-10">
+<div class="grid md:grid-cols-2 gap-8">
   <div
-    class="col-span-5 md:col-span-3 flex flex-col justify-center items-start pr-5"
+    class="col-span-1 md:col-span-1 flex flex-col justify-center items-start gap-6"
   >
     <h3
-      class="text-[#33425B] md:text-[24px] text-[20px] font-bold tracking-tight"
+      class="text-secondary md:text-[24px] text-[20px] font-bold tracking-tight"
     >
       Conoce {{ lugarDetalle.nombre }}
     </h3>
     <p class="text-[#29252C]">{{ lugarDetalle.descripcion }}</p>
   </div>
-  <div class="col-span-5 md:col-span-2 global-center">
+  <div class="col-span-1 md:col-span-1 rounded-3xl global-center">
     <iframe
       height="300"
+      class="w-full rounded-3xl"
       [src]="urlSegura"
       title="YouTube video player"
       frameborder="0"
@@ -31,39 +33,38 @@
   </div>
 </div>
 
-<div class="mt-9">
+<div class="flex flex-col gap-8">
   <h3
-    class="text-[#33425B] md:text-[34px] text-[30px] font-bold tracking-tight text-center mb-9"
+    class="text-secondary md:text-[34px] text-[30px] font-bold tracking-tight text-center"
   >
-    ¿Porqué visitarlo?
+    ¿Por qué visitarlo?
   </h3>
 
   @for (item of this.lugarDetalle.motivosVisita; track item.id;let even = $even)
   {
 
-  <div class="grid grid-cols-5 p-1 md:mx-10">
+  <div class="grid md:grid-cols-2 gap-8">
     <div
-      class="flex flex-col justify-center md:items-start items-center col-span-5 md:col-span-3"
-      [ngClass]="{ 'md:pr-5 md:pl-0': even, 'md:pr-0 md:pl-5': !even }"
-    >
+      class="flex flex-col justify-center md:items-start items-center gap-6 col-span-1"
+      >
       <h3
-        class="text-[#33425B] md:text-[24px] text-[20px] font-bold tracking-tight"
+        class="text-secondary md:text-[24px] text-[20px] font-bold tracking-tight"
       >
         {{ item.nombre }}
       </h3>
-      <p class="md:text-left text-justify">
+      <p class="text-justify">
         {{ item.descripcion }}
       </p>
     </div>
     <div
-      class="col-span-5 md:col-span-2 global-center"
+      class="col-span-1 global-center"
       [ngClass]="{
         'md:order-first md:order-none': !even,
         'md:order-last md:order-none': even
       }"
     >
       <img
-        class="md:w-[370px] md:h-[305px] w-[350px] h-[285px] md:my-0 my-5 rounded-3xl"
+        class="md:h-[305px] w-full h-[285px] md:my-0 my-5 rounded-3xl"
         src="{{ item.foto }}"
         alt="{{ item.nombre }}"
       />
@@ -77,9 +78,9 @@
   }
 </div>
 
-<div class="mt-9">
+<div class="">
   <h3
-    class="text-[#33425B] md:text-[24px] text-[20px] font-bold tracking-tight text-center mb-9"
+    class="text-secondary md:text-[36px] text-[20px] font-bold tracking-tight text-center mb-9"
   >
     {{ lugarDetalle.nombre }} en vista del mundo
   </h3>
@@ -94,20 +95,20 @@
     <ng-template let-item pTemplate="item">
       <div
         routerLink="/pueblitos/97d1a344-6c48-422c-b790-e44f5a10497f"
-        class="flex flex-col h-[380px] items-center bg-white border border-gray-200 m-2 rounded-lg shadow hover:bg-gray-100"
+        class="flex flex-col h-fit items-center bg-white border border-gray-200 m-2 rounded-3xl shadow hover:bg-gray-100"
       >
         <img
-          class="object-cover w-full rounded-t-lg md:h-[177px] h-[170px]"
+          class="object-cover w-full rounded-t-3xl md:h-[177px] h-[170px]"
           src="{{ item.foto }}"
           alt="{{ item.nombre }}"
         />
-        <div class="flex flex-col justify-between md:p-4 p-2 leading-normal">
+        <div class="flex flex-col justify-between gap-4 md:p-5 p-2 leading-normal">
           <h5
-            class="md:text-[24px] text-[20px] font-bold tracking-tight text-black"
+            class="md:text-2xl text-xl font-bold tracking-tight text-black"
           >
             {{ item.titulo }}
           </h5>
-          <p class="md:text-[13px] text-[11px] text-[#29252C]">
+          <p class="md:text-base text-xs text-[#29252C]">
             {{ item.descripcion }}
           </p>
         </div>
@@ -117,3 +118,4 @@
 </div>
 
 }
+</div>

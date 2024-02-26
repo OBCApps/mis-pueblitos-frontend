@@ -52,7 +52,7 @@ export class PueblitoDetailComponent implements OnInit {
   responsiveOptions = [
     {
       breakpoint: '1536px',
-      numVisible: 5,
+      numVisible: 4,
       numScroll: 1,
     },
     {

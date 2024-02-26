@@ -64,4 +64,14 @@ export class ViewPueblitoComponent implements OnInit {
 
   }
 
+
+  // --------- OPTIONS MOBILE ------------- \\
+  active : boolean = false;
+  clickActiveModal(change : any){
+    console.log(
+      "change", change
+    );
+    
+    this.active = change;
+  }
 }

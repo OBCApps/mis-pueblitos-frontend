@@ -3,6 +3,7 @@ import { TipsViajerosService } from '../../../../services/tips-viajeros.service'
 import { DtoLugar } from './entities/DtoLugar';
 import { DtoTipsViajeros } from './entities/DtoTipsViajeros';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { TitleService } from '../view-pueblito.service';
 
 @Component({
   selector: 'app-tips-viajeros',
@@ -12,7 +13,10 @@ import { GoogleMapsModule } from '@angular/google-maps';
   styleUrl: './tips-viajeros.component.scss',
 })
 export class TipsViajerosComponent {
-  constructor(private tipsViajeroService: TipsViajerosService) {}
+  constructor(
+    private tipsViajeroService: TipsViajerosService,
+    private titleService: TitleService
+  ) { }
 
   display: any;
   latitud: number = 0;
@@ -54,5 +58,16 @@ export class TipsViajerosComponent {
           this.loading = false;
         });
     }
+
+
+    const dataNavar = {
+      sidebar: 'tips'
+    }
+    this.transferedDataToNavar(dataNavar)
+  }
+  transferedDataToNavar(value: any): void {
+    console.log("CAMBIO");
+
+    this.titleService.setTitle(value);
   }
 }

@@ -13,12 +13,12 @@
     >
       Suscríbete para mantenerte actualizado
     </h3>
-    <p class="text-fondo text-base font-normal font-['Battambang'] md:text-xl">
+    <p class="text-fondo text-base font-normal font-Battambang md:text-xl">
       Se el primero en conocer sobre nuestras nuevas funcionalidades
     </p>
 
-    <div
-      class="px-6 py-4 gap-6 bg-fondo h-fit w-fit flex items-center font-['Battambang'] rounded-3xl flex-col md:flex-row"
+    <form (submit)="suscribirse()"
+      class="px-6 py-4 gap-6 bg-fondo h-fit w-fit flex items-center font-Battambang rounded-3xl flex-col md:flex-row"
     >
       <div class="flex items-center gap-2">
         <svg
@@ -34,7 +34,7 @@
           />
         </svg>
         <input
-          type="email"
+        type="email" [(ngModel)]="email" name="email"
           placeholder="Ingresa tu correo electrónico"
           class="text-terceary text-opacity-50 md:flex-row text-base font-normal border-0 focus:ring-0"
         />
@@ -45,7 +45,7 @@
       >
         Suscribirse
       </button>
-    </div>
+    </form>
   </div>
 </div>
 
@@ -65,10 +65,10 @@
         class="flex flex-wrap items-center mb-6 text-base font-medium text-fondo sm:mb-0 sm:text-center font-['Battambang']"
       >
         <li>
-          <a href="#" class="hover:underline me-4 md:me-6">Inicio</a>
+          <a href="/home" class="hover:underline me-4 md:me-6">Inicio</a>
         </li>
         <li>
-          <a href="#" class="hover:underline me-4 md:me-6">Nosotros</a>
+          <a href="/about" class="hover:underline me-4 md:me-6">Nosotros</a>
         </li>
       </ul>
       <ul class="flex flex-wrap gap-4 items-center mb-6 sm:mb-0">
