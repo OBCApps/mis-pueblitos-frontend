@@ -12,7 +12,12 @@ import { filter, distinctUntilChanged } from 'rxjs/operators';
 })
 export class BreadCrumbComponent implements OnInit {
   public breadcrumbs: IBreadCrumb[];
-
+  private previousUrl: string ="";
+  private actualUrl: string ="";
+  private previousData: IBreadCrumb = {
+    label: "",
+    url: "",
+  };
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     this.breadcrumbs = this.buildBreadCrumb(this.activatedRoute.root);
   }
@@ -26,9 +31,11 @@ export class BreadCrumbComponent implements OnInit {
       .subscribe(() => {
         this.breadcrumbs = this.buildBreadCrumb(this.activatedRoute.root);
       });
-
-
-
+  }
+  ngAfterContentInit(): void {
+    //Called after ngOnInit when the component's or directive's content has been initialized.
+    //Add 'implements AfterContentInit' to the class.
+    console.log("BREADCRUMB: ", this.breadcrumbs);
   }
 
   /**
@@ -52,10 +59,28 @@ export class BreadCrumbComponent implements OnInit {
 
     const lastRoutePart = path.split('/').pop();
     const isDynamicRoute = lastRoutePart.startsWith(':');
+    console.log('LAST ROUTE PART: ', lastRoutePart);
+    if (lastRoutePart == 'department') {
+      const queryParams = route.snapshot.queryParams;
+      const departmentId = queryParams['departmentId'];
+      const deparmentName = queryParams['departmentName'];
+      label = deparmentName;
+      path = `/department?departmentId=${departmentId}&departmentName=${deparmentName}`;
+      this.previousData.label = label;
+      this.previousData.url = path;
+      this.previousUrl = lastRoutePart;
+      this.actualUrl = lastRoutePart;
+    } else if(lastRoutePart == "pueblitos"){
+      this.actualUrl = lastRoutePart;
+    }
+
+
+
     if (isDynamicRoute && !!route.snapshot) {
       const paramName = lastRoutePart.split(':')[1];
       path = path.replace(lastRoutePart, route.snapshot.params[paramName]);
       label = route.snapshot.params[paramName];
+      console.log('LABEL: ', label);
     }
 
     const nextUrl = path ? `${url}/${path}` : url;
@@ -74,15 +99,24 @@ export class BreadCrumbComponent implements OnInit {
       label: 'Inicio',
       url: '/',
     });
+
+    if (this.previousData.label != "" && this.previousData.url != "" && this.previousUrl=="department") {
+      console.log("dentro2:",this.previousUrl != this.actualUrl, this.previousUrl,this.actualUrl);
+      console.log("despues:",this.previousData);
+      newBreadcrumbs.splice(1, 0, {
+        label: this.previousData.label,
+        url: this.previousData.url,
+      });
+      console.log("newBreadcrumbs:",newBreadcrumbs);
+    }
+    console.log("newBreadcrumbs2:",newBreadcrumbs);
     return newBreadcrumbs;
   }
 
   isCurrentRoute(url: string): boolean {
     // si es la ultima ruta en el breadcrumb es la actual
     return this.breadcrumbs[this.breadcrumbs.length - 1].url === url;
-
   }
-
 
   changeName(input: any) {
     //console.log("INPUT: ", input);
@@ -93,6 +127,5 @@ export class BreadCrumbComponent implements OnInit {
       return input;
     } */
     return input;
-    
   }
 }
