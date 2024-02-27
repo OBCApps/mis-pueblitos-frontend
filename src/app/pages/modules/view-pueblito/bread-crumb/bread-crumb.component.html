@@ -1,0 +1,23 @@
+<nav class="flex font-Battambang font-bold" aria-label="Breadcrumb">
+    <ol class="inline-flex items-center">
+        @for (breadcrumb of breadcrumbs; track $index) {
+        <p *ngIf="$index != 0"
+            class="inline-flex px-2 items-center text-sm font-medium text-terceary text-opacity-50 hover:text-primary capitalize">
+            /</p>
+        <a (click)="goToRoute(breadcrumb)"
+            class="inline-flex items-center text-sm font-medium text-terceary text-opacity-50 hover:text-primary capitalize">
+
+            {{breadcrumb.name }}
+        </a>
+        }
+        <p *ngIf="ruta" class="inline-flex px-2 items-center text-sm font-medium text-terceary text-opacity-50 hover:text-primary capitalize">
+            /
+        </p>
+        <a
+            class="inline-flex items-center text-sm font-medium text-terceary text-opacity-50 hover:text-primary capitalize">
+
+            {{ruta}}
+        </a>
+
+    </ol>
+</nav>

@@ -5,7 +5,7 @@ import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 import { FooterComponent } from '../../footer/footer.component';
 import { LugarService } from '../../../services/lugar.service';
 import { TitleService } from './view-pueblito.service';
-import { BreadCrumbComponent } from '../../bread-crumb/bread-crumb.component';
+import { BreadCrumbComponent } from './bread-crumb/bread-crumb.component';
 
 @Component({
   selector: 'app-view-pueblito',
@@ -64,4 +64,14 @@ export class ViewPueblitoComponent implements OnInit {
 
   }
 
+
+  // --------- OPTIONS MOBILE ------------- \\
+  active : boolean = false;
+  clickActiveModal(change : any){
+    console.log(
+      "change", change
+    );
+    
+    this.active = change;
+  }
 }

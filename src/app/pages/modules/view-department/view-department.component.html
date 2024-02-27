@@ -32,7 +32,23 @@
 <!-- buscador y filtros -->
 <body class="bg-fondo h-fit flex flex-col  gap-8 md:gap-10 items-start m-4 md:m-8 lg:m-20 max-w-7xl xl:mx-auto">
   <div>
-    <app-bread-crumb></app-bread-crumb>
+    <!-- <app-bread-crumb></app-bread-crumb> -->
+    <nav class="flex font-Battambang font-bold" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center">
+          @for (breadcrumb of breadcrumbs; track $index) {
+          <p *ngIf="$index != 0"
+              class="inline-flex px-2 items-center text-sm font-medium text-terceary text-opacity-50 hover:text-primary capitalize">
+              /</p>
+          <a (click)="goToRoute(breadcrumb)"
+              class="inline-flex items-center text-sm  text-terceary text-opacity-50 hover:text-primary capitalize">
+  
+              {{breadcrumb.name }}
+          </a>
+          }
+          
+  
+      </ol>
+  </nav>
   </div>
   @if (departmentAndLugares.lugares.length != 0) {
   <!--<div class="bg-fondo file:searchs m-4 md:m-8 lg:m-20 xl:mx-40 xl:my-24">
