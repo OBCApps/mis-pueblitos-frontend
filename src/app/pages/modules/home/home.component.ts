@@ -156,6 +156,9 @@ export class HomeComponent {
   goToDepartments(form: any) {
     const queryParamsObject = {
       departmentId: form.departamentoId,
+      departmentName: this.list_department.find(
+        (x) => x.id == form.departamentoId
+      ).nombre,
     };
     this.router.navigate(['/department'], { queryParams: queryParamsObject });
   }

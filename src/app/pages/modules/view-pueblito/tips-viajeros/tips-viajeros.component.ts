@@ -13,6 +13,7 @@ import { TitleService } from '../view-pueblito.service';
   styleUrl: './tips-viajeros.component.scss',
 })
 export class TipsViajerosComponent {
+Object: object;
   constructor(
     private tipsViajeroService: TipsViajerosService,
     private titleService: TitleService
@@ -38,6 +39,7 @@ export class TipsViajerosComponent {
   tips: DtoTipsViajeros = new DtoTipsViajeros();
   lugar: DtoLugar = new DtoLugar();
   keys: string[] = [];
+  keys_comollegar: string[] = [];
   loading: boolean = false;
   ngOnInit() {
     this.loading = true;
@@ -55,6 +57,7 @@ export class TipsViajerosComponent {
             lng: this.longitud,
           };
           this.keys = Object.keys(this.tips.llevarTemporada);
+          this.keys_comollegar = Object.keys(this.tips.llegarsecondDesc);
           this.loading = false;
         });
     }
@@ -70,4 +73,9 @@ export class TipsViajerosComponent {
 
     this.titleService.setTitle(value);
   }
+
+  getKeys(obj: any) {
+    return Object.keys(obj);
+  }
+
 }

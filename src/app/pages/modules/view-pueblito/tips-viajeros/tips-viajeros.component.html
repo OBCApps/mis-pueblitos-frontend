@@ -38,22 +38,57 @@
   </div>
 
   <div class="col-span-5 md:col-span-3 md:md:pr-5 text-justify md:text-start">
-      <p class="text-[#29252C] text-lg md:text-lg font-normal">
-          {{ tips.llegarsecondDesc }}
+    <ul class="list-disc">
+      @for (comollegar of keys_comollegar; track comollegar) {
+      <li class="py-3">
+        <p class="text-[#29252C] text-xl font-normal">
+          <strong>En {{ comollegar }}:</strong>
+          {{ tips.llegarsecondDesc[comollegar][0] }}
         </p>
+        @if (tips.llegarsecondDesc[comollegar].length > 1) {
+        <ul class="list-disc">
+          @for (comollegar2 of getKeys(tips.llegarsecondDesc[comollegar][1]);
+          track comollegar2) {
+          <li class="py-3">
+            <a
+              href="{{ tips.llegarsecondDesc[comollegar][1][comollegar2] }}"
+              class="text-[#292 52C] text-xl font-normal flex flex-row hover:text-primary"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 mr-1"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"
+                />
+              </svg>
+              {{ comollegar2 }}
+            </a>
+          </li>
+          }
+        </ul>
+        }
+      </li>
+      }
+    </ul>
   </div>
 
   <div class="col-span-5 md:col-span-2 mx-4 global-center">
     <google-map
-    class="w-full"
-    height="300px"
-    width="auto"
-    [center]="center"
-    [zoom]="zoom"
-    (mapClick)="moveMap($event)"
-    (mapMousemove)="move($event)"
-  >
-  </google-map>
+      height="300px"
+      width="300px"
+      [center]="center"
+      [zoom]="zoom"
+      (mapClick)="moveMap($event)"
+      (mapMousemove)="move($event)"
+    >
+    </google-map>
   </div>
 
   <div class="col-span-5 md:global-center text-justify md:text-center">
@@ -80,10 +115,16 @@
     <ul class="list-disc">
       @for (temporadas of keys; track temporadas) {
       <li class="py-3">
-        <p class="text-[#29252C] text-xl font-normal">
-          <strong>En {{ temporadas }}:</strong>
-          {{ tips.llevarTemporada[temporadas] }}
-        </p>
+          <strong class="text-[#29252C] text-xl">
+            En {{ temporadas }}:
+          </strong>
+          <ul class="list-disc list-inside">
+            @for (temp of tips.llevarTemporada[temporadas]; track temp) {
+              <li>
+                {{temp}}
+              </li>
+            }
+          </ul>
       </li>
       }
     </ul>
