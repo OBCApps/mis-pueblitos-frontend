@@ -78,11 +78,11 @@
       }
     </ul>
   </div>
-
   <div class="col-span-5 md:col-span-2 mx-4 global-center">
     <google-map
+      class="w-full"
       height="300px"
-      width="300px"
+      width="auto"
       [center]="center"
       [zoom]="zoom"
       (mapClick)="moveMap($event)"
@@ -130,7 +130,7 @@
     </ul>
   </div>
 
-  <div class="col-span-5 md:global-center text-justify md:text-center">
+  <div class="col-span-5 md:global-center text-justify">
     <p class="text-terceary text-xl font-normal">
       <strong class="text-terceary text-xl text-bold"> Consejo: </strong>
       {{ tips.llevarConsejo }}
