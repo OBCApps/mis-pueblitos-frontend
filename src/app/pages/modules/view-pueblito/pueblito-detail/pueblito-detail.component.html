@@ -65,7 +65,7 @@
     >
       <img
         class="md:h-[305px] w-full h-[285px] md:my-0 my-5 rounded-3xl"
-        src="{{ item.foto }}"
+        src="{{ item.foto.url }}"
         alt="{{ item.nombre }}"
       />
     </div>
@@ -99,7 +99,7 @@
       >
         <img
           class="object-cover w-full rounded-t-3xl md:h-[177px] h-[170px]"
-          src="{{ item.foto }}"
+          src="{{ item.foto.url }}"
           alt="{{ item.nombre }}"
         />
         <div class="flex flex-col justify-between gap-4 md:p-5 p-2 leading-normal">
