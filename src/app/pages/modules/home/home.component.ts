@@ -16,7 +16,7 @@ import {
 import { LugarService } from '../../../services/lugar.service';
 import Swal from 'sweetalert2';
 import { LoadingService } from '../../../functions/loadings/loading-service.service';
-import { ModalRedesSocialesComponent } from '../../modal-redes-sociales/modal-redes-sociales.component';
+import { ModalRedesSocialesComponent } from '../../../functions/modal-redes-sociales/modal-redes-sociales.component';
 
 @Component({
   selector: 'app-home',
@@ -136,7 +136,18 @@ export class HomeComponent {
     } else if (form.departamentoId && form.lugarId) {
       this.goToRoute(form.lugarId);
     } else {
-      Swal.fire('Seleccione un departamento o lugar');
+      Swal.fire({
+        title: '¡Ups! Falta información',
+        text: 'Por favor, selecciona un departamento o lugar antes de continuar. ¡Gracias! 😊',
+        customClass: {
+          confirmButton: 'text-red-500 border-2 border-red-500 bg-white',
+          popup: 'border-1 border-solid border-red-500 ',
+          title: 'text-red-500',
+        },
+        background: 'white',
+        confirmButtonColor: 'red',
+      });
+      
     }
   }
 

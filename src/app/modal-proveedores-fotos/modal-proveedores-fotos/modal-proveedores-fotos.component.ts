@@ -19,13 +19,12 @@ export class ModalProveedoresFotosComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const $modalElement: HTMLElement = document.querySelector('#modalproveedor');
+    const $modalElement: HTMLElement = document.querySelector('modalproveedor');
 
 
     const modalOptions: ModalOptions = {
       placement: 'center',
       backdrop: 'dynamic',
-      backdropClasses: 'bg-terceary opacity-50 fixed inset-0 z-40',
       closable: true,
       onHide: () => {
           console.log('modal is hidden');

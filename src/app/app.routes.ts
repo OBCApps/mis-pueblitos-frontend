@@ -14,18 +14,15 @@ import { ModalProveedoresFotosComponent } from './modal-proveedores-fotos/modal-
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
-    data: { breadcrumb: 'Home' }
+    component: HomeComponent,      
   },
   {
     path: 'home',
-    component: HomeComponent,
-    data: { breadcrumb: 'Home' }
+    component: HomeComponent,      
   },
   {
     path: 'pueblitos',
-    component: ViewPueblitoComponent,
-    data: { breadcrumb: 'pueblitos' },
+    component: ViewPueblitoComponent,    
     children: [
       {
         path: '',
@@ -39,33 +36,27 @@ export const routes: Routes = [
       {
         path: 'subeventodetail',
         component: SubEventoDetailComponent,
-        data: { breadcrumb: 'subeventodetail' }
       },
       {
         path: 'festivities',
         component: FestivitiesComponent,
-        data: { breadcrumb: 'festivities' }
       },
       {
         path: 'tipsviajero',
         component: TipsViajerosComponent,
-        data: { breadcrumb: 'tipsviajero' }
       },
     ],
   },
   {
     path: 'department',
     component: ViewDepartmentComponent,
-    data: { breadcrumb: 'department' }
   },
   {
     path: 'about',
     component: AboutUsComponent,
-    data: { breadcrumb: 'about' }
   },
   {
     path: 'modalfotos',
     component: ModalProveedoresFotosComponent,
-    data: { breadcrumb: 'modalfotos' }
   }
 ];

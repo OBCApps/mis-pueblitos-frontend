@@ -1,13 +1,15 @@
-<div id="modalproveedor" tabindex="-1" aria-hidden="true"
-    class="fixed left-0 right-0 top-0 z-70 hidden h-[calc(100%-1rem)] max-h-full w-full overflow-y-auto overflow-x-hidden p-4 md:inset-0">
-    <div class="relative max-h-full w-full max-w-2xl">
+
+
+<div id="modal-proveedor-fotos" tabindex="-1" aria-hidden="true"
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-2xl max-h-full">
         <!-- Modal content -->
-        <div class="relative rounded-3xl shadow">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <!-- Modal header -->
             <div class=" self-stretch h-72 p-4 justify-end items-start rounded-t-3xl gap-2.5 flex"
                 style="background: url('./assets/lamerced.jpg') center no-repeat; background-size: cover;">
 
-                <button type="button" data-modal-hide="modalproveedor"
+                <button type="button" (click)="activate_modal('close')"
                     class="ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-terceary hover:text-fondo">
                     <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 14 14">
@@ -18,8 +20,8 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <div
-                class="flex items-center space-x-2 rtl:space-x-reverse self-stretch h-fit p-4 bg-fondo rounded-b-3xl flex-col justify-start gap-2">
+            <div 
+                class="flex items-center space-x-2 rtl:space-x-reverse self-stretch h-fit p-4 bg-white rounded-b-3xl flex-col justify-start gap-2">
                 <div class="self-stretch justify-between items-center gap-2 md:gap-40 flex flex-col md:flex-row">
                     <h1 class="text-center text-secondary text-base font-bold font-Montserrat capitalize">Montaña de 7
                         coleres en Cuzco</h1>

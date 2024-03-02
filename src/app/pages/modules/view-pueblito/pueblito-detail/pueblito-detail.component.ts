@@ -4,11 +4,13 @@ import { CarouselModule } from 'primeng/carousel';
 import { isPlatformBrowser } from '@angular/common';
 import { TitleService } from '../view-pueblito.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ModalProveedorService } from '../../../../functions/modal-proveedor/modal-proveedor.service';
+import { ModalProveedorComponent } from '../../../../functions/modal-proveedor/modal-proveedor.component';
 
 @Component({
   selector: 'app-pueblito-detail',
   standalone: true,
-  imports: [CarouselModule],
+  imports: [CarouselModule, ModalProveedorComponent],
   templateUrl: './pueblito-detail.component.html',
   styleUrl: './pueblito-detail.component.scss',
 })
@@ -16,7 +18,8 @@ export class PueblitoDetailComponent implements OnInit {
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private titleService: TitleService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private modalProveedorFotos: ModalProveedorService,
   ) {}
 
   ngOnInit() {
@@ -76,4 +79,14 @@ export class PueblitoDetailComponent implements OnInit {
       numScroll: 1,
     },
   ];
+
+
+  // ---------- VER LOS DATOS DEL PROVEEDOR ------------- \\4
+  viewProveedorImage(item){
+    var data = {
+      option: 'open',
+      valueInput: item
+    }
+    this.modalProveedorFotos.activateModal(data);
+  }
 }
