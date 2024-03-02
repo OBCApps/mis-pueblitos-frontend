@@ -87,6 +87,8 @@ export class PueblitoDetailComponent implements OnInit {
       option: 'open',
       valueInput: item
     }
+    console.log("data: ", data);
+    
     this.modalProveedorFotos.activateModal(data);
   }
 }

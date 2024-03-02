@@ -40,7 +40,7 @@ export class ModalProveedorComponent {
       const options: ModalOptions = {
         placement: 'center',
         backdrop: 'dynamic',
-        backdropClasses: 'bg-gray-900/50  fixed inset-0 z-40 pointer-events-none',
+        backdropClasses: 'bg-gray-900/50 fixed inset-0 z-40 pointer-events-none',
         closable: true,
         onHide: () => {
           console.log('modal is hidden');
@@ -66,7 +66,8 @@ export class ModalProveedorComponent {
   activate_modal(option: any) {
     if (option == 'close') {
       this.Modal.hide()
-
+      console.log(this.valueInput);
+      
     } else if (option == 'open') {
       this.create_modal();
 
