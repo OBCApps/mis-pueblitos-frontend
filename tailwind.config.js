@@ -5,7 +5,7 @@ module.exports = {
     content: ['./src/**/*.{html,ts}'],
   },
   important: true,
-  content: [],
+  content: ["./node_modules/flowbite/**/*.js"],
   theme: {
     extend: {
       fontFamily:{
