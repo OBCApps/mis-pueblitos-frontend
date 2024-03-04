@@ -77,10 +77,10 @@
           src="{{ item.foto.url }}"
           alt="{{ item.nombre }}"
         /> -->
-          <img [src]="item.foto.url ? item.foto.url : './assets/chacas.jpg'" alt="{{ item.nombre }}">
+          <img class="object-fill w-full rounded-t-3xl md:h-[200px] h-[170px]" [src]="item.foto.url ? item.foto.url : './assets/chacas.jpg'" alt="{{ item.nombre }}">
 
           <div class="flex flex-col justify-between gap-4 md:p-5 p-2 leading-normal">
-            <h5 class="md:text-2xl text-xl font-bold tracking-tight text-black">
+            <h5 class="md:text-xl text-lg font-bold tracking-tight text-black">
               {{ item.titulo }}
             </h5>
             <p class="md:text-base text-xs text-[#29252C]">
@@ -88,7 +88,7 @@
             </p>
             <div class="flex gap-2 items-center font-Battambang">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 " viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></svg>
-              <a href="{{item.links}}"  target="_blank" class="text-xs md:text-base"> Fuente </a>
+              <a href="{{item.links.link}}"  target="_blank" class="text-xs md:text-base"> Fuente </a>
             </div>
           </div>
         </div>
