@@ -40,7 +40,7 @@ export class ModalProveedorComponent {
       const options: ModalOptions = {
         placement: 'center',
         backdrop: 'dynamic',
-        backdropClasses: 'bg-gray-900/50 fixed inset-0 z-40 pointer-events-none',
+        backdropClasses: 'bg-terceary/50 fixed inset-0 z-40 pointer-events-none',
         closable: true,
         onHide: () => {
           console.log('modal is hidden');
