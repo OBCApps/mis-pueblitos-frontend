@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, Component, ViewChild } from '@angular/core';
+import { CommonModule, registerLocaleData } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, LOCALE_ID, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CarouselModule } from 'primeng/carousel';
 import moment from 'moment';
@@ -8,6 +8,7 @@ import { FestivitiesService } from '../../../../../services/festivities.service'
 import { register } from 'swiper/element/bundle';
 import { Router } from '@angular/router';
 import { LoadingService } from '../../../../../functions/loadings/loading-service.service';
+import localeEs from '@angular/common/locales/es';
 
 register();
 
@@ -16,6 +17,7 @@ register();
   standalone: true,
   imports: [CaruselComponent, FormsModule, CommonModule, CarouselModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers : [{ provide: LOCALE_ID, useValue: 'es' }],
   templateUrl: './calendar-desktop.component.html',
   styleUrl: './calendar-desktop.component.scss',
 })
@@ -40,7 +42,10 @@ export class CalendarDesktopComponent {
     private festivitiesService: FestivitiesService,
     private router: Router,
     private loading: LoadingService,
-  ) {}
+  ) {
+    registerLocaleData(localeEs);
+
+  }
 
   ngOnInit() {
     /* const data = {

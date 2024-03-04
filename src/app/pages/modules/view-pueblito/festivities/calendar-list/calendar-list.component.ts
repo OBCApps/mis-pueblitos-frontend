@@ -1,14 +1,16 @@
-import { DatePipe, NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { DatePipe, NgFor, NgIf, registerLocaleData } from '@angular/common';
+import { Component, LOCALE_ID } from '@angular/core';
 import { FestivitiesService } from '../../../../../services/festivities.service';
 import { Router } from '@angular/router';
 import moment from 'moment';
 import { LoadingService } from '../../../../../functions/loadings/loading-service.service';
+import localeEs from '@angular/common/locales/es';
 
 @Component({
   selector: 'app-calendar-list',
   standalone: true,
   imports: [DatePipe, NgFor, NgIf],
+  providers : [{ provide: LOCALE_ID, useValue: 'es' }],
   templateUrl: './calendar-list.component.html',
   styleUrl: './calendar-list.component.scss'
 })
@@ -33,7 +35,9 @@ export class CalendarListComponent {
     private festivitiesService: FestivitiesService,
     private router: Router,
     private loading: LoadingService,
-  ) {}
+  ) {
+    registerLocaleData(localeEs);
+  }
 
   ngOnInit() {
     /* const data = {
