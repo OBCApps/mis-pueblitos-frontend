@@ -6,9 +6,9 @@
     Explora las festividades y eventos de Chacas en nuestro calendario, creado con la colaboración de los residentes
     locales para brindarte información auténtica y actualizada.
   </p>
-  <div class="lg:flex-row flex flex-col gap-8">
-    <div tabindex="0"
-      class="focus:border-primary focus:ring-primary w-full h-16 rounded-3xl border overflow-hidden border-terceary justify-between inline-flex">
+  <div class="lg:flex-row flex flex-col gap-8"> <!-- *ngIf="tab_selected == 'list'" -->
+    <div  tabindex="0"
+      class=" focus:border-primary focus:ring-primary w-full h-16 rounded-3xl border overflow-hidden border-terceary justify-between inline-flex">
       <input type="search" id="location-search"
         class="bg-fondo self-stretch w-52 md:w-fit px-5 rounded-s-3xl text-terceary text-opacity-50 text-xl font-normal border-none font-['Battambang']"
         placeholder="Buscar" required />

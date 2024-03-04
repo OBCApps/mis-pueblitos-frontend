@@ -1,28 +1,38 @@
+<div tabindex="0"
+    class=" focus:border-primary focus:ring-primary w-full h-16 rounded-3xl border overflow-hidden border-terceary justify-between inline-flex">
+    <input type="search" id="location-search"
+        class="bg-fondo self-stretch w-52 md:w-fit px-5 rounded-s-3xl text-terceary text-opacity-50 text-xl font-normal border-none font-['Battambang']"
+        placeholder="Buscar" required />
+    <button type="submit" class="self-stretch px-5 py-4 bg-primary justify-center items-center">
+        <svg class="w-6 h-6 items-center justify-center text-fondo" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+        </svg>
+    </button>
+</div>
 <div class="flex items-center justify-start font-bold py-3 ">
 
     <span class="uppercase text-xl ">
         {{ dateSelect | date: 'MMMM, YYYY'}}
     </span>
     <div (click)="changeMonth(-1)">
-
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="w-7 h-7 cursor-pointer">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
         </svg>
-
     </div>
     <div (click)="changeMonth(1)">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="w-7 h-7 cursor-pointer">
             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
         </svg>
-
-
     </div>
 </div>
+
 @for (item of monthSelect; track $index) {
 <div *ngIf="item.events.length != 0" class="p-0 md:p-5 mb-4 border border-gray-100 rounded-lg bg-gray-50 ">
-    <time class="text-lg font-semibold text-gray-900 ">{{item.fecha | date: 'dd MMMM'}}</time>
+    <time class="text-lg font-semibold text-gray-900 capitalize">{{item.fecha | date: 'dd MMMM'}}</time>
     <ol class="mt-3 divide-y divider-gray-200 ">
 
 
@@ -52,7 +62,7 @@
                                 d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg> -->
                         <!-- {{item.desc }}  -->
-                        
+
                     </div>
                 </div>
             </div>
