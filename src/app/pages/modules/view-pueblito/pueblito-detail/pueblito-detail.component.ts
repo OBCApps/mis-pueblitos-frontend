@@ -29,7 +29,7 @@ export class PueblitoDetailComponent implements OnInit {
         this.lugarDetalle = JSON.parse(localStorage.getItem('lugar') || '{}');
         if (this.lugarDetalle.video) {
           this.urlSegura = this.sanitizer.bypassSecurityTrustResourceUrl(
-            this.lugarDetalle.video
+            this.lugarDetalle.video.url
           );
         }
       }

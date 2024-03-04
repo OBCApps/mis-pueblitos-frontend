@@ -34,7 +34,7 @@ export class FooterComponent {
       },
       error => {
         Swal.fire({
-          title: '¡Oops! Algo salió mal',
+          title: 'Algo salió mal',
           text: 'Hubo un problema al procesar tu solicitud. Inténtalo de nuevo o contáctanos en redes sociales si persiste. ¡Estamos aquí para ayudarte! 😊',
           customClass: {
             confirmButton: 'text-red-500 border-2 border-red-500 bg-white',

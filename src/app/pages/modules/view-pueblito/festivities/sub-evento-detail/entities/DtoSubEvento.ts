@@ -2,7 +2,7 @@ export class DtoSubEvento {
   id: string;
   nombre: string;
   descripcion: string;
-  foto: string;
+  foto: any;
   ubicacionExacta: string;
   fechaInicio: string;
   fechaFin: string;

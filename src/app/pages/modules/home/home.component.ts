@@ -137,7 +137,7 @@ export class HomeComponent {
       this.goToRoute(form.lugarId);
     } else {
       Swal.fire({
-        title: '¡Ups! Falta información',
+        title: 'Falta información',
         text: 'Por favor, selecciona un departamento o lugar antes de continuar. ¡Gracias! 😊',
         customClass: {
           confirmButton: 'text-red-500 border-2 border-red-500 bg-white',

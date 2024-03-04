@@ -12,7 +12,7 @@
       class="focus:border-primary focus:ring-primary w-full h-16 rounded-3xl border overflow-hidden border-terceary justify-between inline-flex">
       <input type="search" id="location-search"
         class="bg-fondo self-stretch w-52 md:w-fit px-5 rounded-s-3xl text-terceary text-opacity-50 text-xl font-normal border-none font-['Battambang']"
-        placeholder="Buscar Evento o Festividad" required />
+        placeholder="Buscar" required />
       <button type="submit" class="self-stretch px-5 py-4 bg-primary justify-center items-center">
         <svg class="w-6 h-6 items-center justify-center text-fondo" aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -22,12 +22,13 @@
       </button>
     </div>
     <div class="flex gap-4 md:gap-8 lg:justify-between w-full">
-      <select id="countries"
+      <!-- <select id="countries"
         class="w-full lg:w-fit h-16 p-5 rounded-3xl border bg-fondo focus:ring-primary focus:border-primary border-terceary gap-2.5 text-terceary text-opacity-50 text-xl font-normal font-['Battambang']">
         <option>Todo</option>
         <option>Eventos</option>
         <option>Festividades</option>
-      </select>
+      </select> -->
+      <div class="w-2"></div>
       <div class="flex rounded-3xl h-16">
         <div class="{{
             tab_selected == 'list'

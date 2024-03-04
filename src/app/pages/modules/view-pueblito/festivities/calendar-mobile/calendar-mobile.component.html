@@ -74,7 +74,7 @@
                 coverflow-effect-depth="200" coverflow-effect-slide-shadows="false">
                 <swiper-slide *ngFor="let item of item.events" (click)="goToSubEventoDetail(item)" class="w-fit flex flex-col gap-4 p-4">
                     
-                    <img [src]="item.img" class="block h-24 rounded-lg" alt="...">
+                    <img [src]="item?.img?.url" class="block h-24 rounded-lg" alt="...">
 
                     <div class="flex flex-col gap-2">
                     <h1 class=" text-primary text-xs font-bold font-Battambang text-center">

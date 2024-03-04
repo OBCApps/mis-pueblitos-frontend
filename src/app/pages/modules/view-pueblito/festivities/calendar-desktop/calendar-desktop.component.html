@@ -47,7 +47,7 @@
 
                                 <swiper-slide class="flex flex-col gap-2 p-4" *ngFor="let item of day.events"
                                     (click)="goToSubEventoDetail(item)">
-                                    <img [src]="item.img" class="block h-28 rounded-3xl" alt="...">
+                                    <img [src]="item?.img?.url" class="block h-28 rounded-3xl" alt="...">
                                     <!-- <img [src]="item.img" class="block h-24 rounded-lg" alt="..."> -->
 
 

@@ -12,7 +12,7 @@
       <h3 class="text-secondary md:text-[24px] text-[20px] font-bold tracking-tight">
         Conoce {{ lugarDetalle.nombre }}
       </h3>
-      <p class="text-[#29252C]">{{ lugarDetalle.descripcion }}</p>
+      <p class="text-[#29252C] text-justify">{{ lugarDetalle.descripcion }}</p>
     </div>
     <div class="col-span-1 md:col-span-1 rounded-3xl global-center">
       <iframe height="300" class="w-full rounded-3xl" [src]="urlSegura" title="YouTube video player" frameborder="0"
@@ -48,7 +48,7 @@
         alt="{{ item.nombre }}"
       /> -->
 
-        <img class="md:h-[305px] w-full h-[285px] md:my-0 my-5 rounded-3xl" (click)="viewProveedorImage(item)"
+        <img class="md:h-[305px] w-[70%] h-[285px] md:my-0 my-5 rounded-3xl" (click)="viewProveedorImage(item)"
           [src]="item.foto.url ? item.foto.url : './assets/chacas.jpg'" alt="{{ item.nombre }}">
 
       </div>
