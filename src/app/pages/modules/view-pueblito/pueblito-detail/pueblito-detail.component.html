@@ -2,55 +2,80 @@
   @if (loading) {
 
   <div class="flex items-center justify-center h-96">
-    <div class="w-16 h-16 border-t-2 border-b-2 border-gray-900 rounded-full animate-spin"></div>
+    <div
+      class="w-16 h-16 border-t-2 border-b-2 border-gray-900 rounded-full animate-spin"
+    ></div>
   </div>
 
   } @else {
 
   <div class="grid md:grid-cols-2 gap-8">
-    <div class="col-span-1 md:col-span-1 flex flex-col justify-center items-start gap-6">
-      <h3 class="text-secondary md:text-[24px] text-[20px] font-bold tracking-tight">
+    <div
+      class="col-span-1 md:col-span-1 flex flex-col justify-center items-start gap-6"
+    >
+      <h3
+        class="text-secondary md:text-[24px] text-[20px] font-bold tracking-tight"
+      >
         Conoce {{ lugarDetalle.nombre }}
       </h3>
       <p class="text-[#29252C] text-justify">{{ lugarDetalle.descripcion }}</p>
     </div>
     <div class="col-span-1 md:col-span-1 rounded-3xl global-center">
-      <iframe height="300" class="w-full rounded-3xl" [src]="urlSegura" title="YouTube video player" frameborder="0"
+      <iframe
+        height="300"
+        class="w-full rounded-3xl"
+        [src]="urlSegura"
+        title="YouTube video player"
+        frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
+        allowfullscreen
+      ></iframe>
     </div>
   </div>
 
   <div class="flex flex-col gap-8">
-    <h3 class="text-secondary md:text-[34px] text-[30px] font-bold tracking-tight text-center">
+    <h3
+      class="text-secondary md:text-[34px] text-[30px] font-bold tracking-tight text-center"
+    >
       ¿Por qué visitarlo?
     </h3>
 
-    @for (item of this.lugarDetalle.motivosVisita; track item.id;let even = $even)
-    {
+    @for (item of this.lugarDetalle.motivosVisita; track item.id;let even =
+    $even) {
 
     <div class="grid md:grid-cols-2 gap-8">
-      <div class="flex flex-col justify-center md:items-start items-center gap-6 col-span-1">
-        <h3 class="text-secondary md:text-[24px] text-[20px] font-bold tracking-tight">
+      <div
+        class="flex flex-col justify-center md:items-start items-center gap-6 col-span-1"
+      >
+        <h3
+          class="text-secondary md:text-[24px] text-[20px] font-bold tracking-tight"
+        >
           {{ item.nombre }}
         </h3>
         <p class="text-justify">
           {{ item.descripcion }}
         </p>
       </div>
-      <div class="col-span-1 global-center" [ngClass]="{
-        'md:order-first md:order-none': !even,
-        'md:order-last md:order-none': even
-      }">
+      <div
+        class="col-span-1 global-center"
+        [ngClass]="{
+          'md:order-first order-none': !even,
+          'md:order-last order-none': even
+        }"
+      >
         <!-- <img
         class="md:h-[305px] w-full h-[285px] md:my-0 my-5 rounded-3xl"
         src="{{ item.foto.url }}"
         alt="{{ item.nombre }}"
       /> -->
 
-        <img class="md:h-[305px] w-[70%] h-[285px] md:my-0 my-5 rounded-3xl" (click)="viewProveedorImage(item)"
-          [src]="item.foto.url ? item.foto.url : './assets/chacas.jpg'" alt="{{ item.nombre }}">
-
+        <img
+          class="md:h-[305px] w-[70%] h-[285px] md:my-0 my-5 rounded-3xl"
+          (click)="viewProveedorImage(item)"
+          [src]="item.foto.url ? item.foto.url : './assets/chacas.jpg'"
+          alt="{{ item.nombre }}"
+          loading="lazy"
+        />
       </div>
     </div>
 
@@ -62,24 +87,38 @@
   </div>
 
   <div class="">
-    <h3 class="text-secondary md:text-[36px] text-[20px] font-bold tracking-tight text-center mb-9">
+    <h3
+      class="text-secondary md:text-[36px] text-[20px] font-bold tracking-tight text-center mb-9"
+    >
       {{ lugarDetalle.nombre }} en vista del mundo
     </h3>
 
-    <p-carousel [value]="this.lugarDetalle.vistasdelmundo" [numVisible]="3" [numScroll]="2" [circular]="false"
-      [responsiveOptions]="responsiveOptions">
+    <p-carousel
+      [value]="this.lugarDetalle.vistasdelmundo"
+      [numVisible]="3"
+      [numScroll]="2"
+      [circular]="false"
+      [responsiveOptions]="responsiveOptions"
+    >
       <ng-template let-item pTemplate="item">
         <!--         routerLink="/pueblitos/97d1a344-6c48-422c-b790-e44f5a10497f" -->
         <div
-          class="flex flex-col h-fit items-center bg-white border border-gray-200 m-2 rounded-3xl shadow hover:bg-gray-100">
+          class="flex flex-col h-fit items-center bg-white border border-gray-200 m-2 rounded-3xl shadow hover:bg-gray-100"
+        >
           <!-- <img
           class="object-cover w-full rounded-t-3xl md:h-[177px] h-[170px]"
           src="{{ item.foto.url }}"
           alt="{{ item.nombre }}"
         /> -->
-          <img [src]="item.foto.url ? item.foto.url : './assets/chacas.jpg'" alt="{{ item.nombre }}">
+          <img
+            [src]="item.foto.url ? item.foto.url : './assets/chacas.jpg'"
+            alt="{{ item.nombre }}"
+            loading="lazy"
+          />
 
-          <div class="flex flex-col justify-between gap-4 md:p-5 p-2 leading-normal">
+          <div
+            class="flex flex-col justify-between gap-4 md:p-5 p-2 leading-normal"
+          >
             <h5 class="md:text-2xl text-xl font-bold tracking-tight text-black">
               {{ item.titulo }}
             </h5>
