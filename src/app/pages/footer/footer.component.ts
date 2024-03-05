@@ -23,12 +23,12 @@ export class FooterComponent {
           title: '¡Gracias por suscribirte!',
           html: 'Te estaremos enviando emocionantes actualizaciones pronto. &#128515;',
           customClass: {
-            confirmButton: 'text-red-500 border-2 border-red-500 bg-white',
-            popup: 'border-1 border-solid border-red-500 ',
-            title: 'text-red-500',
+            confirmButton: 'text-green-500 border-2 font-Battambang border-primary bg-white',
+            popup: 'border-1 border-solid rounded-3xl font-Battambang border-green-500',
+            title: 'font-Montserrat text-green-500',
           },
           background: 'white',
-          confirmButtonColor: 'red',
+          confirmButtonColor: 'green',
         });
         this.email = ''
       },
@@ -37,9 +37,9 @@ export class FooterComponent {
           title: 'Algo salió mal',
           text: 'Hubo un problema al procesar tu solicitud. Inténtalo de nuevo o contáctanos en redes sociales si persiste. ¡Estamos aquí para ayudarte! 😊',
           customClass: {
-            confirmButton: 'text-red-500 border-2 border-red-500 bg-white',
-            popup: 'border-1 border-solid border-red-500',
-            title: 'text-red-500',
+            confirmButton: 'text-primary border-2 font-Battambang border-primary bg-white',
+            popup: 'border-1 border-solid rounded-3xl font-Battambang border-primary',
+            title: 'font-Montserrat text-primary',
           },
           background: 'white',
           confirmButtonColor: 'red',
