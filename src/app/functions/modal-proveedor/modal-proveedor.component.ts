@@ -1,7 +1,7 @@
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { ModalProveedorService } from './modal-proveedor.service';
 import { isPlatformBrowser } from '@angular/common';
-import { Modal, ModalOptions } from 'flowbite';
+import { InstanceOptions, Modal, ModalInterface, ModalOptions } from 'flowbite';
 
 @Component({
   selector: 'app-modal-proveedor',
@@ -27,7 +27,7 @@ export class ModalProveedorComponent {
       this.activate_modal(option.option);
       this.valueInput = option.valueInput;
       console.log("input", this.valueInput);
-      
+
     });
 
   }
@@ -40,7 +40,7 @@ export class ModalProveedorComponent {
       const options: ModalOptions = {
         placement: 'center',
         backdrop: 'dynamic',
-        backdropClasses: 'bg-terceary/50 fixed inset-0 z-40 pointer-events-none',
+        backdropClasses: 'bg-gray-900/50 dark:bg-gray-900/80 fixed inset-0 z-40',
         closable: true,
         onHide: () => {
           console.log('modal is hidden');
@@ -67,7 +67,7 @@ export class ModalProveedorComponent {
     if (option == 'close') {
       this.Modal.hide()
       console.log(this.valueInput);
-      
+
     } else if (option == 'open') {
       this.create_modal();
 

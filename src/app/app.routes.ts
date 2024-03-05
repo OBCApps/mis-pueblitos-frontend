@@ -9,7 +9,6 @@ import { FestivitiesComponent } from './pages/modules/view-pueblito/festivities/
 import { AboutUsComponent } from './pages/modules/about-us/about-us.component';
 import { SubEventoDetailComponent } from './pages/modules/view-pueblito/festivities/sub-evento-detail/sub-evento-detail.component';
 import { TipsViajerosComponent } from './pages/modules/view-pueblito/tips-viajeros/tips-viajeros.component';
-import { ModalProveedoresFotosComponent } from './modal-proveedores-fotos/modal-proveedores-fotos/modal-proveedores-fotos.component';
 
 export const routes: Routes = [
   {
@@ -55,8 +54,5 @@ export const routes: Routes = [
     path: 'about',
     component: AboutUsComponent,
   },
-  {
-    path: 'modalfotos',
-    component: ModalProveedoresFotosComponent,
-  }
+  
 ];

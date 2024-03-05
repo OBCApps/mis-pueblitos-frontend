@@ -6,6 +6,9 @@ import { FooterComponent } from '../../footer/footer.component';
 import { LugarService } from '../../../services/lugar.service';
 import { TitleService } from './view-pueblito.service';
 import { BreadCrumbComponent } from './bread-crumb/bread-crumb.component';
+import { ModalProveedorComponent } from '../../../functions/modal-proveedor/modal-proveedor.component';
+import { ModalProveedoresFotosService } from '../../../modal-proveedores-fotos/modal-proveedores-fotos/modal-proveedores-fotos.service';
+import { ModalProveedorService } from '../../../functions/modal-proveedor/modal-proveedor.service';
 
 @Component({
   selector: 'app-view-pueblito',
@@ -18,6 +21,7 @@ import { BreadCrumbComponent } from './bread-crumb/bread-crumb.component';
     FooterComponent,
     NgClass,
     BreadCrumbComponent,
+    ModalProveedorComponent
   ],
   templateUrl: './view-pueblito.component.html',
   styleUrl: './view-pueblito.component.scss',
@@ -31,8 +35,8 @@ export class ViewPueblitoComponent implements OnInit {
   constructor(
     private lugarService: LugarService,
     private route: ActivatedRoute,
-    private titleService: TitleService
-
+    private titleService: TitleService,
+    private modalProveedorFotos : ModalProveedorService
   ) { }
   title: any = '';
 
@@ -73,5 +77,14 @@ export class ViewPueblitoComponent implements OnInit {
     );
     
     this.active = change;
+  }
+  viewProveedorImage(item){
+    var data = {
+      option: 'open',
+      valueInput: item
+    }
+    console.log("data: ", data);
+    
+    this.modalProveedorFotos.activateModal(data);
   }
 }
