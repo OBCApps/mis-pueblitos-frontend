@@ -7,6 +7,7 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root'
 })
 export class FestivitiesService {
+  private SERVER_EVENTO = API_SERVER + '/evento';
   private SERVER_SUBEVENTO = API_SERVER + '/sub-evento';
 
   constructor(
@@ -18,4 +19,11 @@ export class FestivitiesService {
       map((response) => { return response })
     );
   }
+
+  search_evento_nombre(data: any): Observable<any> {
+    return this.http.post<any>(this.SERVER_EVENTO + '/filterbyname', data).pipe(
+      map((response) => { return response })
+    );
+  }
+
 }

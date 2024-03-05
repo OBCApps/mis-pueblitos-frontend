@@ -5,7 +5,7 @@
   <p class="text-terceary text-xl font-normal font-Battambang leading-normal">
     Explora las festividades y eventos de Chacas en nuestro calendario, creado
     con la colaboración de los residentes locales para brindarte información
-    auténtica y actualizada.
+    auténtica y actualizada.
   </p>
 
   <div class="lg:flex-row flex flex-col gap-8">
@@ -17,12 +17,14 @@
       <input
         type="search"
         id="location-search"
+        [(ngModel)]="searchValue"
         class="bg-fondo self-stretch w-52 md:w-fit px-5 rounded-s-3xl text-terceary text-opacity-50 text-xl font-normal border-none font-['Battambang']"
         placeholder="Buscar"
         required
       />
       <button
         type="submit"
+        (click)="search()"
         class="self-stretch px-5 py-4 bg-primary justify-center items-center"
       >
         <svg
@@ -111,7 +113,7 @@
     </div>
 
     <div *ngSwitchCase="'list'" class="desktop-list-calendar">
-      <app-calendar-list></app-calendar-list>
+      <app-calendar-list [inputSearch]="searchValue"></app-calendar-list>
     </div>
   </div>
 </div>

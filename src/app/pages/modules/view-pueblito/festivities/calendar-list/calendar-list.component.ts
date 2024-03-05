@@ -1,20 +1,22 @@
 import { DatePipe, NgFor, NgIf, registerLocaleData } from '@angular/common';
-import { Component, LOCALE_ID } from '@angular/core';
+import { Component, Input, LOCALE_ID } from '@angular/core';
 import { FestivitiesService } from '../../../../../services/festivities.service';
 import { Router } from '@angular/router';
 import moment from 'moment';
 import { LoadingService } from '../../../../../functions/loadings/loading-service.service';
 import localeEs from '@angular/common/locales/es';
+import { SearchPipeModule } from '../search-pipe.module';
 
 @Component({
   selector: 'app-calendar-list',
   standalone: true,
-  imports: [DatePipe, NgFor, NgIf],
-  providers : [{ provide: LOCALE_ID, useValue: 'es' }],
+  imports: [DatePipe, SearchPipeModule, NgFor, NgIf],
+  providers: [{ provide: LOCALE_ID, useValue: 'es' }],
   templateUrl: './calendar-list.component.html',
-  styleUrl: './calendar-list.component.scss'
+  styleUrl: './calendar-list.component.scss',
 })
 export class CalendarListComponent {
+  @Input() inputSearch: any;
   anioElegido: any = new Date().getFullYear();
   mesElegido: any = new Date().getMonth() + 1;
   actualDay: any = new Date().getDate();
@@ -34,7 +36,7 @@ export class CalendarListComponent {
   constructor(
     private festivitiesService: FestivitiesService,
     private router: Router,
-    private loading: LoadingService,
+    private loading: LoadingService
   ) {
     registerLocaleData(localeEs);
   }
@@ -52,7 +54,7 @@ export class CalendarListComponent {
   }
 
   getDaysFromDate(month: any, year: any) {
-    this.loading.show()
+    this.loading.show();
     //this.monthSelect = []
     const data = {
       mes: month.toString(),
@@ -149,11 +151,11 @@ export class CalendarListComponent {
     });
 
     this.monthSelect = result;
-    this.loading.hide()
-    console.log("FINAL: ", this.monthSelect);
+    this.loading.hide();
+    console.log('FINAL: ', this.monthSelect);
   }
 
-  goToSubEventoDetail(item: any) {  
+  goToSubEventoDetail(item: any) {
     console.log('item: ', item);
     const queryParamsObject = {
       id_father: item.id_father,
