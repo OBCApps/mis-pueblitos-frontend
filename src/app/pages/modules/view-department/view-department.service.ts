@@ -25,8 +25,8 @@ export class ViewDepartmentService {
         );
     }
 
-    get_departament(idDepartment: any): Observable<any> {
-        return this.http.get<any>(API_SERVER + '/departamento/' + idDepartment).pipe(
+    get_departament_name_route(idDepartment: any): Observable<any> {
+        return this.http.get<any>(API_SERVER + '/departamento/name_route/' + idDepartment).pipe(
             map((response) => { return response })
         );
     };

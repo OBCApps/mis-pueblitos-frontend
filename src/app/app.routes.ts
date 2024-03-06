@@ -13,20 +13,50 @@ import { TipsViajerosComponent } from './pages/modules/view-pueblito/tips-viajer
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,      
+    component: HomeComponent,
   },
   {
     path: 'home',
-    component: HomeComponent,      
+    component: HomeComponent,
   },
   {
     path: 'pueblitos',
-    component: ViewPueblitoComponent,    
+    component: ViewPueblitoComponent,
     children: [
       {
         path: '',
         component: PueblitoDetailComponent,
 
+      },
+      {
+        path: 'meet',
+        component: PueblitoDetailComponent,
+      },
+      {
+        path: 'subeventodetail',
+        component: SubEventoDetailComponent,
+      },
+      {
+        path: 'festivities',
+        component: FestivitiesComponent,
+      },
+      {
+        path: 'tipsviajero',
+        component: TipsViajerosComponent,
+      },
+    ],
+  },
+  {
+    path: 'home/:departamento',
+    component: ViewDepartmentComponent,
+  },
+  {
+    path: 'home/:departamento/:lugar',
+    component: ViewPueblitoComponent,
+    children: [
+      {
+        path: '',
+        component: PueblitoDetailComponent,
       },
       {
         path: 'meet',
@@ -54,5 +84,5 @@ export const routes: Routes = [
     path: 'about',
     component: AboutUsComponent,
   },
-  
+
 ];

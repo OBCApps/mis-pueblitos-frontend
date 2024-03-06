@@ -7,13 +7,14 @@ import { LugarService } from '../../../services/lugar.service';
 import { FooterComponent } from "../../footer/footer.component";
 import { BreadCrumbComponent } from '../view-pueblito/bread-crumb/bread-crumb.component';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { LoadingService } from '../../../functions/loadings/loading-service.service';
 
 @Component({
-    selector: 'app-view-department',
-    standalone: true,
-    templateUrl: './view-department.component.html',
-    styleUrl: './view-department.component.scss',
-    imports: [NavarComponent, FooterComponent,BreadCrumbComponent, CommonModule]
+  selector: 'app-view-department',
+  standalone: true,
+  templateUrl: './view-department.component.html',
+  styleUrl: './view-department.component.scss',
+  imports: [NavarComponent, FooterComponent, BreadCrumbComponent, CommonModule]
 })
 export class ViewDepartmentComponent {
   constructor(
@@ -21,18 +22,21 @@ export class ViewDepartmentComponent {
     private viewDepartmentService: ViewDepartmentService,
     private lugarService: LugarService,
     private router: Router,
+    private loading: LoadingService,
     @Inject(PLATFORM_ID) private platformId: Object,
   ) { }
 
-  breadcrumbs : any [] = []
+  breadcrumbs: any[] = []
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      const departmentId = params['departmentId'];
-      this.load_department_lugares(departmentId);
+    this.route.params.subscribe(params => {
+      const departmentNameRoute = params['departamento'];
+
+      this.loadDataDepartment(departmentNameRoute);
+
     });
 
 
-    if (isPlatformBrowser(this.platformId)) {
+    /* if (isPlatformBrowser(this.platformId)) {
       if (localStorage.getItem('lugar')) {
         const lugarDetalle = JSON.parse(localStorage.getItem('lugar') || '{}');
         
@@ -55,7 +59,32 @@ export class ViewDepartmentComponent {
         ]
         console.log("LIsta", this.breadcrumbs);
       }
+    } */
+  }
+
+  async loadDataDepartment(nameRouteDepartment: any) {
+    this.loading.show();
+    // -- Load Datos Departamento
+    try {
+      const datosDeparamento = await this.getDatosDepartment(nameRouteDepartment);
+      this.load_department_lugares(datosDeparamento.id)
+    } catch (error) {
+      console.error('Error al obtener datos del proveedor:', error);
+      this.loading.hide();
     }
+  }
+
+  getDatosDepartment(idProveedor: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.viewDepartmentService.get_departament_name_route(idProveedor).subscribe(
+        (respuesta: any) => {
+          resolve(respuesta);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    });
   }
 
   departmentAndLugares: DtoViewDepartmentAndLugares = new DtoViewDepartmentAndLugares()
@@ -63,9 +92,9 @@ export class ViewDepartmentComponent {
     this.viewDepartmentService.get_list_lugaresDepartment(idDepartamento).subscribe(
       response => {
         this.departmentAndLugares = response;
-
+        this.loading.hide();
       }, err => {
-
+        this.loading.hide();
       }
     )
   }

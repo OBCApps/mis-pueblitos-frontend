@@ -100,7 +100,7 @@
   <p-carousel [value]="more_search" [numVisible]="4" [numScroll]="2" [circular]="false"
     [responsiveOptions]="responsiveOptions">
     <ng-template let-item pTemplate="item">
-      <div (click)="goToRoute(item.id)" class="border-1 surface-border border-round m-2 text-center md:mx-5 rounded-lg">
+      <div (click)="goToRoute(item)" class="border-1 surface-border border-round m-2 text-center md:mx-5 rounded-lg">
         <div class="global-center">
           <div class="buscadosCard w-60 md:w-80 h-96 rounded-3xl bg-cover bg-center flex justify-start items-end" style="
               background-image: url({{item.foto.url}})

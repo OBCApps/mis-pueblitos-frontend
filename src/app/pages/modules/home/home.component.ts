@@ -41,15 +41,15 @@ export class HomeComponent {
     private router: Router,
     private lugarService: LugarService,
     private loading: LoadingService,
-    private modalRedesSociales : ModalRedesSocialesService
-  ) {}
+    private modalRedesSociales: ModalRedesSocialesService
+  ) { }
 
   searchValueForm: FormGroup = this.fb.group({
     departamentoId: [{ value: '', disabled: false }, Validators.required],
     lugarId: [{ value: '', disabled: false }],
   });
 
-  modal_style="fixed w-full h-full inset-x-0 inset-y-0 global-center transition-all duration-1000 ease-in-out";
+  modal_style = "fixed w-full h-full inset-x-0 inset-y-0 global-center transition-all duration-1000 ease-in-out";
 
   responsiveOptions = [
     {
@@ -85,13 +85,15 @@ export class HomeComponent {
     this.loadMoreSearch();
   }
 
-  goToRoute(idLugar: any) {
+  goToRoute(lugar: any) {
+    
+
     this.loading.show();
-    this.lugarService.getLugares(idLugar).subscribe(
+    this.lugarService.getLugares(lugar.id).subscribe(
       (response: any) => {
-        localStorage.setItem('lugar', JSON.stringify(response));
+        this.router.navigate(['home', response.departamentoNombreRuta, response.name_route]);
         this.loading.hide();
-        this.router.navigate(['/pueblitos']);
+
       },
       (err) => {
         this.loading.hide();
@@ -101,7 +103,7 @@ export class HomeComponent {
   }
 
   close_modal() {
-    this.modal_style="fixed w-full h-full inset-x-0 -top-full global-center transition-all duration-1000 ease-in-out";
+    this.modal_style = "fixed w-full h-full inset-x-0 -top-full global-center transition-all duration-1000 ease-in-out";
   }
 
   // ------------------  CALL SERVICES ------------------ \\
@@ -129,13 +131,15 @@ export class HomeComponent {
           Swal.fire("No se encontró!");
         } */
       },
-      (err) => {}
+      (err) => { }
     );
   }
 
   list_pueblitos_encontrados: any[] = [];
   search_lugar(form: any) {
     if (form.departamentoId && !form.lugarId) {
+      console.log("form: ", form);
+
       this.goToDepartments(form);
     } else if (form.departamentoId && form.lugarId) {
       this.goToRoute(form.lugarId);
@@ -151,7 +155,7 @@ export class HomeComponent {
         background: 'white',
         confirmButtonColor: 'red',
       });
-      
+
     }
   }
 
@@ -164,23 +168,26 @@ export class HomeComponent {
 
         this.more_search = response;
       },
-      (err) => {}
+      (err) => { }
     );
   }
 
   goToDepartments(form: any) {
-    const queryParamsObject = {
+    console.log("departamento: ", form);
+    /* const queryParamsObject = {
       departmentId: form.departamentoId,
-      departmentName: this.list_department.find(
-        (x) => x.id == form.departamentoId
-      ).nombre,
-    };
-    this.router.navigate(['/department'], { queryParams: queryParamsObject });
+      departmentName: 
+    }; */
+    const departmentName = this.list_department.find(
+      (x) => x.id == form.departamentoId
+    ).name_route
+    this.router.navigate(['/home', departmentName]);
+
   }
 
   // --------------- OPEN MODAL ---------------- \\
-  
-  viewBannerModal(){
+
+  viewBannerModal() {
     var data = {
       option: 'open',
       valueInput: {}
