@@ -2,7 +2,7 @@ import { NgFor, isPlatformBrowser } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
 import moment from 'moment';
 import { CarouselModule } from 'primeng/carousel';
-import { CaruselComponent } from '../carusel/carusel.component';
+
 import { register } from 'swiper/element';
 import { Router } from '@angular/router';
 import { FestivitiesService } from '../../../../../services/festivities.service';
@@ -12,7 +12,7 @@ register();
 @Component({
   selector: 'app-calendar-mobile',
   standalone: true,
-  imports: [CarouselModule, NgFor, CaruselComponent],
+  imports: [CarouselModule, NgFor],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './calendar-mobile.component.html',
   styleUrl: './calendar-mobile.component.scss'

@@ -3,7 +3,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, LOCALE_ID, ViewChild } from '@angula
 import { FormsModule } from '@angular/forms';
 import { CarouselModule } from 'primeng/carousel';
 import moment from 'moment';
-import { CaruselComponent } from '../carusel/carusel.component';
+
 import { FestivitiesService } from '../../../../../services/festivities.service';
 import { register } from 'swiper/element/bundle';
 import { Router } from '@angular/router';
@@ -15,9 +15,9 @@ register();
 @Component({
   selector: 'app-calendar-desktop',
   standalone: true,
-  imports: [CaruselComponent, FormsModule, CommonModule, CarouselModule],
+  imports: [FormsModule, CommonModule, CarouselModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers : [{ provide: LOCALE_ID, useValue: 'es' }],
+  providers: [{ provide: LOCALE_ID, useValue: 'es' }],
   templateUrl: './calendar-desktop.component.html',
   styleUrl: './calendar-desktop.component.scss',
 })
@@ -92,7 +92,7 @@ export class CalendarDesktopComponent {
         //this.monthSelect = arrayDays;
         this.functAgendaMes(response, arrayDays);
       },
-      (err) => {}
+      (err) => { }
     );
   }
   //days_month: any[] = []
@@ -101,7 +101,7 @@ export class CalendarDesktopComponent {
       (response: any) => {
         this.functAgendaMes(response, month_selected);
       },
-      (err) => {}
+      (err) => { }
     );
   }
 

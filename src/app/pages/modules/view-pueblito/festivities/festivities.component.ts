@@ -4,7 +4,6 @@ import { CarouselModule } from 'primeng/carousel';
 import { CalendarDesktopComponent } from './calendar-desktop/calendar-desktop.component';
 import { CalendarMobileComponent } from './calendar-mobile/calendar-mobile.component';
 import { CalendarListComponent } from './calendar-list/calendar-list.component';
-import { CaruselComponent } from './carusel/carusel.component';
 import { DetailEventComponent } from '../detail-event/detail-event.component';
 import { SubEventoDetailComponent } from './sub-evento-detail/sub-evento-detail.component';
 import { TitleService } from '../view-pueblito.service';
@@ -15,7 +14,6 @@ import { ModalRedesSocialesService } from '../../../../functions/modal-redes-soc
   selector: 'app-festivities',
   standalone: true,
   imports: [
-    CaruselComponent,
     CarouselModule,
     CalendarDesktopComponent,
     CalendarMobileComponent,
