@@ -9,6 +9,7 @@ import { BreadCrumbComponent } from './bread-crumb/bread-crumb.component';
 import { ModalProveedorComponent } from '../../../functions/modal-proveedor/modal-proveedor.component';
 import { ModalProveedoresFotosService } from '../../../modal-proveedores-fotos/modal-proveedores-fotos/modal-proveedores-fotos.service';
 import { ModalProveedorService } from '../../../functions/modal-proveedor/modal-proveedor.service';
+import { ModalRedesSocialesComponent } from '../../../functions/modal-redes-sociales/modal-redes-sociales.component';
 
 @Component({
   selector: 'app-view-pueblito',
@@ -21,7 +22,8 @@ import { ModalProveedorService } from '../../../functions/modal-proveedor/modal-
     FooterComponent,
     NgClass,
     BreadCrumbComponent,
-    ModalProveedorComponent
+    ModalProveedorComponent,
+    ModalRedesSocialesComponent,
   ],
   templateUrl: './view-pueblito.component.html',
   styleUrl: './view-pueblito.component.scss',

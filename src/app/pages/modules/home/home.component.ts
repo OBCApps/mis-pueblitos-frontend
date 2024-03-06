@@ -17,6 +17,7 @@ import { LugarService } from '../../../services/lugar.service';
 import Swal from 'sweetalert2';
 import { LoadingService } from '../../../functions/loadings/loading-service.service';
 import { ModalRedesSocialesComponent } from '../../../functions/modal-redes-sociales/modal-redes-sociales.component';
+import { ModalRedesSocialesService } from '../../../functions/modal-redes-sociales/modal-redes-sociales.service';
 
 @Component({
   selector: 'app-home',
@@ -39,8 +40,10 @@ export class HomeComponent {
     private fb: FormBuilder,
     private router: Router,
     private lugarService: LugarService,
-    private loading: LoadingService
+    private loading: LoadingService,
+    private modalRedesSociales : ModalRedesSocialesService
   ) {}
+
   searchValueForm: FormGroup = this.fb.group({
     departamentoId: [{ value: '', disabled: false }, Validators.required],
     lugarId: [{ value: '', disabled: false }],
@@ -77,6 +80,7 @@ export class HomeComponent {
   ];
 
   ngOnInit() {
+    this.viewBannerModal()
     this.load_list_departament();
     this.loadMoreSearch();
   }
@@ -172,5 +176,15 @@ export class HomeComponent {
       ).nombre,
     };
     this.router.navigate(['/department'], { queryParams: queryParamsObject });
+  }
+
+  // --------------- OPEN MODAL ---------------- \\
+  
+  viewBannerModal(){
+    var data = {
+      option: 'open',
+      valueInput: {}
+    }
+    this.modalRedesSociales.activateModal(data);
   }
 }

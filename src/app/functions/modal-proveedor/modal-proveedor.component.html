@@ -1,10 +1,10 @@
 <div id="modal-proveedor-fotos" tabindex="-1" aria-hidden="true"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative p-4 w-full max-w-2xl max-h-full">
+    <div class="relative p-4 w-full max-w-4xl max-h-3xl">
 
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 rounded-t-3xl">
 
-            <div class=" self-stretch h-72 p-4 justify-end items-start rounded-t-3xl gap-2.5 flex bg-cover bg-center"
+            <div class=" self-stretch h-[65vh] p-4 justify-end items-start rounded-t-3xl gap-2.5 flex bg-cover bg-center"
                 style="background: url('{{valueInput?.foto?.url}}');height: 100%;width: 100%;">
 
                 <button type="button" (click)="activate_modal('close')"
@@ -23,7 +23,7 @@
                 <div class="self-stretch justify-between items-center gap-2 md:gap-40 flex flex-col md:flex-row">
                     <h1 class="text-center text-secondary text-base font-bold font-Montserrat capitalize">
                         {{valueInput?.foto?.titulo}}</h1>
-                    <div class="justify-center items-center gap-2 flex">
+                    <div class="flex justify-center items-center gap-2 ">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary" viewBox="0 0 24 24">
                             <path fill="currentColor"
                                 d="M12 14c2.206 0 4-1.794 4-4s-1.794-4-4-4s-4 1.794-4 4s1.794 4 4 4m0-6c1.103 0 2 .897 2 2s-.897 2-2 2s-2-.897-2-2s.897-2 2-2" />
@@ -34,21 +34,25 @@
                             {{valueInput?.foto?.lugar}}</span>
                     </div>
                 </div>
-                <div class="self-stretch justify-between items-center inline-flex">
-                    <div class="justify-center items-center gap-2 flex">
+                <div class="self-stretch justify-between items-center inline-flex cursor-pointer">
+                    <div class="flex justify-center items-center gap-2 ">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary" viewBox="0 0 24 24">
                             <g fill="none" stroke="currentColor" stroke-width="1.5">
                                 <circle cx="12" cy="6" r="4" />
                                 <path d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5Z" />
                             </g>
                         </svg>
-                        <span
-                            class="text-center text-terceary text-sm font-normal font-Battambang leading-relaxed">Autor
-                            de la foto</span>
+                        <span class="text-center text-terceary text-sm font-normal font-Battambang leading-relaxed">
+                            {{datosProveedor.nombre}}
+                        </span>
                     </div>
+
                     <div class="justify-center items-center gap-2 flex">
+                        @for (item of datosProveedor.redesSociales?.listRedes; track $index) {
+                        @switch (item.nombre) {
+                        @case ('facebook') {
                         <div class="w-7 h-7 p-1.5 bg-indigo-800 rounded-full justify-center items-center inline-flex">
-                            <a href="" target="_blank">
+                            <a [href]="item.nombre" target="_blank">
                                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="w-4 h-4"
                                     viewBox="0 0 48 48">
                                     <path fill="#fff" d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"></path>
@@ -58,8 +62,11 @@
                                 </svg>
                             </a>
                         </div>
+
+                        }
+                        @case ('google') {
                         <div
-                            class="w-7 h-7 p-1.5 bg-blue-500 text-white rounded-full justify-center items-center inline-flex">
+                            class="w-7 h-7 p-1.5 bg-blue-500 text-white rounded-full justify-center items-center inline-flex cursor-pointer">
                             <a href="" target="_blank">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
@@ -69,7 +76,10 @@
 
                             </a>
                         </div>
-                        <div class="w-7 h-7 p-1.5 bg-pink-600 rounded-full justify-center items-center inline-flex">
+                        }
+                        @case ('instagram') {
+                        <div
+                            class="w-7 h-7 p-1.5 bg-pink-600 rounded-full justify-center items-center inline-flex cursor-pointer">
                             <a href="" target="_blank">
                                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="w-4 h-4"
                                     viewBox="0 0 30 30">
@@ -79,6 +89,13 @@
                                 </svg>
                             </a>
                         </div>
+                        }
+                        }
+
+
+
+                        }
+
                     </div>
                 </div>
 
@@ -86,4 +103,3 @@
         </div>
     </div>
 </div>
-

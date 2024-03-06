@@ -9,6 +9,7 @@ import { DetailEventComponent } from '../detail-event/detail-event.component';
 import { SubEventoDetailComponent } from './sub-evento-detail/sub-evento-detail.component';
 import { TitleService } from '../view-pueblito.service';
 import { FormsModule } from '@angular/forms';
+import { ModalRedesSocialesService } from '../../../../functions/modal-redes-sociales/modal-redes-sociales.service';
 
 @Component({
   selector: 'app-festivities',
@@ -29,9 +30,13 @@ import { FormsModule } from '@angular/forms';
 export class FestivitiesComponent {
   constructor(
     private titleService: TitleService,
-    private festivitiesService: FestivitiesService
-  ) {}
+    private festivitiesService: FestivitiesService,
+    private modalRedesSociales: ModalRedesSocialesService
+  ) { }
   ngOnInit() {
+    // -- Ver modal del banner de suscripcion
+    this.viewBannerModal();
+
     const dataNavar = {
       sidebar: 'festivities',
     };
@@ -42,11 +47,11 @@ export class FestivitiesComponent {
   change_tabs(type: any) {
     this.tab_selected = type;
   }
-  transferedDataToNavar(value: any): void {
-    console.log('CAMBIO');
 
+  transferedDataToNavar(value: any): void {
     this.titleService.setTitle(value);
   }
+
   searchValue: string = '';
   search() {
     this.festivitiesService.search_evento_nombre({ name: this.searchValue }).subscribe(
@@ -56,7 +61,15 @@ export class FestivitiesComponent {
       (error) => {
         console.log('error:', error);
       }
-    );
-    console.log('search:', this.searchValue);
+    );    
+  }
+
+  // --------------- OPEN MODAL ---------------- \\  
+  viewBannerModal() {
+    var data = {
+      option: 'open',
+      valueInput: {}
+    }
+    this.modalRedesSociales.activateModal(data);
   }
 }
