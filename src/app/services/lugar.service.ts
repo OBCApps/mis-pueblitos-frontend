@@ -7,10 +7,18 @@ import { API_SERVER } from '../../environments/environment.prod';
   providedIn: 'root',
 })
 export class LugarService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getLugares(id:any): Observable<any> {
+  getLugares(id: any): Observable<any> {
     return this.http.get(`${API_SERVER}/lugar/${id}`).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
+
+  getLugarByNameRoute(id: any): Observable<any> {
+    return this.http.get(`${API_SERVER}/lugar/name_route/${id}`).pipe(
       map((response) => {
         return response;
       })

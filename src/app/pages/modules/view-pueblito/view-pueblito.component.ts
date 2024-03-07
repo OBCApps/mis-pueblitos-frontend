@@ -37,16 +37,24 @@ export class ViewPueblitoComponent implements OnInit {
     private lugarService: LugarService,
     private route: ActivatedRoute,
     private titleService: TitleService,
-    private modalProveedorFotos : ModalProveedorService
+    private modalProveedorFotos: ModalProveedorService
   ) { }
   title: any = '';
 
   ngOnInit() {
-    this.loading = true;
-    if (typeof localStorage !== 'undefined') {
+    this.route.params.subscribe((params) => {
+      const departamento = params['departamento'];
+      const lugar = params['lugar'];
+
+
+      this.loadLugarDetalles(lugar)
+    });
+
+    /* if (typeof localStorage !== 'undefined') {
       this.lugarDetalle = localStorage.getItem('lugar');
       this.lugarDetalle = JSON.parse(this.lugarDetalle);
-    }
+    } */
+
     this.titleService.title$.subscribe((newTitle: any) => {
       setTimeout(() => {
         this.updateTitle(newTitle.sidebar);
@@ -55,13 +63,20 @@ export class ViewPueblitoComponent implements OnInit {
 
 
   }
+  loadLugarDetalles(lugar: any) {
+    this.lugarService.getLugarByNameRoute(lugar).subscribe(
+      rpta => {
+        this.lugarDetalle = rpta;
+      },
+      (error) => {
+        console.log("erro");
 
-  view_sidebar: boolean = false;
-  change_sidebar() {
-    this.view_sidebar = !this.view_sidebar;
+      }
+    )
+
   }
 
-  loading = false;
+  // -------- TITLE SELECTED NAVAR ----------- \\
   lugarDetalle: any = {};
   private updateTitle(newTitle: any) {
     this.title = newTitle;
@@ -71,21 +86,21 @@ export class ViewPueblitoComponent implements OnInit {
 
 
   // --------- OPTIONS MOBILE ------------- \\
-  active : boolean = false;
-  clickActiveModal(change : any){
+  active: boolean = false;
+  clickActiveModal(change: any) {
     console.log(
       "change", change
     );
-    
+
     this.active = change;
   }
-  viewProveedorImage(item){
+  viewProveedorImage(item) {
     var data = {
       option: 'open',
       valueInput: item
     }
     console.log("data: ", data);
-    
+
     this.modalProveedorFotos.activateModal(data);
   }
 }

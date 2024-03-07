@@ -86,8 +86,6 @@ export class HomeComponent {
   }
 
   goToRoute(lugar: any) {
-    
-
     this.loading.show();
     this.lugarService.getLugares(lugar.id).subscribe(
       (response: any) => {
