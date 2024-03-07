@@ -22,9 +22,13 @@ export class PueblitoDetailComponent implements OnInit {
     private modalProveedorFotos: ModalProveedorService,
   ) {}
 
+  
   ngOnInit() {
     this.loading = true;
-    if (isPlatformBrowser(this.platformId)) {
+    if (isPlatformBrowser(this.platformId)) {            
+      
+      
+
       if (localStorage.getItem('lugar')) {
         this.lugarDetalle = JSON.parse(localStorage.getItem('lugar') || '{}');
         if (this.lugarDetalle.video) {
@@ -33,7 +37,7 @@ export class PueblitoDetailComponent implements OnInit {
           );
         }
       }
-    }
+    }    
     console.log('PueblitoDetailComponent:', this.lugarDetalle);
     this.loading = false;
 
@@ -52,6 +56,8 @@ export class PueblitoDetailComponent implements OnInit {
 
     this.titleService.setTitle(value);
   }
+
+
   responsiveOptions = [
     {
       breakpoint: '1536px',

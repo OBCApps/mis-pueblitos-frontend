@@ -27,11 +27,12 @@ export class ViewDepartmentComponent {
   ) { }
 
   breadcrumbs: any[] = []
+  departmentNameRoute : any;
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const departmentNameRoute = params['departamento'];
+      this.departmentNameRoute = params['departamento'];
 
-      this.loadDataDepartment(departmentNameRoute);
+      this.loadDataDepartment(this.departmentNameRoute);
 
     });
 
@@ -99,16 +100,18 @@ export class ViewDepartmentComponent {
     )
   }
 
-  goToRoute(idLugar: any) {
-    this.lugarService.getLugares(idLugar).subscribe(
+  goToRoute(lugar: any) {
+    console.log("lugar", lugar);
+    this.router.navigate(['home', this.departmentNameRoute, lugar.name_route]);
+    /* this.lugarService.getLugares(lugar.id).subscribe(
       (response: any) => {
-        localStorage.setItem('lugar', JSON.stringify(response));
-        this.router.navigate(['/pueblitos']);
+        
+        this.router.navigate(['home', this.departmentNameRoute, lugar.name_route]);
       },
       (err) => {
         console.log('Error:', err);
       }
-    );
+    ); */
 
   }
 }
