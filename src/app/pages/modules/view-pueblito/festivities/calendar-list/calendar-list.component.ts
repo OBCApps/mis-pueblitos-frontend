@@ -1,5 +1,5 @@
-import { DatePipe, NgFor, NgIf, registerLocaleData } from '@angular/common';
-import { Component, Input, LOCALE_ID } from '@angular/core';
+import { DatePipe, NgFor, NgIf, isPlatformBrowser, registerLocaleData } from '@angular/common';
+import { Component, Inject, Input, LOCALE_ID, PLATFORM_ID } from '@angular/core';
 import { FestivitiesService } from '../../../../../services/festivities.service';
 import { Router } from '@angular/router';
 import moment from 'moment';
@@ -34,22 +34,21 @@ export class CalendarListComponent {
     'Domingo',
   ];
   constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
     private festivitiesService: FestivitiesService,
     private router: Router,
     private loading: LoadingService
   ) {
     registerLocaleData(localeEs);
   }
-
+  lugarDetalle: any
   ngOnInit() {
-    /* const data = {
-      "mes": "2",
-      "anio": "2024",
-      "lugar": "97d1a344-6c48-422c-b790-e44f5a10497f"
+    if (isPlatformBrowser(this.platformId)) {
+      if (localStorage.getItem('lugar')) {
+        this.lugarDetalle = JSON.parse(localStorage.getItem('lugar') || '{}');
+
+      }
     }
-    console.log("sadf");
-*/
-    //this.getDataCalendar(data);
     this.getDaysFromDate(this.mesElegido, this.anioElegido);
   }
 
@@ -59,7 +58,7 @@ export class CalendarListComponent {
     const data = {
       mes: month.toString(),
       anio: year.toString(),
-      lugar: '97d1a344-6c48-422c-b790-e44f5a10497f',
+      lugar: this.lugarDetalle.id
     };
     this.festivitiesService.search_events_dia(data).subscribe(
       (response: any) => {
@@ -86,7 +85,7 @@ export class CalendarListComponent {
         //this.monthSelect = arrayDays;
         this.functAgendaMes(response, arrayDays);
       },
-      (err) => {}
+      (err) => { }
     );
   }
   //days_month: any[] = []
@@ -95,7 +94,7 @@ export class CalendarListComponent {
       (response: any) => {
         this.functAgendaMes(response, month_selected);
       },
-      (err) => {}
+      (err) => { }
     );
   }
 
@@ -157,12 +156,8 @@ export class CalendarListComponent {
 
   goToSubEventoDetail(item: any) {
     console.log('item: ', item);
-    const queryParamsObject = {
-      id_father: item.id_father,
-    };
 
-    this.router.navigate(['pueblitos/subeventodetail'], {
-      queryParams: queryParamsObject,
-    });
+
+    this.router.navigate(['home', this.lugarDetalle.departamentoNombreRuta, this.lugarDetalle.name_route, 'festivities', item.name_father_route]);
   }
 }

@@ -34,8 +34,16 @@ export class CalendarMobileComponent {
     private loading : LoadingService,
     @Inject(PLATFORM_ID) private platformId: Object,
   ) { }
+
+  lugarDetalle : any
   ngOnInit() {
     this.typeCharge = 'init'
+    if (isPlatformBrowser(this.platformId)) {
+      if (localStorage.getItem('lugar')) {
+        this.lugarDetalle = JSON.parse(localStorage.getItem('lugar') || '{}');
+
+      }
+    }
     this.getDaysFromDate(this.mesElegido, this.anioElegido)
     //this.selectInit()
   }
@@ -48,21 +56,16 @@ export class CalendarMobileComponent {
 
   goToSubEventoDetail(item: any) {
     console.log('item: ', item);
-    const queryParamsObject = {
-      id_father: item.id_father,
-    };
-
-    this.router.navigate(['pueblitos/subeventodetail'], {
-      queryParams: queryParamsObject,
-    });
+    this.router.navigate(['home',this.lugarDetalle.departamentoNombreRuta, this.lugarDetalle.name_route,'festivities',item.name_father_route]);
   }
+  
   getDaysFromDate(month: any, year: any) {
     this.loading.show()
     //this.monthSelect = []
     const data = {
       mes: month.toString(),
       anio: year.toString(),
-      lugar: '97d1a344-6c48-422c-b790-e44f5a10497f',
+      lugar: this.lugarDetalle.id
     };
     this.festivitiesService.search_events_dia(data).subscribe(
       (response: any) => {

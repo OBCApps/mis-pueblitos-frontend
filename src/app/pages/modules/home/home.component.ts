@@ -140,7 +140,10 @@ export class HomeComponent {
 
       this.goToDepartments(form);
     } else if (form.departamentoId && form.lugarId) {
-      this.goToRoute(form.lugarId);
+      const lugar = {
+        id: form.lugarId
+      }
+      this.goToRoute(lugar);
     } else {
       Swal.fire({
         title: 'Falta información',
