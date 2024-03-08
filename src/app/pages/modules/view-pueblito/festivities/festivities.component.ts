@@ -36,7 +36,7 @@ export class FestivitiesComponent {
     this.viewBannerModal();
 
     const dataNavar = {
-      sidebar: 'festivities',
+      sidebar: 'festividades',
     };
     this.transferedDataToNavar(dataNavar);
   }

@@ -64,7 +64,7 @@ Object: object;
 
 
     const dataNavar = {
-      sidebar: 'tips'
+      sidebar: 'tips-viajero'
     }
     this.transferedDataToNavar(dataNavar)
   }

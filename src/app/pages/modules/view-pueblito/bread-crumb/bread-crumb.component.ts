@@ -1,6 +1,6 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Params, Router } from '@angular/router';
 import { filter } from 'rxjs';
 
 @Component({
@@ -12,86 +12,37 @@ import { filter } from 'rxjs';
 })
 
 export class BreadCrumbComponent {
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: Object,
-    private router: Router,
-    private route: ActivatedRoute,
-  ) { }
+  rutaActual: string = '';
+  breadcrumbs: any[] = []
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
-  lugarDetalle: any;
-  breadcrumbs: breadCrumb[] = []
-  ruta: any;
   ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      if (localStorage.getItem('lugar')) {
-        this.lugarDetalle = JSON.parse(localStorage.getItem('lugar') || '{}');
-        console.log("lugardetalle: ", this.lugarDetalle);
-
-
-        this.breadcrumbs = [
-          {
-            name: 'Inicio',
-            route: '/home',
-            params: null
-          },
-          {
-            name: this.lugarDetalle.departamentoNombre,
-            route: '/department',
-            params: this.lugarDetalle.departamentoId
-          },
-          {
-            name: this.lugarDetalle.nombre,
-            route: '/pueblitos',
-            params: null
-          }
-        ]
-        console.log("LIsta", this.breadcrumbs);
-      }
-    }
-    this.ruta = this.extraerSubruta(this.route.snapshot['_routerState'].url);
+    this.rutaActual = this.router.url;
+    this.breadcrumbs = this.rutaActual.split('/').filter(segment => segment !== '');
+    console.log("LISTA ACTUAL: ", this.breadcrumbs);
+    
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
-      const rutaCompleta = this.route.snapshot['_routerState'].url;
-      this.ruta = this.extraerSubruta(rutaCompleta);
-      console.log('Subruta:', this.ruta);
+      this.rutaActual = this.router.url;
+      this.breadcrumbs = this.rutaActual.split('/').filter(segment => segment !== '');
+      console.log("LISTA DESPUES: ", this.breadcrumbs);
     });
-
-  }
-  extraerSubruta(rutaCompleta: string): string {
-    const indicePueblitos = rutaCompleta.indexOf('pueblitos');
-
-    if (indicePueblitos !== -1) {
-      // Extraer la parte de la ruta después de 'pueblitos'
-      const subruta = rutaCompleta.substring(indicePueblitos + 'pueblitos'.length + 1);
-
-      // Verificar si hay algo después de 'pueblitos'
-      return (subruta === '' || subruta === 'meet') ? null : subruta;
-    }
-
-    return null;
   }
 
-  goToRoute(bread: any) {
-    console.log("BREAD: ", bread);
+  goToRoute(item : any){
+    
+    const indice = this.breadcrumbs.indexOf(item);
 
-    if (bread.params !== null) {  // Utilizar !== para comparación
-      console.log("aa");
+    // Verifica si el ítem está presente en la lista
+    if (indice !== -1) {
+      // Filtra la lista para incluir solo las rutas hasta el ítem actual
+      const rutasHastaItem = this.breadcrumbs.slice(0, indice + 1);
 
-      const queryParamsObject = {
-        departmentId: bread.params,
-      };
-      this.router.navigate([bread.route], { queryParams: queryParamsObject });
+      // Navega a la ruta construida
+      this.router.navigate(rutasHastaItem);
     } else {
-      console.log("bb");
-      this.router.navigate([bread.route]);
+      console.error('El ítem no se encontró en la lista de rutas.');
     }
   }
-
 }
-export class breadCrumb {
-  name: string
-  route: String
-  params: any
-  //data: any
-};

@@ -19,33 +19,7 @@ export const routes: Routes = [
     path: 'home',
     component: HomeComponent,
   },
-  {
-    path: 'pueblitos',
-    component: ViewPueblitoComponent,
-    children: [
-      {
-        path: '',
-        component: PueblitoDetailComponent,
-
-      },
-      {
-        path: 'meet',
-        component: PueblitoDetailComponent,
-      },
-      {
-        path: 'subeventodetail',
-        component: SubEventoDetailComponent,
-      },
-      {
-        path: 'festivities',
-        component: FestivitiesComponent,
-      },
-      {
-        path: 'tipsviajero',
-        component: TipsViajerosComponent,
-      },
-    ],
-  },
+  
   {
     path: 'home/:departamento',
     component: ViewDepartmentComponent,
@@ -67,23 +41,20 @@ export const routes: Routes = [
         component: SubEventoDetailComponent,
       }, */
       {
-        path: 'festivities',
+        path: 'festividades',
         component: FestivitiesComponent,
       },
       {
-        path: 'festivities/:eventoDetalle',
+        path: 'festividades/:eventoDetalle',
         component: SubEventoDetailComponent,
       },
       {
-        path: 'tipsviajero',
+        path: 'tips-viajero',
         component: TipsViajerosComponent,
       },
     ],
   },
-  {
-    path: 'department',
-    component: ViewDepartmentComponent,
-  },
+  
   {
     path: 'about',
     component: AboutUsComponent,

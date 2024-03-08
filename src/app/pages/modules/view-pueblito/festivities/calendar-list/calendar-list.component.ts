@@ -158,6 +158,6 @@ export class CalendarListComponent {
     console.log('item: ', item);
 
 
-    this.router.navigate(['home', this.lugarDetalle.departamentoNombreRuta, this.lugarDetalle.name_route, 'festivities', item.name_father_route]);
+    this.router.navigate(['home', this.lugarDetalle.departamentoNombreRuta, this.lugarDetalle.name_route, 'festividades', item.name_father_route]);
   }
 }
