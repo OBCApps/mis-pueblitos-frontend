@@ -9,6 +9,7 @@ import { SubEventoDetailComponent } from './sub-evento-detail/sub-evento-detail.
 import { TitleService } from '../view-pueblito.service';
 import { FormsModule } from '@angular/forms';
 import { ModalRedesSocialesService } from '../../../../functions/modal-redes-sociales/modal-redes-sociales.service';
+import { ModalRedesSocialesComponent } from '../../../../functions/modal-redes-sociales/modal-redes-sociales.component';
 
 @Component({
   selector: 'app-festivities',
@@ -21,6 +22,7 @@ import { ModalRedesSocialesService } from '../../../../functions/modal-redes-soc
     DetailEventComponent,
     SubEventoDetailComponent,
     FormsModule,
+    ModalRedesSocialesComponent,
   ],
   templateUrl: './festivities.component.html',
   styleUrl: './festivities.component.scss',
@@ -39,6 +41,10 @@ export class FestivitiesComponent {
       sidebar: 'festividades',
     };
     this.transferedDataToNavar(dataNavar);
+  }
+  modal_style="fixed w-full h-full inset-x-0 inset-y-0 global-center transition-all duration-1000 ease-in-out";
+  close_modal() {
+    this.modal_style="fixed w-full h-full inset-x-0 -top-full global-center transition-all duration-1000 ease-in-out";
   }
 
   tab_selected: any = 'calendar';
