@@ -22,7 +22,7 @@ import { ModalRedesSocialesComponent } from '../../../../functions/modal-redes-s
     DetailEventComponent,
     SubEventoDetailComponent,
     FormsModule,
-    ModalRedesSocialesComponent,
+    
   ],
   templateUrl: './festivities.component.html',
   styleUrl: './festivities.component.scss',
