@@ -16,7 +16,13 @@ export class EventoService {
       })
     );
   }
-
+  getEventoByNameRoute(id:any): Observable<any> {
+    return this.http.get(`${API_SERVER}/evento/name_route/${id}`).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
   getSubEvento(id:any): Observable<any> {
     return this.http.get(`${API_SERVER}/sub-evento/${id}`).pipe(
       map((response) => {

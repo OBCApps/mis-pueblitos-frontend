@@ -1,5 +1,5 @@
-import { CommonModule, registerLocaleData } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, Component, LOCALE_ID, ViewChild } from '@angular/core';
+import { CommonModule, isPlatformBrowser, registerLocaleData } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, Inject, LOCALE_ID, PLATFORM_ID, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CarouselModule } from 'primeng/carousel';
 import moment from 'moment';
@@ -39,6 +39,7 @@ export class CalendarDesktopComponent {
     'Domingo',
   ];
   constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
     private festivitiesService: FestivitiesService,
     private router: Router,
     private loading: LoadingService,
@@ -47,14 +48,14 @@ export class CalendarDesktopComponent {
 
   }
 
+  lugarDetalle : any
   ngOnInit() {
-    /* const data = {
-      "mes": "2",
-      "anio": "2024",
-      "lugar": "97d1a344-6c48-422c-b790-e44f5a10497f"
-    }
-    console.log("sadf");
-*/
+    if (isPlatformBrowser(this.platformId)) {
+      if (localStorage.getItem('lugar')) {
+        this.lugarDetalle = JSON.parse(localStorage.getItem('lugar') || '{}');
+        
+      }
+    } 
     //this.getDataCalendar(data);
     this.getDaysFromDate(this.mesElegido, this.anioElegido);
   }
@@ -65,7 +66,7 @@ export class CalendarDesktopComponent {
     const data = {
       mes: month.toString(),
       anio: year.toString(),
-      lugar: '97d1a344-6c48-422c-b790-e44f5a10497f',
+      lugar: this.lugarDetalle.id
     };
     this.festivitiesService.search_events_dia(data).subscribe(
       (response: any) => {
@@ -163,12 +164,8 @@ export class CalendarDesktopComponent {
 
   goToSubEventoDetail(item: any) {
     console.log('item: ', item);
-    const queryParamsObject = {
-      id_father: item.id_father,
-    };
+    
 
-    this.router.navigate(['pueblitos/subeventodetail'], {
-      queryParams: queryParamsObject,
-    });
+    this.router.navigate(['home',this.lugarDetalle.departamentoNombreRuta, this.lugarDetalle.name_route,'festivities',item.name_father_route]);
   }
 }

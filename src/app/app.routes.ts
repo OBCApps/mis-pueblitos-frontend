@@ -62,13 +62,17 @@ export const routes: Routes = [
         path: 'meet',
         component: PueblitoDetailComponent,
       },
-      {
-        path: 'subeventodetail',
+      /* {
+        path: ':eventoDetalle',
         component: SubEventoDetailComponent,
-      },
+      }, */
       {
         path: 'festivities',
         component: FestivitiesComponent,
+      },
+      {
+        path: 'festivities/:eventoDetalle',
+        component: SubEventoDetailComponent,
       },
       {
         path: 'tipsviajero',
