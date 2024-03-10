@@ -1,7 +1,7 @@
 <div class="calendar font-Battambang">
     <div class="flex items-center justify-start font-bold pb-8 gap-8">
 
-        <span class="text-secondary uppercase text-2xl font-black font-Battambang leading-loose ">
+        <span class="text-secondary uppercase text-xl font-black font-Battambang leading-loose ">
             {{ dateSelect | date: 'MMMM, YYYY'}}
         </span>
         <div class="flex gap-2">
@@ -25,34 +25,35 @@
     </div>
 
 
-    <div class="days" *ngIf="monthSelect.length > 0">
+    <div class="days bg-white p-2" *ngIf="monthSelect.length > 0">
         <ol>
             <li *ngFor="let day of week"
-                class="desing-head-days text-xl text-terceary uppercase font-bold text-center border-r border-solid border-[#33425B]">
+                class="desing-head-days text-lg text-terceary uppercase font-bold text-center border-r border-solid border-[#33425B]">
                 <div class="mx-3 border-b border-solid border-[#33425B]">
                     {{ day }}
                 </div>
             </li>
             <li [style.gridColumnStart]="first ? day?.indexWeek : 'auto '"
                 *ngFor="let day of monthSelect;let first = first">
-                <div class="desing-card-day  border-r border-solid border-[#33425B]">
+                <div class="desing-card-day  ">
 
-
-                    <div class="carusel grid grid-cols-1 p-2 mx-1 border-b border-solid border-[#33425B]">
-                        <div *ngIf="day.events.length!= 0" class=" col-span-1 h-fit bg-fondo  rounded-3xl shadow-lg">
-
-                            <swiper-container class="h-72" pagination="true" navigation="false" grap-cursor="true"
+                    
+                    <div class="carusel grid grid-cols-1 p-2 mx-1 ">
+                        {{day.value}} 
+                        <div *ngIf="day.events.length!= 0" class="col-span-1 h-fit rounded-xl shadow-lg">
+                            <swiper-container  pagination="true" navigation="false" grap-cursor="true"
                                 slide-per-view="auto" coverflow-effect-rotate="0" coverflow-effect-stretch="0"
                                 coverflow-effect-depth="200" coverflow-effect-slide-shadows="false">
 
-                                <swiper-slide class="flex flex-col gap-2 p-4" *ngFor="let item of day.events"
+                                <swiper-slide class="flex flex-col gap-2 p-2 pb-10 " *ngFor="let item of day.events"
                                     (click)="goToSubEventoDetail(item)">
-                                    <img [src]="item?.img?.url" class="block h-28 rounded-3xl" alt="...">
+                                    <img [src]="item?.img?.url" class="block h-28 rounded-sm" alt="...">
                                     <!-- <img [src]="item.img" class="block h-24 rounded-lg" alt="..."> -->
 
 
-                                    <h1 class="text-center text-primary text-base font-bold">
-                                        {{item.name_subevent}}</h1>
+                                    <h1 class="text-center text-primary text-xs leading-3 font-bold">
+                                        {{item.name_subevent}}
+                                    </h1>
                                     <div class="w-ful h-fit flex flex-col gap-2">
                                         <div class="flex items-center justify-start text-left gap-2 w-full">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -63,7 +64,7 @@
                                                     d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                                             </svg>
 
-                                            <h1 class="text-black text-base font-normal font-Battambang leading-none">
+                                            <h1 class="text-black text-xs font-normal font-Battambang leading-none">
                                                 {{item.location}}</h1>
                                         </div>
                                         <div class="flex items-center justify-start text-left gap-2 w-full">
@@ -73,7 +74,7 @@
                                                     d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                             </svg>
 
-                                            <h1 class="text-black text-base font-normal font-Battambang leading-none">
+                                            <h1 class="text-black text-xs font-normal font-Battambang leading-none">
                                                 {{item.name_father}}</h1>
                                         </div>
                                     </div>
@@ -82,10 +83,10 @@
 
                         </div>
                         <div *ngIf="day.events.length== 0"
-                            class="h-72 flex text-fondo  items-start justify-center justify-items-center text-center">
-                            <div class="bg-primary opacity-70 rounded-3xl w-full h-full">
-                                
-                            </div>
+                            class="min-h-16 flex bg-[#f5f5f5]  rounded-lg  items-start justify-center justify-items-center text-center">
+                            <!-- <div class="bg-primary opacity-70 rounded-3xl w-full h-[70%]">
+
+                            </div> -->
                         </div>
 
                     </div>

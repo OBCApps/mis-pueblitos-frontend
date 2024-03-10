@@ -1,5 +1,5 @@
 import { NgFor, isPlatformBrowser } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, Inject, LOCALE_ID, PLATFORM_ID, ViewChild } from '@angular/core';
 import moment from 'moment';
 import { CarouselModule } from 'primeng/carousel';
 
@@ -7,6 +7,8 @@ import { register } from 'swiper/element';
 import { Router } from '@angular/router';
 import { FestivitiesService } from '../../../../../services/festivities.service';
 import { LoadingService } from '../../../../../functions/loadings/loading-service.service';
+import localeEs from '@angular/common/locales/es';
+
 register();
 
 @Component({
@@ -14,6 +16,7 @@ register();
   standalone: true,
   imports: [CarouselModule, NgFor],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers : [{ provide: LOCALE_ID, useValue: 'es' }],
   templateUrl: './calendar-mobile.component.html',
   styleUrl: './calendar-mobile.component.scss'
 })

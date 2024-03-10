@@ -35,7 +35,7 @@ export class FestivitiesComponent {
   ) { }
   ngOnInit() {
     // -- Ver modal del banner de suscripcion
-    this.viewBannerModal();
+    //this.viewBannerModal();
 
     const dataNavar = {
       sidebar: 'festividades',
@@ -47,7 +47,7 @@ export class FestivitiesComponent {
     this.modal_style="fixed w-full h-full inset-x-0 -top-full global-center transition-all duration-1000 ease-in-out";
   }
 
-  tab_selected: any = 'calendar';
+  tab_selected: any = 'list';
   change_tabs(type: any) {
     this.tab_selected = type;
   }
