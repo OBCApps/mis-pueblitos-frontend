@@ -5,37 +5,39 @@
 } @else {
 <div class="grid grid-cols-5 gap-2 p-1 md:mx-10">
   <div class="col-span-5 md:col-span-2 global-center">
-    <img class="md:w-[370px] md:h-[305px] w-[350px] h-[285px] md:my-0 my-5 rounded-3xl" 
-    src="{{ evento?.foto?.url }}"
+    <img class="md:w-[370px] md:h-[305px] w-[350px] h-[285px] md:my-0 my-5 rounded-3xl" src="{{ evento?.foto?.url }}"
       alt="{{ evento.nombre }}" />
   </div>
   <div class="col-span-5 md:col-span-3 flex flex-col justify-center md:items-start pl-3">
-    <h3
-      class="text-[#33425B] md:text-[24px] text-[20px] w-full text-center md:w-fit md:text-left font-bold tracking-tight">
+    <h3 class="text-[#33425B] text-xl md:text-2xl  w-full text-center md:w-fit md:text-left font-bold tracking-tight">
       {{ evento.nombre }}
     </h3>
-    <p class="text-[#29252C] text-justify md:text-left">{{ evento.descripcion }}</p>
-    <div class="flex flex-row py-2">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#F33535"
-        class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-        <path stroke-linecap="round" stroke-linejoin="round"
-          d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-      </svg>
+    <p class="text-[#29252C] text-xs md:text-sm text-justify md:text-left mt-2">{{ evento.descripcion }}</p>
+    <div class="flex items-center justify-start mt-2">
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#F33535"
+          class="w-6 h-6 px-2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+        </svg>
+      </div>
       <p class="capitalize text-justify">{{ evento.ubicacionExacta }}</p>
     </div>
-    <div class="flex flex-row py-2">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#F33535"
-        class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-      </svg>
+    <div class="flex items-center justify-start mt-2">
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#F33535"
+          class="w-6 h-6 px-2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+      </div>
       <p>{{ formatFecha(evento.fechaInicio) }} - {{ formatFecha(evento.fechaFin) }}</p>
     </div>
   </div>
-  <div class="pl-3 col-span-5 md:col-span-5">
+  <div class="md:pl-3 col-span-5 md:col-span-5">
     @for (dia of dias; track dia.id) {
     <br>
-    <h3 class="text-[#33425B] md:text-[24px] text-center md:text-left text-[20px] font-bold tracking-tight capitalize">
+    <h3 class="text-[#33425B] text-xl md:text-xl text-center md:text-left  font-bold tracking-tight capitalize">
       {{ dia }}
     </h3>
 
@@ -45,7 +47,7 @@
 
       <li class="font-bold">• {{formatHora(subEvento.horaInicio)}} - {{formatHora(subEvento.horaFin)}} :
         {{subEvento.organizador}}</li>
-      <p class="text-justify">{{subEvento.detalle}}</p>
+      <p class="text-justify text-xs md:text-md">{{subEvento.detalle}}</p>
       }
       }
     </ul>

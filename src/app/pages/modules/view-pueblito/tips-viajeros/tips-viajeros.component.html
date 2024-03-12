@@ -1,21 +1,14 @@
 @if (loading) {
 <div class="global-center">
   <div role="status">
-    <svg
-      aria-hidden="true"
-      class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
-      viewBox="0 0 100 101"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+      viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-        fill="currentColor"
-      />
+        fill="currentColor" />
       <path
         d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-        fill="currentFill"
-      />
+        fill="currentFill" />
     </svg>
     <span class="sr-only">Loading...</span>
   </div>
@@ -23,16 +16,14 @@
 
 } @else {
 
-<div class="grid grid-cols-5 gap-x-2 gap-y-8 p-1 pb-8 md:mx-10">
+<div class="grid grid-cols-5 gap-x-2 gap-y-4 p-1 pb-8 md:mx-10">
   <div class="col-span-5 md:pr-5">
-    <h3
-      class="text-secondary md:text-3xl text-2xl text-center font-bold tracking-tight"
-    >
+    <h3 class="text-secondary text-xl md:text-2xl  text-center font-bold tracking-tight">
       ¿Cómo llegar a {{ lugar.nombre }}?
     </h3>
   </div>
   <div class="col-span-5 md:pr-5">
-    <p class="text-[#29252C] text-justify md:text-center text-xl font-normal">
+    <p class="text-[#29252C] text-justify md:text-center text-sm font-normal">
       {{ tips.llegarFisrtDesc }}
     </p>
   </div>
@@ -41,8 +32,8 @@
     <ul class="list-disc">
       @for (comollegar of keys_comollegar; track comollegar) {
       <li class="py-3">
-        <p class="text-[#29252C] text-xl font-normal">
-          <strong>En {{ comollegar }}:</strong>
+        <p class="text-[#29252C] text-xs md:text-sm font-normal">
+          <strong class="text-base">En {{ comollegar }}:</strong>
           {{ tips.llegarsecondDesc[comollegar][0] }}
         </p>
         @if (tips.llegarsecondDesc[comollegar].length > 1) {
@@ -50,23 +41,12 @@
           @for (comollegar2 of getKeys(tips.llegarsecondDesc[comollegar][1]);
           track comollegar2) {
           <li class="py-3">
-            <a
-              href="{{ tips.llegarsecondDesc[comollegar][1][comollegar2] }}"
-              class="text-[#292 52C] text-xl font-normal flex flex-row hover:text-primary"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6 mr-1"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"
-                />
+            <a href="{{ tips.llegarsecondDesc[comollegar][1][comollegar2] }}"
+              class="text-[#292 52C] text-base font-normal flex flex-row hover:text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6 mr-1">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
               </svg>
               {{ comollegar2 }}
             </a>
@@ -78,147 +58,122 @@
       }
     </ul>
   </div>
-  <div class="col-span-5 md:col-span-2 mx-4 global-center">
-    <google-map
-      class="w-full"
-      height="300px"
-      width="auto"
-      [center]="center"
-      [zoom]="zoom"
-      (mapClick)="moveMap($event)"
-      (mapMousemove)="move($event)"
-    >
+  <div class="col-span-5 md:col-span-2  md:mx-4 global-center">
+    <google-map class="w-full rounded-lg border shadow-lg" height="300px" width="auto" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"
+      (mapMousemove)="move($event)">
     </google-map>
   </div>
 
   <div class="col-span-5 md:global-center text-justify md:text-center">
-    <p class="text-terceary text-xl font-normal">
-      <strong class="text-terceary text-xl text-bold"> Consejo: </strong>
+    <p class="text-terceary text-xs md:text-sm font-normal">
+      <strong class="text-terceary text-base text-bold"> Consejo: </strong>
       {{ tips.llegarConsejo }}
     </p>
   </div>
 
   <div class="col-span-5 md:pr-5">
-    <h3
-      class="text-secondary md:text-3xl text-2xl text-center font-bold tracking-tight"
-    >
+    <h3 class="text-secondary text-xl md:text-2xl text-center font-bold tracking-tight">
       ¿Qué llevar?
     </h3>
   </div>
   <div class="col-span-5 md:pr-5">
-    <p class="text-terceary text-justify md:text-center text-xl font-normal">
+    <p class="text-terceary text-justify md:text-center text-xs md:text-sm font-normal">
       {{tips.llevarDesc}}
     </p>
   </div>
 
-  <div class="col-span-3 col-start-2 md:col-start-2 md:col-span-3 md:pr-5">
-    <ul class="list-disc">
+  <div class="col-span-5 md:pr-5">
+    <div class="list-disc">
       @for (temporadas of keys; track temporadas) {
-      <li class="py-3">
-          <strong class="text-[#29252C] text-xl">
-            En {{ temporadas }}:
-          </strong>
-          <ul class="list-disc list-inside">
-            @for (temp of tips.llevarTemporada[temporadas]; track temp) {
-              <li>
-                {{temp}}
-              </li>
-            }
-          </ul>
-      </li>
+      <li class="py-3 ">
+        <strong class="text-[#29252C] text-base text-center">
+          En {{ temporadas }}:
+        </strong>
+        <div class="list-disc list-inside  ">
+          @for (temp of tips.llevarTemporada[temporadas]; track temp) {
+          <div class="mt-2 text-justify text-xs md:text-sm">
+            - {{temp}}
+          </div>
+          }
+        </div>
+      </li>      
       }
-    </ul>
+    </div>
   </div>
 
   <div class="col-span-5 md:global-center text-justify">
-    <p class="text-terceary text-xl font-normal">
-      <strong class="text-terceary text-xl text-bold"> Consejo: </strong>
+    <p class="text-terceary text-xs md:text-sm font-normal">
+      <strong class="text-terceary text-base text-bold"> Consejo: </strong>
       {{ tips.llevarConsejo }}
     </p>
   </div>
 
   <div class="col-span-5 md:pr-5">
-    <h3
-      class="text-secondary md:text-3xl text-2xl text-center font-bold tracking-tight"
-    >
+    <h3 class="text-secondary text-xl md:text-2xl text-center font-bold tracking-tight">
       ¿Necesitas ayuda?
     </h3>
   </div>
 
   <div class="col-span-5 md:pr-5">
-    <p class="text-terceary text-justify md:text-center text-xl font-normal">
+    <p class="text-terceary text-justify md:text-center text-xs md:text-sm font-normal">
       {{ tips.ayudaDesc }}
     </p>
   </div>
 
   <div class="col-span-5 grid grid-cols-1 lg:grid-cols-3 justify-items-center items-center">
-    <p class="col-span-2 text-terceary text-justify text-xl font-normal">
+    <p class="col-span-2 text-terceary text-justify text-xs md:text-sm font-normal">
       {{ tips.ayudaEmergencias }}
     </p>
-    <ul class=" col-span-1 justify-center w-fit align-middle flex flex-col md:flex-row lg:flex-col gap-4 p-8 items-center">
+    <ul
+      class=" col-span-1 justify-center w-fit align-middle flex flex-col md:flex-row lg:flex-col gap-4 p-8 items-center">
       <li>
-        <div class="bg-fondo rounded-2xl overflow-hidden flex justify-center items-center border shadow-md border-primary">
+        <div
+          class="bg-fondo rounded-2xl overflow-hidden flex justify-center items-center border shadow-md border-primary">
           <div class="bg-primary p-2">
-            <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-6 h-6 text-fondo"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="currentColor"
-              d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"
-            />
-          </svg>
-        </div>
-        <a href="https://www.facebook.com/mis.pueblitos?locale=gl_ES" target="_blank" class="p-2">
-          &#64;MisPueblitos
-    </a>
-        </div>
-       </li>
-      <li>
-        <div class="bg-fondo rounded-2xl overflow-hidden flex justify-center items-center border shadow-md border-primary">
-          <div class="bg-primary p-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-6 h-6 text-fondo"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="currentColor"
-              d="M13.028 2c1.125.003 1.696.009 2.189.023l.194.007c.224.008.445.018.712.03c1.064.05 1.79.218 2.427.465c.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428c.012.266.022.487.03.712l.006.194c.015.492.021 1.063.023 2.188l.001.746v1.31a78.831 78.831 0 0 1-.023 2.188l-.006.194c-.008.225-.018.446-.03.712c-.05 1.065-.22 1.79-.466 2.428a4.883 4.883 0 0 1-1.153 1.772a4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.427.465a72.11 72.11 0 0 1-.712.03l-.194.006c-.493.014-1.064.021-2.189.023l-.746.001h-1.309a78.43 78.43 0 0 1-2.189-.023l-.194-.006a63.036 63.036 0 0 1-.712-.031c-1.064-.05-1.79-.218-2.428-.465a4.889 4.889 0 0 1-1.771-1.153a4.904 4.904 0 0 1-1.154-1.772c-.247-.637-.415-1.363-.465-2.428a74.1 74.1 0 0 1-.03-.712l-.005-.194A79.047 79.047 0 0 1 2 13.028v-2.056a78.82 78.82 0 0 1 .022-2.188l.007-.194c.008-.225.018-.446.03-.712c.05-1.065.218-1.79.465-2.428A4.88 4.88 0 0 1 3.68 3.678a4.897 4.897 0 0 1 1.77-1.153c.638-.247 1.363-.415 2.428-.465c.266-.012.488-.022.712-.03l.194-.006a79 79 0 0 1 2.188-.023zM12 7a5 5 0 1 0 0 10a5 5 0 0 0 0-10m0 2a3 3 0 1 1 .001 6a3 3 0 0 1 0-6m5.25-3.5a1.25 1.25 0 0 0 0 2.5a1.25 1.25 0 0 0 0-2.5"
-            />
-          </svg>
-        </div>
-        <a href="https://www.instagram.com/mis.pueblitos/" target="_blank" class="p-2">
-          &#64;Mis.Pueblitos
-    </a>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-fondo" viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95" />
+            </svg>
+          </div>
+          <a href="https://www.facebook.com/mis.pueblitos?locale=gl_ES" target="_blank" class="p-2">
+            &#64;MisPueblitos
+          </a>
         </div>
       </li>
       <li>
-        <div class="bg-fondo rounded-2xl overflow-hidden flex justify-center items-center border shadow-md border-primary">
+        <div
+          class="bg-fondo rounded-2xl overflow-hidden flex justify-center items-center border shadow-md border-primary">
           <div class="bg-primary p-2">
-            <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-6 h-6 text-fondo"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="currentColor"
-              d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48"
-            />
-          </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-fondo" viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M13.028 2c1.125.003 1.696.009 2.189.023l.194.007c.224.008.445.018.712.03c1.064.05 1.79.218 2.427.465c.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428c.012.266.022.487.03.712l.006.194c.015.492.021 1.063.023 2.188l.001.746v1.31a78.831 78.831 0 0 1-.023 2.188l-.006.194c-.008.225-.018.446-.03.712c-.05 1.065-.22 1.79-.466 2.428a4.883 4.883 0 0 1-1.153 1.772a4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.427.465a72.11 72.11 0 0 1-.712.03l-.194.006c-.493.014-1.064.021-2.189.023l-.746.001h-1.309a78.43 78.43 0 0 1-2.189-.023l-.194-.006a63.036 63.036 0 0 1-.712-.031c-1.064-.05-1.79-.218-2.428-.465a4.889 4.889 0 0 1-1.771-1.153a4.904 4.904 0 0 1-1.154-1.772c-.247-.637-.415-1.363-.465-2.428a74.1 74.1 0 0 1-.03-.712l-.005-.194A79.047 79.047 0 0 1 2 13.028v-2.056a78.82 78.82 0 0 1 .022-2.188l.007-.194c.008-.225.018-.446.03-.712c.05-1.065.218-1.79.465-2.428A4.88 4.88 0 0 1 3.68 3.678a4.897 4.897 0 0 1 1.77-1.153c.638-.247 1.363-.415 2.428-.465c.266-.012.488-.022.712-.03l.194-.006a79 79 0 0 1 2.188-.023zM12 7a5 5 0 1 0 0 10a5 5 0 0 0 0-10m0 2a3 3 0 1 1 .001 6a3 3 0 0 1 0-6m5.25-3.5a1.25 1.25 0 0 0 0 2.5a1.25 1.25 0 0 0 0-2.5" />
+            </svg>
+          </div>
+          <a href="https://www.instagram.com/mis.pueblitos/" target="_blank" class="p-2">
+            &#64;Mis.Pueblitos
+          </a>
         </div>
+      </li>
+      <li>
+        <div
+          class="bg-fondo rounded-2xl overflow-hidden flex justify-center items-center border shadow-md border-primary">
+          <div class="bg-primary p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-fondo" viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48" />
+            </svg>
+          </div>
           <a href="https://www.tiktok.com/@mis.pueblitos" target="_blank" class="p-2">
             &#64;Mis.Pueblitos
-      </a>
+          </a>
         </div>
-        </li>
-     </ul>
+      </li>
+    </ul>
   </div>
 
   <div class="col-span-5 text-justify md:global-center md:text-justify">
-    <p class="text-terceary text-xl font-normal">
-      <strong class="text-terceary text-xl text-bold"> Consejo: </strong>
+    <p class="text-terceary text-xs md:text-sm font-normal">
+      <strong class="text-terceary text-base text-bold"> Consejo: </strong>
       {{ tips.ayudaConsejo }}
     </p>
   </div>
