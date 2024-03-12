@@ -37,7 +37,7 @@
   <div class="md:pl-3 col-span-5 md:col-span-5">
     @for (dia of dias; track dia.id) {
     <br>
-    <h3 class="text-[#33425B] text-xl md:text-xl text-center md:text-left  font-bold tracking-tight capitalize">
+    <h3 class="text-[#33425B] text-sm md:text-lg text-center md:text-left  font-bold tracking-tight capitalize leading-3">
       {{ dia }}
     </h3>
 
@@ -47,7 +47,7 @@
 
       <li class="font-bold">• {{formatHora(subEvento.horaInicio)}} - {{formatHora(subEvento.horaFin)}} :
         {{subEvento.organizador}}</li>
-      <p class="text-justify text-xs md:text-md">{{subEvento.detalle}}</p>
+      <p class="text-justify text-xs md:text-sm md:pl-2">{{subEvento.detalle}}</p>
       }
       }
     </ul>
