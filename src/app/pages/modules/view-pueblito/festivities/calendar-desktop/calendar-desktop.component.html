@@ -36,12 +36,10 @@
             <li [style.gridColumnStart]="first ? day?.indexWeek : 'auto '"
                 *ngFor="let day of monthSelect;let first = first">
                 <div class="desing-card-day  ">
-
-                    
                     <div class="carusel grid grid-cols-1 p-2 mx-1 ">
-                        {{day.value}} 
+                        {{day.value}}
                         <div *ngIf="day.events.length!= 0" class="col-span-1 h-fit rounded-xl shadow-lg">
-                            <swiper-container  pagination="true" navigation="false" grap-cursor="true"
+                            <swiper-container pagination="true" navigation="false" grap-cursor="true"
                                 slide-per-view="auto" coverflow-effect-rotate="0" coverflow-effect-stretch="0"
                                 coverflow-effect-depth="200" coverflow-effect-slide-shadows="false">
 
@@ -80,7 +78,24 @@
                                     </div>
                                 </swiper-slide>
                             </swiper-container>
+                            <!-- <div class="flex">
+                                <button #next>
 
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.75 19.5 8.25 12l7.5-7.5" />
+                                    </svg>
+                                </button>
+                                <button #>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.75 19.5 8.25 12l7.5-7.5" />
+                                    </svg>
+                                </button>
+
+                            </div> -->
                         </div>
                         <div *ngIf="day.events.length== 0"
                             class="min-h-16 flex bg-[#f5f5f5]  rounded-lg  items-start justify-center justify-items-center text-center">

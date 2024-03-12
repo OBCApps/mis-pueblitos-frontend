@@ -47,7 +47,7 @@ export class FestivitiesComponent {
     this.modal_style="fixed w-full h-full inset-x-0 -top-full global-center transition-all duration-1000 ease-in-out";
   }
 
-  tab_selected: any = 'list';
+  tab_selected: any = 'calendar';
   change_tabs(type: any) {
     this.tab_selected = type;
   }

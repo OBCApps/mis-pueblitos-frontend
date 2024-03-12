@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, ViewChild } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { Carousel, CarouselModule } from 'primeng/carousel';
@@ -18,6 +18,7 @@ import Swal from 'sweetalert2';
 import { LoadingService } from '../../../functions/loadings/loading-service.service';
 import { ModalRedesSocialesComponent } from '../../../functions/modal-redes-sociales/modal-redes-sociales.component';
 import { ModalRedesSocialesService } from '../../../functions/modal-redes-sociales/modal-redes-sociales.service';
+import Swiper from 'swiper';
 
 @Component({
   selector: 'app-home',
@@ -31,6 +32,7 @@ import { ModalRedesSocialesService } from '../../../functions/modal-redes-social
     RouterLink,
     ModalRedesSocialesComponent,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -80,10 +82,21 @@ export class HomeComponent {
   ];
 
   ngOnInit() {
-    this.viewBannerModal()
+    //this.viewBannerModal()
     this.load_list_departament();
     this.loadMoreSearch();
   }
+
+
+  /* private swiper: Swiper;
+  ngAfterViewInit(){
+    this.swiper = new Swiper(this.swiperContainer.nativeElement, {
+      slidesPerView: 3
+      // Otras opciones de configuración de Swiper, si es necesario
+    });
+    console.log(this.swiper);
+    
+  } */
 
   goToRoute(lugar: any) {
     this.loading.show();
@@ -195,4 +208,16 @@ export class HomeComponent {
     }
     this.modalRedesSociales.activateModal(data);
   }
+
+  /* next() {
+    if (this.swiper) {
+      this.swiper.slideNext();
+    }
+  }
+
+  back() {
+    if (this.swiper) {
+      this.swiper.slidePrev();
+    }
+  } */
 }

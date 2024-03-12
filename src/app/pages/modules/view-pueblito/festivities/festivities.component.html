@@ -33,7 +33,7 @@
         <option>Festividades</option>
       </select> -->
       <!-- <div class="w-2"></div> -->
-      <div class="flex rounded-xl ">
+      <div class="hidden md:flex rounded-xl ">
         <div class="{{
             tab_selected == 'list'
               ? 'bg-primary text-fondo'
@@ -64,17 +64,20 @@
     </div>
   </div>
   <div [ngSwitch]="tab_selected">
-    <div *ngSwitchCase="'calendar'" class="mobile-calendar md:hidden">
+    <!-- <div *ngSwitchCase="'calendar'" class="mobile-calendar md:hidden">
       <app-calendar-mobile></app-calendar-mobile>
-    </div>
+    </div> -->
 
     <div *ngSwitchCase="'calendar'" class="desktop-calendar hidden md:block">
       <app-calendar-desktop></app-calendar-desktop>
     </div>
 
-    <div *ngSwitchCase="'list'" class="desktop-list-calendar">
+    <div *ngSwitchCase="'list' " class="desktop-list-calendar">
       <app-calendar-list [inputSearch]="searchValue"></app-calendar-list>
     </div>
+    <!-- <div *ngSwitchCase="'calendar' " class="desktop-list-calendar">
+      <app-calendar-list [inputSearch]="searchValue"></app-calendar-list>
+    </div> -->
   </div>
 
 </div>
