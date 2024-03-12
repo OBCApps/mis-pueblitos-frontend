@@ -79,6 +79,10 @@ export class ViewPueblitoComponent implements OnInit {
         this.lugarService.getLugares(rpta.id).subscribe(
           rpta => {
             if (isPlatformBrowser(this.platformId)) {
+              rpta['diaCalendario'] = {
+                anioElegido :  new Date().getFullYear(),
+                mesElegido :  new Date().getMonth() + 1
+              }
               localStorage.setItem('lugar', JSON.stringify(rpta))
               this.finalRpta = rpta
             }

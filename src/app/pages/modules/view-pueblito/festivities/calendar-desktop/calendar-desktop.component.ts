@@ -48,16 +48,19 @@ export class CalendarDesktopComponent {
 
   }
 
-  lugarDetalle : any
+  lugarDetalle: any
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       if (localStorage.getItem('lugar')) {
         this.lugarDetalle = JSON.parse(localStorage.getItem('lugar') || '{}');
         
+        this.mesElegido = this.lugarDetalle.diaCalendario.mesElegido;
+        this.anioElegido = this.lugarDetalle.diaCalendario.anioElegido;
+
+        this.getDaysFromDate(this.mesElegido, this.anioElegido);
       }
-    } 
-    //this.getDataCalendar(data);
-    this.getDaysFromDate(this.mesElegido, this.anioElegido);
+    }
+
   }
 
   getDaysFromDate(month: any, year: any) {
@@ -107,6 +110,7 @@ export class CalendarDesktopComponent {
   }
 
   changeMonth(flag: any) {
+    const lugarData = JSON.parse(localStorage.getItem('lugar')) || {};
     if (flag < 0) {
       const prevDate = this.dateSelect.clone().subtract(1, 'month');
       this.anioElegido = Number(prevDate.format('YYYY'));
@@ -121,7 +125,13 @@ export class CalendarDesktopComponent {
 
       this.getDaysFromDate(nextDate.format('MM'), nextDate.format('YYYY'));
     }
+
+    lugarData['diaCalendario'].anioElegio = this.anioElegido;
+    lugarData['diaCalendario'].mesElegido = this.mesElegido;
+
+    localStorage.setItem('lugar', JSON.stringify(lugarData));
   }
+
 
   functAgendaMes(days: any, month_selected: any) {
     const data = days;
@@ -164,8 +174,8 @@ export class CalendarDesktopComponent {
 
   goToSubEventoDetail(item: any) {
     console.log('item: ', item);
-    
 
-    this.router.navigate(['home',this.lugarDetalle.departamentoNombreRuta, this.lugarDetalle.name_route,'festividades',item.name_father_route]);
+
+    this.router.navigate(['home', this.lugarDetalle.departamentoNombreRuta, this.lugarDetalle.name_route, 'festividades', item.name_father_route]);
   }
 }

@@ -46,10 +46,13 @@ export class CalendarListComponent {
     if (isPlatformBrowser(this.platformId)) {
       if (localStorage.getItem('lugar')) {
         this.lugarDetalle = JSON.parse(localStorage.getItem('lugar') || '{}');
+        
+        this.mesElegido = this.lugarDetalle.diaCalendario.mesElegido;
+        this.anioElegido = this.lugarDetalle.diaCalendario.anioElegido;
 
+        this.getDaysFromDate(this.mesElegido, this.anioElegido);
       }
-    }
-    this.getDaysFromDate(this.mesElegido, this.anioElegido);
+    }    
   }
 
   getDaysFromDate(month: any, year: any) {
@@ -99,6 +102,7 @@ export class CalendarListComponent {
   }
 
   changeMonth(flag: any) {
+    const lugarData = JSON.parse(localStorage.getItem('lugar')) || {};
     if (flag < 0) {
       const prevDate = this.dateSelect.clone().subtract(1, 'month');
       this.anioElegido = Number(prevDate.format('YYYY'));
@@ -113,6 +117,11 @@ export class CalendarListComponent {
 
       this.getDaysFromDate(nextDate.format('MM'), nextDate.format('YYYY'));
     }
+
+    lugarData['diaCalendario'].anioElegio = this.anioElegido;
+    lugarData['diaCalendario'].mesElegido = this.mesElegido;
+
+    localStorage.setItem('lugar', JSON.stringify(lugarData));
   }
 
   functAgendaMes(days: any, month_selected: any) {
