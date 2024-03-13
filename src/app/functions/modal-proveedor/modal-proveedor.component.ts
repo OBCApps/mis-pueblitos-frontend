@@ -68,7 +68,7 @@ export class ModalProveedorComponent {
   async activate_modal(option: any) {
     if (option == 'close') {
       this.Modal.hide()
-      
+
     } else if (option == 'open') {
 
       try {
