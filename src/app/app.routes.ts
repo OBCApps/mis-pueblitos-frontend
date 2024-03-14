@@ -9,6 +9,8 @@ import { FestivitiesComponent } from './pages/modules/view-pueblito/festivities/
 import { AboutUsComponent } from './pages/modules/about-us/about-us.component';
 import { SubEventoDetailComponent } from './pages/modules/view-pueblito/festivities/sub-evento-detail/sub-evento-detail.component';
 import { TipsViajerosComponent } from './pages/modules/view-pueblito/tips-viajeros/tips-viajeros.component';
+import { ServicesActivitiesComponent } from './pages/modules/view-pueblito/services-activities/services-activities.component';
+import { LugaresTuristicosComponent } from './pages/modules/view-pueblito/lugares-turisticos/lugares-turisticos.component';
 
 export const routes: Routes = [
   {
@@ -51,6 +53,14 @@ export const routes: Routes = [
       {
         path: 'tips-viajero',
         component: TipsViajerosComponent,
+      },
+      {
+        path: 'lugares-turisticos',
+        component: LugaresTuristicosComponent,
+      },
+      {
+        path: 'servicios',
+        component: ServicesActivitiesComponent,
       },
     ],
   },

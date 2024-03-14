@@ -1,7 +1,7 @@
 <!-- HEADER -->
 <div class="flex flex-col h-fit items-center w-full bg-fondo">
   <div class="w-full h-fit bg-center bg-cover"
-    style="background-image: url('https://images.unsplash.com/photo-1545330785-15356daae141?q=80&w=1590&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+    style="background-image: url('./../../../../assets/general-images/home-image.jpeg')">
     <div class="w-full h-full bg-terceary flex flex-col justify-start items-center bg-opacity-50">
       <div class="nav-header p-5 h-fit w-full">
         <app-navar></app-navar>
@@ -14,7 +14,7 @@
           <span class="text-primary text-xl md:text-4xl font-normal font-['Battambang']">Mis Pueblitos</span>
         </div>
         <div class="p-2 py-4 md:px-10 text-fondo text-2xl md:text-4xl  font-extrabold font-['Montserrat'] uppercase">
-          Tu sitio ideal para conocer mas sobre los pueblitos mágicos en el Perú
+          Tu sitio ideal para conocer los pueblitos mágicos en el Perú
         </div>
       </div>
     </div>
@@ -90,36 +90,20 @@
 
 
 <!-- LOS MAS BUSCADOS -->
-@if (more_search.length > 0) {
+
+
+
 <div class="p-6 md:p-20 pt-0 md:pt-0 bg-fondo font-Battambang">
   <h1 class="text-center text-4xl font-extrabold text-secondary">
     Los más buscados
   </h1>
   <br />
-  <!-- <swiper-container #swiperContainer slides-per-view="3">
-    <swiper-slide *ngFor="let item of [0,1,2,3,4,5,6,7]">
-      <div class="border text-center">
-
-        Slide {{item}}
-      </div>
-    </swiper-slide>
-  </swiper-container>
-  <div class="flex justify-between">
-    <button (click)="back()">
-      Back
-    </button>
-    <button (click)="next()">
-      next
-    </button>
-  </div> -->
-  <p-carousel [value]="more_search" [numVisible]="4" [numScroll]="2" [circular]="false"
-    [responsiveOptions]="responsiveOptions">
-    <ng-template let-item pTemplate="item">
+  <swiper-container init="false">
+    <swiper-slide *ngFor="let item of more_search">
       <div (click)="goToRoute(item)" class="border-1 surface-border border-round m-2 text-center md:mx-5 rounded-lg">
         <div class="global-center">
           <div class="buscadosCard w-60 md:w-80 h-96 rounded-3xl bg-cover bg-center flex justify-start items-end" style="
-              background-image: url({{item.foto.url}})
-            ">
+          background-image: url({{item.foto.url}})">
             <div
               class="w-full h-40 p-5 bg-gradient-to-t from-terceary rounded-3xl flex justify-start items-end text-fondo">
               {{ item.nombre }}
@@ -127,17 +111,37 @@
           </div>
         </div>
       </div>
-    </ng-template>
-  </p-carousel>
+    </swiper-slide>
+  </swiper-container>
 
-  <!-- <div class="global-center">
-        <button type="submit"
-            class="bg-primary hover:bg-red-600 w-fit md:w-fit text-fondo text-base font-normal py-2 px-4 rounded-xl">
-            Ver todos
-        </button>
-    </div>-->
+  <div class="mt-2 flex items-center justify-center">
+    <button type="button"
+      class="swiper-button-prev text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300  rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 ">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+        <path fill-rule="evenodd"
+          d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
+          clip-rule="evenodd" />
+      </svg>
+
+
+      <span class="sr-only">Icon description</span>
+    </button>
+
+    <button type="button"
+      class="swiper-button-next text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300  rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 ">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+        <path fill-rule="evenodd"
+          d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+          clip-rule="evenodd" />
+      </svg>
+
+      <span class="sr-only">Icon description</span>
+    </button>
+  </div>
+
+
 </div>
-}
+
 <app-modal-redes-sociales></app-modal-redes-sociales>
 <!-- Footer -->
 <div><app-footer></app-footer></div>

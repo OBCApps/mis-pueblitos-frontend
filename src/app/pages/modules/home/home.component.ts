@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, ViewChild } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, ViewChild, signal } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { Carousel, CarouselModule } from 'primeng/carousel';
@@ -19,6 +19,8 @@ import { LoadingService } from '../../../functions/loadings/loading-service.serv
 import { ModalRedesSocialesComponent } from '../../../functions/modal-redes-sociales/modal-redes-sociales.component';
 import { ModalRedesSocialesService } from '../../../functions/modal-redes-sociales/modal-redes-sociales.service';
 import Swiper from 'swiper';
+import { SwiperContainer } from 'swiper/element';
+import { SwiperOptions } from 'swiper/types';
 
 @Component({
   selector: 'app-home',
@@ -51,52 +53,45 @@ export class HomeComponent {
     lugarId: [{ value: '', disabled: false }],
   });
 
-  modal_style = "fixed w-full h-full inset-x-0 inset-y-0 global-center transition-all duration-1000 ease-in-out";
-
-  responsiveOptions = [
-    {
-      breakpoint: '1536px',
-      numVisible: 5,
-      numScroll: 1,
-    },
-    {
-      breakpoint: '1280px',
-      numVisible: 4,
-      numScroll: 1,
-    },
-    {
-      breakpoint: '1024px',
-      numVisible: 3,
-      numScroll: 1,
-    },
-    {
-      breakpoint: '768px',
-      numVisible: 2,
-      numScroll: 1,
-    },
-    {
-      breakpoint: '640px',
-      numVisible: 1,
-      numScroll: 1,
-    },
-  ];
-
   ngOnInit() {
-    //this.viewBannerModal()
+
+    this.viewBannerModal()
     this.load_list_departament();
     this.loadMoreSearch();
   }
+  ngAfterViewInit() {
+
+  }
 
 
-  /* private swiper: Swiper;
-  ngAfterViewInit(){
-    this.swiper = new Swiper(this.swiperContainer.nativeElement, {
-      slidesPerView: 3
-      // Otras opciones de configuración de Swiper, si es necesario
-    });
-    console.log(this.swiper);
-    
-  } */
+  // ------------- CARUSEL MODULE ------------ \\
+  swiperElement = signal<SwiperContainer | null>(null);
+  createCarrusel() {
+    if (typeof document !== 'undefined') {
+      const swiperElemConstructor = document.querySelector('swiper-container');
+      if (swiperElemConstructor) {
+        const swiperOPtions: SwiperOptions = {
+          slidesPerView: 3,
+          pagination: false,
+          centeredSlides: true,
+          navigation: {
+            enabled: true,
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+          },
+          breakpoints: {
+            320: { slidesPerView: 1 },
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 }
+          }
+        }
+        Object.assign(swiperElemConstructor, swiperOPtions);
+        this.swiperElement.set(swiperElemConstructor as SwiperContainer)
+        this.swiperElement()?.initialize()
+      }
+    }
+  }
+
 
   goToRoute(lugar: any) {
     this.loading.show();
@@ -113,9 +108,7 @@ export class HomeComponent {
     );
   }
 
-  close_modal() {
-    this.modal_style = "fixed w-full h-full inset-x-0 -top-full global-center transition-all duration-1000 ease-in-out";
-  }
+
 
   // ------------------  CALL SERVICES ------------------ \\
   list_department: any[] = [];
@@ -181,10 +174,12 @@ export class HomeComponent {
         console.log('RESPONSE: ', response);
 
         this.more_search = response;
+        this.createCarrusel()
       },
       (err) => { }
     );
   }
+
 
   goToDepartments(form: any) {
     console.log("departamento: ", form);
@@ -209,15 +204,4 @@ export class HomeComponent {
     this.modalRedesSociales.activateModal(data);
   }
 
-  /* next() {
-    if (this.swiper) {
-      this.swiper.slideNext();
-    }
-  }
-
-  back() {
-    if (this.swiper) {
-      this.swiper.slidePrev();
-    }
-  } */
 }

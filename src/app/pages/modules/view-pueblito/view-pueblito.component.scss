@@ -19,3 +19,25 @@
         }
     }
 }
+
+.navar-not-selected {
+    @apply border border-black text-black rounded-full p-3 
+}
+.navar-selected {
+    @apply border border-primary text-white rounded-full p-3 bg-primary shadow-xl
+}
+
+.static {
+    position: fixed!important;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    transition: padding 1s;
+    z-index: 10;
+    
+}
+
+/* .static {
+    @apply fixed top-0 left-0 right-0 bg-white z-10 
+} */
