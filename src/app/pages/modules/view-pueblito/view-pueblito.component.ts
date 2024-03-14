@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component, Inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, HostListener, Inject, OnInit, PLATFORM_ID, Renderer2, signal } from '@angular/core';
 import { NavarComponent } from '../../navar/navar.component';
 import { CommonModule, NgClass, isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
@@ -47,7 +47,8 @@ export class ViewPueblitoComponent implements OnInit {
     private modalProveedorFotos: ModalProveedorService,
     private router: Router,
     private loading: LoadingService,
-    private sanitizer: DomSanitizer
+    private el: ElementRef, 
+    private renderer: Renderer2
   ) { }
   title: any = '';
   list_navar_option = [
@@ -94,8 +95,29 @@ export class ViewPueblitoComponent implements OnInit {
       });
     });
 
+    /* var navbar = document.queryElementById('navar-static');
+    var menu = document.queryElementById('navar-static');
+
+    window.onscroll = function() {
+      if(window.pageXOffset >= menu.offsetTop){
+        navbar.classList.add('static')
+      } else {
+        navbar.classList.remove('static')
+      }
+    } */
+
     this.createCarrusel()
   }
+
+  navbarStatic : boolean = false;
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const menu = document.getElementById('navar-static');
+    this.navbarStatic = window.pageYOffset >= menu.offsetTop;
+    console.log("this.navbarStatic", this.navbarStatic);
+    
+  }
+
 
   finalRpta: any;
   loadLugarDetalles(lugar: any) {
@@ -185,12 +207,11 @@ export class ViewPueblitoComponent implements OnInit {
             prevEl: '.swiper-button-prev'
           },
           breakpoints: {
-            320: { slidesPerView: 2 },
+            320: { slidesPerView: 3 },
             640: { slidesPerView: 3 },
-            //1024: { slidesPerView: 4 },
-            1024: { slidesPerView: 3 },
-            //1280: { slidesPerView: 5 },
-            1280: { slidesPerView: 3 },
+            1024: { slidesPerView: 4 },
+            1280: { slidesPerView: 5 },
+
           }
         }
         Object.assign(swiperElemConstructor, swiperOPtions);

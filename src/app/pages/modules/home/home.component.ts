@@ -55,7 +55,7 @@ export class HomeComponent {
 
   ngOnInit() {
 
-    //this.viewBannerModal()
+    this.viewBannerModal()
     this.load_list_departament();
     this.loadMoreSearch();
   }

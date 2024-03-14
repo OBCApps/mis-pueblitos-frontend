@@ -20,7 +20,7 @@
     </div>
   </div>
   <!-- buscador y filtros -->
-  <div class="bg-fondo h-fit flex flex-col  gap-8 md:gap-10 items-start m-4 md:m-8 lg:m-20 max-w-7xl xl:mx-auto">
+  <div class="px-3 md:px-8 bg-fondo  h-fit flex flex-col  gap-8 md:gap-10 items-start m-4 md:m-8 lg:m-20 max-w-7xl xl:mx-auto">
     <div>
       <app-bread-crumb></app-bread-crumb>
     </div>
@@ -74,15 +74,15 @@
         <h3 class="text-secondary text-3xl md:text-4xl font-bold font-Battambang">
           {{ item.nombre }}
         </h3>
-        <p class="text-terceary text-xs md:text-xl font-normal font-Battambang text-justify">
+        <p class="text-terceary text-xs md:text-sm font-normal font-Battambang text-justify">
           {{ item.descripcion }}
         </p>
         <button type="button" (click)="goToRoute(item)"
-          class="w-fit h-fit p-2 md:p-5 bg-red-500 rounded-2xl md:rounded-2xl font-Battambang text-fondo text-center text-xs md:text-2xl font-normal">
+          class="w-fit h-fit p-2 md:p-5 bg-red-500 rounded-2xl md:rounded-2xl font-Battambang text-fondo text-center text-xs md:text-lg font-normal">
           Saber más
         </button>
       </div>
-      <div class="h-56 md:h-full rounded-3xl bg-cover bg-center flex justify-start items-end"
+      <div class="h-56 mx-10  md:h-full rounded-3xl bg-cover bg-center flex justify-start items-end"
         style="background-image: url('{{ item.foto.url }}')">
         <div class="w-full h-40 p-5 bg-gradient-to-t from-terceary rounded-3xl flex justify-start items-end text-fondo">
           {{ item.nombre }}
