@@ -53,47 +53,43 @@ export class HomeComponent {
     lugarId: [{ value: '', disabled: false }],
   });
 
-
-  responsiveOptions = [
-    {
-      breakpoint: '1536px',
-      numVisible: 5,
-      numScroll: 1,
-    },
-    {
-      breakpoint: '1280px',
-      numVisible: 4,
-      numScroll: 1,
-    },
-    {
-      breakpoint: '1024px',
-      numVisible: 3,
-      numScroll: 1,
-    },
-    {
-      breakpoint: '768px',
-      numVisible: 2,
-      numScroll: 1,
-    },
-    {
-      breakpoint: '640px',
-      numVisible: 1,
-      numScroll: 1,
-    },
-  ];
-
-
   ngOnInit() {
 
     //this.viewBannerModal()
     this.load_list_departament();
     this.loadMoreSearch();
   }
+  ngAfterViewInit() {
+
+  }
+
 
   // ------------- CARUSEL MODULE ------------ \\
   swiperElement = signal<SwiperContainer | null>(null);
-  ngAfterViewInit() {
-
+  createCarrusel() {
+    if (typeof document !== 'undefined') {
+      const swiperElemConstructor = document.querySelector('swiper-container');
+      if (swiperElemConstructor) {
+        const swiperOPtions: SwiperOptions = {
+          slidesPerView: 3,
+          pagination: false,
+          centeredSlides: true,
+          navigation: {
+            enabled: true,
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+          },
+          breakpoints: {
+            320: { slidesPerView: 1 },
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 }
+          }
+        }
+        Object.assign(swiperElemConstructor, swiperOPtions);
+        this.swiperElement.set(swiperElemConstructor as SwiperContainer)
+        this.swiperElement()?.initialize()
+      }
+    }
   }
 
 
@@ -184,33 +180,6 @@ export class HomeComponent {
     );
   }
 
-  createCarrusel() {
-    if(typeof document !== 'undefined'){
-
-      const swiperElemConstructor = document.querySelector('swiper-container');
-      if (swiperElemConstructor) {
-        const swiperOPtions: SwiperOptions = {
-          slidesPerView: 3,
-          pagination: false,
-          centeredSlides:true,
-          navigation: {
-            enabled: true,
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-          },
-          breakpoints: {
-            640: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 }
-          }
-        }
-        Object.assign(swiperElemConstructor, swiperOPtions);
-        this.swiperElement.set(swiperElemConstructor as SwiperContainer)
-        this.swiperElement()?.initialize()
-      }
-    }
-    
-
-  }
 
   goToDepartments(form: any) {
     console.log("departamento: ", form);

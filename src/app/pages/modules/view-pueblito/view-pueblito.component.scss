@@ -19,3 +19,10 @@
         }
     }
 }
+
+.navar-not-selected {
+    @apply border border-black text-black rounded-full p-3 
+}
+.navar-selected {
+    @apply border border-primary text-white rounded-full p-3 bg-primary shadow-xl
+}
