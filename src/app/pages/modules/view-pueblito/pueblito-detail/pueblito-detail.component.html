@@ -47,7 +47,7 @@
         alt="{{ item.nombre }} "
       /> -->
 
-        <img class="md:h-[305px] w-full md:w-[70%] h-[285px] md:my-0 my-5 rounded-3xl" (click)="viewProveedorImage(item)"
+        <img class="md:h-[305px] w-full md:w-[70%] h-[285px] md:my-0 my-5 rounded-3xl cursor-zoom-in		" (click)="viewProveedorImage(item)"
           [src]="item.foto.url ? item.foto.url : './assets/chacas.jpg'" alt="{{ item.nombre }}" loading="lazy" />
       </div>
     </div>
