@@ -187,8 +187,10 @@ export class ViewPueblitoComponent implements OnInit {
           breakpoints: {
             320: { slidesPerView: 2 },
             640: { slidesPerView: 3 },
-            1024: { slidesPerView: 4 },
-            1280: { slidesPerView: 5 },
+            //1024: { slidesPerView: 4 },
+            1024: { slidesPerView: 3 },
+            //1280: { slidesPerView: 5 },
+            1280: { slidesPerView: 3 },
           }
         }
         Object.assign(swiperElemConstructor, swiperOPtions);
