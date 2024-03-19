@@ -1,1 +1,167 @@
-<p>Aqui aplicamos los filtros de la busqueda</p>
+<div id="modal-filter-services" tabindex="-1" aria-hidden="true"
+    class="fixed left-0 right-0 top-0 z-50 hidden h-[calc(100%-1rem)] max-h-full w-full overflow-y-auto overflow-x-hidden p-4 md:inset-0">
+    <div class="relative max-h-full w-full max-w-2xl">
+        <!-- Modal content -->
+        <div class="relative rounded-lg bg-white shadow ">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between rounded-t border-b p-3 ">
+                <div class="h-2 w-1">
+
+                </div>
+                <div>
+                    @switch (valueOutput.typeServicio) {
+                    @case ('HOSP') {
+
+                    <h3 class="text-sm font-semibold text-gray-900 text-center lg:text-xl">
+                        Filtros Hospedajes
+                    </h3>
+
+                    }
+                    @case ('REST') {
+
+                    <h3 class="text-sm font-semibold text-gray-900 text-center lg:text-xl">
+                        Filtros Restaurantes
+                    </h3>
+
+                    }
+                    @case ('TOUR') {
+
+                    <h3 class="text-sm font-semibold text-gray-900 text-center lg:text-xl">
+                        Filtros Tours
+                    </h3>
+
+                    }
+                    }
+
+                </div>
+                <div>
+                    <button type="button" (click)="Modal.hide()"
+                        class="ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white">
+                        <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+            </div>
+            @switch (valueOutput.typeServicio) {
+            @case ('HOSP') {
+            <div class="p-5">
+
+
+                <div>
+
+
+                    <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
+                        Precio
+                    </label>
+                    <input type="text" id="first_name" [(ngModel)]="valueOutput.precio"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="John" required />
+
+                </div>
+                <div>
+                    <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
+                        Tipo de Hospedaje
+                    </label>
+                    <input type="text" id="first_name" [(ngModel)]="valueOutput.tipoHospedaje"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="John" required />
+                </div>
+                <div>
+
+                    <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
+                        Tipo de Habitacion
+                    </label>
+                    <input type="text" id="first_name" [(ngModel)]="valueOutput.tipoHabitacion"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="John" required />
+                </div>
+                <div>
+
+                    <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
+                        Servicios
+                    </label>
+                    <input type="text" id="first_name" [(ngModel)]="valueOutput.servicios"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="John" required />
+                </div>
+            </div>
+            }
+            @case ('TOUR') {
+            <div class="p-5">
+
+                <div>
+
+                    <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
+                        Precio
+                    </label>
+                    <input type="text" id="first_name" [(ngModel)]="valueOutput.precio"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="John" required />
+
+                </div>
+                <div>
+
+                    <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
+                        Tipo Tour
+                    </label>
+                    <input type="text" id="first_name" [(ngModel)]="valueOutput.tipoTour"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="John" required />
+
+                </div>
+                <div>
+                    <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
+                        Tamaño Grupo
+                    </label>
+                    <input type="text" id="first_name" [(ngModel)]="valueOutput.cantidadPersonasTour"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="John" required />
+
+                </div>
+                <div>
+
+                    <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
+                        Duración
+                    </label>
+                    <input type="text" id="first_name" [(ngModel)]="valueOutput.duracionTour"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="John" required />
+
+                </div>
+
+
+            </div>
+            }
+            @case ('REST') {
+
+            <div>
+                Precio
+            </div>
+            <div>
+                Día
+            </div>
+            <div>
+                Cantidad Personas
+            </div>
+            <div>
+                Menú
+            </div>
+
+
+            }
+
+            }
+
+            <button type="button" (click)="selectFilters(valueOutput)"
+                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                Buscar
+            </button>
+
+
+        </div>
+    </div>
+</div>
