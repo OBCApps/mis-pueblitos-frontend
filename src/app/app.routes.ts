@@ -11,7 +11,7 @@ import { SubEventoDetailComponent } from './pages/modules/view-pueblito/festivit
 import { TipsViajerosComponent } from './pages/modules/view-pueblito/tips-viajeros/tips-viajeros.component';
 import { ServicesActivitiesComponent } from './pages/modules/view-pueblito/services-activities/services-activities.component';
 import { LugaresTuristicosComponent } from './pages/modules/view-pueblito/lugares-turisticos/lugares-turisticos.component';
-import { HotelesComponent } from './pages/modules/view-pueblito/serviciosActividades/hoteles.component';
+import { HotelesComponent } from './pages/modules/view-pueblito/hoteles/hoteles.component';
 
 export const routes: Routes = [
   {
@@ -64,9 +64,9 @@ export const routes: Routes = [
         component: ServicesActivitiesComponent,
       },
       {
-        path: 'hoteles',
+        path: 'servicios/:hotelId',
         component: HotelesComponent,
-      }
+      },
     ],
   },
 
@@ -74,5 +74,4 @@ export const routes: Routes = [
     path: 'about',
     component: AboutUsComponent,
   },
-
 ];

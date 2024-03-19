@@ -20,13 +20,13 @@ export class HotelesService {
   }
 
   get_hotel_by_id(data: any): Observable<any> {
-    return this.http.get<any>(this.SERVER_HOTEL + '/' + data.id).pipe(
+    return this.http.get<any>(this.SERVER_HOTEL + '/' + data).pipe(
       map((response) => { return response })
     );
   }
 
-  get_hotel_by_name_route(data: any): Observable<any> {
-    return this.http.get<any>(this.SERVER_HOTEL + '/name_route/' + data.name_route).pipe(
+  get_hotel_by_name_route(name_route: any): Observable<any> {
+    return this.http.get<any>(this.SERVER_HOTEL + '/name_route/' + name_route).pipe(
       map((response) => { return response })
     );
   }

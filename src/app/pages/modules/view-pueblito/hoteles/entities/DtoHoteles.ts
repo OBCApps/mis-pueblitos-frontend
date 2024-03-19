@@ -31,4 +31,5 @@ export class DtoHoteles {
   };
   fotos: {};
   descripcion: string;
+  name_route: string;
 }
