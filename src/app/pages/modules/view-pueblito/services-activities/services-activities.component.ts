@@ -3,6 +3,9 @@ import { TitleService } from '../view-pueblito.service';
 import { ModalFiltrosService } from './modal-filtros/modal-filtros.service';
 import { ModalFiltrosComponent } from './modal-filtros/modal-filtros.component';
 import { FormsModule } from '@angular/forms';
+import { HotelesService } from '../../../../services/hoteles.service';
+import { DtoHoteles } from '../hoteles/entities/DtoHoteles';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-services-activities',
@@ -16,7 +19,9 @@ export class ServicesActivitiesComponent implements OnInit {
 
   constructor(
     private titleService: TitleService,
-    private modalService: ModalFiltrosService
+    private modalService: ModalFiltrosService,
+    private hotelesService:HotelesService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -24,6 +29,7 @@ export class ServicesActivitiesComponent implements OnInit {
       sidebar: 'servicios',
     };
     this.transferedDataToNavar(dataNavar);
+    this.getHoteles();
   }
 
   transferedDataToNavar(value: any): void {
@@ -44,6 +50,19 @@ export class ServicesActivitiesComponent implements OnInit {
   }
   selectFilterOptions(event: any) {
     console.log("BUSCAR EN APi", event);
-    
+
   }
+
+  list_hospedaje: DtoHoteles[] = [];
+  getHoteles(){
+    this.hotelesService.get_hoteles().subscribe((data)=>{
+      this.list_hospedaje = data;
+    })
+  }
+
+  gotoHospedaje(item:DtoHoteles){
+    this.router.navigate([`${this.router.url}`, item.name_route]);
+  }
+
+
 }
