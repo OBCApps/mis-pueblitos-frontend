@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HabitacionComponent } from './habitacion.component';
+import { HabitacionViewComponent } from './habitacion-view.component';
 
-describe('HabitacionComponent', () => {
-  let component: HabitacionComponent;
-  let fixture: ComponentFixture<HabitacionComponent>;
+describe('HabitacionViewComponent', () => {
+  let component: HabitacionViewComponent;
+  let fixture: ComponentFixture<HabitacionViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HabitacionComponent]
+      imports: [HabitacionViewComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(HabitacionComponent);
+    fixture = TestBed.createComponent(HabitacionViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

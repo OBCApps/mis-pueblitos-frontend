@@ -1,31 +1,32 @@
-import { HotelesService } from '../../../../services/hoteles.service';
 import { Component } from '@angular/core';
-import { DtoHoteles } from '../services-activities/hospedajes/entities/DtoHoteles';
+import { DtoHoteles } from '../entities/DtoHoteles';
 import { Router } from '@angular/router';
+import { HotelesService } from '../../../../../../services/hoteles.service';
 
 @Component({
-  selector: 'app-hoteles',
+  selector: 'app-hotel-view',
   standalone: true,
   imports: [],
-  templateUrl: './hoteles.component.html',
-  styleUrl: './hoteles.component.scss',
+  templateUrl: './hotel-view.component.html',
+  styleUrl: './hotel-view.component.scss'
 })
-export class HotelesComponent {
+export class HotelViewComponent {
+
   constructor(
     private readonly hotelesService: HotelesService,
     private router: Router
-  ) {}
+  ) { }
 
   hotel: DtoHoteles;
   name_route: string;
   loading = false;
   ngOnInit() {
-    this.name_route=this.router.url.split('/').pop();
+    this.name_route = this.router.url.split('/').pop();
     console.log('this.name_route', this.name_route);
     this.getHotel(this.name_route);
   }
 
-  getHotel(name_route:string){
+  getHotel(name_route: string) {
     this.loading = true;
     console.log('name_route', name_route);
     this.hotelesService.get_hotel_by_name_route(name_route).subscribe((response) => {
@@ -35,8 +36,8 @@ export class HotelesComponent {
     });
   }
 
-  gotoHabitacion(hotel_name,habitacion_name){
+  gotoHabitacion(hotel_name, habitacion_name) {
     this.router.navigate([this.router.url, habitacion_name]);
   }
-}
 
+}

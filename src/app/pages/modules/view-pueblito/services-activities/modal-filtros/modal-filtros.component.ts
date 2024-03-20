@@ -3,8 +3,9 @@ import { Component, EventEmitter, Inject, OnInit, Output, PLATFORM_ID } from '@a
 import { ModalFiltrosService } from './modal-filtros.service';
 import { isPlatformBrowser } from '@angular/common';
 import { Accordion, AccordionItem, Modal, ModalOptions } from 'flowbite';
-import { FiltroGeneralServicios } from '../entities/filtroGeneralServicios';
+
 import { FormsModule } from '@angular/forms';
+import { FiltroGeneralServicios } from '../entities/filtroGeneralServicios';
 
 @Component({
   selector: 'app-modal-filtros',

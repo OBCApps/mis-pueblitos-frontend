@@ -3,7 +3,7 @@
     <div class="relative max-h-full w-full max-w-2xl">
         <!-- Modal content -->
         <div class="relative rounded-lg bg-white shadow ">
-            <!-- Modal header -->
+
             <div class="flex items-center justify-between rounded-t border-b p-3 ">
                 <div class="h-2 w-1">
 
@@ -57,7 +57,7 @@
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
                         Precio
                     </label>
-                    <input type="text" id="first_name" [(ngModel)]="valueOutput.precio"
+                    <input type="text" id="first_name" [(ngModel)]="valueOutput.filtroHabitaciones.precio"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="John" required />
 
@@ -66,7 +66,7 @@
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
                         Tipo de Hospedaje
                     </label>
-                    <input type="text" id="first_name" [(ngModel)]="valueOutput.tipoHospedaje"
+                    <input type="text" id="first_name" [(ngModel)]="valueOutput.filtroHabitaciones.tipoHospedaje"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="John" required />
                 </div>
@@ -75,7 +75,7 @@
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
                         Tipo de Habitacion
                     </label>
-                    <input type="text" id="first_name" [(ngModel)]="valueOutput.tipoHabitacion"
+                    <input type="text" id="first_name" [(ngModel)]="valueOutput.filtroHabitaciones.tipoHabitacion"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="John" required />
                 </div>
@@ -84,7 +84,7 @@
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
                         Servicios
                     </label>
-                    <input type="text" id="first_name" [(ngModel)]="valueOutput.servicios"
+                    <input type="text" id="first_name" [(ngModel)]="valueOutput.filtroHabitaciones.servicios"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="John" required />
                 </div>
@@ -98,7 +98,7 @@
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
                         Precio
                     </label>
-                    <input type="text" id="first_name" [(ngModel)]="valueOutput.precio"
+                    <input type="text" id="first_name" [(ngModel)]="valueOutput.filtroTurs.precio"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="John" required />
 
@@ -108,7 +108,7 @@
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
                         Tipo Tour
                     </label>
-                    <input type="text" id="first_name" [(ngModel)]="valueOutput.tipoTour"
+                    <input type="text" id="first_name" [(ngModel)]="valueOutput.filtroTurs.tipoTour"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="John" required />
 
@@ -117,7 +117,7 @@
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
                         Tamaño Grupo
                     </label>
-                    <input type="text" id="first_name" [(ngModel)]="valueOutput.cantidadPersonasTour"
+                    <input type="text" id="first_name" [(ngModel)]="valueOutput.filtroTurs.cantidadPersonasTour"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="John" required />
 
@@ -127,7 +127,7 @@
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
                         Duración
                     </label>
-                    <input type="text" id="first_name" [(ngModel)]="valueOutput.duracionTour"
+                    <input type="text" id="first_name" [(ngModel)]="valueOutput.filtroTurs.duracionTour"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="John" required />
 

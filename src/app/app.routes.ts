@@ -13,6 +13,9 @@ import { ServicesActivitiesComponent } from './pages/modules/view-pueblito/servi
 import { LugaresTuristicosComponent } from './pages/modules/view-pueblito/lugares-turisticos/lugares-turisticos.component';
 import { HotelesComponent } from './pages/modules/view-pueblito/hoteles/hoteles.component';
 import { HabitacionComponent } from './pages/modules/view-pueblito/habitacion/habitacion.component';
+import { RestaurantViewComponent } from './pages/modules/view-pueblito/services-activities/restaurantes/restaurant-view/restaurant-view.component';
+import { HabitacionViewComponent } from './pages/modules/view-pueblito/services-activities/hospedajes/habitacion-view/habitacion-view.component';
+import { HotelViewComponent } from './pages/modules/view-pueblito/services-activities/hospedajes/hotel-view/hotel-view.component';
 
 export const routes: Routes = [
   {
@@ -65,13 +68,21 @@ export const routes: Routes = [
         component: ServicesActivitiesComponent,
       },
       {
-        path: 'servicios/:hotel_name',
-        component: HotelesComponent,
+        path: 'servicios/hospedaje/:hotel_name',
+        component: HotelViewComponent,
       },
       {
-        path: 'servicios/:hotel_name/:habitacion_name',
+        path: 'servicios/hospedaje/:hotel_name/:habitacion_detail',
+        component: HabitacionViewComponent,
+      },
+      /* {
+        path: 'servicios/restaurante/:restaurante_name',
+        component: RestaurantViewComponent,
+      },
+      {
+        path: 'servicios/restaurante/:hotel_name/:habitacion_name',
         component: HabitacionComponent,
-      }
+      } */
     ],
   },
 

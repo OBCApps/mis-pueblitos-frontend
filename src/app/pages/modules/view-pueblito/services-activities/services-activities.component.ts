@@ -4,8 +4,10 @@ import { ModalFiltrosService } from './modal-filtros/modal-filtros.service';
 import { ModalFiltrosComponent } from './modal-filtros/modal-filtros.component';
 import { FormsModule } from '@angular/forms';
 import { HotelesService } from '../../../../services/hoteles.service';
-import { DtoHoteles } from '../hoteles/entities/DtoHoteles';
+import { DtoHoteles } from './hospedajes/entities/DtoHoteles';
 import { Router, RouterLink } from '@angular/router';
+import { FiltroGeneralServicios, FiltroHabitaciones, FiltroRestaurantes, FiltroTours } from './entities/filtroGeneralServicios';
+import { HabitacionService } from '../../../../services/habitacion.service';
 
 @Component({
   selector: 'app-services-activities',
@@ -20,49 +22,102 @@ export class ServicesActivitiesComponent implements OnInit {
   constructor(
     private titleService: TitleService,
     private modalService: ModalFiltrosService,
-    private hotelesService:HotelesService,
+    private hotelesService: HotelesService,
+    private habitacionService: HabitacionService,
     private router: Router,
   ) { }
 
   ngOnInit() {
+    // --------- Change title
     const dataNavar = {
       sidebar: 'servicios',
     };
     this.transferedDataToNavar(dataNavar);
-    this.getHoteles();
+
+
+    // ------ GET FIRST FILTER
+    this.filtroBusqueda.typeServicio = 'HOSP'
+    this.get_list_filters(this.filtroBusqueda);
   }
 
+  // --------- Change title
   transferedDataToNavar(value: any): void {
     this.titleService.setTitle(value);
   }
 
+  // --------------- LOADS ------------ \\
+  filtroBusqueda: FiltroGeneralServicios = new FiltroGeneralServicios();
+  list_resultadoBusqueda: any[] = []
+  get_list_filters(filtro: FiltroGeneralServicios) {
 
+    switch (filtro.typeServicio) {
+      case ('HOSP'): {
+        this.load_habitaciones(filtro.filtroHabitaciones);
+        break;
+      }
+      case ('REST'): {
+        this.load_restaurantes(filtro.filtroRestaurantes);
+        break;
+      }
+      case ('TOUR'): {
+        this.load_tours(filtro.filtroTurs);
+        break;
+      }
+    }
 
-  // ------------- OPCION PARA LOS FILTROS  ------------- \\
+  }
+
+  // ------------- OPCION PARA LOS FILTROS  ------------- 
   openModalFilters() {
     var data = {
       option: 'open',
       valueInput: this.service_to_show
     }
-    console.log("operjn", data);
-
     this.modalService.activateModal(data);
   }
-  selectFilterOptions(event: any) {
-    console.log("BUSCAR EN APi", event);
+  selectFilterOptions() {
 
   }
-
-  list_hospedaje: DtoHoteles[] = [];
-  getHoteles(){
-    this.hotelesService.get_hoteles().subscribe((data)=>{
-      this.list_hospedaje = data;
-    })
+  // ------------- LOADS SERVICIOS --------------- 
+  load_habitaciones(item: FiltroHabitaciones) {
+    // ---- Aqui retornara todas las habitaciones. solamente con la informacion necesaria para mostrar la lista    
+    /* this.habitacionService.get_habitaciones_byFiltro(item).subscribe(
+      (data: any) => {
+        this.list_resultadoBusqueda = data;
+      } , err=> {
+        console.log("NO ENCONTRO");
+        
+      }
+    ); */
+    this.habitacionService.get_habitaciones().subscribe(
+      (data: any) => {
+        this.list_resultadoBusqueda = data;
+      } , err=> {
+        console.log("NO ENCONTRO");
+        
+      }
+    );
   }
 
-  gotoHospedaje(item:DtoHoteles){
-    this.router.navigate([`${this.router.url}`, item.name_route]);
+  load_restaurantes(item: FiltroRestaurantes) {
+    /* this.habitacionService.get_habitaciones_byFiltro(item).subscribe(
+      (data: any) => {
+
+    }); */
+  }
+
+  load_tours(item: FiltroTours) {
+    /* this.habitacionService.get_habitaciones_byFiltro(item).subscribe(
+      (data: any) => {
+
+    }); */
   }
 
 
+  // ------------ SELECT HABITACION  ---------------- 
+  gotoHabitacion(item: any) {
+    console.log("item", item);
+    
+    this.router.navigate(['home','Ancash','Chacas','servicios', 'hospedaje', 'hotel-chacas' , item.name_route])
+  }
 }
