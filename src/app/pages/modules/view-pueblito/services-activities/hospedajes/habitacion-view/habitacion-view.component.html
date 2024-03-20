@@ -1,1 +1,20 @@
-<p>Aqui se mostrara la informacion de la habitacion seleccionada!</p>
+@if (loading) {
+ <h1>LOADING...</h1>
+} @else {
+  <h1>{{habitacion.nombre}}</h1>
+  <span>{{habitacion.hotelNombre}}</span>
+  <span>{{habitacion.hotel.estrellas}}</span>
+
+  <span>Descripción</span>
+  <p>{{habitacion.descripcion}}</p>
+
+  <span>Que te Ofrecemos</span>
+  <div class="grid grid-cols-2 gap-4">
+    @for (item of habitacion.ofrece.servicios; track item.servicio) {
+      <div>
+        <span>{{item.servicio}}</span>
+        <span>{{item.descripcion}}</span>
+      </div>
+    }
+  </div>
+}
