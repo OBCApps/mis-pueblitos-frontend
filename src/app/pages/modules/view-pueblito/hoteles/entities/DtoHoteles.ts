@@ -9,7 +9,7 @@ export class DtoHoteles {
       {
         servicio: string;
         descripcion: string;
-      },
+      }
     ];
   };
   lugar: string;
@@ -19,7 +19,7 @@ export class DtoHoteles {
       {
         tipo: string;
         valor: string;
-      },
+      }
     ];
     redes_sociales: [
       {
@@ -32,4 +32,30 @@ export class DtoHoteles {
   fotos: {};
   descripcion: string;
   name_route: string;
+  habitaciones: [
+    {
+      id: string;
+      nombre: string;
+      ofrece: {
+        servicios: [
+          {
+            servicio: string;
+            descripcion: string;
+          }
+        ];
+      };
+      tipoMoneda: string;
+      precio: number;
+      disponible: boolean;
+      descripcion: string;
+      personas: number;
+      camas: number;
+      tipo: string;
+      fotos: object;
+      hotelId: string;
+      hotelNombre: string;
+      estrellas: number;
+      name_route: string;
+    }
+  ];
 }

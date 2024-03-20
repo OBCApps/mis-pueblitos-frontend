@@ -34,5 +34,9 @@ export class HotelesComponent {
       this.loading = false;
     });
   }
+
+  gotoHabitacion(hotel_name,habitacion_name){
+    this.router.navigate([this.router.url, habitacion_name]);
+  }
 }
 
