@@ -43,7 +43,7 @@ export class ModalFiltrosComponent implements OnInit {
 
     this.general_loads();
   }
-  // ------------ SEARCH LOCATIONS ------------- \\  
+  // ------------ SEARCH LOCATIONS ------------- \\
   general_loads() {
     /* this.load_tipos_hospedaje();
     this.load_tipos_habitaciones();
@@ -92,16 +92,13 @@ export class ModalFiltrosComponent implements OnInit {
     }
   }
 
-  
+
   activate_modal(option: any) {
     if (option == 'close') {
       this.Modal.hide();
       this.valueInput = null;
     } else if (option == 'open') {
       this.Modal.show();
-
-      
-
     }
   }
 

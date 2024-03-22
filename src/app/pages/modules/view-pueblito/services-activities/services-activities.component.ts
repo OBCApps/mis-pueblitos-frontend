@@ -67,7 +67,7 @@ export class ServicesActivitiesComponent implements OnInit {
 
   }
 
-  // ------------- OPCION PARA LOS FILTROS  ------------- 
+  // ------------- OPCION PARA LOS FILTROS  -------------
   openModalFilters() {
     var data = {
       option: 'open',
@@ -78,25 +78,26 @@ export class ServicesActivitiesComponent implements OnInit {
   selectFilterOptions() {
 
   }
-  // ------------- LOADS SERVICIOS --------------- 
+  // ------------- LOADS SERVICIOS ---------------
   load_habitaciones(item: FiltroHabitaciones) {
-    // ---- Aqui retornara todas las habitaciones. solamente con la informacion necesaria para mostrar la lista    
-    /* this.habitacionService.get_habitaciones_byFiltro(item).subscribe(
+    // ---- Aqui retornara todas las habitaciones. solamente con la informacion necesaria para mostrar la lista
+    this.habitacionService.get_habitaciones_byFiltro(item).subscribe(
       (data: any) => {
         this.list_resultadoBusqueda = data;
       } , err=> {
         console.log("NO ENCONTRO");
-        
-      }
-    ); */
-    this.habitacionService.get_habitaciones().subscribe(
-      (data: any) => {
-        this.list_resultadoBusqueda = data;
-      } , err=> {
-        console.log("NO ENCONTRO");
-        
+
       }
     );
+
+    /*this.habitacionService.get_habitaciones().subscribe(
+      (data: any) => {
+        this.list_resultadoBusqueda = data;
+      } , err=> {
+        console.log("NO ENCONTRO");
+
+      }
+    );*/
   }
 
   load_restaurantes(item: FiltroRestaurantes) {
@@ -114,10 +115,10 @@ export class ServicesActivitiesComponent implements OnInit {
   }
 
 
-  // ------------ SELECT HABITACION  ---------------- 
+  // ------------ SELECT HABITACION  ----------------
   gotoHabitacion(item: any) {
     console.log("item", item);
-    
+
     this.router.navigate(['home','Ancash','Chacas','servicios', 'hospedaje', 'hotel-chacas' , item.name_route])
   }
 }

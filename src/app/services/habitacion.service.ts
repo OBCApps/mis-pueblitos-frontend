@@ -21,7 +21,7 @@ export class HabitacionService {
   }
 
   get_habitaciones_byFiltro(filtro : FiltroHabitaciones): Observable<any[]> {
-    return this.http.post<any[]>(this.SERVER_HABITACION , filtro).pipe(
+    return this.http.post<any[]>(`${this.SERVER_HABITACION}/filter`, filtro).pipe(
       map((response) => { return response })
     );
   }
