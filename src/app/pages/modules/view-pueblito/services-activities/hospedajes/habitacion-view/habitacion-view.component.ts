@@ -17,20 +17,19 @@ export class HabitacionViewComponent {
   ) {}
 
   name_route = '';
-  habitacion: Habitacion;
+  dtoHabitacionInfo: Habitacion = new Habitacion();
   loading = false;
 
   ngOnInit() {
     this.name_route = this.router.url.split('/').pop();
-    console.log('this.router.url', this.router.url);
     this.loading = true;
     this.getHabitacion();
   }
 
   getHabitacion() {
     this.habitacionService.get_habitacion_by_name_route(this.name_route).subscribe(
-      (response) => {
-        this.habitacion = response;
+      (response : Habitacion) => {
+        this.dtoHabitacionInfo = response;
         console.log('response', response);
         this.loading = false;
       },

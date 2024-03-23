@@ -3,6 +3,7 @@ import { API_SERVER } from '../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { FiltroHabitaciones } from '../pages/modules/view-pueblito/services-activities/entities/filtroGeneralServicios';
+import { Habitacion } from '../pages/modules/view-pueblito/services-activities/hospedajes/habitacion-view/entities/DtoHabitacion';
 
 @Injectable({
   providedIn: 'root'
@@ -32,8 +33,8 @@ export class HabitacionService {
     );
   }
 
-  get_habitacion_by_name_route(name_route: any): Observable<any> {
-    return this.http.get<any>(this.SERVER_HABITACION + '/name_route/' + name_route).pipe(
+  get_habitacion_by_name_route(name_route: any): Observable<Habitacion> {
+    return this.http.get<Habitacion>(this.SERVER_HABITACION + '/name_route/' + name_route).pipe(
       map((response) => { return response })
     );
   }

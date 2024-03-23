@@ -1,0 +1,12 @@
+.title {
+    @apply text-secondary text-xl md:text-2xl font-black font-Battambang leading-6
+}
+
+
+.subtitle {
+    @apply text-terceary text-sm md:text-xl font-bold tracking-tight
+}
+
+.text-description {
+    @apply text-terceary text-xs md:text-sm text-justify font-normal font-Battambang leading-normal 
+}
