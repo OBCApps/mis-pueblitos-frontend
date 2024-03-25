@@ -49,7 +49,7 @@ export class ServicesActivitiesComponent implements OnInit {
   filtroBusqueda: FiltroGeneralServicios = new FiltroGeneralServicios();
   list_resultadoBusqueda: any[] = []
   get_list_filters(filtro: FiltroGeneralServicios) {
-
+    console.log("filtro", filtro,filtro.filtroHabitaciones);
     switch (filtro.typeServicio) {
       case ('HOSP'): {
         this.load_habitaciones(filtro.filtroHabitaciones);
@@ -80,6 +80,8 @@ export class ServicesActivitiesComponent implements OnInit {
   }
   // ------------- LOADS SERVICIOS ---------------
   load_habitaciones(item: FiltroHabitaciones) {
+    console.log("item", item);
+    item.precio = +item.precio;
     // ---- Aqui retornara todas las habitaciones. solamente con la informacion necesaria para mostrar la lista
     this.habitacionService.get_habitaciones_byFiltro(item).subscribe(
       (data: any) => {

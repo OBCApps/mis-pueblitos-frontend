@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Inject, OnInit, Output, PLATFORM_ID } from '@angular/core';
+import { map } from 'rxjs';
+import {
+  Component,
+  EventEmitter,
+  Inject,
+  OnInit,
+  Output,
+  PLATFORM_ID,
+} from '@angular/core';
 
 import { ModalFiltrosService } from './modal-filtros.service';
 import { isPlatformBrowser } from '@angular/common';
@@ -12,16 +20,44 @@ import { FiltroGeneralServicios } from '../entities/filtroGeneralServicios';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './modal-filtros.component.html',
-  styleUrl: './modal-filtros.component.scss'
+  styleUrl: './modal-filtros.component.scss',
 })
 export class ModalFiltrosComponent implements OnInit {
-
-
-
   @Output() responseModal = new EventEmitter<any>();
 
   Modal: any;
   show: any;
+  list_tipos_hospedaje: any[] = [
+    { value: 'Hotel', checked: false },
+    { value: 'Cabaña', checked: false },
+    { value: 'Casa', checked: false },
+    { value: 'Departamento', checked: false },
+  ];
+
+  list_tipos_habitaciones: any[] = [
+    { value: 'Individual', checked: false },
+    { value: 'Doble', checked: false },
+    { value: 'Suite', checked: false },
+    { value: 'Triple', checked: false },
+    { value: 'Familiar', checked: false },
+    { value: 'Ejecutiva', checked: false },
+    { value: 'Estandar', checked: false },
+    { value: 'twin', checked: false },
+  ];
+  list_tipos_servicios: any[] = [
+    { value: 'Muebles para ropa', checked: false },
+    { value: 'Wifi', checked: false },
+    { value: 'Televisor de Pantalla Plana', checked: false },
+    { value: 'Aire Acondicionado/calefacción', checked: false },
+    { value: 'Cama 2 plazas', checked: false },
+    { value: 'Zonas de Trabajo', checked: false },
+    { value: 'Baño Privado', checked: false },
+    { value: 'Servicio de Limpieza', checked: false },
+  ];
+  list_idiomas: any[] = [
+    { value: 'español', checked: false },
+    { value: 'inglés', checked: false },
+  ];
 
   valueInput: any;
   valueOutput: FiltroGeneralServicios = new FiltroGeneralServicios();
@@ -29,13 +65,11 @@ export class ModalFiltrosComponent implements OnInit {
     private modalService: ModalFiltrosService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
-
     this.modalService.modalState$.subscribe((option) => {
       this.valueInput = option.valueInput;
       this.valueOutput.typeServicio = option.valueInput;
       this.activate_modal(option.option);
     });
-
   }
 
   ngOnInit(): void {
@@ -53,10 +87,34 @@ export class ModalFiltrosComponent implements OnInit {
 
   // ---------------- SEND LOCATION SELECTED -------------- \\
   selectFilters(item: any) {
+    let temp = [];
+    this.list_tipos_hospedaje.map((item) => {
+      if (item.checked) {
+        temp.push(item.value);
+      }
+    });
+    this.valueOutput.filtroHabitaciones.tipoHospedaje = temp;
+
+    temp = [];
+    this.list_tipos_habitaciones.map((item) => {
+      if (item.checked) {
+        temp.push(item.value);
+      }
+    });
+    this.valueOutput.filtroHabitaciones.tipoHabitacion = temp;
+    temp = [];
+    this.list_tipos_servicios.map((item) => {
+      if (item.checked) {
+        temp.push(item.value);
+      }
+    });
+    this.valueOutput.filtroHabitaciones.servicios = temp;
     const data = {
       selected: item,
-      valueInput: this.valueInput
-    }
+      valueInput: this.valueInput,
+    };
+    console.log(this.valueOutput);
+
     this.responseModal.emit(data);
     this.Modal.hide();
   }
@@ -84,14 +142,16 @@ export class ModalFiltrosComponent implements OnInit {
 
       const instanceOptions = {
         id: 'modal-filter-services',
-        override: true
+        override: true,
       };
 
       this.Modal = new Modal($targetEl, options, instanceOptions);
-
     }
   }
 
+  showData(item: any) {
+    console.log(item);
+  }
 
   activate_modal(option: any) {
     if (option == 'close') {
@@ -101,5 +161,4 @@ export class ModalFiltrosComponent implements OnInit {
       this.Modal.show();
     }
   }
-
 }

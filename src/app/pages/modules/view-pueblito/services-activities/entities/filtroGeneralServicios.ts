@@ -9,10 +9,10 @@ export class FiltroGeneralServicios {
 export class FiltroHabitaciones {
     // ------ FILTRO HOSPEDAJE
     precio: number;
-    tipoHospedaje: string;
-    tipoHabitacion: string;
-    servicios: string;
-    idioma: string;
+    tipoHospedaje: string[];
+    tipoHabitacion: string[];
+    servicios: string[];
+    idioma: string[];
 }
 
 export class FiltroTours {
