@@ -17,7 +17,7 @@ export class HotelViewComponent {
     private router: Router
   ) { }
 
-  hotel: DtoHoteles;
+  dtoHotelInfo: DtoHoteles = new DtoHoteles();
   name_route: string;
   loading = false;
   ngOnInit() {
@@ -30,7 +30,7 @@ export class HotelViewComponent {
     this.loading = true;
     console.log('name_route', name_route);
     this.hotelesService.get_hotel_by_name_route(name_route).subscribe((response) => {
-      this.hotel = response;
+      this.dtoHotelInfo = response;
       console.log('response', response);
       this.loading = false;
     });
