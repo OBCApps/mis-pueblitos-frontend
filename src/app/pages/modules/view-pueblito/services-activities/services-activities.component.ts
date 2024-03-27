@@ -115,12 +115,8 @@ export class ServicesActivitiesComponent implements OnInit {
   }
 
   load_tours(item: FiltroTours) {
-    console.log("item tour");
-    /* this.habitacionService.get_habitaciones_byFiltro(item).subscribe(
-      (data: any) => {
-
-    }); */
-    this.toursService.get_tours().subscribe(
+    console.log("item tour",item);
+    this.toursService.filter_tours(item).subscribe(
       (data: any) => {
         this.list_resultadoBusqueda = data;
         console.log("tours:",data);

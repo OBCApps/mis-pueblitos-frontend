@@ -60,9 +60,6 @@
           <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Tipo de Hospedaje
           </label>
-          <!-- <input type="text" id="first_name" [(ngModel)]="valueOutput.filtroHabitaciones.tipoHospedaje"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="John" required /> -->
           <div class="grid grid-cols-2">
             @for (hospedaje of this.list_tipos_hospedaje; track hospedaje.value) {
             <div class="flex items-center mb-4">
@@ -78,9 +75,6 @@
           <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Tipo de Habitacion
           </label>
-          <!--<input type="text" id="first_name" [(ngModel)]="valueOutput.filtroHabitaciones.tipoHabitacion"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="John" required />-->
           <div class="grid grid-cols-2">
             @for (habitacion of this.list_tipos_habitaciones; track habitacion.value) {
             <div class="flex items-center mb-4">
@@ -96,9 +90,6 @@
           <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
             Servicios
           </label>
-          <!--<input type="text" id="first_name" [(ngModel)]="valueOutput.filtroHabitaciones.servicios"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="John" required />-->
           <div class="grid grid-cols-2">
             @for (servicios of this.list_tipos_servicios; track servicios.value) {
             <div class="flex items-center mb-4">
@@ -114,9 +105,6 @@
           <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
             Idiomas
           </label>
-          <!--<input type="text" id="first_name" [(ngModel)]="valueOutput.filtroHabitaciones.idioma"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="John" required />-->
           <div class="grid grid-cols-2">
             @for (idioma of this.list_idiomas; track idioma.value) {
             <div class="flex items-center mb-4">
@@ -148,30 +136,57 @@
           <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
             Tipo Tour
           </label>
-          <input type="text" id="first_name" [(ngModel)]="valueOutput.filtroTurs.tipoTour"
+          <div class="grid grid-cols-2">
+            @for (tipos_tours of this.list_tipos_tours; track tipos_tours.value) {
+            <div class="flex items-center mb-4">
+              <input id="default-checkbox" type="checkbox" [id]="tipos_tours.value" [(ngModel)]="tipos_tours.checked"
+                class="w-4 h-4  border--300 rounded focus:ring-primary text-red-500 checked:bg-primary focus:ring-2 bg-gray-50">
+              <label for="default-checkbox"
+                class="ms-2 text-sm font-medium text-gray-400 dark:text-gray-500">{{tipos_tours.value}}</label>
+            </div>
+            }
+          </div>
+        </div>
+        <div>
+          <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
+            Duración
+          </label>
+          <input type="number" id="first_name" [(ngModel)]="valueOutput.filtroTurs.duracion"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="John" required />
-
         </div>
         <div>
           <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
             Tamaño Grupo
           </label>
-          <input type="text" id="first_name" [(ngModel)]="valueOutput.filtroTurs.cantidadPersonasTour"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="John" required />
+          <div class="grid grid-cols-2">
+            @for (group_size of this.list_group_size; track group_size.value) {
+            <div class="flex items-center mb-4">
+              <input id="default-checkbox" type="checkbox" [id]="group_size.value" [(ngModel)]="group_size.checked"
+                class="w-4 h-4  border--300 rounded focus:ring-primary text-red-500 checked:bg-primary focus:ring-2 bg-gray-50">
+              <label for="default-checkbox"
+                class="ms-2 text-sm font-medium text-gray-400 dark:text-gray-500">{{group_size.value}}</label>
+            </div>
+            }
+          </div>
 
         </div>
         <div>
-
           <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
-            Duración
+            Idiomas
           </label>
-          <input type="text" id="first_name" [(ngModel)]="valueOutput.filtroTurs.duracionTour"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="John" required />
-
+          <div class="grid grid-cols-2">
+            @for (idioma of this.list_idiomas; track idioma.value) {
+            <div class="flex items-center mb-4">
+              <input id="default-checkbox" type="checkbox" [id]="idioma.value" [(ngModel)]="idioma.checked"
+                class="w-4 h-4  border--300 rounded focus:ring-primary text-red-500 checked:bg-primary focus:ring-2 bg-gray-50">
+              <label for="default-checkbox"
+                class="ms-2 text-sm font-medium text-gray-400 dark:text-gray-500">{{idioma.value}}</label>
+            </div>
+            }
+          </div>
         </div>
+        
 
 
       </div>

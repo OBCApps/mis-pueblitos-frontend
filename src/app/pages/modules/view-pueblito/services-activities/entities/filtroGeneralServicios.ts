@@ -16,12 +16,12 @@ export class FiltroHabitaciones {
 }
 
 export class FiltroTours {
-    // ------ FILTRO HOSPEDAJE
+    // ------ FILTRO TOUR
     precio: number;
-    tipoTour: string
-    cantidadPersonasTour: string
-    duracionTour: string
-
+    tipo: string[];
+    tamanioGrupo: string[];
+    duracion: number;
+    idioma: string[];
 }
 
 export class FiltroRestaurantes {

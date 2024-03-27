@@ -14,6 +14,12 @@ export class ToursService {
     private http: HttpClient,
   ) { }
 
+  filter_tours(data: any): Observable<any> {
+    return this.http.post<any>(this.SERVER_TOURS + '/filter', data).pipe(
+      map((response) => { return response })
+    );
+  }
+
   get_tours(): Observable<any> {
     return this.http.get<any>(this.SERVER_TOURS).pipe(
       map((response) => { return response })

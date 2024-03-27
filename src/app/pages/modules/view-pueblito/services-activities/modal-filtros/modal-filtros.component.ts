@@ -27,6 +27,8 @@ export class ModalFiltrosComponent implements OnInit {
 
   Modal: any;
   show: any;
+
+  // filter Hospeadaje
   list_tipos_hospedaje: any[] = [
     { value: 'Hotel', checked: false },
     { value: 'Cabaña', checked: false },
@@ -54,6 +56,21 @@ export class ModalFiltrosComponent implements OnInit {
     { value: 'Baño Privado', checked: false },
     { value: 'Servicio de Limpieza', checked: false },
   ];
+
+  // filter Tours
+  list_tipos_tours: any[] = [
+    { value: 'Tours culturales', checked: false },
+    { value: 'Tour experiencia', checked: false },
+    { value: 'Excursiones naturales', checked: false },
+    { value: 'Deportes de aventura', checked: false },
+  ];
+
+  list_group_size: any[] = [
+    { value: 'Pequeño (1-5 personas)', checked: false },
+    { value: 'Mediano (6-10 personas)', checked: false },
+    { value: 'Grande (mas de 10 personas)', checked: false },
+  ];
+
   list_idiomas: any[] = [
     { value: 'español', checked: false },
     { value: 'inglés', checked: false },
@@ -88,27 +105,63 @@ export class ModalFiltrosComponent implements OnInit {
   // ---------------- SEND LOCATION SELECTED -------------- \\
   selectFilters(item: any) {
     let temp = [];
-    this.list_tipos_hospedaje.map((item) => {
-      if (item.checked) {
-        temp.push(item.value);
-      }
-    });
-    this.valueOutput.filtroHabitaciones.tipoHospedaje = temp;
+    if (this.valueOutput.typeServicio == 'HOSP') {
+      this.list_tipos_hospedaje.map((item) => {
+        if (item.checked) {
+          temp.push(item.value);
+        }
+      });
+      this.valueOutput.filtroHabitaciones.tipoHospedaje = temp;
 
-    temp = [];
-    this.list_tipos_habitaciones.map((item) => {
-      if (item.checked) {
-        temp.push(item.value);
-      }
-    });
-    this.valueOutput.filtroHabitaciones.tipoHabitacion = temp;
-    temp = [];
-    this.list_tipos_servicios.map((item) => {
-      if (item.checked) {
-        temp.push(item.value);
-      }
-    });
-    this.valueOutput.filtroHabitaciones.servicios = temp;
+      temp = [];
+      this.list_tipos_habitaciones.map((item) => {
+        if (item.checked) {
+          temp.push(item.value);
+        }
+      });
+      this.valueOutput.filtroHabitaciones.tipoHabitacion = temp;
+      temp = [];
+      this.list_tipos_servicios.map((item) => {
+        if (item.checked) {
+          temp.push(item.value);
+        }
+      });
+      this.valueOutput.filtroHabitaciones.servicios = temp;
+      temp = [];
+
+      this.list_idiomas.map((item) => {
+        if (item.checked) {
+          temp.push(item.value);
+        }
+      });
+      this.valueOutput.filtroHabitaciones.idioma = temp;
+      temp = [];
+    } else if (this.valueOutput.typeServicio == 'TOUR') {
+      this.list_tipos_tours.map((item) => {
+        if (item.checked) {
+          temp.push(item.value);
+        }
+      });
+      this.valueOutput.filtroTurs.tipo = temp;
+      temp = [];
+
+      this.list_group_size.map((item) => {
+        if (item.checked) {
+          temp.push(item.value);
+        }
+      });
+      this.valueOutput.filtroTurs.tamanioGrupo = temp;
+      temp = [];
+
+      this.list_idiomas.map((item) => {
+        if (item.checked) {
+          temp.push(item.value);
+        }
+      });
+      this.valueOutput.filtroTurs.idioma = temp;
+      temp = [];
+    }
+
     const data = {
       selected: item,
       valueInput: this.valueInput,
