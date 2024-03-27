@@ -1,0 +1,61 @@
+@if (loading) {
+<h1>LOADING...</h1>
+} @else {
+<div class="flex flex-col w-full">
+  <h1>{{agencia.nombre}}</h1>
+  <span>Estrellas: {{agencia.estrellas}}</span>
+  <span>{{agencia.direccion}}</span>
+  <a href="{{agencia.mapa}}" target="_blank" ref="noreferrer noopener">Ver Mapa</a>
+  <!-- FOTOS -->
+  <!-- FIN -->
+  <div class="flex flex-row justify-between w-full">
+    <ul class="flex flex-row justify-start">
+      @for (contacts of getKeysObject(agencia.contactos); track $index) {
+      @if(contacts!='whatsapp'){
+      <li class="mr-2"><a href="{{agencia.contactos[contacts]}}" target="_blank"
+          ref="noreferrer noopener">{{contacts}}</a></li>
+      }
+      }
+    </ul>
+    <a href="{{agencia.contactos['whatsapp']}}" target="_blank" ref="noreferrer noopener">whatsapp</a>
+  </div>
+
+  <div class="flex flex-col">
+    <h2>Descripcion</h2>
+    <p>{{agencia.descripcion}}</p>
+    <div class="flex flex-row">
+      <div class="flex flex-col">
+        <span>Mision</span>
+        <p>{{agencia.mision}}</p>
+      </div>
+      <div class="flex flex-col">
+        <span>Vision</span>
+        <p>{{agencia.vision}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col">
+    <h2>Equipo y Guias Turisticas</h2>
+    <p>{{agencia.equipo}}</p>
+  </div>
+
+  <div class="flex flex-col">
+    <h2>Informacion Adicional</h2>
+    <ul>
+      @for(infoAdicional of agencia.infoAdicional; track $index){
+      <li>
+        <strong>{{infoAdicional.split(":")[0] }}:</strong>
+        <span>{{infoAdicional.split(":")[1] }}</span>
+      </li>
+      }
+    </ul>
+  </div>
+
+  <div class="flex flex-col">
+    <h2>Tours y Experiencias</h2>
+    <!-- AGENCIAS SIMILARES -->
+  </div>
+
+</div>
+}

@@ -8,7 +8,7 @@ export class FiltroGeneralServicios {
 
 export class FiltroHabitaciones {
     // ------ FILTRO HOSPEDAJE
-    precio: number;
+    precio: number=0;
     tipoHospedaje: string[];
     tipoHabitacion: string[];
     servicios: string[];

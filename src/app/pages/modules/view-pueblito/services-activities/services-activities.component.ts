@@ -8,6 +8,7 @@ import { DtoHoteles } from './hospedajes/entities/DtoHoteles';
 import { Router, RouterLink } from '@angular/router';
 import { FiltroGeneralServicios, FiltroHabitaciones, FiltroRestaurantes, FiltroTours } from './entities/filtroGeneralServicios';
 import { HabitacionService } from '../../../../services/habitacion.service';
+import { ToursService } from '../../../../services/tours.service';
 
 @Component({
   selector: 'app-services-activities',
@@ -17,15 +18,17 @@ import { HabitacionService } from '../../../../services/habitacion.service';
   styleUrl: './services-activities.component.scss'
 })
 export class ServicesActivitiesComponent implements OnInit {
-  service_to_show = 'HOSP'
 
   constructor(
     private titleService: TitleService,
     private modalService: ModalFiltrosService,
     private hotelesService: HotelesService,
     private habitacionService: HabitacionService,
+    private toursService: ToursService,
     private router: Router,
   ) { }
+
+  loading = false;
 
   ngOnInit() {
     // --------- Change title
@@ -49,7 +52,8 @@ export class ServicesActivitiesComponent implements OnInit {
   filtroBusqueda: FiltroGeneralServicios = new FiltroGeneralServicios();
   list_resultadoBusqueda: any[] = []
   get_list_filters(filtro: FiltroGeneralServicios) {
-    console.log("filtro", filtro,filtro.filtroHabitaciones);
+    console.log("filtro", filtro.typeServicio, filtro,filtro.filtroHabitaciones);
+    this.loading = true;
     switch (filtro.typeServicio) {
       case ('HOSP'): {
         this.load_habitaciones(filtro.filtroHabitaciones);
@@ -71,7 +75,7 @@ export class ServicesActivitiesComponent implements OnInit {
   openModalFilters() {
     var data = {
       option: 'open',
-      valueInput: this.service_to_show
+      valueInput: this.filtroBusqueda.typeServicio,
     }
     this.modalService.activateModal(data);
   }
@@ -86,8 +90,9 @@ export class ServicesActivitiesComponent implements OnInit {
     this.habitacionService.get_habitaciones_byFiltro(item).subscribe(
       (data: any) => {
         this.list_resultadoBusqueda = data;
+        //console.log(data);
       } , err=> {
-        console.log("NO ENCONTRO");
+        console.log("NO ENCONTRO",err);
 
       }
     );
@@ -110,10 +115,20 @@ export class ServicesActivitiesComponent implements OnInit {
   }
 
   load_tours(item: FiltroTours) {
+    console.log("item tour");
     /* this.habitacionService.get_habitaciones_byFiltro(item).subscribe(
       (data: any) => {
 
     }); */
+    this.toursService.get_tours().subscribe(
+      (data: any) => {
+        this.list_resultadoBusqueda = data;
+        console.log("tours:",data);
+        this.loading = false;
+      } , err=> {
+        console.log("NO ENCONTRO");
+      }
+    );
   }
 
 
@@ -122,5 +137,9 @@ export class ServicesActivitiesComponent implements OnInit {
     console.log("item", item);
 
     this.router.navigate(['home','Ancash','Chacas','servicios', 'hospedaje', 'hotel-chacas' , item.name_route])
+  }
+
+  gotoTour(item:any){
+    this.router.navigate(['home','Ancash','Chacas','servicios', 'tour', item.agencia.name_route , item.name_route]);
   }
 }

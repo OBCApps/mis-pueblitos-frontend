@@ -1,1 +1,103 @@
-<p>tour-view works!</p>
+@if(loading){
+<h1>LOADING...</h1>
+}@else{
+<h1>{{tour.nombre}}</h1>
+<h3>{{tour.agencia.nombre}}</h3>
+<span>estrellas: {{tour.agencia.estrellas}}</span>
+<span (click)="gotoAgencia()">ver perfil</span>
+<!--INICIO FOTOS-->
+
+<!--FIN FOTOS-->
+<hr />
+<div class="flex flex-row w-full">
+  <div class="flex flex-col">
+    <h2>Descripcion</h2>
+    <p>{{tour.descripcion}}</p>
+  </div>
+  <div class="flex flex-col">
+    <span>Datos</span>
+    <div class="flex flex-row">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+      </svg>
+      {{tour.duracion}}horas
+    </div>
+    <p class="mb-3 font-normal text-primary dark:text-gray-400">
+      S/. {{tour.precio}} / persona
+    </p>
+  </div>
+</div>
+
+<div class="flex flex-col">
+  <h2>Destinos</h2>
+  @for(destino of tour.destinos; track $index){
+  <span>{{destino}}</span>
+  }
+</div>
+
+<div class="flex flex-col">
+  <h2>Itinerario</h2>
+  @for(itinerario of tour.itinerario; track $index){
+  <strong>{{itinerario.dia}}:</strong>
+  <ul>
+    @for(actividad of itinerario.actividades; track $index){
+    <li>{{actividad}}</li>
+    }
+  </ul>
+  }
+</div>
+
+<div class="flex flex-col">
+  <h2>Que Incluye</h2>
+  <div class="flex flex-row">
+    <ul>
+      @for(incluye of tour.incluye; track $index){
+      <li class="flex flex-row">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+        </svg>
+        <span>{{incluye}}</span>
+      </li>
+      }
+    </ul>
+    <ul>
+      @for(noIncluye of tour.noIncluye; track $index){
+      <li class="flex flex-row">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+        <span>{{noIncluye}}</span>
+      </li>
+      }
+    </ul>
+  </div>
+</div>
+<div class="flex flex-col">
+  <h2>Recomendaciones</h2>
+  <ul>
+    @for(recomendacion of tour.recomendaciones; track $index){
+    <li>{{recomendacion}}</li>
+    }
+  </ul>
+</div>
+<div class="flex flex-col">
+  <h2>Te puede interesar</h2>
+  <!-- TOURS SIMILARES -->
+</div>
+
+<div class="flex flex-col">
+  <h2>Información Adicional</h2>
+  <ul>
+    @for(infoAdicional of tour.infoAdicional; track $index){
+    <li>
+      <strong>{{infoAdicional.split(":")[0] }}:</strong>
+      <span>{{infoAdicional.split(":")[1] }}</span>
+    </li>
+    }
+  </ul>
+</div>
+
+}
