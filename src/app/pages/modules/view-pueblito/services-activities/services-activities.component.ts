@@ -22,7 +22,6 @@ export class ServicesActivitiesComponent implements OnInit {
   constructor(
     private titleService: TitleService,
     private modalService: ModalFiltrosService,
-    private hotelesService: HotelesService,
     private habitacionService: HabitacionService,
     private toursService: ToursService,
     private router: Router,
@@ -93,7 +92,6 @@ export class ServicesActivitiesComponent implements OnInit {
         //console.log(data);
       } , err=> {
         console.log("NO ENCONTRO",err);
-
       }
     );
 
