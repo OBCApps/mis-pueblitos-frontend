@@ -9,6 +9,7 @@ import { Router, RouterLink } from '@angular/router';
 import { FiltroGeneralServicios, FiltroHabitaciones, FiltroRestaurantes, FiltroTours } from './entities/filtroGeneralServicios';
 import { HabitacionService } from '../../../../services/habitacion.service';
 import { ToursService } from '../../../../services/tours.service';
+import { ResturanteService } from '../../../../services/restaurante.service';
 
 @Component({
   selector: 'app-services-activities',
@@ -24,6 +25,7 @@ export class ServicesActivitiesComponent implements OnInit {
     private modalService: ModalFiltrosService,
     private habitacionService: HabitacionService,
     private toursService: ToursService,
+    private restauranteService: ResturanteService,
     private router: Router,
   ) { }
 
@@ -106,6 +108,15 @@ export class ServicesActivitiesComponent implements OnInit {
   }
 
   load_restaurantes(item: FiltroRestaurantes) {
+    this.restauranteService.get_restaurantes_byFiltro(item).subscribe(
+      (data: any) => {
+        this.list_resultadoBusqueda = data;
+        console.log("restaurantes:",data);
+        this.loading = false;
+      } , err=> {
+        console.log("NO ENCONTRO");
+      }
+    );
     /* this.habitacionService.get_habitaciones_byFiltro(item).subscribe(
       (data: any) => {
 
@@ -135,5 +146,9 @@ export class ServicesActivitiesComponent implements OnInit {
 
   gotoTour(item:any){
     this.router.navigate(['home','Ancash','Chacas','servicios', 'tour', item.agencia.name_route , item.name_route]);
+  }
+
+  gotoRestaurante(item:any){
+    this.router.navigate(['home','Ancash','Chacas','servicios', 'restaurante', item.name_route]);
   }
 }

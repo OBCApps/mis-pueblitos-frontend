@@ -16,7 +16,14 @@ export class Habitacion {
   personas: number;
   camas: number;
   tipo: string;
-  fotos: object;
+  fotos: {
+    gallery: {
+      url: string;
+    };
+    principal: {
+      url: string;
+    };
+  };
   hotelId: string;
   hotelNombre: string;
   estrellas: number;

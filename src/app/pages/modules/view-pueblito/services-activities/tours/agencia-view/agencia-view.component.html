@@ -7,6 +7,11 @@
   <span>{{agencia.direccion}}</span>
   <a href="{{agencia.mapa}}" target="_blank" ref="noreferrer noopener">Ver Mapa</a>
   <!-- FOTOS -->
+  <div class="grid grid-cols-4">
+    @for (item of getKeysObject(agencia.fotos.gallery); track $index) {
+    <img src="{{agencia.fotos.gallery[item]}}" class="h-20 w-20" alt="">
+    }
+  </div>
   <!-- FIN -->
   <div class="flex flex-row justify-between w-full">
     <ul class="flex flex-row justify-start">

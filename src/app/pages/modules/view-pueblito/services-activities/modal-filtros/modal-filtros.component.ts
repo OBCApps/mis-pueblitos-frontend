@@ -76,6 +76,44 @@ export class ModalFiltrosComponent implements OnInit {
     { value: 'inglés', checked: false },
   ];
 
+  // filter Restaurantes
+  list_tipo_establecimiento: any[] = [
+    { value: 'Restaurante', checked: false },
+    { value: 'Campestre', checked: false },
+    { value: 'Picanteria', checked: false },
+    { value: 'Cafeterias', checked: false },
+    { value: 'Bar', checked: false },
+  ];
+
+  list_tipo_cocina: any[] = [
+    { value: 'Tradicional', checked: false },
+    { value: 'Marina', checked: false },
+    { value: 'Fusión Peruana-Internacional', checked: false },
+    { value: 'Peruana', checked: false },
+  ];
+
+  list_hora_atencion: any[] = [
+    { value: 'Mañana', checked: false },
+    { value: 'Tarde', checked: false },
+    { value: 'Noche', checked: false },
+    { value: '24 horas', checked: false },
+  ];
+
+  list_servicios: any[] = [
+    { value: 'Estacionamiento', checked: false },
+    { value: 'Reservas en Línea', checked: false },
+    { value: 'Wifi', checked: false },
+    { value: 'Área de juegos para niños', checked: false },
+    { value: 'Servicio a Domicilio', checked: false },
+    { value: 'Permite mascotas', checked: false },
+  ];
+
+  list_ambientes: any[] = [
+    { value: 'Casual', checked: false },
+    { value: 'Elegante', checked: false },
+    { value: 'Rustico', checked: false },
+  ];
+
   valueInput: any;
   valueOutput: FiltroGeneralServicios = new FiltroGeneralServicios();
   constructor(
@@ -159,6 +197,46 @@ export class ModalFiltrosComponent implements OnInit {
         }
       });
       this.valueOutput.filtroTurs.idioma = temp;
+      temp = [];
+    } else {
+      this.list_tipo_establecimiento.map((item) => {
+        if (item.checked) {
+          temp.push(item.value);
+        }
+      });
+      this.valueOutput.filtroRestaurantes.tipo = temp;
+      temp = [];
+
+      this.list_tipo_cocina.map((item) => {
+        if (item.checked) {
+          temp.push(item.value);
+        }
+      });
+      this.valueOutput.filtroRestaurantes.tipoCocina = temp;
+      temp = [];
+
+      this.list_hora_atencion.map((item) => {
+        if (item.checked) {
+          temp.push(item.value);
+        }
+      });
+      this.valueOutput.filtroRestaurantes.horarioAtencion = temp;
+      temp = [];
+
+      this.list_servicios.map((item) => {
+        if (item.checked) {
+          temp.push(item.value);
+        }
+      });
+      this.valueOutput.filtroRestaurantes.servicios = temp;
+      temp = [];
+
+      this.list_ambientes.map((item) => {
+        if (item.checked) {
+          temp.push(item.value);
+        }
+      });
+      this.valueOutput.filtroRestaurantes.ambiente = temp;
       temp = [];
     }
 

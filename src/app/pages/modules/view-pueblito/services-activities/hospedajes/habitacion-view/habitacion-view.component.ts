@@ -40,4 +40,7 @@ export class HabitacionViewComponent {
     );
   }
 
+  get_Keys(obj: any) {
+    return Object.keys(obj);
+  }
 }

@@ -49,27 +49,12 @@
       <img class="h-56 md:h-72 max-w-full rounded-lg"
         src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg" alt="">
     </div>
-    <div class="grid grid-cols-5 gap-4 md:px-10">
-      <div>
-        <img class="h-28 w-28 max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-      </div>
-      <div>
-        <img class="h-28 w-28 max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
-      </div>
-      <div>
-        <img class="h-28 w-28 max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
-      </div>
-      <div>
-        <img class="h-28 w-28 max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
-      </div>
-      <div>
-        <img class="h-28 w-28 max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt="">
-      </div>
+    <div class="grid grid-cols-4 gap-4 md:px-10">
+      @for (item of get_Keys(dtoHotelInfo.fotos.gallery); track $index) {
+        <div>
+          <img src="{{dtoHotelInfo.fotos.gallery[item]}}" class="h-28 w-28 max-w-full rounded-lg" alt="">
+        </div>
+        }
     </div>
   </div>
 
@@ -245,7 +230,7 @@
     @for (item of dtoHotelInfo.habitaciones; track $index) {
     <div (click)="gotoHabitacion(item.name_route,item.name_route)" class="max-w-sm bg-white border border-gray-200 rounded-2xl shadow cursor-pointer">
       <a>
-        <img class="rounded-t-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg" alt="" />
+        <img class="rounded-t-lg" src="{{item.fotos.principal.url}}" alt="" />
       </a>
       <div class="grid grid-cols-2 p-3">
         <a class="col-span-2">

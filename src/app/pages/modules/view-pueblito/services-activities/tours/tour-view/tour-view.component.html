@@ -6,7 +6,11 @@
 <span>estrellas: {{tour.agencia.estrellas}}</span>
 <span (click)="gotoAgencia()">ver perfil</span>
 <!--INICIO FOTOS-->
-
+<div class="grid grid-cols-4">
+  @for (item of get_Keys(tour.fotos.gallery); track $index) {
+  <img src="{{tour.fotos.gallery[item]}}" class="h-20 w-20" alt="">
+  }
+</div>
 <!--FIN FOTOS-->
 <hr />
 <div class="flex flex-row w-full">

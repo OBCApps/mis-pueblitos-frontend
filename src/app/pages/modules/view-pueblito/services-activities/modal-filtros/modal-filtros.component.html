@@ -120,19 +120,15 @@
       }
       @case ('TOUR') {
       <div class="p-5">
-
         <div>
-
           <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
             Precio
           </label>
           <input type="number" id="first_name" [(ngModel)]="valueOutput.filtroTurs.precio"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="0" required />
-
         </div>
         <div>
-
           <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
             Tipo Tour
           </label>
@@ -169,7 +165,6 @@
             </div>
             }
           </div>
-
         </div>
         <div>
           <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
@@ -189,25 +184,89 @@
       </div>
       }
       @case ('REST') {
-
-      <div>
-        Precio
+      <div class="p-5">
+        <div>
+          <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Precio
+          </label>
+          <input type="number" id="first_name" [(ngModel)]="valueOutput.filtroRestaurantes.precio"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="0" required />
+        </div>
+        <div>
+          <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de
+            establecimiento
+          </label>
+          <div class="grid grid-cols-2">
+            @for (tipo_establecimiento of this.list_tipo_establecimiento; track tipo_establecimiento.value) {
+            <div class="flex items-center mb-4">
+              <input id="default-checkbox" type="checkbox" [id]="tipo_establecimiento.value" [(ngModel)]="tipo_establecimiento.checked"
+                class="w-4 h-4  border--300 rounded focus:ring-primary text-red-500 checked:bg-primary focus:ring-2 bg-gray-50">
+              <label for="default-checkbox"
+                class="ms-2 text-sm font-medium text-gray-400 dark:text-gray-500">{{tipo_establecimiento.value}}</label>
+            </div>
+            }
+          </div>
+        </div>
+        <div>
+          <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de Cocina
+          </label>
+          <div class="grid grid-cols-2">
+            @for (tipo_comida of this.list_tipo_cocina; track tipo_comida.value) {
+            <div class="flex items-center mb-4">
+              <input id="default-checkbox" type="checkbox" [id]="tipo_comida.value" [(ngModel)]="tipo_comida.checked"
+                class="w-4 h-4  border--300 rounded focus:ring-primary text-red-500 checked:bg-primary focus:ring-2 bg-gray-50">
+              <label for="default-checkbox"
+                class="ms-2 text-sm font-medium text-gray-400 dark:text-gray-500">{{tipo_comida.value}}</label>
+            </div>
+            }
+          </div>
+        </div>
+        <div>
+          <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Horario de
+            atencion
+          </label>
+          <div class="grid grid-cols-2">
+            @for (hora_atencion of this.list_hora_atencion; track hora_atencion.value) {
+            <div class="flex items-center mb-4">
+              <input id="default-checkbox" type="checkbox" [id]="hora_atencion.value" [(ngModel)]="hora_atencion.checked"
+                class="w-4 h-4  border--300 rounded focus:ring-primary text-red-500 checked:bg-primary focus:ring-2 bg-gray-50">
+              <label for="default-checkbox"
+                class="ms-2 text-sm font-medium text-gray-400 dark:text-gray-500">{{hora_atencion.value}}</label>
+            </div>
+            }
+          </div>
+        </div>
+        <div>
+          <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Servicios
+          </label>
+          <div class="grid grid-cols-2">
+            @for (horario_servicios of this.list_servicios; track horario_servicios.value) {
+            <div class="flex items-center mb-4">
+              <input id="default-checkbox" type="checkbox" [id]="horario_servicios.value" [(ngModel)]="horario_servicios.checked"
+                class="w-4 h-4  border--300 rounded focus:ring-primary text-red-500 checked:bg-primary focus:ring-2 bg-gray-50">
+              <label for="default-checkbox"
+                class="ms-2 text-sm font-medium text-gray-400 dark:text-gray-500">{{horario_servicios.value}}</label>
+            </div>
+            }
+          </div>
+        </div>
+        <div>
+          <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ambiente
+          </label>
+          <div class="grid grid-cols-2">
+            @for (ambiente of this.list_ambientes; track ambiente.value) {
+            <div class="flex items-center mb-4">
+              <input id="default-checkbox" type="checkbox" [id]="ambiente.value" [(ngModel)]="ambiente.checked"
+                class="w-4 h-4  border--300 rounded focus:ring-primary text-red-500 checked:bg-primary focus:ring-2 bg-gray-50">
+              <label for="default-checkbox"
+                class="ms-2 text-sm font-medium text-gray-400 dark:text-gray-500">{{ambiente.value}}</label>
+            </div>
+            }
+          </div>
+        </div>
       </div>
-      <div>
-        Día
-      </div>
-      <div>
-        Cantidad Personas
-      </div>
-      <div>
-        Menú
-      </div>
-
-
       }
-
       }
-
       <button type="button" (click)="selectFilters(valueOutput)"
         class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
         Buscar

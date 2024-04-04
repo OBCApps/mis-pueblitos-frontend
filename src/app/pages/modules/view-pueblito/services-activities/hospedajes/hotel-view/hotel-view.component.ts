@@ -8,14 +8,13 @@ import { HotelesService } from '../../../../../../services/hoteles.service';
   standalone: true,
   imports: [],
   templateUrl: './hotel-view.component.html',
-  styleUrl: './hotel-view.component.scss'
+  styleUrl: './hotel-view.component.scss',
 })
 export class HotelViewComponent {
-
   constructor(
     private readonly hotelesService: HotelesService,
     private router: Router
-  ) { }
+  ) {}
 
   dtoHotelInfo: DtoHoteles = new DtoHoteles();
   name_route: string;
@@ -29,15 +28,20 @@ export class HotelViewComponent {
   getHotel(name_route: string) {
     this.loading = true;
     console.log('name_route', name_route);
-    this.hotelesService.get_hotel_by_name_route(name_route).subscribe((response) => {
-      this.dtoHotelInfo = response;
-      console.log('response', response);
-      this.loading = false;
-    });
+    this.hotelesService
+      .get_hotel_by_name_route(name_route)
+      .subscribe((response) => {
+        this.dtoHotelInfo = response;
+        console.log('response', response);
+        this.loading = false;
+      });
   }
 
   gotoHabitacion(hotel_name, habitacion_name) {
     this.router.navigate([this.router.url, habitacion_name]);
   }
 
+  get_Keys(obj: any) {
+    return Object.keys(obj);
+  }
 }

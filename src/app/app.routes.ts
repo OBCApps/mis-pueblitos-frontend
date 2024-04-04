@@ -84,6 +84,10 @@ export const routes: Routes = [
       {
         path: 'servicios/tour/:agencia_name/:tour_name',
         component: TourViewComponent,
+      },
+      {
+        path: 'servicios/restaurante/:restaurante_name',
+        component: RestaurantViewComponent,
       }
       /* {
         path: 'servicios/restaurante/:restaurante_name',

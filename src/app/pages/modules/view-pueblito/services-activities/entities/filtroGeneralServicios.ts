@@ -1,34 +1,36 @@
 export class FiltroGeneralServicios {
-    typeServicio: string;
+  typeServicio: string;
 
-    filtroHabitaciones : FiltroHabitaciones = new FiltroHabitaciones();
-    filtroTurs : FiltroTours = new FiltroTours();
-    filtroRestaurantes : FiltroRestaurantes = new FiltroRestaurantes();
+  filtroHabitaciones: FiltroHabitaciones = new FiltroHabitaciones();
+  filtroTurs: FiltroTours = new FiltroTours();
+  filtroRestaurantes: FiltroRestaurantes = new FiltroRestaurantes();
 }
 
 export class FiltroHabitaciones {
-    // ------ FILTRO HOSPEDAJE
-    precio: number=0;
-    tipoHospedaje: string[];
-    tipoHabitacion: string[];
-    servicios: string[];
-    idioma: string[];
+  // ------ FILTRO HOSPEDAJE
+  precio: number = 0;
+  tipoHospedaje: string[];
+  tipoHabitacion: string[];
+  servicios: string[];
+  idioma: string[];
 }
 
 export class FiltroTours {
-    // ------ FILTRO TOUR
-    precio: number;
-    tipo: string[];
-    tamanioGrupo: string[];
-    duracion: number;
-    idioma: string[];
+  // ------ FILTRO TOUR
+  precio: number;
+  tipo: string[];
+  tamanioGrupo: string[];
+  duracion: number;
+  idioma: string[];
 }
 
 export class FiltroRestaurantes {
-    // ------ FILTRO RESTAURANTE
-    precio: number;
-    tipoRestaurante: string
-    cantidadPersonasRestaurante: string
-    duracionRestaurante: string
-
+  // ------ FILTRO RESTAURANTE
+  precio: number;
+  tipo: string[];
+  tipoCocina: string[];
+  duracionRestaurante: string[];
+  horarioAtencion: string[];
+  servicios: string[];
+  ambiente: string[];
 }

@@ -29,7 +29,14 @@ export class DtoHoteles {
       }
     ];
   };
-  fotos: {};
+  fotos: {
+    gallery: {
+      url: string;
+    };
+    principal: {
+      url: string;
+    };
+  };
   descripcion: string;
   name_route: string;
   estrellas: number;
@@ -37,7 +44,7 @@ export class DtoHoteles {
 }
 
 
-export class DtoHabitacionesInfo {  
+export class DtoHabitacionesInfo {
     id: string;
     nombre: string;
     ofrece: {
@@ -55,9 +62,16 @@ export class DtoHabitacionesInfo {
     personas: number;
     camas: number;
     tipo: string;
-    fotos: object;
+    fotos: {
+      gallery: {
+        url: string;
+      };
+      principal: {
+        url: string;
+      };
+    };
     hotelId: string;
     hotelNombre: string;
     estrellas: number;
-    name_route: string;  
+    name_route: string;
 }

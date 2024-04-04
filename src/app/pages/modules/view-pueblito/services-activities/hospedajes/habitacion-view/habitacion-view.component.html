@@ -63,27 +63,13 @@
       <img class="h-56 md:h-72 max-w-full rounded-lg"
         src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg" alt="">
     </div>
-    <div class="grid grid-cols-5 gap-4 md:px-10">
+
+    <div class="grid grid-cols-4 gap-4 md:px-10">
+      @for (item of get_Keys(dtoHabitacionInfo.fotos.gallery); track $index) {
       <div>
-        <img class="h-28 w-28 max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+        <img src="{{dtoHabitacionInfo.fotos.gallery[item]}}" class="h-28 w-28 max-w-full rounded-lg" alt="">
       </div>
-      <div>
-        <img class="h-28 w-28 max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
-      </div>
-      <div>
-        <img class="h-28 w-28 max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
-      </div>
-      <div>
-        <img class="h-28 w-28 max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
-      </div>
-      <div>
-        <img class="h-28 w-28 max-w-full rounded-lg"
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt="">
-      </div>
+      }
     </div>
   </div>
 
@@ -165,7 +151,7 @@
     </div>
     <div class="w-[20%]">
       <div class="grid grid-cols-2  gap-2 bg-white shadow-lg">
-        <div class="hidden md:flex col-span-2">          
+        <div class="hidden md:flex col-span-2">
           <h1>Datos</h1>
         </div>
         <div class="md:col-span-2 flex items-center justify-start gap-2">

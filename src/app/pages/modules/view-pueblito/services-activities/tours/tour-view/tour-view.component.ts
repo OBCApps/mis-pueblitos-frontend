@@ -15,7 +15,7 @@ export class TourViewComponent {
     private readonly router: Router,
     private readonly route: ActivatedRoute,
   ){}
-  
+
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.agencia_name = params['agencia_name'];
@@ -42,6 +42,9 @@ export class TourViewComponent {
 
   gotoAgencia(){
     this.router.navigate(['home','Ancash','Chacas','servicios', 'tour', this.agencia_name]);
+  }
+  get_Keys(obj: any){
+    return Object.keys(obj);
   }
 
 }
