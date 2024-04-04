@@ -1,181 +1,259 @@
+<div class="flex flex-col gap-12 py-12 items-center font-Battambang">
 <div class="searchs flex flex-col gap-4 bg-fondo mt-5">
-    <h3 class="text-secondary text-xl md:text-2xl font-black font-Battambang leading-6">
-        Servicio y Actividades
-    </h3>
-    <p class="text-terceary text-xs md:text-sm text-justify font-normal font-Battambang leading-normal md:pr-[20%]">
-        Explora las festividades y eventos de Chacas en nuestro calendario,
-        creado con la colaboración de los residentes locales para brindarte información
-        auténtica y actualizada.
-    </p>
+  <h3
+    class="text-secondary text-xl md:text-2xl font-black font-Battambang leading-6"
+  >
+    Servicio y Actividades
+  </h3>
+  <p
+    class="text-terceary text-xs md:text-sm text-justify font-normal font-Battambang leading-normal"
+  >
+    ¡Descubre una amplia gama de actividades y servicios para enriquecer tu
+    viaje! Desde opciones gastronómicas hasta aventuras al aire libre, nuestra
+    plataforma ofrece todo lo que necesitas para una experiencia inolvidable.
+    Explora alojamientos acogedores, saborea la cocina local, únete a
+    emocionantes tours y sumérgete en la cultura local. ¡Prepárate para vivir
+    momentos inolvidables con nuestra selección de servicios y actividades!
+  </p>
 </div>
 
+  <div class="flex w-full justify-between items-end">
+    <div>
+      <form class="max-w-sm mx-auto">
+        <label
+          for="countries"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Seleccione servicio
+        </label>
+        <select
+          id="countries"
+          [(ngModel)]="filtroBusqueda.typeServicio"
+          (ngModelChange)="get_list_filters(filtroBusqueda)"
+          [ngModelOptions]="{ standalone: true }"
+          class="bg-fondo border border-terceary text-terceary text-sm rounded-2xl focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+          <option value="HOSP" selected>Hospedaje 🏨</option>
+          <option value="REST">Restaurantes 🍽️ </option>
+          <option value="TOUR">Tours 🌄</option>
+        </select>
+      </form>
+    </div>
+    <div>
+      <button
+        type="button"
+        (click)="openModalFilters()"
+        class="hover:bg-gray-100 bg-fondo border border-terceary text-terceary text-sm rounded-2xl focus:ring-primary focus:border-primary font-medium px-6 py-2.5 text-center inline-flex gap-4 items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75"
+          />
+        </svg>
+
+        <span>Filtros</span>
+      </button>
+    </div>
+  </div>
 <div>
-    <div class="flex items-center justify-between">
-        <div>
-            <form class="max-w-sm mx-auto">
-                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Seleccione servicio
-                </label>
-                <select id="countries" [(ngModel)]="filtroBusqueda.typeServicio"
-                    (ngModelChange)="get_list_filters(filtroBusqueda)" [ngModelOptions]="{standalone: true}"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="HOSP" selected>Hospedaje</option>
-                    <option value="REST">Restaurantes</option>
-                    <option value="TOUR">Tours</option>
-                </select>
-            </form>
+  <br />
+  @if (filtroBusqueda.typeServicio == 'HOSP') {
+  <div class="grid grid-col-2 md:grid-cols-4 gap-4 font-Battambang">
+    @for (item of list_resultadoBusqueda; track $index) {
+    <div
+      (click)="gotoHabitacion(item)"
+      class="max-w-sm bg-fondo border border-terceary rounded-3xl shadow overflow-hidden"
+    >
+      <a>
+        <img
+          class="rounded-t-lg w-full"
+          src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/8c/5a/21/spacious-double-room.jpg?w=300&h=200&s=1"
+          alt=""
+        />
+      </a>
+      <div class="p-4 flex flex-col gap-2">
+        <h5
+          class="text-xl font-bold font-Battambang leading-normal text-secondary"
+        >
+          {{ item.nombre }}
+        </h5>
+        <div
+          class="text-base font-bold font-Battambang leading-none text-terceary"
+        >
+          Nombre hotel
         </div>
-        <div>
-            <button type="button" (click)="openModalFilters()"
-                class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
-                </svg>
-
-                Filtros
-            </button>
+        <div class="flex justify-start items-start gap-6">
+          <div class="flex text-base justify-start items-center gap-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="currentColor"
+                d="M2 19v-6q0-.675.275-1.225T3 10.8V8q0-1.25.875-2.125T6 5h4q.575 0 1.075.213T12 5.8q.425-.375.925-.587T14 5h4q1.25 0 2.125.875T21 8v2.8q.45.425.725.975T22 13v6h-2v-2H4v2zm11-9h6V8q0-.425-.288-.712T18 7h-4q-.425 0-.712.288T13 8zm-8 0h6V8q0-.425-.288-.712T10 7H6q-.425 0-.712.288T5 8z"
+              />
+            </svg>
+            <span>1</span>
+          </div>
+          <div class="flex text-base justify-start items-center gap-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="6" r="4" fill="currentColor" />
+              <path
+                fill="currentColor"
+                d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5"
+              />
+            </svg>
+            <span>2</span>
+          </div>
         </div>
+        <p class="font-base font-bold text-primary">
+          S/. {{ item.precio }} / noche
+        </p>
+      </div>
     </div>
+    }
+  </div>
+  } @if (filtroBusqueda.typeServicio == 'TOUR') {
+  <div class="grid grid-col-2 md:grid-cols-4 gap-4">
+    @for (item of list_resultadoBusqueda; track $index) {
+    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
+      <a>
+        <img
+          class="rounded-t-lg w-full"
+          src="https://www.huaraztrekking.com/images/tours-chacas2.jpg"
+          alt=""
+        />
+      </a>
+      <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+          {{ item.nombre }}
+        </h5>
+        <div class="flex items-center justify-start">
+          <div class="flex">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+              />
+            </svg>
+            1
+          </div>
+          <div class="flex">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+              />
+            </svg>
+            2
+          </div>
+        </div>
+        <p class="mb-3 font-normal text-primary dark:text-gray-400">
+          S/. {{ item.precio }} / noche
+        </p>
+      </div>
+    </div>
+    }
+  </div>
+  } @if (filtroBusqueda.typeServicio == 'REST') {
+  <div class="grid grid-col-2 md:grid-cols-4 gap-4">
+    @for (item of list_resultadoBusqueda; track $index) {
+    <div
+      (click)="gotoHabitacion(item)"
+      class="max-w-sm bg-white border border-gray-200 rounded-lg shadow"
+    >
+      <a>
+        <img
+          class="rounded-t-lg w-full"
+          src="https://lh5.googleusercontent.com/p/AF1QipNK-vx1vFJ8xIHpMoWdAivoFtgrr1TVZ1Xj3gQj=w408-h306-k-no"
+          alt=""
+        />
+      </a>
+      <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+          {{ item.nombre }}
+        </h5>
+        <div class="flex items-center justify-start">
+          <div class="flex">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+              />
+            </svg>
+            1
+          </div>
+          <div class="flex">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+              />
+            </svg>
+            2
+          </div>
+        </div>
+        <p class="mb-3 font-normal text-primary dark:text-gray-400">
+          S/. {{ item.precio }} / noche
+        </p>
+      </div>
+    </div>
+    }
+  </div>
+  }
+</div>
+
+<button class="bg-primary p-4 w-fit text-fondo font-Battambang rounded-xl">Mostrar más</button>
+
+
 
 </div>
-<div>
-    <br>
-    @if (filtroBusqueda.typeServicio == 'HOSP') {
-    <div class="grid grid-col-2 md:grid-cols-4 gap-4">
-        @for (item of list_resultadoBusqueda; track $index) {
-        <div (click)="gotoHabitacion(item)" class="max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
-            <a>
-                <img class="rounded-t-lg w-full"
-                    src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/8c/5a/21/spacious-double-room.jpg?w=300&h=200&s=1"
-                    alt="" />
-            </a>
-            <div class="p-5">
-
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                    {{item.nombre}}
-                </h5>
-                <div class="flex items-center justify-start">
-                    <div class="flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                        </svg>
-                        1
-                    </div>
-                    <div class="flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                        </svg>
-                        2
-                    </div>
-                </div>
-                <p class="mb-3 font-normal text-primary dark:text-gray-400">
-                    S/. {{item.precio}} / noche
-                </p>
-
-            </div>
-        </div>
-        }
-    </div>
-    }
-
-    @if (filtroBusqueda.typeServicio == 'TOUR') {
-    <div class="grid grid-col-2 md:grid-cols-4 gap-4">
-
-        @for (item of list_resultadoBusqueda; track $index) {
-        <div  class="max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
-            <a>
-                <img class="rounded-t-lg w-full"
-                    src="https://www.huaraztrekking.com/images/tours-chacas2.jpg"
-                    alt="" />
-            </a>
-            <div class="p-5">
-
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                    {{item.nombre}}
-                </h5>
-                <div class="flex items-center justify-start">
-                    <div class="flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                        </svg>
-                        1
-                    </div>
-                    <div class="flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                        </svg>
-                        2
-                    </div>
-                </div>
-                <p class="mb-3 font-normal text-primary dark:text-gray-400">
-                    S/. {{item.precio}} / noche
-                </p>
-
-            </div>
-        </div>
-        }
-
-
-    </div>
-    }
-
-    @if (filtroBusqueda.typeServicio == 'REST') {
-    <div class="grid grid-col-2 md:grid-cols-4 gap-4">
-
-        @for (item of list_resultadoBusqueda; track $index) {
-        <div (click)="gotoHabitacion(item)" class="max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
-            <a>
-                <img class="rounded-t-lg w-full"
-                    src="https://lh5.googleusercontent.com/p/AF1QipNK-vx1vFJ8xIHpMoWdAivoFtgrr1TVZ1Xj3gQj=w408-h306-k-no"
-                    alt="" />
-            </a>
-            <div class="p-5">
-
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                    {{item.nombre}}
-                </h5>
-                <div class="flex items-center justify-start">
-                    <div class="flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                        </svg>
-                        1
-                    </div>
-                    <div class="flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                        </svg>
-                        2
-                    </div>
-                </div>
-                <p class="mb-3 font-normal text-primary dark:text-gray-400">
-                    S/. {{item.precio}} / noche
-                </p>
-
-            </div>
-        </div>
-        }
-
-
-    </div>
-    }
-
-
-</div>
-
-
-<app-modal-filtros (responseModal)="get_list_filters($event)"></app-modal-filtros>
+<app-modal-filtros
+  (responseModal)="get_list_filters($event)"
+></app-modal-filtros>
