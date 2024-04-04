@@ -1,8 +1,7 @@
-
 <div class="content">
   <hr class="h-px my-2 md:my-4 bg-white border-0">
 
-  <!-- TITLESS HOTEL -->
+  <!-- ------------- TITLESS HOTEL ---------------  -->
   <div>
     <div class="flex">
       <div>
@@ -11,6 +10,7 @@
         </h3>
       </div>
 
+      <!-- ESTRELLAS  -->
       <div class="flex items-center">
         @for (item of [1,2,3,4,5]; track $index) {
 
@@ -44,19 +44,51 @@
   <hr class="h-px my-2 md:my-4 bg-white border-0">
 
   <!-- // --------------- GALLERY  --------------- \\ -->
-  <div class="grid gap-4 md:p-10 pt-3">
+  <!-- <div class="grid gap-4 md:p-10 pt-3">
     <div class="flex items-center justify-center">
-      <img class="h-56 md:h-72 max-w-full rounded-lg"
-        src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg" alt="">
+      
+        <img src="{{dtoHotelInfo.fotos.gallery[1]}}" class="h-56 md:h-72 max-w-full rounded-lg"alt="">
     </div>
     <div class="grid grid-cols-4 gap-4 md:px-10">
       @for (item of get_Keys(dtoHotelInfo.fotos.gallery); track $index) {
-        <div>
-          <img src="{{dtoHotelInfo.fotos.gallery[item]}}" class="h-28 w-28 max-w-full rounded-lg" alt="">
-        </div>
-        }
+      <div>
+        <img src="{{dtoHotelInfo.fotos.gallery[item]}}" class="h-28 w-28 max-w-full rounded-lg" alt="">
+      </div>
+      }
     </div>
-  </div>
+  </div> -->
+  <!-- <swiper-container class="mySwiper" pagination="true" effect="coverflow" grab-cursor="true" centered-slides="true"
+    slides-per-view="auto" coverflow-effect-rotate="50" coverflow-effect-stretch="0" coverflow-effect-depth="100"
+    coverflow-effect-modifier="1" coverflow-effect-slide-shadows="true">
+    @for (item of get_Keys(dtoHotelInfo.fotos.gallery); track $index) {
+    <swiper-slide>
+      <div>
+        <img src="{{dtoHotelInfo.fotos.gallery[item]}}" class="h-72 w-72 max-w-full rounded-lg" alt="">
+      </div>
+    </swiper-slide>
+    }
+  </swiper-container> -->
+  <swiper-container style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="mySwiper"
+    thumbs-swiper=".mySwiper2" space-between="10" navigation="true">
+    @for (item of get_Keys(dtoHotelInfo.fotos.gallery); track $index) {
+    <swiper-slide>
+      <div>
+        <img src="{{dtoHotelInfo.fotos.gallery[item]}}" class="h-72 w-72 max-w-full rounded-lg" alt="">
+      </div>
+    </swiper-slide>
+    }
+  </swiper-container>
+
+  <swiper-container class="mySwiper2" space-between="10" slides-per-view="4" free-mode="true"
+    watch-slides-progress="true">
+    @for (item of get_Keys(dtoHotelInfo.fotos.gallery); track $index) {
+    <swiper-slide>
+      <div>
+        <img src="{{dtoHotelInfo.fotos.gallery[item]}}" class="h-72 w-72 max-w-full rounded-lg" alt="">
+      </div>
+    </swiper-slide>
+    }
+  </swiper-container>
 
 
   <!-- // --------------- REDES AND CONTACT  --------------- \\ -->
@@ -228,7 +260,8 @@
   <!-- // --------------- HABITACIONES  --------------- \\ -->
   <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
     @for (item of dtoHotelInfo.habitaciones; track $index) {
-    <div (click)="gotoHabitacion(item.name_route,item.name_route)" class="max-w-sm bg-white border border-gray-200 rounded-2xl shadow cursor-pointer">
+    <div (click)="gotoHabitacion(item.name_route,item.name_route)"
+      class="max-w-sm bg-white border border-gray-200 rounded-2xl shadow cursor-pointer">
       <a>
         <img class="rounded-t-lg" src="{{item.fotos.principal.url}}" alt="" />
       </a>
