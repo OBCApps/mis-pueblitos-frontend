@@ -44,6 +44,10 @@ export class HotelViewComponent {
   }
 
   get_Keys(obj: any) {
-    return Object.keys(obj);
+    if (obj === undefined || obj === null) {
+      return [];
+    } else {
+      return Object.keys(obj);
+    }
   }
 }
