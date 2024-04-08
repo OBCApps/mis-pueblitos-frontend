@@ -1,4 +1,4 @@
-<div class="content ">
+<div class="content font-Battambang">
   <hr class="h-px my-2 md:my-4 bg-white border-0">
 
   <!-- TITLESS HOTEL -->
@@ -52,8 +52,8 @@
 
   <hr class="h-px my-2 md:my-4 bg-white border-0">
   <!-- // --------------- DESCRIPTION DE HABITACIÓN  --------------- \\ -->
-  <div class="md:flex">
-    <div class="w-full md:w-[70%] ">
+  <div class="md:flex ">
+    <div class="w-full flex flex-col gap-12 md:w-[70%] ">
       <div>
         <h3 class="subtitle pb-2">
           Descripción
@@ -63,7 +63,7 @@
         </h3>
       </div>
 
-      <hr class="h-px my-2 md:my-4 bg-white border-0">
+    
 
       <!-- // --------------- SERVICES  --------------- \\ -->
 
@@ -71,9 +71,9 @@
         <h3 class="subtitle pb-2">
           Que te ofrecemos
         </h3>
-        <div class="grid grid-cols-3 gap-4 md:px-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:px-2">
           @for (item of dtoHabitacionInfo?.ofrece?.servicios; track $index) {
-          <div class="col-span-3 md:col-span-1 flex items-center gap-2 self-stretch">
+          <div class="col-span-1 flex items-center gap-2 self-stretch">
             <div>
               <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
                 <a target="_blank">
@@ -171,7 +171,7 @@
         </div>
       </div>
 
-      <hr class="h-px my-2 md:my-4 bg-white border-0">
+
 
       <!-- // --------------- INFORMACIÓN ADICIONAL  --------------- \\ -->
       <div>
@@ -208,7 +208,6 @@
 
       </div>
 
-      <hr class="h-px my-2 md:my-4 bg-white border-0">
     </div>
 
     <div class="w-full md:w-[30%] flex items-start justify-center">
