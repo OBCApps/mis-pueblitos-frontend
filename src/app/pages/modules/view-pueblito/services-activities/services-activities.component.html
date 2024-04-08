@@ -79,7 +79,7 @@
     <div class="grid grid-col-2 md:grid-cols-4 gap-5 font-Battambang">
       @for (item of list_resultadoBusqueda; track $index) {
       <div (click)="gotoHabitacion(item)"
-        class="max-w-sm bg-fondo border border-terceary rounded-3xl shadow overflow-hidden">
+        class="max-w-sm bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
         <a>
           <img class="rounded-t-lg w-full"
             src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/8c/5a/21/spacious-double-room.jpg?w=300&h=200&s=1"
@@ -121,7 +121,7 @@
     @if (filtroBusqueda.typeServicio == 'TOUR') {
     <div class="grid grid-col-2 md:grid-cols-4 gap-5">
       @for (item of list_resultadoBusqueda; track $index) {
-      <div (click)="gotoTour(item)" class="max-w-sm bg-fondo border border-terceary rounded-3xl shadow overflow-hidden">
+      <div (click)="gotoTour(item)" class="max-w-sm bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
         <a>
           <img class="rounded-t-lg w-full" src="{{item.fotos.principal.url}}" alt="" />
         </a>
@@ -190,7 +190,7 @@
     <div class="grid grid-col-2 md:grid-cols-4 gap-5">
       @for (item of list_resultadoBusqueda; track $index) {
       <div (click)="gotoRestaurante(item)"
-        class="max-w-sm bg-fondo border border-terceary rounded-3xl shadow overflow-hidden">
+        class="max-w-sm bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
         <a>
           <img class="rounded-t-lg w-full" src="{{item.fotos.principal.url}}" alt="" />
         </a>
