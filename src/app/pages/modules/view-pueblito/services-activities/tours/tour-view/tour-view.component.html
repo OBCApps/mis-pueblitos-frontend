@@ -107,96 +107,123 @@
  -->
 
 @if(!loading){
-<div class="content ">
-  <hr class="h-px my-2 md:my-4 bg-white border-0">
+<div class="content">
+  <hr class="h-px my-2 md:my-4 bg-white border-0" />
 
   <!-- TITLESS  -->
   <div>
     <h3 class="title pr-2">
-      {{tour.nombre}}
+      {{ tour.nombre }}
     </h3>
     <div class="flex">
       <div>
         <h3 class="subtitle pr-2">
-          {{tour.agencia.nombre}}
+          {{ tour.agencia.nombre }}
         </h3>
       </div>
 
       <div class="flex items-center">
         @for (item of [1,2,3,4,5]; track $index) {
 
-        <svg class="w-4 h-4 {{item<=tour.agencia?.estrellas? 'text-yellow-300' : 'text-gray-300'}} ms-1"
-          aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+        <svg
+          class="w-4 h-4 {{
+            item <= tour.agencia?.estrellas
+              ? 'text-yellow-300'
+              : 'text-gray-300'
+          }} ms-1"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 22 20"
+        >
           <path
-            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+          />
         </svg>
         }
-
-
       </div>
 
       <div>
-        <a (click)="gotoAgencia()" class="text-xs px-2 text-primary cursor-pointer">Ver Perfil</a>
+        <a
+          (click)="gotoAgencia()"
+          class="text-xs px-2 text-primary cursor-pointer"
+          >Ver Perfil</a
+        >
       </div>
-
     </div>
   </div>
 
-  <hr class="h-px my-2 md:my-4 bg-white border-0">
+  <hr class="h-px my-2 md:my-4 bg-white border-0" />
 
   <!-- // --------------- GALLERY  --------------- \\ -->
   <div class="md:mx-10">
-    <swiper-container style="--swiper-navigation-color: #F33535; --swiper-pagination-color: #F33535" class="mySwiper"
-      thumbs-swiper=".mySwiper2" space-between="10" navigation="true" slides-per-view="3">
+    <swiper-container
+      style="
+        --swiper-navigation-color: #f33535;
+        --swiper-pagination-color: #f33535;
+      "
+      class="mySwiper"
+      thumbs-swiper=".mySwiper2"
+      space-between="10"
+      navigation="true"
+      slides-per-view="3"
+    >
       @for (item of get_Keys(tour?.fotos?.gallery); track $index) {
       <swiper-slide>
         <div>
-          <img src="{{tour.fotos.gallery[item]}}" class="h-60 w-60 max-w-full rounded-lg" alt="">
+          <img
+            src="{{ tour.fotos.gallery[item] }}"
+            class="h-60 w-60 max-w-full rounded-lg"
+            alt=""
+          />
         </div>
       </swiper-slide>
       }
     </swiper-container>
   </div>
 
-
-  <hr class="h-px my-2 md:my-4 bg-white border-0">
+  <hr class="h-px my-2 md:my-4 bg-white border-0" />
   <!-- // --------------- DESCRIPTION   --------------- \\ -->
   <div class="md:flex">
-    <div class="w-full md:w-[70%] ">
-      <div>
-        <h3 class="subtitle pb-2">
-          Descripción
-        </h3>
+    <div class="flex flex-col gap-8 md:gap-12 w-full md:w-[70%]">
+      <div class="flex flex-col gap-4 md:gap-8">
+        <h3 class="subtitle">Descripción</h3>
         <h3 class="text-description text-justify md:pr-2">
-          {{tour.descripcion}}
+          {{ tour.descripcion }}
         </h3>
       </div>
 
-      <hr class="h-px my-2 md:my-4 bg-white border-0">
-
       <!-- // --------------- SERVICES  --------------- \\ -->
 
-      <div>
-        <h3 class="subtitle pb-2">
-          Destinos
-        </h3>
+      <div class="flex flex-col gap-4 md:gap-8">
+        <h3 class="subtitle">Destinos</h3>
         <div class="grid grid-cols-3 gap-4">
           <div class="col-span-2 grid grid-cols-3 gap-4 md:px-2">
             @for (item of tour.destinos; track $index) {
-            <div class="col-span-3 md:col-span-3 flex items-center gap-2 self-stretch">
+            <div
+              class="col-span-3 md:col-span-3 flex items-center gap-2 self-stretch"
+            >
               <div>
-                <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                    <path fill-rule="evenodd"
+                <div
+                  class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      fill-rule="evenodd"
                       d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
-                      clip-rule="evenodd" />
+                      clip-rule="evenodd"
+                    />
                   </svg>
-
                 </div>
               </div>
               <div>
                 <h3 class="text-description font-bold md:pr-2 capitalize">
-                  {{item}}
+                  {{ item }}
                 </h3>
                 <!-- <h3 class="text-description text-justify md:pr-2">
                     {{item.descripcion}}
@@ -207,147 +234,171 @@
             }
           </div>
           <div class="">
-            <swiper-container style="--swiper-navigation-color: #F33535; --swiper-pagination-color: #F33535"
-              centered-slides="true" class="mySwiper" thumbs-swiper=".mySwiper2" space-between="10" navigation="true"
-              slides-per-view="2">
+            <swiper-container
+              style="
+                --swiper-navigation-color: #f33535;
+                --swiper-pagination-color: #f33535;
+              "
+              centered-slides="true"
+              class="mySwiper"
+              thumbs-swiper=".mySwiper2"
+              space-between="10"
+              navigation="true"
+              slides-per-view="2"
+            >
               @for (item of get_Keys(tour?.imagesDestinos); track $index) {
               <swiper-slide>
                 <div>
-                  <img src="{{tour.imagesDestinos[item]}}" class="h-36 w-36 max-w-full rounded-lg" alt="">
+                  <img
+                    src="{{ tour.imagesDestinos[item] }}"
+                    class="h-36 w-36 max-w-full rounded-lg"
+                    alt=""
+                  />
                 </div>
               </swiper-slide>
               }
             </swiper-container>
           </div>
         </div>
-
       </div>
 
-      <hr class="h-px my-2 md:my-4 bg-white border-0">
       <!-- // --------------- ITINERARIO  --------------- \\ -->
-      <div class="flex flex-col">
-        <h3 class="subtitle pb-2">
-          Itinerario
-        </h3>
+      <div class="flex flex-col gap-4 md:gap-8">
+        <h3 class="subtitle">Itinerario</h3>
         @for(itinerario of tour.itinerario; track $index){
-        <strong class="pl-1">{{itinerario.dia}}:</strong>
-        <ul class="list-disc list-inside">
-          @for(actividad of itinerario.actividades; track $index){
-          <li class="pl-2">{{actividad}}</li>
-          }
-        </ul>
+        <div class="flex flex-col gap-4">
+          <strong class="pl-1">{{ itinerario.dia }}:</strong>
+          <ul class="list-disc list-inside">
+            @for(actividad of itinerario.actividades; track $index){
+            <li class="pl-2">{{ actividad }}</li>
+            }
+          </ul>
+        </div>
+
         }
       </div>
 
-      <hr class="h-px my-2 md:my-4 bg-white border-0">
       <!-- (( ------------- QUE INCLUYE)) ---------------  -->
-      <div class="flex flex-col">
-        <h3 class="subtitle pb-2">
-          Que Incluye
-        </h3>
-        <div class="flex flex-row">
+      <div class="flex flex-col gap-4">
+        <h3 class="subtitle">Que Incluye</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
           <ul>
             @for(incluye of tour.incluye; track $index){
-            <li class="flex flex-row mt-1">           
-              <div class="w-6 h-6 p-1.5 bg-green-500 text-white rounded-full justify-center items-center inline-flex">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                  stroke="currentColor" class="w-4 h-4">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+            <li class="flex flex-row mt-4">
+              <div
+                class="w-6 h-6 p-1.5 bg-green-600 text-white rounded-full justify-center items-center inline-flex"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-4 h-4"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m4.5 12.75 6 6 9-13.5"
+                  />
                 </svg>
               </div>
-              <span class="px-2 leading-4">{{incluye}}</span>
+              <span class="px-2 leading-4">{{ incluye }}</span>
             </li>
             }
           </ul>
           <ul>
             @for(noIncluye of tour.noIncluye; track $index){
-            <li class="flex flex-row mt-1">              
-              <div class="w-6 h-6 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-4 h-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-              </svg>
+            <li class="flex flex-row mt-4">
+              <div
+                class="w-6 h-6 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-4 h-4"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18 18 6M6 6l12 12"
+                  />
+                </svg>
               </div>
-              <span class="px-2 leading-4">{{noIncluye}}</span>
+              <span class="px-2 leading-4">{{ noIncluye }}</span>
             </li>
             }
           </ul>
         </div>
       </div>
 
-
-      <hr class="h-px my-2 md:my-4 bg-white border-0">
       <!-- ------------ RECOMENDACIONES ---------------  -->
-      <div class="flex flex-col">
-        <h3 class="subtitle pb-2">
-          Recomendaciones
-        </h3>
+      <div class="flex flex-col gap-4 md:gap-8">
+        <h3 class="subtitle">Recomendaciones</h3>
         <ul class="list-disc list-inside">
           @for(recomendacion of tour.recomendaciones; track $index){
-          <li class="pl-2">{{recomendacion}}</li>
+          <li class="pl-2">{{ recomendacion }}</li>
           }
         </ul>
       </div>
 
-
-      <hr class="h-px my-2 md:my-4 bg-white border-0">
       <!-- // --------------- INFORMACIÓN ADICIONAL  --------------- \\ -->
-      <div>
-        <h3 class="subtitle pb-2">
-          Información adicional
-        </h3>
-        <ul class=" space-y-1 text-gray-500 list-disc list-inside ">
+      <div class="flex flex-col gap-4 md:gap-8">
+        <h3 class="subtitle">Información adicional</h3>
+        <ul class="space-y-1 text-gray-500 list-disc list-inside">
           <li class="text-description text-justify md:pr-2 pb-1">
-
             <b>Políticas de Cancelación y Reembolso: </b>
-            En caso de cambios de planes, ofrecemos flexibilidad en nuestras políticas de
-            cancelación y reembolso. Consulta con nuestro equipo para obtener más detalles sobre cómo podemos ayudarte
-            en
-            situaciones imprevistas.
-
+            En caso de cambios de planes, ofrecemos flexibilidad en nuestras
+            políticas de cancelación y reembolso. Consulta con nuestro equipo
+            para obtener más detalles sobre cómo podemos ayudarte en situaciones
+            imprevistas.
           </li>
           <li class="text-description text-justify md:pr-2 pb-1">
-
             <b>Métodos de Pago: </b>
-            En caso de cambios de planes, ofrecemos flexibilidad en nuestras políticas de
-            cancelación y reembolso. Consulta con nuestro equipo para obtener más detalles sobre cómo podemos ayudarte
-            en
-            situaciones imprevistas.
-
+            En caso de cambios de planes, ofrecemos flexibilidad en nuestras
+            políticas de cancelación y reembolso. Consulta con nuestro equipo
+            para obtener más detalles sobre cómo podemos ayudarte en situaciones
+            imprevistas.
           </li>
           <li class="text-description text-justify md:pr-2 pb-1">
-
             <b>Comprobante de Pago: </b>
-            Emitimos boletas y facturas según tus necesidades, asegurando una experiencia de compra completa y
-            transparente.
-
+            Emitimos boletas y facturas según tus necesidades, asegurando una
+            experiencia de compra completa y transparente.
           </li>
         </ul>
-
       </div>
 
-      <hr class="h-px my-2 md:my-4 bg-white border-0">
+      <hr class="h-px my-2 md:my-4 bg-white border-0" />
     </div>
 
     <div class="w-full md:w-[30%] flex items-start justify-center">
-      <div class=" bg-white border p-2 border-primary rounded-xl shadow-lg">
+      <div class="bg-white border p-2 border-primary rounded-xl shadow-lg">
         <div class="hidden md:flex col-span-2 pb-2">
           <h1 class="text-secondary font-bold">Datos</h1>
         </div>
-        <div class="flex flex-col  gap-2">
+        <div class="flex flex-col gap-2">
           <div class="flex items-center gap-2">
-            <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
+            <div
+              class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex"
+            >
               <a target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
                   <path
                     d="M1.33398 12.6667V8.66671C1.33398 8.36671 1.3951 8.09448 1.51732 7.85004C1.63954 7.6056 1.80065 7.38893 2.00065 7.20004V5.33337C2.00065 4.77782 2.1951 4.3056 2.58398 3.91671C2.97287 3.52782 3.4451 3.33337 4.00065 3.33337H6.66732C6.92287 3.33337 7.16176 3.38071 7.38398 3.47537C7.60621 3.57004 7.81176 3.70049 8.00065 3.86671C8.18954 3.70004 8.3951 3.5696 8.61732 3.47537C8.83954 3.38115 9.07843 3.33382 9.33398 3.33337H12.0007C12.5562 3.33337 13.0284 3.52782 13.4173 3.91671C13.8062 4.3056 14.0007 4.77782 14.0007 5.33337V7.20004C14.2007 7.38893 14.3618 7.6056 14.484 7.85004C14.6062 8.09448 14.6673 8.36671 14.6673 8.66671V12.6667H13.334V11.3334H2.66732V12.6667H1.33398ZM8.66732 6.66671H12.6673V5.33337C12.6673 5.14448 12.6033 4.98626 12.4753 4.85871C12.3473 4.73115 12.1891 4.66715 12.0007 4.66671H9.33398C9.14509 4.66671 8.98687 4.73071 8.85932 4.85871C8.73176 4.98671 8.66776 5.14493 8.66732 5.33337V6.66671ZM3.33398 6.66671H7.33398V5.33337C7.33398 5.14448 7.26998 4.98626 7.14198 4.85871C7.01398 4.73115 6.85576 4.66715 6.66732 4.66671H4.00065C3.81176 4.66671 3.65354 4.73071 3.52598 4.85871C3.39843 4.98671 3.33443 5.14493 3.33398 5.33337V6.66671Z"
-                    fill="#FEFBFB" />
+                    fill="#FEFBFB"
+                  />
                 </svg>
               </a>
             </div>
-            <div>
-              {{tour.duracion}} horas
-            </div>
+            <div>{{ tour.duracion }} horas</div>
           </div>
           <!-- <div class="flex items-center gap-2">
             <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
@@ -366,16 +417,26 @@
           </div> -->
 
           <div class="flex items-center gap-2 font-bold justify-center">
-            {{tour.precio}} / Noche
+            {{ tour.precio }} / Noche
           </div>
           <div class="flex items-center justify-center">
-            <button type="button"
-              class="text-white bg-[#1AC816] hover:bg-[#1AC816]/90 focus:ring-4 focus:outline-none focus:ring-[#1AC816]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1AC816]/55">
-
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-4 h-4 me-2">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+            <button
+              type="button"
+              class="text-white bg-[#1AC816] hover:bg-[#1AC816]/90 focus:ring-4 focus:outline-none focus:ring-[#1AC816]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1AC816]/55"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-4 h-4 me-2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+                />
               </svg>
 
               Reserva Ahora
@@ -385,7 +446,6 @@
       </div>
     </div>
   </div>
-
 
   <!-- // --------------- HABITACIONES  --------------- \\ -->
   <!--  <div>
@@ -440,8 +500,7 @@
       </div>
     </div> -->
 
-
-  <hr class="h-px my-2 md:my-4 bg-white border-0">
+  <hr class="h-px my-2 md:my-4 bg-white border-0" />
 </div>
-<br>
+<br />
 }
