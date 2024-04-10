@@ -107,7 +107,7 @@
  -->
 
 @if(!loading){
-<div class="content">
+<div class="content font-Battambang">
   <hr class="h-px my-2 md:my-4 bg-white border-0" />
 
   <!-- TITLESS  -->
@@ -281,7 +281,7 @@
       <!-- (( ------------- QUE INCLUYE)) ---------------  -->
       <div class="flex flex-col gap-4">
         <h3 class="subtitle">Que Incluye</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
           <ul>
             @for(incluye of tour.incluye; track $index){
             <li class="flex flex-row mt-4">
@@ -338,7 +338,7 @@
       <!-- ------------ RECOMENDACIONES ---------------  -->
       <div class="flex flex-col gap-4 md:gap-8">
         <h3 class="subtitle">Recomendaciones</h3>
-        <ul class="list-disc list-inside">
+        <ul class="list-disc list-inside flex flex-col gap-4">
           @for(recomendacion of tour.recomendaciones; track $index){
           <li class="pl-2">{{ recomendacion }}</li>
           }
@@ -348,22 +348,22 @@
       <!-- // --------------- INFORMACIÓN ADICIONAL  --------------- \\ -->
       <div class="flex flex-col gap-4 md:gap-8">
         <h3 class="subtitle">Información adicional</h3>
-        <ul class="space-y-1 text-gray-500 list-disc list-inside">
-          <li class="text-description text-justify md:pr-2 pb-1">
+        <ul class="space-y-1 text-terceary list-disc list-inside">
+          <li class="text-base text-justify md:pr-2 pb-1">
             <b>Políticas de Cancelación y Reembolso: </b>
             En caso de cambios de planes, ofrecemos flexibilidad en nuestras
             políticas de cancelación y reembolso. Consulta con nuestro equipo
             para obtener más detalles sobre cómo podemos ayudarte en situaciones
             imprevistas.
           </li>
-          <li class="text-description text-justify md:pr-2 pb-1">
+          <li class="text-base text-justify md:pr-2 pb-1">
             <b>Métodos de Pago: </b>
             En caso de cambios de planes, ofrecemos flexibilidad en nuestras
             políticas de cancelación y reembolso. Consulta con nuestro equipo
             para obtener más detalles sobre cómo podemos ayudarte en situaciones
             imprevistas.
           </li>
-          <li class="text-description text-justify md:pr-2 pb-1">
+          <li class="text-base text-justify md:pr-2 pb-1">
             <b>Comprobante de Pago: </b>
             Emitimos boletas y facturas según tus necesidades, asegurando una
             experiencia de compra completa y transparente.
@@ -447,10 +447,10 @@
     </div>
   </div>
 
-  <!-- // --------------- HABITACIONES  --------------- \\ -->
-  <!--  <div>
-      <h3 class="subtitle pb-2">
-        Habitaciones
+  <!-- // --------------- TE PUEDE INTERESAR TOURS  --------------- \\ -->
+  <!--  <div class="flex flex-col gap-4 md:gap-8">
+      <h3 class="subtitle">
+        Te puede interesar
       </h3>
       <div class="mx-10">
         <swiper-container style="--swiper-navigation-color: #F33535; --swiper-pagination-color: #F33535" class="mySwiper"
