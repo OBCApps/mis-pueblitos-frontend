@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
 import { ToursService } from '../../../../../../services/tours.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -7,7 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   standalone: true,
   imports: [],
   templateUrl: './tour-view.component.html',
-  styleUrl: './tour-view.component.scss'
+  styleUrl: './tour-view.component.scss',
+  schemas : [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class TourViewComponent {
   constructor(

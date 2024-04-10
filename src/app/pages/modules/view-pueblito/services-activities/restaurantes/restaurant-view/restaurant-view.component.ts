@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ResturanteService } from '../../../../../../services/restaurante.service';
 import { DtoRestaurante } from '../entities/DtoRestaurante';
@@ -9,6 +9,7 @@ import { DtoRestaurante } from '../entities/DtoRestaurante';
   imports: [],
   templateUrl: './restaurant-view.component.html',
   styleUrl: './restaurant-view.component.scss',
+  schemas : [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class RestaurantViewComponent {
   constructor(

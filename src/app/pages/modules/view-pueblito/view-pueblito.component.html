@@ -11,7 +11,7 @@
           Bienvenido a
         </div>
         <div class="text-blue-300 text-5xl md:text-6xl font-extrabold font-Montserrat uppercase">
-          {{lugarDetalle?.nombre}}
+          {{ lugarDetalle?.nombre }}
         </div>
         <div class="text-fondo text-xl font-normal font-Battambang">
           La Perla de los Conchucos
@@ -72,8 +72,6 @@
     </div>
   </form> -->
 </div>
-
-
 
 <!-- <div class="flex font-Battambang ">
   <div class=" min-h-screen absolute md:relative z-10 md:z-0">
@@ -214,12 +212,12 @@
   </div>
 </div> -->
 <div class="bg-fondo z-0">
-  <div [class.static]="navbarStatic"
-    class="px-3 pt-3  md:px-8 mx-auto max-w-[1400px] xl:px-16 {{navbarStatic? 'shadow-xl' : ''}}">
-
+  <div [class.static]="navbarStatic" class="px-3 pt-3  md:px-8 mx-auto w-full xl:px-16 {{
+      navbarStatic ? 'shadow-xl' : ''
+    }}">
     <app-bread-crumb></app-bread-crumb>
 
-    <div id="navar-static" class="relative border-b md:pb-0 border-black ">
+    <div id="navar-static" class="relative border-b md:pb-0 border-black">
       <swiper-container init="false" class="mt-0">
         <!-- <swiper-slide *ngFor="let item of list_navar_option">
           <div class=" p-1 flex items-center justify-center">
@@ -236,37 +234,56 @@
         </swiper-slide> -->
 
         <swiper-slide>
-          <div class=" p-1 flex items-center justify-center">
-            <div class="w-38 cursor-pointer"
-              (click)="goToRoute(lugarDetalle.departamento.name_route,lugarDetalle.name_route,'location')">
+          <div class="p-1 flex items-center justify-center">
+            <div class="w-38 cursor-pointer" (click)="
+                goToRoute(
+                  lugarDetalle.departamento.name_route,
+                  lugarDetalle.name_route,
+                  'location'
+                )
+              ">
               <div class="flex items-center justify-center">
-                <div [class]="title == 'location' ?'navar-selected':'navar-not-selected'  ">
+                <div [class]="
+                    title == 'location'
+                      ? 'navar-selected'
+                      : 'navar-not-selected'
+                  ">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
                     <path fill-rule="evenodd"
                       d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
                       clip-rule="evenodd" />
                   </svg>
-
                 </div>
               </div>
-              <h1 class="text-center text-xs md:text-sm">{{lugarDetalle.name_route}}</h1>
+              <h1 class="text-center text-xs md:text-sm">
+                {{ lugarDetalle.name_route }}
+              </h1>
             </div>
           </div>
         </swiper-slide>
 
         <swiper-slide>
-          <div class=" p-1 flex items-center justify-center">
-            <div class="w-38 cursor-pointer"
-              (click)="goToRoute(lugarDetalle.departamento.name_route,lugarDetalle.name_route,'festividades')">
+          <div class="p-1 flex items-center justify-center">
+            <div class="w-38 cursor-pointer" (click)="
+                goToRoute(
+                  lugarDetalle.departamento.name_route,
+                  lugarDetalle.name_route,
+                  'festividades'
+                )
+              ">
               <div class="flex items-center justify-center">
-                <div [class]="title == 'festividades' ?'navar-selected':'navar-not-selected'  ">
-                  <svg *ngIf="title=='festividades'" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:w-5 md:h-5 "
+                <div [class]="
+                    title == 'festividades'
+                      ? 'navar-selected'
+                      : 'navar-not-selected'
+                  ">
+                  <svg *ngIf="title == 'festividades'" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:w-5 md:h-5"
                     viewBox="0 0 49 48" stroke-width="1.5" stroke="currentColor" fill="none">
                     <path
                       d="M36.5003 16.62C35.7803 15.8 35.0403 14.98 34.2603 14.2L33.6803 13.66L33.9603 13.42C34.9384 12.5804 35.6354 11.461 35.9573 10.2129C36.2791 8.96471 36.2104 7.64786 35.7603 6.43999C35.1081 5.07793 34.0755 3.93385 32.7872 3.14595C31.4989 2.35805 30.01 1.96004 28.5003 1.99999V5.99999C29.2119 5.99009 29.9133 6.17021 30.532 6.52178C31.1508 6.87335 31.6646 7.38363 32.0203 7.99999C32.3603 8.79999 32.0203 9.67999 31.0803 10.62C30.9403 10.78 30.7803 10.88 30.6403 11.02C24.6403 6.19999 18.0603 3.47999 14.8403 6.69999C14.503 7.04479 14.2259 7.44364 14.0203 7.87999V8.07999L13.6603 9.13999L4.84033 35.34C4.50671 36.3273 4.41312 37.3799 4.56732 38.4106C4.72152 39.4413 5.11906 40.4204 5.72702 41.2669C6.33498 42.1133 7.13587 42.8028 8.06334 43.278C8.99081 43.7533 10.0182 44.0008 11.0603 44C11.7408 43.9934 12.4159 43.8786 13.0603 43.66L40.5003 34.56C40.8375 34.4345 41.1347 34.2203 41.3603 33.94L41.7803 33.58C44.6403 30.7 42.8003 25.16 38.9603 19.78C41.2404 18.4493 43.8658 17.8295 46.5003 18V14C42.975 13.806 39.4776 14.7223 36.5003 16.62ZM11.9003 39.86C11.4463 40.0103 10.9595 40.0314 10.4942 39.921C10.0289 39.8107 9.60347 39.5731 9.26532 39.235C8.92718 38.8969 8.68967 38.4714 8.57931 38.0061C8.46894 37.5408 8.49007 37.054 8.64033 36.6L11.3603 28.4C13.3015 32.1018 16.2842 35.1541 19.9403 37.18L11.9003 39.86ZM25.9003 35.2C22.8778 34.3995 20.1205 32.8144 17.9078 30.6052C15.6951 28.396 14.1056 25.6413 13.3003 22.62L15.3003 16.62L15.4203 16.8C15.6403 17.24 15.9203 17.7 16.2003 18.16C16.4803 18.62 16.5203 18.74 16.7203 19.04C16.9203 19.34 17.3803 20 17.7403 20.5C18.1003 21 18.1203 21.06 18.3403 21.34C18.5603 21.62 19.2003 22.44 19.6603 22.98L20.2403 23.68C20.9203 24.46 21.6403 25.22 22.4003 26C23.1603 26.78 23.7603 27.28 24.4003 28L25.0603 28.56L26.6203 29.82L27.3603 30.38C27.9203 30.78 28.4603 31.18 29.0203 31.54L29.6403 31.94C30.3603 32.38 31.0803 32.8 31.7803 33.16H31.8803L25.9003 35.2ZM38.9203 30.74H38.8003C37.4203 31.5 31.6803 29.6 25.2203 23.12C24.5403 22.44 23.9003 21.78 23.3203 21.12L22.7403 20.42L21.6803 19.14L21.1003 18.34C20.8403 17.96 20.5603 17.6 20.3203 17.24L19.8003 16.4L19.2203 15.46C19.0603 15.18 18.9403 14.92 18.8003 14.66C18.6603 14.4 18.5003 14.14 18.3803 13.86C18.2731 13.6256 18.1796 13.3852 18.1003 13.14C18.0003 12.88 17.8803 12.62 17.8003 12.38C17.7203 12.14 17.7003 12 17.6403 11.76C17.5803 11.52 17.5403 11.32 17.5003 11.12C17.4904 10.9468 17.4904 10.7732 17.5003 10.6C17.4811 10.4406 17.4811 10.2794 17.5003 10.12L17.7203 9.49999C18.4403 8.77999 22.1803 9.49999 27.1803 13.3C26.3328 13.6825 25.4267 13.9192 24.5003 14V18C26.6248 17.8778 28.686 17.2319 30.5003 16.12L31.4603 17.04C32.3003 17.88 33.0803 18.74 33.8203 19.6C32.6755 21.6702 32.2533 24.063 32.6203 26.4L36.6203 25.62C36.5025 24.878 36.5025 24.122 36.6203 23.38C37.2307 24.3056 37.7722 25.2749 38.2403 26.28C39.3603 28.92 39.2803 30.4 38.9203 30.74Z"
                       fill="white" />
                   </svg>
-                  <svg *ngIf="title!='festividades'" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:w-5 md:h-5 "
+                  <svg *ngIf="title != 'festividades'" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:w-5 md:h-5"
                     viewBox="0 0 49 48" stroke-width="1.5" stroke="currentColor" fill="none">
                     <path
                       d="M36.5003 16.62C35.7803 15.8 35.0403 14.98 34.2603 14.2L33.6803 13.66L33.9603 13.42C34.9384 12.5804 35.6354 11.461 35.9573 10.2129C36.2791 8.96471 36.2104 7.64786 35.7603 6.43999C35.1081 5.07793 34.0755 3.93385 32.7872 3.14595C31.4989 2.35805 30.01 1.96004 28.5003 1.99999V5.99999C29.2119 5.99009 29.9133 6.17021 30.532 6.52178C31.1508 6.87335 31.6646 7.38363 32.0203 7.99999C32.3603 8.79999 32.0203 9.67999 31.0803 10.62C30.9403 10.78 30.7803 10.88 30.6403 11.02C24.6403 6.19999 18.0603 3.47999 14.8403 6.69999C14.503 7.04479 14.2259 7.44364 14.0203 7.87999V8.07999L13.6603 9.13999L4.84033 35.34C4.50671 36.3273 4.41312 37.3799 4.56732 38.4106C4.72152 39.4413 5.11906 40.4204 5.72702 41.2669C6.33498 42.1133 7.13587 42.8028 8.06334 43.278C8.99081 43.7533 10.0182 44.0008 11.0603 44C11.7408 43.9934 12.4159 43.8786 13.0603 43.66L40.5003 34.56C40.8375 34.4345 41.1347 34.2203 41.3603 33.94L41.7803 33.58C44.6403 30.7 42.8003 25.16 38.9603 19.78C41.2404 18.4493 43.8658 17.8295 46.5003 18V14C42.975 13.806 39.4776 14.7223 36.5003 16.62ZM11.9003 39.86C11.4463 40.0103 10.9595 40.0314 10.4942 39.921C10.0289 39.8107 9.60347 39.5731 9.26532 39.235C8.92718 38.8969 8.68967 38.4714 8.57931 38.0061C8.46894 37.5408 8.49007 37.054 8.64033 36.6L11.3603 28.4C13.3015 32.1018 16.2842 35.1541 19.9403 37.18L11.9003 39.86ZM25.9003 35.2C22.8778 34.3995 20.1205 32.8144 17.9078 30.6052C15.6951 28.396 14.1056 25.6413 13.3003 22.62L15.3003 16.62L15.4203 16.8C15.6403 17.24 15.9203 17.7 16.2003 18.16C16.4803 18.62 16.5203 18.74 16.7203 19.04C16.9203 19.34 17.3803 20 17.7403 20.5C18.1003 21 18.1203 21.06 18.3403 21.34C18.5603 21.62 19.2003 22.44 19.6603 22.98L20.2403 23.68C20.9203 24.46 21.6403 25.22 22.4003 26C23.1603 26.78 23.7603 27.28 24.4003 28L25.0603 28.56L26.6203 29.82L27.3603 30.38C27.9203 30.78 28.4603 31.18 29.0203 31.54L29.6403 31.94C30.3603 32.38 31.0803 32.8 31.7803 33.16H31.8803L25.9003 35.2ZM38.9203 30.74H38.8003C37.4203 31.5 31.6803 29.6 25.2203 23.12C24.5403 22.44 23.9003 21.78 23.3203 21.12L22.7403 20.42L21.6803 19.14L21.1003 18.34C20.8403 17.96 20.5603 17.6 20.3203 17.24L19.8003 16.4L19.2203 15.46C19.0603 15.18 18.9403 14.92 18.8003 14.66C18.6603 14.4 18.5003 14.14 18.3803 13.86C18.2731 13.6256 18.1796 13.3852 18.1003 13.14C18.0003 12.88 17.8803 12.62 17.8003 12.38C17.7203 12.14 17.7003 12 17.6403 11.76C17.5803 11.52 17.5403 11.32 17.5003 11.12C17.4904 10.9468 17.4904 10.7732 17.5003 10.6C17.4811 10.4406 17.4811 10.2794 17.5003 10.12L17.7203 9.49999C18.4403 8.77999 22.1803 9.49999 27.1803 13.3C26.3328 13.6825 25.4267 13.9192 24.5003 14V18C26.6248 17.8778 28.686 17.2319 30.5003 16.12L31.4603 17.04C32.3003 17.88 33.0803 18.74 33.8203 19.6C32.6755 21.6702 32.2533 24.063 32.6203 26.4L36.6203 25.62C36.5025 24.878 36.5025 24.122 36.6203 23.38C37.2307 24.3056 37.7722 25.2749 38.2403 26.28C39.3603 28.92 39.2803 30.4 38.9203 30.74Z"
@@ -280,17 +297,25 @@
         </swiper-slide>
 
         <swiper-slide>
-          <div class=" p-1 flex items-center justify-center">
-            <div class="w-38 cursor-pointer"
-              (click)="goToRoute(lugarDetalle.departamento.name_route,lugarDetalle.name_route,'tips-viajero')">
+          <div class="p-1 flex items-center justify-center">
+            <div class="w-38 cursor-pointer" (click)="
+                goToRoute(
+                  lugarDetalle.departamento.name_route,
+                  lugarDetalle.name_route,
+                  'tips-viajero'
+                )
+              ">
               <div class="flex items-center justify-center">
-                <div [class]="title == 'tips-viajero' ?'navar-selected':'navar-not-selected'  ">
+                <div [class]="
+                    title == 'tips-viajero'
+                      ? 'navar-selected'
+                      : 'navar-not-selected'
+                  ">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
                     <path fill-rule="evenodd"
                       d="M4.848 2.771A49.144 49.144 0 0 1 12 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97a48.901 48.901 0 0 1-3.476.383.39.39 0 0 0-.297.17l-2.755 4.133a.75.75 0 0 1-1.248 0l-2.755-4.133a.39.39 0 0 0-.297-.17 48.9 48.9 0 0 1-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97Z"
                       clip-rule="evenodd" />
                   </svg>
-
                 </div>
               </div>
               <h1 class="text-center text-xs md:text-sm">Tips Viajeros</h1>
@@ -316,29 +341,42 @@
             </div>
           </div>
         </swiper-slide>
-
+      -->
         <swiper-slide>
-          <div class=" p-1 flex items-center justify-center">
-            <div class="w-38 cursor-pointer"
-              (click)="goToRoute(lugarDetalle.departamento.name_route,lugarDetalle.name_route,'servicios')">
+          <div class="p-1 flex items-center justify-center">
+            <div class="w-38 cursor-pointer" (click)="
+                goToRoute(
+                  lugarDetalle.departamento.name_route,
+                  lugarDetalle.name_route,
+                  'servicios'
+                )
+              ">
               <div class="flex items-center justify-center">
-                <div [class]="title == 'servicios' ?'navar-selected':'navar-not-selected'  ">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 49 48" stroke-width="1.5"
-                    stroke="currentColor" fill="none">
-                    <path
-                      d="M46.5 4V38H31.328L24.5 44.828L17.672 38H2.5V4H46.5ZM42.5 8H6.5V34H19.328L24.5 39.172L29.672 34H42.5V8Z"
-                      fill="white" />
+                <div [class]="
+                    title == 'servicios'
+                      ? 'navar-selected'
+                      : 'navar-not-selected'
+                  ">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24">
+                    <g fill="none" fill-rule="evenodd">
+                      <path
+                        d="M24 0v24H0V0zM12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036c-.01-.003-.019 0-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z" />
+                      <path fill="currentColor"
+                        d="M3 5a1 1 0 0 1 .993.883L4 6v7h7V8a1 1 0 0 1 .883-.993L12 7h7a3 3 0 0 1 2.995 2.824L22 10v8a1 1 0 0 1-1.993.117L20 18v-3H4v3a1 1 0 0 1-1.993.117L2 18V6a1 1 0 0 1 1-1m16 4h-6v4h7v-3a1 1 0 0 0-1-1M7.5 7a2.5 2.5 0 1 1 0 5a2.5 2.5 0 0 1 0-5m0 2a.5.5 0 1 0 0 1a.5.5 0 0 0 0-1" />
+                    </g>
                   </svg>
                 </div>
               </div>
-              <h1 class="text-center text-xs md:text-sm">Servicios</h1>
+              <h1 class="text-center text-xs md:text-sm">
+                Servicios
+              </h1>
             </div>
           </div>
-        </swiper-slide> -->
+        </swiper-slide>
       </swiper-container>
       <div class="hidden md:flex items-center justify-center">
         <button type="button"
-          class="swiper-button-prev absolute top-1/2 translate-y-[-50%] left-0 z-10 text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300  rounded-full text-sm p-1 md:p-2.5 text-center inline-flex items-center me-2 ">
+          class="swiper-button-prev absolute top-1/2 translate-y-[-50%] left-0 z-10 text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-sm p-1 md:p-2.5 text-center inline-flex items-center me-2">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
             <path fill-rule="evenodd"
               d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
@@ -348,7 +386,7 @@
         </button>
 
         <button type="button"
-          class="swiper-button-next absolute top-1/2 translate-y-[-50%] right-0 z-10 text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300  rounded-full text-sm p-1 md:p-2.5 text-center inline-flex items-center me-2 ">
+          class="swiper-button-next absolute top-1/2 translate-y-[-50%] right-0 z-10 text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-sm p-1 md:p-2.5 text-center inline-flex items-center me-2">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
             <path fill-rule="evenodd"
               d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
@@ -359,13 +397,10 @@
         </button>
       </div>
     </div>
-
-
   </div>
   <div>
-
     @if (finalRpta) {
-    <div class="px-5 md:px-8 xl:px-16  mx-auto max-w-[1400px]  min-xl:h-screen">
+    <div class="px-5 md:px-8 xl:px-16 mx-auto max-w-[1400px] min-xl:h-screen">
       <router-outlet></router-outlet>
     </div>
     <app-footer></app-footer>
@@ -374,8 +409,6 @@
     }
   </div>
 </div>
-
-
 
 <app-modal-proveedor></app-modal-proveedor>
 

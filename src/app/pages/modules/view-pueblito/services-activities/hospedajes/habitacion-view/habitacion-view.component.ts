@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
 import { HabitacionService } from '../../../../../../services/habitacion.service';
 import { Router } from '@angular/router';
 import { Habitacion } from './entities/DtoHabitacion';
@@ -7,6 +7,7 @@ import { Habitacion } from './entities/DtoHabitacion';
   selector: 'app-habitacion-view',
   standalone: true,
   imports: [],
+  schemas : [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './habitacion-view.component.html',
   styleUrl: './habitacion-view.component.scss',
 })
@@ -41,6 +42,10 @@ export class HabitacionViewComponent {
   }
 
   get_Keys(obj: any) {
-    return Object.keys(obj);
+    if (obj === undefined || obj === null) {
+      return [];
+    } else {
+      return Object.keys(obj);
+    }
   }
 }

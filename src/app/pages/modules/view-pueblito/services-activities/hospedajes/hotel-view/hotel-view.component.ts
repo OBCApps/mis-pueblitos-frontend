@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
 import { DtoHoteles } from '../entities/DtoHoteles';
 import { Router } from '@angular/router';
 import { HotelesService } from '../../../../../../services/hoteles.service';
 
+
 @Component({
   selector: 'app-hotel-view',
   standalone: true,
-  imports: [],
+  imports: [ ],
   templateUrl: './hotel-view.component.html',
   styleUrl: './hotel-view.component.scss',
+  schemas : [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HotelViewComponent {
   constructor(
@@ -42,6 +44,10 @@ export class HotelViewComponent {
   }
 
   get_Keys(obj: any) {
-    return Object.keys(obj);
+    if (obj === undefined || obj === null) {
+      return [];
+    } else {
+      return Object.keys(obj);
+    }
   }
 }
