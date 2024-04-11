@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { API_SERVER } from '../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
+import { DtoAtractivo, DtoAtractivos } from '../pages/modules/view-pueblito/services-activities/atractivos-turisticos/entities/DtoAtractivos';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,13 @@ export class AtractivoTuristicoService {
     private http: HttpClient,
   ) { }
 
-  get_atractivos_turisticos(data: any): Observable<any> {
-    return this.http.get<any>(this.SERVER_ATRACTIVOS).pipe(
+  get_atractivos_turisticos(): Observable<DtoAtractivos> {
+    return this.http.get<DtoAtractivos>(this.SERVER_ATRACTIVOS).pipe(
       map((response) => { return response })
     );
   }
-  get_atractivos_turisticos_by_name_route(data: any): Observable<any> {
-    return this.http.get<any>(this.SERVER_ATRACTIVOS + '/name_route/'+data).pipe(
+  get_atractivos_turisticos_by_name_route(data: any): Observable<DtoAtractivo> {
+    return this.http.get<DtoAtractivo>(this.SERVER_ATRACTIVOS + '/name_route/'+data).pipe(
       map((response) => { return response })
     );
   }
