@@ -198,7 +198,7 @@ export class ViewPueblitoComponent implements OnInit {
       const swiperElemConstructor = document.querySelector('swiper-container');
       if (swiperElemConstructor) {
         const swiperOPtions: SwiperOptions = {
-          slidesPerView: 4,
+          slidesPerView: 5,
           pagination: false,
           //centeredSlides: true,
           navigation: {
@@ -209,8 +209,8 @@ export class ViewPueblitoComponent implements OnInit {
           breakpoints: {
             320: { slidesPerView: 3 },
             640: { slidesPerView: 3 },
-            1024: { slidesPerView: 3 },
-            1280: { slidesPerView: 3 },
+            1024: { slidesPerView: 4 },
+            1280: { slidesPerView: 5 },
 
           }
         }
