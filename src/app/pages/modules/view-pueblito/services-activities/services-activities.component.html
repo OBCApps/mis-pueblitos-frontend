@@ -24,7 +24,8 @@
           class="bg-fondo border border-terceary text-terceary text-sm rounded-2xl focus:ring-primary focus:border-primary  gap-2 text-left inline-flex px-6 py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           <option value="HOSP" selected>🏨 Hospedaje </option>
           <option value="REST">🍽️ Restaurantes </option>
-          <option value="TOUR">🌄Tours </option>
+          <option value="TOUR">🌄 Tours </option>
+          <option value="TURIS">🌄 Atractivos Turisticos </option>
         </select>
       </form>
 
@@ -41,7 +42,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205 3 1m1.5.5-1.5-.5M6.75 7.364V3h-3v18m3-13.636 10.5-3.819" />
               </svg>
-              
+
               Hospedaje
             </span>
           </option>
@@ -117,11 +118,12 @@
       }
     </div>
     }
-    
+
     @if (filtroBusqueda.typeServicio == 'TOUR') {
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
       @for (item of list_resultadoBusqueda; track $index) {
-      <div (click)="gotoTour(item)" class="max-w-sm bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
+      <div (click)="gotoTour(item)"
+        class="max-w-sm bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
         <a>
           <img class="rounded-t-lg w-full" src="{{item.fotos.principal.url}}" alt="" />
         </a>
@@ -184,8 +186,8 @@
       </div>
       }
     </div>
-    } 
-    
+    }
+
     @if (filtroBusqueda.typeServicio == 'REST') {
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
       @for (item of list_resultadoBusqueda; track $index) {
@@ -252,6 +254,36 @@
           </span>
      
           
+        </div>
+      </div>
+      }
+    </div>
+    }
+    @if(filtroBusqueda.typeServicio == 'TURIS'){
+    <div class="grid grid-col-2 md:grid-cols-4 gap-5">
+      @for (item of list_resultadoBusqueda; track $index) {
+      <div (click)="gotoAtractivoTuristico(item)"
+        class="max-w-sm bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
+        <a>
+          <img class="rounded-t-lg w-full" src="{{item.fotos.principal.url}}" alt="" />
+        </a>
+        <div class="p-4 flex flex-col gap-2">
+          <h5 class="text-xl font-bold font-Battambang leading-normal text-secondary">
+            {{ item.nombre }}
+          </h5>
+          <h5 class="text-xl font-bold font-Battambang leading-normal text-primary">
+            {{ item.precio ==0 ? 'Gratis' : 'S/. ' + item.precio }}
+          </h5>
+          <div class="flex flex-col items-start justify-start">
+            <div class="flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                <path fill-rule="evenodd"
+                  d="M5.25 2.25a3 3 0 0 0-3 3v4.318a3 3 0 0 0 .879 2.121l9.58 9.581c.92.92 2.39 1.186 3.548.428a18.849 18.849 0 0 0 5.441-5.44c.758-1.16.492-2.629-.428-3.548l-9.58-9.581a3 3 0 0 0-2.122-.879H5.25ZM6.375 7.5a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z"
+                  clip-rule="evenodd" />
+              </svg>
+              {{item.tags}}
+            </div>
+          </div>
         </div>
       </div>
       }

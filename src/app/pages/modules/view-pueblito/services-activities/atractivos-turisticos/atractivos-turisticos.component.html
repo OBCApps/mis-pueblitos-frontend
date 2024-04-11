@@ -1,0 +1,40 @@
+<p>atractivos-turisticos works!</p>
+@if (loading) {
+<h1>LOADING...</h1>
+} @else {
+<div>
+  <h1>{{dtoAtractivoTuristicoInfo.nombre}}</h1>
+  <h2>{{dtoAtractivoTuristicoInfo.ubicacion}}</h2>
+  <h2>ver mapa{{dtoAtractivoTuristicoInfo.mapa}}</h2>
+  <div class="flex flex-row">
+    @for (item of get_Keys(dtoAtractivoTuristicoInfo.fotos.gallery); track item) {
+    <img src="{{dtoAtractivoTuristicoInfo.fotos.gallery[item]}}" alt="foto" />
+    }
+  </div>
+  <h2>Descripcion</h2>
+  <p>{{dtoAtractivoTuristicoInfo.descripcion}}</p>
+  <h2>Horario</h2>
+  <p>{{dtoAtractivoTuristicoInfo.horario}}</p>
+  <h2>Tarifas</h2>
+  @for (item of dtoAtractivoTuristicoInfo.tarifa; track item) {
+  <p>{{item}}</p>
+  }
+  <h2>Tours que incluye este atractivo</h2>
+  @for (item of dtoAtractivoTuristicoInfo.tours; track item.id) {
+  <div>
+    <img src="{{item.fotos.principal.url}}" alt="{{item.nombre}}">
+    <h3>{{item.nombre}}</h3>
+    <p>{{item.agencia.nombre}}</p>
+    <p>{{item.duracion}}</p>
+    <p>S/.{{item.precio}}/persona</p>
+  </div>
+  }
+  <button class="bg-primary p-2">Ver Tours y Experiencias</button>
+  <h2>Informacion Adicional</h2>
+  <ul class="list-disc">
+    @for (item of dtoAtractivoTuristicoInfo.InfoAdicional; track item) {
+    <li><strong>{{item.split(':')[0]}}: </strong>{{item.split(':')[1]}}</li>
+    }
+  </ul>
+</div>
+}
