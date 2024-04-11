@@ -70,6 +70,14 @@ export class DtoAtractivo {
       tipo: string;
       agenciaId: string;
       atractivoTuristicoId: string;
+      agencia: {
+        id: string;
+        nombre: string;
+        estrellas: number;
+        direccion: string;
+        mapa: string;
+        name_route: string;
+      };
     }
   ];
 }
