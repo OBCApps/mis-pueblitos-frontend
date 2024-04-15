@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AtractivoTuristicoService } from '../../../../../services/atractivos-turisticos.service';
 import { DtoAtractivo, DtoAtractivos } from './entities/DtoAtractivos';
@@ -9,6 +9,7 @@ import { DtoAtractivo, DtoAtractivos } from './entities/DtoAtractivos';
   imports: [],
   templateUrl: './atractivos-turisticos.component.html',
   styleUrl: './atractivos-turisticos.component.scss',
+  schemas : [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AtractivosTuristicosComponent {
   constructor(
