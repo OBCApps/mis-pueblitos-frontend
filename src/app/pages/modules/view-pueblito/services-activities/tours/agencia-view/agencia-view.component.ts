@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ToursService } from '../../../../../../services/tours.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   imports: [],
   templateUrl: './agencia-view.component.html',
   styleUrl: './agencia-view.component.scss',
+  schemas : [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AgenciaViewComponent {
   constructor(
@@ -37,5 +38,24 @@ export class AgenciaViewComponent {
 
   getKeysObject(obj: any) {
     return Object.keys(obj);
+  }
+  get_Keys(obj: any) {
+    if (obj === undefined || obj === null) {
+      return [];
+    } else {
+      return Object.keys(obj);
+    }
+  }
+
+  gotoTour(item: any) {
+    this.router.navigate([
+      'home',
+      'Ancash',
+      'Chacas',
+      'servicios',
+      'tour',
+      item.agencia.name_route,
+      item.name_route,
+    ]);
   }
 }
