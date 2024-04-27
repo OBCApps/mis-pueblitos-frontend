@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
-import { API_SERVER } from "../../../../environments/environment.prod";
+import { API_SERVICE_WEB } from "../../../../environments/environment.prod";
 import { Observable, map } from "rxjs";
 import { DtoViewDepartmentAndLugares } from "./structures/DtoViewDepartmentAndLugares";
 
@@ -10,7 +10,7 @@ import { DtoViewDepartmentAndLugares } from "./structures/DtoViewDepartmentAndLu
 })
 export class ViewDepartmentService {
 
-    private SERVER_LUGAR = API_SERVER + '/lugar';
+    private SERVER_LUGAR = API_SERVICE_WEB + '/lugar';
 
 
     constructor(
@@ -26,7 +26,7 @@ export class ViewDepartmentService {
     }
 
     get_departament_name_route(idDepartment: any): Observable<any> {
-        return this.http.get<any>(API_SERVER + '/departamento/name_route/' + idDepartment).pipe(
+        return this.http.get<any>(API_SERVICE_WEB + '/departamento/name_route/' + idDepartment).pipe(
             map((response) => { return response })
         );
     };

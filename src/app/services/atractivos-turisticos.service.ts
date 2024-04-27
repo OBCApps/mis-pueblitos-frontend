@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { API_SERVER } from '../../environments/environment.prod';
+import { API_SERVICE_WEB } from '../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { DtoAtractivo, DtoAtractivos } from '../pages/modules/view-pueblito/services-activities/atractivos-turisticos/entities/DtoAtractivos';
@@ -8,7 +8,7 @@ import { DtoAtractivo, DtoAtractivos } from '../pages/modules/view-pueblito/serv
   providedIn: 'root'
 })
 export class AtractivoTuristicoService {
-  private SERVER_ATRACTIVOS = API_SERVER + '/atractivos-turisticos';
+  private SERVER_ATRACTIVOS = API_SERVICE_WEB + '/atractivos-turisticos';
 
   constructor(
     private http: HttpClient,

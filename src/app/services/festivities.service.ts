@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { API_SERVER } from '../../environments/environment.prod';
+import { API_SERVICE_WEB } from '../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
@@ -7,8 +7,8 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root'
 })
 export class FestivitiesService {
-  private SERVER_EVENTO = API_SERVER + '/evento';
-  private SERVER_SUBEVENTO = API_SERVER + '/sub-evento';
+  private SERVER_EVENTO = API_SERVICE_WEB + '/evento';
+  private SERVER_SUBEVENTO = API_SERVICE_WEB + '/sub-evento';
 
   constructor(
     private http: HttpClient,

@@ -38,7 +38,7 @@
   <!-- // --------------- GALLERY  --------------- \\ -->
   <div class="md:mx-10">
     <swiper-container style="--swiper-navigation-color: #F33535; --swiper-pagination-color: #F33535" class="mySwiper"
-      thumbs-swiper=".mySwiper2" space-between="10" navigation="true" slides-per-view="3">
+      thumbs-swiper=".mySwiper2" space-between="10" navigation="true" slides-per-view="2" centeredSlides="true">
       @for (item of get_Keys(dtoHabitacionInfo?.fotos?.gallery); track $index) {
       <swiper-slide>
         <div>
@@ -72,7 +72,7 @@
           Que te ofrecemos
         </h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:px-2">
-          @for (item of dtoHabitacionInfo?.ofrece?.servicios; track $index) {
+          @for (item of dtoHabitacionInfo.servicios; track $index) {
           <div class="col-span-1 flex items-center gap-2 self-stretch">
             <div>
               <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
@@ -210,61 +210,61 @@
 
     </div>
 
-    <div class="w-full md:w-[30%] flex items-start justify-center">
-      <div class=" bg-white border p-2 border-primary rounded-xl shadow-lg">
-        <div class="hidden md:flex col-span-2 pb-2">
-          <h1 class="text-secondary font-bold">Datos</h1>
-        </div>
-        <div class="flex flex-col  gap-2">
-          <div class="flex items-center gap-2">
-            <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
-              <a target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="none">
-                  <path
-                    d="M1.33398 12.6667V8.66671C1.33398 8.36671 1.3951 8.09448 1.51732 7.85004C1.63954 7.6056 1.80065 7.38893 2.00065 7.20004V5.33337C2.00065 4.77782 2.1951 4.3056 2.58398 3.91671C2.97287 3.52782 3.4451 3.33337 4.00065 3.33337H6.66732C6.92287 3.33337 7.16176 3.38071 7.38398 3.47537C7.60621 3.57004 7.81176 3.70049 8.00065 3.86671C8.18954 3.70004 8.3951 3.5696 8.61732 3.47537C8.83954 3.38115 9.07843 3.33382 9.33398 3.33337H12.0007C12.5562 3.33337 13.0284 3.52782 13.4173 3.91671C13.8062 4.3056 14.0007 4.77782 14.0007 5.33337V7.20004C14.2007 7.38893 14.3618 7.6056 14.484 7.85004C14.6062 8.09448 14.6673 8.36671 14.6673 8.66671V12.6667H13.334V11.3334H2.66732V12.6667H1.33398ZM8.66732 6.66671H12.6673V5.33337C12.6673 5.14448 12.6033 4.98626 12.4753 4.85871C12.3473 4.73115 12.1891 4.66715 12.0007 4.66671H9.33398C9.14509 4.66671 8.98687 4.73071 8.85932 4.85871C8.73176 4.98671 8.66776 5.14493 8.66732 5.33337V6.66671ZM3.33398 6.66671H7.33398V5.33337C7.33398 5.14448 7.26998 4.98626 7.14198 4.85871C7.01398 4.73115 6.85576 4.66715 6.66732 4.66671H4.00065C3.81176 4.66671 3.65354 4.73071 3.52598 4.85871C3.39843 4.98671 3.33443 5.14493 3.33398 5.33337V6.66671Z"
-                    fill="#FEFBFB" />
+      <div class="w-full md:w-[30%] flex items-start justify-center">
+        <div class=" bg-white border p-2 border-primary rounded-xl shadow-lg">
+          <div class="hidden md:flex col-span-2 pb-2">
+            <h1 class="text-secondary font-bold">Datos</h1>
+          </div>
+          <div class="flex flex-col  gap-2">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
+                <a target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M1.33398 12.6667V8.66671C1.33398 8.36671 1.3951 8.09448 1.51732 7.85004C1.63954 7.6056 1.80065 7.38893 2.00065 7.20004V5.33337C2.00065 4.77782 2.1951 4.3056 2.58398 3.91671C2.97287 3.52782 3.4451 3.33337 4.00065 3.33337H6.66732C6.92287 3.33337 7.16176 3.38071 7.38398 3.47537C7.60621 3.57004 7.81176 3.70049 8.00065 3.86671C8.18954 3.70004 8.3951 3.5696 8.61732 3.47537C8.83954 3.38115 9.07843 3.33382 9.33398 3.33337H12.0007C12.5562 3.33337 13.0284 3.52782 13.4173 3.91671C13.8062 4.3056 14.0007 4.77782 14.0007 5.33337V7.20004C14.2007 7.38893 14.3618 7.6056 14.484 7.85004C14.6062 8.09448 14.6673 8.36671 14.6673 8.66671V12.6667H13.334V11.3334H2.66732V12.6667H1.33398ZM8.66732 6.66671H12.6673V5.33337C12.6673 5.14448 12.6033 4.98626 12.4753 4.85871C12.3473 4.73115 12.1891 4.66715 12.0007 4.66671H9.33398C9.14509 4.66671 8.98687 4.73071 8.85932 4.85871C8.73176 4.98671 8.66776 5.14493 8.66732 5.33337V6.66671ZM3.33398 6.66671H7.33398V5.33337C7.33398 5.14448 7.26998 4.98626 7.14198 4.85871C7.01398 4.73115 6.85576 4.66715 6.66732 4.66671H4.00065C3.81176 4.66671 3.65354 4.73071 3.52598 4.85871C3.39843 4.98671 3.33443 5.14493 3.33398 5.33337V6.66671Z"
+                      fill="#FEFBFB" />
+                  </svg>
+                </a>
+              </div>
+              <div>
+                {{dtoHabitacionInfo.camas}} cama disponible
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
+                <a target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M8.00065 6.66658C9.47341 6.66658 10.6673 5.47268 10.6673 3.99992C10.6673 2.52716 9.47341 1.33325 8.00065 1.33325C6.52789 1.33325 5.33398 2.52716 5.33398 3.99992C5.33398 5.47268 6.52789 6.66658 8.00065 6.66658Z"
+                      fill="#FEFBFB" />
+                    <path
+                      d="M13.3327 11.6665C13.3327 13.3232 13.3327 14.6665 7.99935 14.6665C2.66602 14.6665 2.66602 13.3232 2.66602 11.6665C2.66602 10.0098 5.05402 8.6665 7.99935 8.6665C10.9447 8.6665 13.3327 10.0098 13.3327 11.6665Z"
+                      fill="#FEFBFB" />
+                  </svg>
+                </a>
+              </div>
+              {{dtoHabitacionInfo.personas}} personas
+            </div>
+
+            <div class="flex items-center gap-2 font-bold justify-center">
+              {{dtoHabitacionInfo.precio}} / Noche
+            </div>
+            <div class="flex items-center justify-center">
+              <button type="button"
+                class="text-white bg-[#1AC816] hover:bg-[#1AC816]/90 focus:ring-4 focus:outline-none focus:ring-[#1AC816]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1AC816]/55">
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-4 h-4 me-2">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
                 </svg>
-              </a>
-            </div>
-            <div>
-              {{dtoHabitacionInfo.camas}} cama disponible
-            </div>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
-              <a target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="none">
-                  <path
-                    d="M8.00065 6.66658C9.47341 6.66658 10.6673 5.47268 10.6673 3.99992C10.6673 2.52716 9.47341 1.33325 8.00065 1.33325C6.52789 1.33325 5.33398 2.52716 5.33398 3.99992C5.33398 5.47268 6.52789 6.66658 8.00065 6.66658Z"
-                    fill="#FEFBFB" />
-                  <path
-                    d="M13.3327 11.6665C13.3327 13.3232 13.3327 14.6665 7.99935 14.6665C2.66602 14.6665 2.66602 13.3232 2.66602 11.6665C2.66602 10.0098 5.05402 8.6665 7.99935 8.6665C10.9447 8.6665 13.3327 10.0098 13.3327 11.6665Z"
-                    fill="#FEFBFB" />
-                </svg>
-              </a>
-            </div>
-            {{dtoHabitacionInfo.personas}} personas
-          </div>
 
-          <div class="flex items-center gap-2 font-bold justify-center">
-            {{dtoHabitacionInfo.precio}} / Noche
-          </div>
-          <div class="flex items-center justify-center">
-            <button type="button"
-              class="text-white bg-[#1AC816] hover:bg-[#1AC816]/90 focus:ring-4 focus:outline-none focus:ring-[#1AC816]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1AC816]/55">
-
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-4 h-4 me-2">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-              </svg>
-
-              Reserva Ahora
-            </button>
+                Reserva Ahora
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   </div>
 
 

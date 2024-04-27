@@ -79,10 +79,7 @@ export class ServicesActivitiesComponent implements OnInit {
         this.load_tours(filtro.filtroTurs);
         break;
       }
-      case 'TURIS': {
-        this.load_turis(filtro.filtroTurs);
-        break;
-      }
+      
     }
   }
 
@@ -98,8 +95,7 @@ export class ServicesActivitiesComponent implements OnInit {
   // ------------- LOADS SERVICIOS ---------------
   load_habitaciones(item: FiltroHabitaciones) {
     console.log('item', item);
-    item.precio = +item.precio;
-    // ---- Aqui retornara todas las habitaciones. solamente con la informacion necesaria para mostrar la lista
+    item.precio = +item.precio;    
     this.habitacionService.get_habitaciones_byFiltro(item).subscribe(
       (data: any) => {
         this.list_resultadoBusqueda = data;
@@ -108,6 +104,7 @@ export class ServicesActivitiesComponent implements OnInit {
       },
       (err) => {
         console.log('NO ENCONTRO', err);
+        this.loading.hide();
       }
     );
   }
@@ -120,6 +117,7 @@ export class ServicesActivitiesComponent implements OnInit {
         this.loading.hide();
       },
       (err) => {
+        this.loading.hide();
         console.log('NO ENCONTRO');
       }
     );
@@ -134,34 +132,22 @@ export class ServicesActivitiesComponent implements OnInit {
         this.loading.hide();
       },
       (err) => {
+        this.loading.hide();
         console.log('NO ENCONTRO');
       }
     );
   }
 
-  load_turis(item: any) {
-    this.atractivoTuristicoService.get_atractivos_turisticos().subscribe(
-      (data: any) => {
-        this.list_resultadoBusqueda = data;
-        console.log('turisticos:', data);
-        this.loading.hide();
-      },
-      (err) => {
-        console.log('NO ENCONTRO');
-      }
-    );
-  }
 
   // ------------ SELECT HABITACION  ----------------
-  gotoHabitacion(item: any) {
-    console.log('item', item);
+  gotoHabitacion(item: any) {    
     this.router.navigate([
       'home',
       'Ancash',
       'Chacas',
       'servicios',
       'hospedaje',
-      'hotel-chacas',
+      item.hotel.name_route,
       item.name_route,
     ]);
   }
@@ -188,16 +174,7 @@ export class ServicesActivitiesComponent implements OnInit {
       item.name_route,
     ]);
   }
-  gotoAtractivoTuristico(item: any) {
-    this.router.navigate([
-      'home',
-      'Ancash',
-      'Chacas',
-      'servicios',
-      'atractivo-turistico',
-      item.name_route,
-    ]);
-  }
+  
 
   // ----------- FUNCTION DROPDOWN SELECTOR --------------------
   dev =

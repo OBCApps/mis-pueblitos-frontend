@@ -3,10 +3,11 @@
   <div class="w-16 h-16 border-t-2 border-b-2 border-gray-900 rounded-full animate-spin"></div>
 </div>
 } @else {
+<br>
 <div class="grid grid-cols-5 gap-2 p-1 md:mx-10">
   <div class="col-span-5 md:col-span-2 global-center cursor-zoom-in">
-    <img class="md:w-[370px] md:h-[305px] w-[350px] h-[285px] md:my-0 my-5 rounded-3xl" (click)="viewProveedorImage(evento)" src="{{ evento?.foto?.url }}"
-      alt="{{ evento.nombre }}" />
+    <img class="md:w-[370px] md:h-[305px] w-[350px] h-[285px] md:my-0 my-5 rounded-3xl"
+      (click)="viewProveedorImage(evento)" src="{{ evento?.foto?.url }}" alt="{{ evento.nombre }}" />
   </div>
   <div class="col-span-5 md:col-span-3 flex flex-col justify-center md:items-start pl-3">
     <h3 class="text-[#33425B] text-xl md:text-2xl  w-full text-center md:w-fit md:text-left font-bold tracking-tight">
@@ -37,7 +38,8 @@
   <div class="md:pl-3 col-span-5 md:col-span-5">
     @for (dia of dias; track dia.id) {
     <br>
-    <h3 class="text-[#33425B] text-sm md:text-lg text-center md:text-left  font-bold tracking-tight capitalize leading-3">
+    <h3
+      class="text-[#33425B] text-sm md:text-lg text-center md:text-left  font-bold tracking-tight capitalize leading-3">
       {{ dia }}
     </h3>
 

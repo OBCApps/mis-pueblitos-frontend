@@ -25,44 +25,13 @@
           <option value="HOSP" selected>🏨 Hospedaje </option>
           <option value="REST">🍽️ Restaurantes </option>
           <option value="TOUR">🌄 Tours </option>
-          <option value="TURIS">🌄 Atractivos Turisticos </option>
         </select>
       </form>
 
 
-      <!-- <form class="max-w-xl mx-auto">
-        <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          Seleccione servicio
-        </label>
-        <select id="countries" [(ngModel)]="filtroBusqueda.typeServicio"
-                (ngModelChange)="get_list_filters(filtroBusqueda)" [ngModelOptions]="{ standalone: true }"
-                class="bg-fondo border border-terceary text-terceary text-sm rounded-2xl focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-          <option value="HOSP" selected>
-            <span class="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205 3 1m1.5.5-1.5-.5M6.75 7.364V3h-3v18m3-13.636 10.5-3.819" />
-              </svg>
-
-              Hospedaje
-            </span>
-          </option>
-          <option value="REST">
-            <span class="flex items-center">
-              <svg class="mr-2 h-5 w-5 fill-current text-primary dark:text-white" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M5 7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1a1 1 0 1 0 0 2h1v2a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3zM5 2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h12a1 1 0 1 0 0-2H5z" clip-rule="evenodd" /> </svg>
-              Restaurantes
-            </span>
-          </option>
-        </select>
-      </form> -->
-
-
-
-
-
     </div>
     <div>
-      <button type="button" (click)="openModalFilters()"
+      <!-- <button type="button" (click)="openModalFilters()"
         class="hover:bg-gray-100 bg-fondo border border-terceary text-terceary text-sm rounded-2xl focus:ring-primary focus:border-primary font-medium px-6 py-2.5 text-center inline-flex gap-4 items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="w-5 h-5">
@@ -71,7 +40,7 @@
         </svg>
 
         <span>Filtros</span>
-      </button>
+      </button> -->
     </div>
   </div>
   <div>
@@ -83,7 +52,7 @@
         class="max-w-sm bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
         <a>
           <img class="rounded-t-lg w-full"
-            src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/8c/5a/21/spacious-double-room.jpg?w=300&h=200&s=1"
+            [src]="item.fotos.principal.url"
             alt="" />
         </a>
         <div class="p-4 flex flex-col gap-2">
@@ -91,7 +60,7 @@
             {{ item.nombre }}
           </h5>
           <div class="text-base font-bold font-Battambang leading-none text-terceary">
-            Nombre hotel
+            {{ item.hotel.nombre }}
           </div>
           <div class="flex justify-start items-start gap-6">
             <div class="flex text-base justify-start items-center gap-1">
@@ -99,7 +68,7 @@
                 <path fill="currentColor"
                   d="M2 19v-6q0-.675.275-1.225T3 10.8V8q0-1.25.875-2.125T6 5h4q.575 0 1.075.213T12 5.8q.425-.375.925-.587T14 5h4q1.25 0 2.125.875T21 8v2.8q.45.425.725.975T22 13v6h-2v-2H4v2zm11-9h6V8q0-.425-.288-.712T18 7h-4q-.425 0-.712.288T13 8zm-8 0h6V8q0-.425-.288-.712T10 7H6q-.425 0-.712.288T5 8z" />
               </svg>
-              <span>1</span>
+              <span>{{item.camas}}</span>
             </div>
             <div class="flex text-base justify-start items-center gap-1">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24">
@@ -107,7 +76,7 @@
                 <path fill="currentColor"
                   d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5" />
               </svg>
-              <span>2</span>
+              <span>{{item.personas}}</span>
             </div>
           </div>
           <p class="font-base font-bold text-primary">
@@ -115,6 +84,8 @@
           </p>
         </div>
       </div>
+      }@empty {
+        <p>Sin Hospedajes disponibles</p>
       }
     </div>
     }
@@ -127,32 +98,6 @@
         <a>
           <img class="rounded-t-lg w-full" src="{{item.fotos.principal.url}}" alt="" />
         </a>
-        <!-- <div class="p-5">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-            {{ item.nombre }}
-          </h5>
-          <div class="flex items-center justify-start">
-            <div class="flex">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-              </svg>
-              {{item.duracion}} horas
-            </div>
-            <div class="flex">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-              </svg>
-              2
-            </div>
-          </div>
-          <p class="mb-3 font-normal text-primary dark:text-gray-400">
-            S/. {{item.precio}} / persona
-          </p>
-        </div> -->
         <div class="p-4 flex flex-col gap-2">
           <h5 class="text-xl font-bold font-Battambang leading-normal text-secondary">
             {{ item.nombre }}
@@ -184,6 +129,8 @@
           </p>
         </div>
       </div>
+      }@empty {
+        <p>Sin Tours disponibles</p>
       }
     </div>
     }
@@ -195,34 +142,7 @@
         class="max-w-sm bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
         <a>
           <img class="rounded-t-lg w-full" src="{{item.fotos.principal.url}}" alt="" />
-        </a>
-        <!-- <div class="p-5">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-            {{ item.nombre }}
-          </h5>
-          <div class="flex flex-col items-center justify-start">
-            <div class="flex">
-
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                <path fill-rule="evenodd"
-                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z"
-                  clip-rule="evenodd" />
-              </svg>
-              {{item.horaAtencion['Lunes - Viernes']}}
-            </div>
-            <div class="flex">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                <path fill-rule="evenodd"
-                  d="M5.25 2.25a3 3 0 0 0-3 3v4.318a3 3 0 0 0 .879 2.121l9.58 9.581c.92.92 2.39 1.186 3.548.428a18.849 18.849 0 0 0 5.441-5.44c.758-1.16.492-2.629-.428-3.548l-9.58-9.581a3 3 0 0 0-2.122-.879H5.25ZM6.375 7.5a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z"
-                  clip-rule="evenodd" />
-              </svg>
-              {{item.tags}}
-            </div>
-          </div>
-          <p class="mb-3 font-normal text-black dark:text-gray-400">
-            desde <strong class="text-primary dark:text-gray-400">S/. {{item.minPrice}}</strong>
-          </p>
-        </div> -->
+        </a>      
 
         <div class="p-4 flex flex-col gap-2">
           <h5 class="text-xl font-bold font-Battambang leading-normal text-secondary">
@@ -247,52 +167,25 @@
               {{item.tags}}
             </div>
           </div>
-          
-          
+
+
           <span class="font-base font-bold text-primary">
             <span class="text-xs text-terceary"> Desde:</span> S/.{{ item.precio }}
           </span>
-     
-          
+
+
         </div>
       </div>
+      }@empty {
+        <p>Sin Restaurantes disponibles</p>
       }
     </div>
     }
-    @if(filtroBusqueda.typeServicio == 'TURIS'){
-    <div class="grid grid-col-2 md:grid-cols-4 gap-5">
-      @for (item of list_resultadoBusqueda; track $index) {
-      <div (click)="gotoAtractivoTuristico(item)"
-        class="max-w-sm bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
-        <a>
-          <img class="rounded-t-lg w-full" src="{{item.fotos.principal.url}}" alt="" />
-        </a>
-        <div class="p-4 flex flex-col gap-2">
-          <h5 class="text-xl font-bold font-Battambang leading-normal text-secondary">
-            {{ item.nombre }}
-          </h5>
-          <h5 class="text-xl font-bold font-Battambang leading-normal text-primary">
-            {{ item.precio ==0 ? 'Gratis' : 'S/. ' + item.precio }}
-          </h5>
-          <div class="flex flex-col items-start justify-start">
-            <div class="flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                <path fill-rule="evenodd"
-                  d="M5.25 2.25a3 3 0 0 0-3 3v4.318a3 3 0 0 0 .879 2.121l9.58 9.581c.92.92 2.39 1.186 3.548.428a18.849 18.849 0 0 0 5.441-5.44c.758-1.16.492-2.629-.428-3.548l-9.58-9.581a3 3 0 0 0-2.122-.879H5.25ZM6.375 7.5a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z"
-                  clip-rule="evenodd" />
-              </svg>
-              {{item.tags}}
-            </div>
-          </div>
-        </div>
-      </div>
-      }
-    </div>
-    }
+    
   </div>
 
-  <button class="bg-primary p-4 w-fit text-fondo font-Battambang rounded-xl">Mostrar más</button>
-
+  <!-- <button class="bg-primary p-4 w-fit text-fondo font-Battambang rounded-xl">Mostrar más</button>
+ -->
 
 
 </div>

@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
-import { API_SERVER } from '../../environments/environment.prod';
+import { API_SERVICE_WEB } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomeService {
-  private SERVER_DEPARTMENT = API_SERVER + '/departamento';
-  private SERVER_LUGAR = API_SERVER + '/lugar';
-  private SERVER_SEARCH = API_SERVER + '/buscar';
+  private SERVER_DEPARTMENT = API_SERVICE_WEB + '/departamento';
+  private SERVER_LUGAR = API_SERVICE_WEB + '/lugar';
+  private SERVER_SEARCH = API_SERVICE_WEB + '/buscar';
   constructor(
     private http: HttpClient,
   ) { }

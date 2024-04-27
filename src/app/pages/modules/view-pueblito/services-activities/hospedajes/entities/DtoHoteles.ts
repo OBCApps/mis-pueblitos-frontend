@@ -1,10 +1,29 @@
 export class DtoHoteles {
   id: string;
   nombre: string;
-  idiomas: string[];
-  precios: number;
   tipo: string;
-  servicios: {
+  lugar: string;
+  ubicacion: string;
+  hotelDetalle: HotelDetalle = new HotelDetalle();
+  redes_sociales: any[] = [];
+  descripcion: string;
+  name_route: string;
+  estrellas: number;
+  habitaciones: DtoHabitacionesInfo[] = [];
+  servicios : any [] = []
+
+}
+
+export class HotelDetalle {
+  fotos: any;
+  mc_info_adicional: any[] = []
+}
+
+
+export class DtoHabitacionesInfo {
+  id: string;
+  nombre: string;
+  ofrece: {
     servicios: [
       {
         servicio: string;
@@ -12,23 +31,13 @@ export class DtoHoteles {
       }
     ];
   };
-  lugar: string;
-  ubicacion: string;
-  contactos: {
-    datos: [
-      {
-        tipo: string;
-        valor: string;
-      }
-    ];
-    redes_sociales: [
-      {
-        tipo: string;
-        user: string;
-        valor: string;
-      }
-    ];
-  };
+  tipoMoneda: string;
+  precio: number;
+  disponible: boolean;
+  descripcion: string;
+  personas: number;
+  camas: number;
+  tipo: string;
   fotos: {
     gallery: {
       url: string;
@@ -37,41 +46,10 @@ export class DtoHoteles {
       url: string;
     };
   };
-  descripcion: string;
-  name_route: string;
+  hotelId: string;
+  hotelNombre: string;
   estrellas: number;
-  habitaciones: DtoHabitacionesInfo [] = []
+  name_route: string;
 }
 
 
-export class DtoHabitacionesInfo {
-    id: string;
-    nombre: string;
-    ofrece: {
-      servicios: [
-        {
-          servicio: string;
-          descripcion: string;
-        }
-      ];
-    };
-    tipoMoneda: string;
-    precio: number;
-    disponible: boolean;
-    descripcion: string;
-    personas: number;
-    camas: number;
-    tipo: string;
-    fotos: {
-      gallery: {
-        url: string;
-      };
-      principal: {
-        url: string;
-      };
-    };
-    hotelId: string;
-    hotelNombre: string;
-    estrellas: number;
-    name_route: string;
-}

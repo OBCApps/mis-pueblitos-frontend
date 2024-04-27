@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { API_SERVER } from '../../environments/environment.prod';
+import { API_SERVICE_WEB } from '../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { FiltroRestaurantes } from '../pages/modules/view-pueblito/services-activities/entities/filtroGeneralServicios';
@@ -9,7 +9,7 @@ import { DtoRestaurante } from '../pages/modules/view-pueblito/services-activiti
   providedIn: 'root'
 })
 export class ResturanteService {
-  private SERVER_REST = API_SERVER + '/restaurante';
+  private SERVER_REST = API_SERVICE_WEB + '/restaurante';
 
   constructor(
     private http: HttpClient,

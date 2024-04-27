@@ -27,11 +27,10 @@ export class AtractivosTuristicosComponent {
         (data: any) => {
           this.dtoAtractivoTuristicoInfo = data;
           this.loading = false;
-          console.log(this.dtoAtractivoTuristicoInfo);
         },
         (err) => {
           this.loading = false;
-          console.error(err);
+
         }
       );
     });

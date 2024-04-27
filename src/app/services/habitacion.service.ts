@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { API_SERVER } from '../../environments/environment.prod';
+import { API_SERVICE_WEB } from '../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { FiltroHabitaciones } from '../pages/modules/view-pueblito/services-activities/entities/filtroGeneralServicios';
-import { Habitacion } from '../pages/modules/view-pueblito/services-activities/hospedajes/habitacion-view/entities/DtoHabitacion';
+import { DtoHabitacion } from '../pages/modules/view-pueblito/services-activities/hospedajes/habitacion-view/entities/DtoHabitacion';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HabitacionService {
-  private SERVER_HABITACION = API_SERVER + '/habitacion';
+  private SERVER_HABITACION = API_SERVICE_WEB + '/habitacion';
 
   constructor(
     private http: HttpClient,
@@ -33,8 +33,8 @@ export class HabitacionService {
     );
   }
 
-  get_habitacion_by_name_route(name_route: any): Observable<Habitacion> {
-    return this.http.get<Habitacion>(this.SERVER_HABITACION + '/name_route/' + name_route).pipe(
+  get_habitacion_by_name_route(name_route: any): Observable<DtoHabitacion> {
+    return this.http.get<DtoHabitacion>(this.SERVER_HABITACION + '/name_route/' + name_route).pipe(
       map((response) => { return response })
     );
   }

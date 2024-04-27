@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
 import { HabitacionService } from '../../../../../../services/habitacion.service';
 import { Router } from '@angular/router';
-import { Habitacion } from './entities/DtoHabitacion';
+import { DtoHabitacion } from './entities/DtoHabitacion';
 
 @Component({
   selector: 'app-habitacion-view',
@@ -18,7 +18,7 @@ export class HabitacionViewComponent {
   ) {}
 
   name_route = '';
-  dtoHabitacionInfo: Habitacion = new Habitacion();
+  dtoHabitacionInfo: DtoHabitacion = new DtoHabitacion();
   loading = false;
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class HabitacionViewComponent {
 
   getHabitacion() {
     this.habitacionService.get_habitacion_by_name_route(this.name_route).subscribe(
-      (response : Habitacion) => {
+      (response : DtoHabitacion) => {
         this.dtoHabitacionInfo = response;
         console.log('response', response);
         this.loading = false;
