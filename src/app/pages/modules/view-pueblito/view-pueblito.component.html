@@ -219,20 +219,6 @@
 
     <div id="navar-static" class="relative border-b md:pb-0 border-black">
       <swiper-container init="false" class="mt-0">
-        <!-- <swiper-slide *ngFor="let item of list_navar_option">
-          <div class=" p-1 flex items-center justify-center">
-            <div class="w-38 cursor-pointer"
-              (click)="goToRoute(lugarDetalle.departamento.name_route,lugarDetalle.name_route,item.routerLink)">
-              <div class="flex items-center justify-center" >
-                <div [class]="title !== item.routerLink ?'navar-selected':'navar-not-selected'  ">
-                  <div  [innerHTML]="getSafeIcon(item.icon)" (click)="goToRoute(lugarDetalle.departamento.name_route,lugarDetalle.name_route,item.routerLink)" ></div>
-                </div>
-              </div>
-              <h1 class="text-center">{{item.name}}</h1>              
-            </div>
-          </div>
-        </swiper-slide> -->
-
         <swiper-slide>
           <div class="p-1 flex items-center justify-center">
             <div class="w-38 cursor-pointer" (click)="
@@ -343,7 +329,7 @@
             </div>
           </div>
         </swiper-slide>
-    
+
         <swiper-slide>
           <div class="p-1 flex items-center justify-center">
             <div class="w-38 cursor-pointer" (click)="

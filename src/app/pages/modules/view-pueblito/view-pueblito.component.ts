@@ -95,17 +95,6 @@ export class ViewPueblitoComponent implements OnInit {
       });
     });
 
-    /* var navbar = document.queryElementById('navar-static');
-    var menu = document.queryElementById('navar-static');
-
-    window.onscroll = function() {
-      if(window.pageXOffset >= menu.offsetTop){
-        navbar.classList.add('static')
-      } else {
-        navbar.classList.remove('static')
-      }
-    } */
-
     this.createCarrusel()
   }
 
