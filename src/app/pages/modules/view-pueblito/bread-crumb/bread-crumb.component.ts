@@ -19,7 +19,7 @@ export class BreadCrumbComponent {
   ngOnInit() {
     this.rutaActual = this.router.url;
     this.breadcrumbs = this.rutaActual.split('/').filter(segment => segment !== '');
-    console.log("LISTA ACTUAL: ", this.breadcrumbs);
+   
     
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)

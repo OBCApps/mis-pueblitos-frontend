@@ -1,3 +1,5 @@
+import { DtoHoteles } from "../../entities/DtoHoteles";
+
 export class DtoHabitacion {
   id: string;
   nombre: string;
@@ -15,5 +17,5 @@ export class DtoHabitacion {
   hotelNombre: string;
   estrellas: number;
   name_route: string;
-  hotel: any
+  hotel: DtoHoteles = new DtoHoteles()
 }

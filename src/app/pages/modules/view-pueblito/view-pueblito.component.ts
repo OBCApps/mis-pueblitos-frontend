@@ -113,8 +113,7 @@ export class ViewPueblitoComponent implements OnInit {
   @HostListener('window:scroll', [])
   onWindowScroll() {
     const menu = document.getElementById('navar-static');
-    this.navbarStatic = window.pageYOffset >= menu.offsetTop;
-    console.log("this.navbarStatic", this.navbarStatic);
+    this.navbarStatic = window.pageYOffset >= menu.offsetTop;    
     
   }
 
@@ -156,7 +155,7 @@ export class ViewPueblitoComponent implements OnInit {
   lugarDetalle: any = {};
   private updateTitle(newTitle: any) {
     this.title = newTitle;
-    console.log("titel", this.title);
+    
 
   }
 
