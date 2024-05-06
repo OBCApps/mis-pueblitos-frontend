@@ -79,7 +79,7 @@ export class ServicesActivitiesComponent implements OnInit {
         this.load_tours(filtro.filtroTurs);
         break;
       }
-      
+
     }
   }
 
@@ -95,9 +95,10 @@ export class ServicesActivitiesComponent implements OnInit {
   // ------------- LOADS SERVICIOS ---------------
   load_habitaciones(item: FiltroHabitaciones) {
     console.log('item', item);
-    item.precio = +item.precio;    
+    item.precio = +item.precio;
     this.habitacionService.get_habitaciones_byFiltro(item).subscribe(
       (data: any) => {
+        console.log('habitaciones:', data);
         this.list_resultadoBusqueda = data;
         this.loading.hide();
         //console.log(data);
@@ -140,7 +141,7 @@ export class ServicesActivitiesComponent implements OnInit {
 
 
   // ------------ SELECT HABITACION  ----------------
-  gotoHabitacion(item: any) {    
+  gotoHabitacion(item: any) {
     this.router.navigate([
       'home',
       'Ancash',
@@ -174,7 +175,7 @@ export class ServicesActivitiesComponent implements OnInit {
       item.name_route,
     ]);
   }
-  
+
 
   // ----------- FUNCTION DROPDOWN SELECTOR --------------------
   dev =

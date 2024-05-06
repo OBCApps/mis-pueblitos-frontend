@@ -38,17 +38,17 @@
   <!-- // --------------- GALLERY  --------------- \\ -->
   <div class="md:mx-10">
     <swiper-container init="false">
-      @for (item of get_Keys(dtoHabitacionInfo?.fotos?.gallery); track $index) {
+      @for (item of dtoHabitacionInfo?.fotos?.gallery; track $index) {
       <swiper-slide>
         <div>
-          <img src="{{dtoHabitacionInfo.fotos.gallery[item]}}" class="h-60 w-60 max-w-full rounded-lg" alt="">
+          <img src="{{item}}" class="h-60 w-60 max-w-full rounded-lg" alt="">
         </div>
       </swiper-slide>
       }
     </swiper-container>
   </div>
 
-  
+
 
 
 
@@ -298,7 +298,7 @@
 
 
   <!-- // --------------- TE PUEDE INTERESAR  --------------- \\ -->
-  
+
 
   <hr class="h-px my-2 md:my-4 bg-white border-0">
 </div>

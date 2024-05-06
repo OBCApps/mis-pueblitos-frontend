@@ -10,13 +10,18 @@ export class DtoHoteles {
   name_route: string;
   estrellas: number;
   habitaciones: DtoHabitacionesInfo[] = [];
-  servicios : any [] = []
+  servicios : any [] = [];
+  plan: number;
+  correo: string;
+  direccion: string;
+  celular: string;
 
 }
 
 export class HotelDetalle {
   fotos: any;
   mc_info_adicional: any[] = []
+  mc_redes_sociales: any[] = []
 }
 
 
