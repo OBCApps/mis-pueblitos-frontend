@@ -67,13 +67,17 @@
         --swiper-navigation-color: #f33535;
         --swiper-pagination-color: #f33535;
       " class="mySwiper" thumbs-swiper=".mySwiper2" space-between="10" navigation="true" slides-per-view="2"
-      centeredSlides="true">
+      centered-slides="true">
       @for (item of dtoHotelInfo?.hotelDetalle?.fotos?.gallery; track $index) {
       <swiper-slide>
         <div>
-          <img src="{{ item }}" class="h-60 w-60 max-w-full rounded-lg" alt="" />
+          <img src="{{ item }}" class="h-60 w-60 max-w-full rounded-lg" alt="" src="{{ item }}" />
         </div>
       </swiper-slide>
+      } @empty {
+      <div class="h-60 w-full flex items-center justify-center">
+        <p>El servicio no tiene imágenes agregadas</p>
+      </div>
       }
     </swiper-container>
   </div>
@@ -293,7 +297,7 @@
         <div (click)="gotoHabitacion(item.name_route, item.name_route)"
           class="bg-fondo border col-span-1 w-fit border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
           <a>
-            <img class="rounded-t-lg" src="{{ item.fotos.principal }}" alt="" />
+            <img class="rounded-t-lg h-56 w-full" src="{{ item.fotos.principal ? item.fotos.principal : './assets/notFound.png'  }}" (error)="'./assets/notFound.png'" alt="" />
           </a>
           <div class="p-4 flex flex-col items-start gap-2">
             <h5 class="text-xl font-bold font-Battambang leading-normal text-secondary">

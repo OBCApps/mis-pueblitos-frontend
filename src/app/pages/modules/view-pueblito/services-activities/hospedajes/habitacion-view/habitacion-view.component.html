@@ -37,19 +37,23 @@
 
   <!-- // --------------- GALLERY  --------------- \\ -->
   <div class="md:mx-10">
-    <swiper-container init="false">
+    <swiper-container slides-per-view="2"  centered-slides="true">
       @for (item of dtoHabitacionInfo?.fotos?.gallery; track $index) {
       <swiper-slide>
         <div>
-          <img src="{{item}}" class="h-60 w-60 max-w-full rounded-lg" alt="">
+          <img src="{{item}}" class="h-60 w-60 max-w-full rounded-lg" alt="{{item}}">
         </div>
       </swiper-slide>
-      }
+      }@empty {
+        <div class="h-60 w-full flex items-center justify-center">
+          <p>El servicio no tiene imágenes agregadas</p>
+        </div>
+        }
     </swiper-container>
   </div>
 
 
-
+  
 
 
 
