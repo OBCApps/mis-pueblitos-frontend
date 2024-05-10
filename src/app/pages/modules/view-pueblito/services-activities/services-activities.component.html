@@ -177,7 +177,6 @@
                   d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z"
                   clip-rule="evenodd" />
               </svg>
-
               {{item.duracion}} horas
             </div>
             <!-- <div class="flex text-base justify-start items-center gap-1">
@@ -210,12 +209,10 @@
             src="{{ item.fotos.principal ? item.fotos.principal : './assets/notFound.png'  }}"
             (error)="'./assets/notFound.png'" alt="" />
         </a>
-
         <div class="p-4 flex flex-col gap-2">
           <h5 class="text-xl font-bold font-Battambang leading-normal text-secondary">
             {{ item.nombre }}
           </h5>
-
           <div class="flex flex-col items-start justify-start">
             <div class="flex items-center justify-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
@@ -234,13 +231,9 @@
               {{item.tags}}
             </div>
           </div>
-
-
           <span class="font-base font-bold text-primary">
-            <span class="text-xs text-terceary"> Desde:</span> S/.{{ item.precio }}
+            <span class="text-xs text-terceary"> Desde:</span> S/.{{ item.minPrice }}
           </span>
-
-
         </div>
       </div>
       }@empty {

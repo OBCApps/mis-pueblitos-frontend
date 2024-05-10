@@ -8,6 +8,6 @@ export const API_SERVICE_WEB='https://backend.mispueblitos.info';
 //export const API_SERVICE_WEB = 'http://ec2-3-89-144-194.compute-1.amazonaws.com'
 
 
-// Desarrollo 
+// Desarrollo
 //export const API_SERVICE_WEB = "http://localhost:3000";
 //export const API_SERVICE_WEB ='https://localhost';
