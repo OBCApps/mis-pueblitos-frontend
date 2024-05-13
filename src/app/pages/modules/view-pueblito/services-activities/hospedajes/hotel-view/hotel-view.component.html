@@ -39,35 +39,9 @@
 
   <hr class="h-px my-2 md:my-4 bg-white border-0" />
   <!-- // --------------- GALLERY  --------------- \\ -->
-  <!-- <div class="mx-10">
-    <swiper-container style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="mySwiper"
-      thumbs-swiper=".mySwiper2" space-between="10" navigation="true">
-      @for (item of get_Keys(dtoHotelInfo?.fotos?.gallery); track $index) {
-      <swiper-slide>
-        <div>
-          <img src="{{dtoHotelInfo.fotos.gallery[item]}}" class="h-56 w-56 max-w-full rounded-lg" alt="">
-        </div>
-      </swiper-slide>
-      }
-    </swiper-container>
 
-    <swiper-container class="mySwiper2" space-between="10" slides-per-view="4" free-mode="true"
-      watch-slides-progress="true">
-      @for (item of get_Keys(dtoHotelInfo?.fotos?.gallery); track $index) {
-      <swiper-slide>
-        <div>
-          <img src="{{dtoHotelInfo.fotos.gallery[item]}}" class="h-24 w-24 max-w-full rounded-lg" alt="">
-        </div>
-      </swiper-slide>
-      }
-    </swiper-container>
-  </div> -->
   <div class="md:mx-10">
-    <swiper-container style="
-        --swiper-navigation-color: #f33535;
-        --swiper-pagination-color: #f33535;
-      " class="mySwiper" thumbs-swiper=".mySwiper2" space-between="10" navigation="true" slides-per-view="2"
-      centered-slides="true">
+    <swiper-container space-between="10" navigation="true" slides-per-view="2" centered-slides="true">
       @for (item of dtoHotelInfo?.hotelDetalle?.fotos?.gallery; track $index) {
       <swiper-slide>
         <div>
@@ -80,6 +54,8 @@
       </div>
       }
     </swiper-container>
+
+    
   </div>
 
   <hr class="h-px my-1 md:my-2 bg-white border-0" />
@@ -297,7 +273,9 @@
         <div (click)="gotoHabitacion(item.name_route, item.name_route)"
           class="bg-fondo border col-span-1 w-fit border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
           <a>
-            <img class="rounded-t-lg h-56 w-full" src="{{ item.fotos.principal ? item.fotos.principal : './assets/notFound.png'  }}" (error)="'./assets/notFound.png'" alt="" />
+            <img class="rounded-t-lg h-56 w-full"
+              src="{{ item.fotos.principal ? item.fotos.principal : './assets/notFound.png'  }}"
+              (error)="'./assets/notFound.png'" alt="" />
           </a>
           <div class="p-4 flex flex-col items-start gap-2">
             <h5 class="text-xl font-bold font-Battambang leading-normal text-secondary">

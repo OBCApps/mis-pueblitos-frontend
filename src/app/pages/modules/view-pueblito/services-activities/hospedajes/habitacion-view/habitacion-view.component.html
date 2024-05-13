@@ -37,7 +37,7 @@
 
   <!-- // --------------- GALLERY  --------------- \\ -->
   <div class="md:mx-10">
-    <swiper-container slides-per-view="2"  centered-slides="true">
+    <swiper-container slides-per-view="2" centered-slides="true">
       @for (item of dtoHabitacionInfo?.fotos?.gallery; track $index) {
       <swiper-slide>
         <div>
@@ -45,15 +45,15 @@
         </div>
       </swiper-slide>
       }@empty {
-        <div class="h-60 w-full flex items-center justify-center">
-          <p>El servicio no tiene imágenes agregadas</p>
-        </div>
-        }
+      <div class="h-60 w-full flex items-center justify-center">
+        <p>El servicio no tiene imágenes agregadas</p>
+      </div>
+      }
     </swiper-container>
   </div>
 
 
-  
+
 
 
 
@@ -105,12 +105,12 @@
           Que te ofrecemos
         </h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:px-2">
-          @for (item of dtoHabitacionInfo.servicios; track $index) {
+          @for (item of dtoHabitacionInfo.mc_servicios_negocios; track $index) {
           <div class="col-span-1 flex items-center gap-2 self-stretch">
             <div>
               <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
                 <a target="_blank">
-                  @switch (item.servicio) {
+                  @switch (item.nombreServicio) {
                   @case ('wifi') {
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none">
                     <path
@@ -192,7 +192,7 @@
             </div>
             <div>
               <h3 class="text-description font-bold md:pr-2 capitalize">
-                {{item.servicio}}
+                {{item.nombreServicio}}
               </h3>
               <!-- <h3 class="text-description text-justify md:pr-2">
                 {{item.descripcion}}
@@ -207,7 +207,7 @@
 
 
       <!-- // --------------- INFORMACIÓN ADICIONAL  --------------- \\ -->
-      <div class="flex flex-col gap-4 md:gap-8">
+      <!-- <div class="flex flex-col gap-4 md:gap-8">
         <h3 class="subtitle">
           Información adicional
         </h3>
@@ -239,8 +239,18 @@
           </li>
         </ul>
 
+      </div> -->
+      <div class="flex flex-col gap-4 md:gap-8">
+        <h3 class="subtitle">Información adicional</h3>
+        <ul class="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+          @for (item of dtoHabitacionInfo.infoAdicional; track $index) {
+          <li class="text-description text-justify md:pr-2 pb-1">
+            <b>{{item.nombre}}: </b>
+            {{item.descripcion}}
+          </li>
+          }
+        </ul>
       </div>
-
     </div>
 
     <div class="w-full md:w-[30%] flex items-start justify-center">
