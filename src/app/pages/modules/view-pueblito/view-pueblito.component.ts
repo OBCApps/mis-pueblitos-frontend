@@ -183,10 +183,10 @@ export class ViewPueblitoComponent implements OnInit {
   swiperElement = signal<SwiperContainer | null>(null);
   createCarrusel() {
     if (typeof document !== 'undefined') {
-      const swiperElemConstructor = document.querySelector('swiper-container');
+      const swiperElemConstructor = document.getElementById('navarOptions');
       if (swiperElemConstructor) {
         const swiperOPtions: SwiperOptions = {
-          slidesPerView: 5,
+          
           pagination: false,
           //centeredSlides: true,
           navigation: {
@@ -195,16 +195,16 @@ export class ViewPueblitoComponent implements OnInit {
             prevEl: '.swiper-button-prev'
           },
           breakpoints: {
-            320: { slidesPerView: 3 },
-            640: { slidesPerView: 3 },
-            1024: { slidesPerView: 4 },
-            1280: { slidesPerView: 5 },
+            320: { slidesPerView: 3 },//3
+            640: { slidesPerView: 3 },//3
+            1024: { slidesPerView: 4 },//4
+            1280: { slidesPerView: 5 },//5
 
           }
         }
         Object.assign(swiperElemConstructor, swiperOPtions);
         this.swiperElement.set(swiperElemConstructor as SwiperContainer)
-        this.swiperElement()?.initialize()
+        this.swiperElement().initialize()
       }
     }
   }

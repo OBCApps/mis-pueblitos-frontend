@@ -10,7 +10,7 @@
         </h3>
       </div>
       <!-- ESTRELLAS  -->
-      <div class="flex items-center">
+      <!-- <div class="flex items-center">
         @for (item of [1,2,3,4,5]; track $index) {
 
         <svg class="w-4 h-4 {{
@@ -20,13 +20,13 @@
             d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
         </svg>
         }
-      </div>
+      </div> -->
     </div>
     <div class="flex gap-4 items-center justify-between md:justify-start">
       <h3 class="text-description">
         {{ restaurante.direccion }}
       </h3>
-    <!--   <div class="flex items-center justify-center text-primary">
+      <!--   <div class="flex items-center justify-center text-primary">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
           <path fill-rule="evenodd"
             d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
@@ -39,49 +39,30 @@
   </div>
 
   <!-- // --------------- GALLERY  --------------- \\ -->
-  <!-- <div class="mx-10">
-    <swiper-container style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="mySwiper"
-      thumbs-swiper=".mySwiper2" space-between="10" navigation="true">
-      @for (item of get_Keys(restaurante?.fotos?.gallery); track $index) {
-      <swiper-slide>
-        <div>
-          <img src="{{restaurante.fotos.gallery[item]}}" class="h-56 w-56 max-w-full rounded-lg" alt="">
-        </div>
-      </swiper-slide>
-      }
-    </swiper-container>
 
-    <swiper-container class="mySwiper2" space-between="10" slides-per-view="4" free-mode="true"
-      watch-slides-progress="true">
-      @for (item of get_Keys(restaurante?.fotos?.gallery); track $index) {
-      <swiper-slide>
-        <div>
-          <img src="{{restaurante.fotos.gallery[item]}}" class="h-24 w-24 max-w-full rounded-lg" alt="">
-        </div>
-      </swiper-slide>
-      }
-    </swiper-container>
-  </div>  -->
 
-  <div class="md:mx-10 my-8">
-    <swiper-container style="
-        --swiper-navigation-color: #f33535;
-        --swiper-pagination-color: #f33535;
-      " class="mySwiper" thumbs-swiper=".mySwiper2" space-between="10" navigation="true" slides-per-view="3">
-      @for (item of get_Keys(restaurante?.fotos?.gallery); track $index) {
-      <swiper-slide>
+
+  <div class="md:mx-10">
+    <swiper-container id="perfilPhotos" init="false" class="flex items-center justify-center">
+      @for (item of restaurante?.fotos?.gallery; track $index) {
+      <swiper-slide class="flex items-center justify-center ">
         <div>
-          <img src="{{ restaurante.fotos.gallery[item] }}" class="h-60 w-60 max-w-full rounded-lg" alt="" />
+          <img src="{{ item }}" class="h-60 w-60 max-w-full rounded-lg" alt="" src="{{ item }}" />
         </div>
       </swiper-slide>
+      } @empty {
+      <div class="h-60 w-full flex items-center justify-center">
+        <p>El servicio no tiene imágenes agregadas</p>
+      </div>
       }
     </swiper-container>
   </div>
 
   <!-- // --------------- REDES AND CONTACT  --------------- \\ -->
+  <!--
   <div class="grid grid-cols-4">
     <div class="col-span-2 flex items-center justify-between">
-      <!-- <div class="justify-center items-center gap-2 flex">
+       <div class="justify-center items-center gap-2 flex">
         @for (item of get_Keys(restaurante.contactos); track $index) {
         @switch (item.tipo) {
         @case ('facebook') {
@@ -152,7 +133,7 @@
 
         }
 
-      </div> -->
+      </div> 
     </div>
     <div class="col-span-2 flex items-center justify-center md:justify-end">
       <button type="button"
@@ -167,7 +148,7 @@
       </button>
     </div>
   </div>
-
+-->
   <hr class="h-px bg-terceary mt-8 bg-opacity-30 border-0" />
 
   <div class="w-full my-8 flex flex-col gap-8 md:gap-12 md:w-[70%]">
@@ -184,6 +165,9 @@
     <div class="flex flex-col gap-4 md:gap-8">
       <h3 class="subtitle"> Horario</h3>
       <div class="grid grid-cols-1 gap-4 md:gap-8 md:grid-cols-3">
+        @for (item of get_Keys(restaurante.horaAtencion); track $index) {
+
+
         <div class="flex gap-4">
           <div class="rounded-full p-2 h-fit w-fit bg-primary items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -200,10 +184,11 @@
             </svg>
           </div>
           <div class="flex flex-col">
-            <span class="font-bold">Lunes - Viernes</span>
-            <span>9:00 am - 10:00 pm</span>
+            <span class="font-bold">{{item}}</span>
+            <span>{{restaurante.horaAtencion[item]}}</span>
           </div>
         </div>
+        }
       </div>
     </div>
     <!-- // --------------- MENU  --------------- \\ -->
@@ -218,13 +203,14 @@
           <swiper-slide>
             <div class="bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
               <a>
-                <img class="rounded-t-lg" src="{{ item.fotos.url }}" alt="" />
+                <img class="rounded-t-lg" src="{{ item.fotos }}" alt="" />
               </a>
               <div class="p-4 flex flex-col items-start gap-2">
                 <h5 class="text-xl font-bold font-Battambang leading-normal text-secondary">
                   {{ item.nombre }}
                 </h5>
-                <div class="text-sm font-Battambang leading-normal text-terceary">{{ item.ingredientes }}
+                <div class="text-sm font-Battambang leading-normal text-terceary">
+                  <!-- {{ item.ingredientes }} -->
                 </div>
                 <!-- <div class="flex justify-start items-start gap-6">
                   <div class="flex text-base justify-start items-center gap-1">
@@ -391,26 +377,13 @@
     <!-- // --------------- INFORMACIÓN ADICIONAL  --------------- \\ -->
     <div class="flex flex-col gap-4 md:gap-8">
       <h3 class="subtitle">Información adicional</h3>
-      <ul class="space-y-1 text-terceary list-disc list-inside dark:text-gray-400">
-        <li class="text-base text-justify md:pr-2 pb-1">
-          <b>Políticas de Cancelación y Reembolso: </b>
-          En caso de cambios de planes, ofrecemos flexibilidad en nuestras
-          políticas de cancelación y reembolso. Consulta con nuestro equipo para
-          obtener más detalles sobre cómo podemos ayudarte en situaciones
-          imprevistas.
+      <ul class="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+        @for (item of get_Keys(restaurante.infoAdicional) ; track $index) {
+        <li class="text-description text-justify md:pr-2 pb-1">
+          <b>{{item}}: </b>
+          {{restaurante.infoAdicional[item]}}
         </li>
-        <li class="text-base text-justify md:pr-2 pb-1">
-          <b>Métodos de Pago: </b>
-          En caso de cambios de planes, ofrecemos flexibilidad en nuestras
-          políticas de cancelación y reembolso. Consulta con nuestro equipo para
-          obtener más detalles sobre cómo podemos ayudarte en situaciones
-          imprevistas.
-        </li>
-        <li class="text-base text-justify md:pr-2 pb-1">
-          <b>Comprobante de Pago: </b>
-          Emitimos boletas y facturas según tus necesidades, asegurando una
-          experiencia de compra completa y transparente.
-        </li>
+        }
       </ul>
     </div>
   </div>

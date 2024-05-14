@@ -1,7 +1,9 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef, Component, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ResturanteService } from '../../../../../../services/restaurante.service';
 import { DtoRestaurante } from '../entities/DtoRestaurante';
+import { SwiperContainer } from 'swiper/element';
+import { SwiperOptions } from 'swiper/types';
 
 @Component({
   selector: 'app-restaurant-view',
@@ -16,6 +18,7 @@ export class RestaurantViewComponent {
     private restauranteService: ResturanteService,
     private router: Router,
     private readonly route: ActivatedRoute,
+    private cdr: ChangeDetectorRef
   ) {}
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -27,7 +30,9 @@ export class RestaurantViewComponent {
     this.restauranteService.get_restaurante_by_name_route(name_route).subscribe(
       (data:any) => {
         this.restaurante = data;
-        console.log("restaurante",this.restaurante);
+        
+        this.cdr.detectChanges();        
+        this.createCarrusel();
       }, err => {
         console.error(err);
       }
@@ -37,5 +42,32 @@ export class RestaurantViewComponent {
   get_Keys(data:any){
     console.log(Object.keys(data));
     return Object.keys(data);
+  }
+  swiperElement = signal<SwiperContainer | null>(null);
+  createCarrusel() {
+    if (typeof document !== 'undefined') {
+      const swiperElemConstructor = document.getElementById('perfilPhotos');
+      if (swiperElemConstructor) {
+        const swiperOPtions: SwiperOptions = {
+        
+          pagination: false,
+          navigation: {
+            enabled: true,
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+          },
+          breakpoints: {
+            320: { slidesPerView: 1 },
+            640: { slidesPerView: 1 },
+            1024: { slidesPerView: 1 },
+            1280: { slidesPerView: 1 },
+
+          }
+        }
+        Object.assign(swiperElemConstructor, swiperOPtions);
+        this.swiperElement.set(swiperElemConstructor as SwiperContainer)
+        this.swiperElement().initialize()
+      }
+    }
   }
 }

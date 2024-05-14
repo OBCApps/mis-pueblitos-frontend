@@ -13,7 +13,7 @@
         </h3>
       </div>
 
-      <div class="flex items-center">
+      <!-- <div class="flex items-center">
         @for (item of [1,2,3,4,5]; track $index) {
 
         <svg class="w-4 h-4 {{item<=dtoHabitacionInfo.hotel?.estrellas? 'text-yellow-300' : 'text-gray-300'}} ms-1"
@@ -24,7 +24,7 @@
         }
 
 
-      </div>
+      </div> -->
 
       <div>
         <a class="text-xs px-2 text-primary cursor-pointer">Ver Perfil</a>
@@ -36,23 +36,22 @@
   <hr class="h-px my-2 md:my-4 bg-white border-0">
 
   <!-- // --------------- GALLERY  --------------- \\ -->
+
   <div class="md:mx-10">
-    <swiper-container slides-per-view="2" centered-slides="true">
+    <swiper-container id="perfilPhotos" init="false" class="flex items-center justify-center">
       @for (item of dtoHabitacionInfo?.fotos?.gallery; track $index) {
-      <swiper-slide>
+      <swiper-slide class="flex items-center justify-center ">
         <div>
-          <img src="{{item}}" class="h-60 w-60 max-w-full rounded-lg" alt="{{item}}">
+          <img src="{{ item }}" class="h-60 w-60 max-w-full rounded-lg" alt="" src="{{ item }}" />
         </div>
       </swiper-slide>
-      }@empty {
+      } @empty {
       <div class="h-60 w-full flex items-center justify-center">
         <p>El servicio no tiene imágenes agregadas</p>
       </div>
       }
     </swiper-container>
   </div>
-
-
 
 
 

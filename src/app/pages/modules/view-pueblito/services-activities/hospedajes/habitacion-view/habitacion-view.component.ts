@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component, ViewChild, signal } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef, Component, ViewChild, signal } from '@angular/core';
 import { HabitacionService } from '../../../../../../services/habitacion.service';
 import { Router } from '@angular/router';
 import { DtoHabitacion } from './entities/DtoHabitacion';
@@ -19,6 +19,7 @@ export class HabitacionViewComponent {
   constructor(
     private router: Router,
     private habitacionService: HabitacionService,
+    private cdr: ChangeDetectorRef
   ) { }
 
   name_route = '';
@@ -26,7 +27,7 @@ export class HabitacionViewComponent {
   loading = false;
 
   ngOnInit() {
-    this.createCarrusel();
+    
     this.name_route = this.router.url.split('/').pop();
     this.loading = true;
 
@@ -39,7 +40,8 @@ export class HabitacionViewComponent {
       (response: DtoHabitacion) => {
         this.dtoHabitacionInfo = response;
 
-
+        this.cdr.detectChanges(); 
+        this.createCarrusel();
         this.loading = false;
       },
       (error) => {
@@ -62,30 +64,23 @@ export class HabitacionViewComponent {
 
 
   createCarrusel() {
-    const swiperElemConstructor = document.getElementById('devSlider');
+    const swiperElemConstructor = document.getElementById('perfilPhotos');
     if (swiperElemConstructor) {
-      const swiperOptions: SwiperOptions = {
-        slidesPerView: 5,
-        pagination: false,
-        centeredSlides: true,
+      const swiperOptions: SwiperOptions = {        
+        pagination: false,        
         navigation: {
           enabled: true,
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
         },
         breakpoints: {
-          320: { slidesPerView: 3 },
-          640: { slidesPerView: 3 },
-          1024: { slidesPerView: 4 },
-          1280: { slidesPerView: 5 },
+          320: { slidesPerView: 1 },
+          640: { slidesPerView: 1 },
+          1024: { slidesPerView: 2 },
+          1280: { slidesPerView: 2 },
         }
       };
-
-      if (this.swiperElement()) {
-        this.swiperElement()?.remove(); // Eliminar el Swiper existente
-      }
-
-      const swiper = new Swiper(swiperElemConstructor, swiperOptions);
+      
       Object.assign(swiperElemConstructor, swiperOptions);
       this.swiperElement.set(swiperElemConstructor as SwiperContainer)
       this.swiperElement()?.initialize()

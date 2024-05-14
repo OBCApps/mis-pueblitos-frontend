@@ -41,9 +41,9 @@
   <!-- // --------------- GALLERY  --------------- \\ -->
 
   <div class="md:mx-10">
-    <swiper-container space-between="10" navigation="true" slides-per-view="2" centered-slides="true">
+    <swiper-container id="perfilPhotos" init="false" class="flex items-center justify-center">
       @for (item of dtoHotelInfo?.hotelDetalle?.fotos?.gallery; track $index) {
-      <swiper-slide>
+      <swiper-slide class="flex items-center justify-center ">
         <div>
           <img src="{{ item }}" class="h-60 w-60 max-w-full rounded-lg" alt="" src="{{ item }}" />
         </div>
@@ -53,9 +53,7 @@
         <p>El servicio no tiene imágenes agregadas</p>
       </div>
       }
-    </swiper-container>
-
-    
+    </swiper-container>    
   </div>
 
   <hr class="h-px my-1 md:my-2 bg-white border-0" />
