@@ -16,6 +16,7 @@ export class DtoRestaurante {
     };
     gallery: []
   };
+  
   contactos: {
     gmail: string;
     twitter: string;
@@ -24,9 +25,7 @@ export class DtoRestaurante {
     instagram: string;
   };
   descripcion: string;
-  servicios: {
-    string: string;
-  };
+  servicios: any
   infoAdicional: {};
   name_route: string;
   ambiente: string;
