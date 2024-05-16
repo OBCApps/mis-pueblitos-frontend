@@ -27,7 +27,7 @@
       </div> -->
 
       <div>
-        <a class="text-xs px-2 text-primary cursor-pointer">Ver Perfil</a>
+        <a (click)="goToHotel()" class="text-xs px-2 text-primary cursor-pointer">Ver Perfil</a>
       </div>
 
     </div>
@@ -137,11 +137,19 @@
 
       <div class="flex flex-col gap-4 md:gap-8">
         <h3 class="subtitle">Información adicional</h3>
-        <ul class="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+        <!-- <ul class="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
           @for (item of dtoHabitacionInfo.infoAdicional; track $index) {
           <li class="text-description text-justify md:pr-2 pb-1">
             <b>{{item.nombre}}: </b>
             {{item.descripcion}}
+          </li>
+          }
+        </ul> -->
+        <ul class="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+          @for (item of get_Keys(dtoHabitacionInfo.infoAdicional) ; track $index) {
+          <li class="text-description text-justify md:pr-2 pb-1">
+            <b>{{item}}: </b>
+            {{dtoHabitacionInfo.infoAdicional[item]}}
           </li>
           }
         </ul>

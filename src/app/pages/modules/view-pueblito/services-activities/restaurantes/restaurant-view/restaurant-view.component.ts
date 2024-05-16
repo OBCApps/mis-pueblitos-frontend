@@ -33,6 +33,7 @@ export class RestaurantViewComponent {
         
         this.cdr.detectChanges();        
         this.createCarrusel();
+        this.createMenuCarrusel()
       }, err => {
         console.error(err);
       }
@@ -67,6 +68,34 @@ export class RestaurantViewComponent {
         Object.assign(swiperElemConstructor, swiperOPtions);
         this.swiperElement.set(swiperElemConstructor as SwiperContainer)
         this.swiperElement().initialize()
+      }
+    }
+  }
+
+  swiperMenuElement = signal<SwiperContainer | null>(null);
+  createMenuCarrusel() {
+    if (typeof document !== 'undefined') {
+      const swiperElemConstructor = document.getElementById('menuDates');
+      if (swiperElemConstructor) {
+        const swiperOPtions: SwiperOptions = {
+          spaceBetween: 15,
+          pagination: false,
+          navigation: {
+            enabled: true,
+            nextEl: '.swiper-buttonMenu-next',
+            prevEl: '.swiper-buttonMenu-prev'
+          },
+          breakpoints: {
+            320: { slidesPerView: 1 },
+            640: { slidesPerView: 1 },
+            1024: { slidesPerView: 3 },
+            1280: { slidesPerView: 4 },
+
+          }
+        }
+        Object.assign(swiperElemConstructor, swiperOPtions);
+        this.swiperMenuElement.set(swiperElemConstructor as SwiperContainer)
+        this.swiperMenuElement().initialize()
       }
     }
   }

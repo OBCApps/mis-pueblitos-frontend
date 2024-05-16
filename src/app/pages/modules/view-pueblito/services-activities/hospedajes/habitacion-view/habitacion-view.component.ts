@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef, Component, ViewChild, signal } from '@angular/core';
 import { HabitacionService } from '../../../../../../services/habitacion.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DtoHabitacion } from './entities/DtoHabitacion';
 import { SwiperOptions } from 'swiper/types';
 import { NgFor } from '@angular/common';
@@ -19,13 +19,15 @@ export class HabitacionViewComponent {
   constructor(
     private router: Router,
     private habitacionService: HabitacionService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private route: ActivatedRoute,
   ) { }
 
   name_route = '';
   dtoHabitacionInfo: DtoHabitacion = new DtoHabitacion();
   loading = false;
 
+  Params : any;
   ngOnInit() {
     
     this.name_route = this.router.url.split('/').pop();
@@ -87,5 +89,9 @@ export class HabitacionViewComponent {
     }
   }
 
-
+  goToHotel(){
+    console.log("Params", this.Params);
+    const routeHotel = this.router.url.split('/').slice(0, -1).join('/');
+    this.router.navigate([routeHotel])
+  }
 }

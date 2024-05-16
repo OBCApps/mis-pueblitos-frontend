@@ -201,12 +201,12 @@
     <!-- // --------------- HABITACIONES  --------------- \\ -->
     <div class="flex flex-col gap-4 md:gap-8">
       <h3 class="subtitle">Habitaciones</h3>
-      <div class=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-center items-center gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 font-Battambang">
 
         @for (item of dtoHotelInfo.habitaciones; track $index) {
 
         <div (click)="gotoHabitacion(item.name_route, item.name_route)"
-          class="bg-fondo border col-span-1 w-fit border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
+          class="bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
           <a>
             <img class="rounded-t-lg h-56 w-full"
               src="{{ item.fotos.principal ? item.fotos.principal : './assets/notFound.png'  }}"
