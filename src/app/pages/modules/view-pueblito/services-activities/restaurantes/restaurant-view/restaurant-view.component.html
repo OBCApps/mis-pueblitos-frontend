@@ -187,35 +187,7 @@
     <!-- // --------------- MENU  --------------- \\ -->
     <div class="flex flex-col gap-4 md:gap-8">
       <h3 class="subtitle">Menú</h3>
-      <!-- <div class="">
-        <swiper-container style="
-            --swiper-navigation-color: #f33535;
-            --swiper-pagination-color: #f33535;
-          " class="mySwiper" thumbs-swiper=".mySwiper2" space-between="10" navigation="true" slides-per-view="4">
-          @for (item of restaurante.menu; track $index) {
-          <swiper-slide>
-            <div class="bg-fondo border border-terceary rounded-3xl shadow overflow-hidden">
-              <a>
-                <img class="rounded-t-lg" src="{{ item.fotos }}" alt="" />
-              </a>
-              <div class="min-h-40 p-4 flex flex-col items-start gap-2">
-                <h5 class="text-xl font-bold font-Battambang leading-normal text-secondary">
-                  {{ item.nombre }}
-                </h5>
-                <div class="text-xs text-justify font-Battambang leading-normal text-terceary">
-                  {{ item.ingredientes }}
-                </div>
-                
-                <p class="text-base font-bold text-primary">
-                  S/. {{ item.precio }}
-                </p>
-              </div>
-            </div>
-          </swiper-slide>
-          }
-
-        </swiper-container>
-      </div> -->
+     
       <div class="md:mx-10">
         <swiper-container id="menuDates" init="false" class="flex items-center justify-center">
           @for (item of restaurante.menu; track $index) {
@@ -231,10 +203,16 @@
                 <div class="text-xs text-justify font-Battambang leading-normal text-terceary">
                   {{ item.ingredientes }}
                 </div>
-
-                <p class="text-base font-bold text-primary">
-                  S/. {{ item.precio }}
-                </p>
+                
+                @if(item.precio == 1000000){
+                  <p class="text-base font-bold text-primary">
+                    Precio Variable
+                  </p>
+                } @else{  
+                  <p class="text-base font-bold text-primary">
+                    S/. {{ item.precio }}
+                  </p>
+                }
               </div>
             </div>
           </swiper-slide>

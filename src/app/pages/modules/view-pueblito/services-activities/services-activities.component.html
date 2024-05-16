@@ -232,9 +232,17 @@
               {{item.tags}}
             </div>
           </div>
-          <span class="font-base font-bold text-primary">
-            <span class="text-xs text-terceary"> Desde:</span> S/.{{ item.minPrice }}
-          </span>
+
+          @if(item.prec == 1000000){
+            <p class="text-base font-bold text-primary">
+              Precio Variable
+            </p>
+          } @else{  
+            <span class="font-base font-bold text-primary">
+              <span class="text-xs text-terceary"> Desde:</span> S/.{{ item.minPrice }}
+            </span>
+          }
+          
         </div>
       </div>
       }
