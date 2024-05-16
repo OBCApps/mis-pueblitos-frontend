@@ -66,7 +66,7 @@ export class HotelViewComponent {
       const swiperElemConstructor = document.getElementById('perfilPhotos');
       if (swiperElemConstructor) {
         const swiperOPtions: SwiperOptions = {
-        
+          
           pagination: false,
           navigation: {
             enabled: true,

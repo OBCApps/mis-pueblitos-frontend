@@ -41,11 +41,11 @@
   <!-- // --------------- GALLERY  --------------- \\ -->
 
   <div class="md:mx-10">
-    <swiper-container id="perfilPhotos" init="false" class="flex items-center justify-center">
+    <swiper-container id="perfilPhotos" init="false" class="bg-transparent flex items-center justify-center">
       @for (item of dtoHotelInfo?.hotelDetalle?.fotos?.gallery; track $index) {
       <swiper-slide class="flex items-center justify-center ">
         <div>
-          <img src="{{ item }}" class="h-80 w-full  rounded-lg" alt="" src="{{ item }}" />
+          <img src="{{ item }}" class="h-80 w-full rounded-lg shadow-lg m-2" alt="" src="{{ item }}" />
         </div>
       </swiper-slide>
       } @empty {

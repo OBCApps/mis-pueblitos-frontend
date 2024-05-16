@@ -35,11 +35,11 @@
 
   <!-- // --------------- GALLERY  --------------- \\ -->
   <div class="md:mx-10">
-    <swiper-container id="perfilPhotos" init="false" class="flex items-center justify-center">
+    <swiper-container id="perfilPhotos" init="false" class="bg-transparent flex items-center justify-center">
       @for (item of restaurante?.fotos?.gallery; track $index) {
       <swiper-slide class="flex items-center justify-center shadow-lg">
         <div>
-          <img src="{{ item }}" class="h-80 w-full  rounded-lg" alt="" src="{{ item }}" />
+          <img src="{{ item }}" class="h-80 w-full  rounded-lg shadow-lg m-2" alt="" src="{{ item }}" />
         </div>
       </swiper-slide>
       } @empty {
@@ -55,7 +55,7 @@
     <p class="px-1">#{{restaurante.ambiente}}</p>
   </div>
   <!-- // --------------- REDES AND CONTACT  --------------- \\ -->
-  
+
   <hr class="h-px bg-terceary mt-8 bg-opacity-30 border-0" />
 
   <div class="w-full my-8 flex flex-col gap-8 md:gap-12 ">
@@ -67,6 +67,34 @@
       </h3>
     </div>
 
+    <!-- // --------------- CONTACTOS  --------------- \\ -->
+    <div class="flex flex-col gap-4 md:gap-8">
+      <h3 class="subtitle">Contactos</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:px-2">
+        @for (item of restaurante.contactos; track $index) {
+        <div class="col-span-1 flex items-center gap-2 self-stretch">
+          <div class="text-white bg-[#00D757] rounded-full ">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-8 h-8 p-1">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-description font-bold md:pr-2 capitalize">
+              {{item.nombre }}
+            </h3>
+            <h3 class="text-description  md:pr-2 capitalize">
+              {{item.valor }}
+            </h3>
+          </div>
+        </div>
+        }
+       
+
+        
+      </div>
+    </div>
     <!------------HORARIO---------------->
 
     <div class="flex flex-col gap-4 md:gap-8">
@@ -102,7 +130,7 @@
     <!-- // --------------- MENU  --------------- \\ -->
     <div class="flex flex-col gap-4 md:gap-8">
       <h3 class="subtitle">Menú</h3>
-     
+
       <div class="md:mx-10">
         <swiper-container id="menuDates" init="false" class="flex items-center justify-center">
           @for (item of restaurante.menu; track $index) {
@@ -118,15 +146,15 @@
                 <div class="text-xs text-justify font-Battambang leading-normal text-terceary">
                   {{ item.ingredientes }}
                 </div>
-                
+
                 @if(item.precio == 1000000){
-                  <p class="text-base font-bold text-primary">
-                    Precio Variable
-                  </p>
-                } @else{  
-                  <p class="text-base font-bold text-primary">
-                    S/. {{ item.precio }}
-                  </p>
+                <p class="text-base font-bold text-primary">
+                  Precio Variable
+                </p>
+                } @else{
+                <p class="text-base font-bold text-primary">
+                  S/. {{ item.precio }}
+                </p>
                 }
               </div>
             </div>
@@ -147,7 +175,7 @@
             </svg>
             <span class="sr-only">Icon description</span>
           </button>
-  
+
           <button type="button"
             class="swiper-buttonMenu-next lg:hidden right-0  text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-sm p-1 md:p-2.5 text-center inline-flex items-center me-2">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
@@ -155,7 +183,7 @@
                 d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
                 clip-rule="evenodd" />
             </svg>
-  
+
             <span class="sr-only">Icon description</span>
           </button>
         </div>

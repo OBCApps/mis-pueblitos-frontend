@@ -17,13 +17,7 @@ export class DtoRestaurante {
     gallery: []
   };
   
-  contactos: {
-    gmail: string;
-    twitter: string;
-    facebook: string;
-    whatsapp: string;
-    instagram: string;
-  };
+  contactos: any
   descripcion: string;
   servicios: any
   infoAdicional: {};
