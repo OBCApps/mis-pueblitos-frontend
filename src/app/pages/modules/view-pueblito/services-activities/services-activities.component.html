@@ -149,10 +149,14 @@
           </p>
         </div>
       </div>
-      }@empty {
-      <p>Sin Hospedajes disponibles</p>
       }
+
     </div>
+    @if (list_resultadoBusqueda.length == 0) {
+    <div class="flex items-center justify-center">
+      <p>Aún no tenemos habitaciones disponibles</p>
+    </div>
+    }
     }
 
     @if (filtroBusqueda.typeServicio == 'TOUR') {
@@ -179,24 +183,21 @@
               </svg>
               {{item.duracion}} horas
             </div>
-            <!-- <div class="flex text-base justify-start items-center gap-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24">
-                <circle cx="12" cy="6" r="4" fill="currentColor" />
-                <path fill="currentColor"
-                  d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5" />
-              </svg>
-              <span>2</span>
-            </div> -->
+
           </div>
           <p class="font-base font-bold text-primary">
             S/. {{ item.precio }} / persona
           </p>
         </div>
       </div>
-      }@empty {
-      <p>Sin Tours disponibles</p>
       }
     </div>
+    @if (list_resultadoBusqueda.length == 0) {
+    <div class="flex items-center justify-center">
+      <p>Aún no tenemos tours disponibles</p>
+    </div>
+    }
+
     }
 
     @if (filtroBusqueda.typeServicio == 'REST') {
@@ -236,10 +237,13 @@
           </span>
         </div>
       </div>
-      }@empty {
-      <p>Sin Restaurantes disponibles</p>
       }
     </div>
+    @if (list_resultadoBusqueda.length == 0) {
+    <div class="flex items-center justify-center">
+      <p>Aún no tenemos restaurantes disponibles</p>
+    </div>
+    }
     }
 
   </div>

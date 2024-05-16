@@ -129,7 +129,7 @@ export class ServicesActivitiesComponent implements OnInit {
     console.log('item tour', item);
     this.toursService.filter_tours(item).subscribe(
       (data: any) => {
-        this.list_resultadoBusqueda = data;
+        this.list_resultadoBusqueda = [];
         console.log('tours:', data);
         this.loading.hide();
       },
