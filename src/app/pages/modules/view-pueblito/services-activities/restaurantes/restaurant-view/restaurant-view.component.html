@@ -39,7 +39,7 @@
       @for (item of restaurante?.fotos?.gallery; track $index) {
       <swiper-slide class="flex items-center justify-center shadow-lg">
         <div>
-          <img src="{{ item }}" class="h-60 w-60 max-w-full rounded-lg" alt="" src="{{ item }}" />
+          <img src="{{ item }}" class="h-80 w-full  rounded-lg" alt="" src="{{ item }}" />
         </div>
       </swiper-slide>
       } @empty {
@@ -52,6 +52,7 @@
   <div class="flex font-bold ">
     <p class="px-1">#{{restaurante.tags}}</p>
     <p class="px-1">#{{restaurante.tipo}}</p>
+    <p class="px-1">#{{restaurante.ambiente}}</p>
   </div>
   <!-- // --------------- REDES AND CONTACT  --------------- \\ -->
   
