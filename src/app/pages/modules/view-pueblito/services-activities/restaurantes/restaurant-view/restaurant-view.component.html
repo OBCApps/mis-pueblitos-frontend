@@ -49,7 +49,7 @@
       }
     </swiper-container>
   </div>
-  <div class="flex font-bold ">
+  <div class="flex flex-col lg:flex-row gap-1 lg:gap-2 font-bold">
     <p class="px-1">#{{restaurante.tags}}</p>
     <p class="px-1">#{{restaurante.tipo}}</p>
     <p class="px-1">#{{restaurante.ambiente}}</p>
@@ -140,7 +140,7 @@
                 <img class="rounded-t-lg w-full" src="{{ item.fotos }}" alt="" />
               </a>
               <div class="min-h-48 p-4 flex flex-col items-start gap-2">
-                <h5 class="text-xl font-bold font-Battambang leading-normal text-secondary">
+                <h5 class="text-xl font-bold font-Battambang leading-5 text-secondary">
                   {{ item.nombre }}
                 </h5>
                 <div class="text-xs text-justify font-Battambang leading-normal text-terceary">
@@ -246,7 +246,7 @@
             </svg>
           </div>
           <div>
-            <h3 class="text-description font-bold md:pr-2 capitalize">
+            <h3 class="text-description font-bold md:pr-2">
               {{ item.nombreServicio }}
             </h3>
           </div>
