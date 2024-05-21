@@ -198,7 +198,7 @@ export class ViewPueblitoComponent implements OnInit {
             320: { slidesPerView: 3 },//3
             640: { slidesPerView: 3 },//3
             1024: { slidesPerView: 4 },//4
-            1280: { slidesPerView: 5 },//5
+            1280: { slidesPerView: 4 },//5
 
           }
         }
