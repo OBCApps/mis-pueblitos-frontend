@@ -4,12 +4,10 @@
       Servicio y Actividades
     </h3>
     <p class="text-terceary text-xs md:text-sm text-justify font-normal font-Battambang leading-normal">
-      ¡Descubre una amplia gama de actividades y servicios para enriquecer tu
-      viaje! Desde opciones gastronómicas hasta aventuras al aire libre, nuestra
-      plataforma ofrece todo lo que necesitas para una experiencia inolvidable.
-      Explora alojamientos acogedores, saborea la cocina local, únete a
-      emocionantes tours y sumérgete en la cultura local. ¡Prepárate para vivir
-      momentos inolvidables con nuestra selección de servicios y actividades!
+      ¡Descubre una amplia gama de actividades y servicios para enriquecer tu viaje! Desde opciones gastronómicas hasta
+      aventuras al aire libre, nuestra plataforma ofrece todo lo que necesitas para una experiencia inolvidable. Explora
+      alojamientos acogedores, saborea la cocina local, únete a emocionantes tours y sumérgete en la cultura local.
+      ¡Prepárate para vivir momentos inolvidables con nuestra selección de servicios y actividades!
     </p>
   </div>
 
@@ -234,15 +232,15 @@
           </div>
 
           @if(item.prec == 1000000){
-            <p class="text-base font-bold text-primary">
-              Precio Variable
-            </p>
-          } @else{  
-            <span class="font-base font-bold text-primary">
-              <span class="text-xs text-terceary"> Desde:</span> S/.{{ item.minPrice }}
-            </span>
+          <p class="text-base font-bold text-primary">
+            Precio Variable
+          </p>
+          } @else{
+          <span class="font-base font-bold text-primary">
+            <span class="text-xs text-terceary"> Desde:</span> S/.{{ item.minPrice }}
+          </span>
           }
-          
+
         </div>
       </div>
       }
