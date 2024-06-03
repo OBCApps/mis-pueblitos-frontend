@@ -40,7 +40,7 @@
         <ul class="list-disc">
           @for (comollegar2 of getKeys(tips.llegarsecondDesc[comollegar][1]);
           track comollegar2) {
-          <li class="mx-5 my-2">
+          <li class="mx-2 md:mx-5 my-2">
             <a href="{{ tips.llegarsecondDesc[comollegar][1][comollegar2] }}" target="_blank"
               class="text-[#29252C] text-base font-normal flex items-center flex-row hover:text-primary hover:border-b-primary">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -91,7 +91,7 @@
         </strong>
         <div class="list-disc list-inside  ">
           @for (temp of tips.llevarTemporada[temporadas]; track temp) {
-          <div class="mx-5 mt-2 text-justify text-xs md:text-sm">
+          <div class="mx-2 md:mx-5 mt-2 text-justify text-xs md:text-sm">
             - {{temp}}
           </div>
           }

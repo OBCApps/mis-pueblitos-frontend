@@ -24,14 +24,14 @@
     <h3 class="text-secondary text-2xl font-bold tracking-tight text-center">
       ¿Por qué visitar {{ lugarDetalle.nombre }}?
     </h3>
-    <h3 class="text-justify text-xs md:text-sm font-bold">
+    <!-- <h3 class="text-justify text-xs md:text-sm font-bold">
       {{ lugarDetalle.motivosVisita[0].nombre }}
     </h3>
     <p class="text-justify text-xs md:text-sm">
       {{ lugarDetalle.motivosVisita[0].descripcion }}
-    </p>
+    </p> -->
     <div class="grid  gap-8">
-      @for (item of lugarDetalle.motivosVisita.slice(1); track item.id;let even = $even) {
+      @for (item of lugarDetalle.motivosVisita; track item.id;let even = $even) {
 
       <div class="grid md:grid-cols-2 gap-8">
           <div class="flex flex-col justify-center md:items-start items-center gap-6 col-span-1">
@@ -84,13 +84,12 @@
           restaurantes y tiendas locales hasta servicios y atracciones turísticas, te ofrecemos todo lo que necesitas
           para
           planificar tu visita.
-
-
         </p>
-        <button type="button"
+        <br>
+        <!-- <button type="button"
           class="focus:outline-none text-white bg-primary hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-primary dark:focus:ring-red-900">
           Ver Atractivos
-        </button>
+        </button> -->
       </div>
     </div>
 
@@ -105,10 +104,11 @@
           Consulta nuestras indicaciones en <b>Tips de Viajero</b>, descubre como llegar y planifica tu viaje para vivir
           la mejor experiencia de tu vida.
         </p>
-        <button type="button"
+        <br>
+        <!-- <button type="button"
           class="focus:outline-none text-white bg-primary hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-primary dark:focus:ring-red-900">
           Ver Tips Viajeros
-        </button>
+        </button> -->
       </div>
 
     </div>
@@ -124,10 +124,11 @@
           nuestros
           sabores locales y explora nuestros restaurantes recomendados para una verdadera fiesta culinaria.
         </p>
-        <button type="button"
+        <br>
+        <!-- <button type="button"
           class="focus:outline-none text-white bg-primary hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-primary dark:focus:ring-red-900">
           Ver Restaurantes
-        </button>
+        </button> -->
       </div>
 
     </div>
@@ -143,10 +144,11 @@
           hospedaje para que tu
           estancia sea tan memorable como los paisajes que explorarás.
         </p>
-        <button type="button"
+        <br>
+        <!-- <button type="button"
           class="focus:outline-none text-white bg-primary hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-primary dark:focus:ring-red-900">
           Ver Hospedajes
-        </button>
+        </button> -->
       </div>
 
     </div>
@@ -162,10 +164,11 @@
           diseñados que te llevarán
           a los tesoros escondidos de la región. Deja que cada paso te cuente una historia.
         </p>
-        <button type="button"
+        <br>
+        <!-- <button type="button"
           class="focus:outline-none text-white bg-primary hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-primary dark:focus:ring-red-900">
           Ver Tours
-        </button>
+        </button> -->
       </div>
 
     </div>
