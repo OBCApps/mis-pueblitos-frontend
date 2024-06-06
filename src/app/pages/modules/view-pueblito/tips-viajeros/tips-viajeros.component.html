@@ -28,27 +28,26 @@
     </p>
   </div>
 
-  <div class="col-span-5 md:col-span-4 md:md:pr-5 text-justify md:text-start">
+  <div class="col-span-5 md:col-span-3 md:md:pr-5 text-justify md:text-start">
     <ul class="list-disc">
-      @for (comollegar of keys_comollegar; track comollegar) {
+      @for (comollegar of tips.llegarsecondDesc; track comollegar) {
       <li class="py-3">
         <p class="text-[#29252C] text-xs md:text-sm font-normal">
-          <strong class="text-base">En {{ comollegar }}:</strong>
-          {{ tips.llegarsecondDesc[comollegar][0] }}
+          <strong class="text-base">{{ comollegar.namePlace }}:</strong>
+          {{ comollegar.description}}
         </p>
-        @if (tips.llegarsecondDesc[comollegar].length > 1) {
+        @if (comollegar.mobilities.length > 0) {
         <ul class="list-disc">
-          @for (comollegar2 of getKeys(tips.llegarsecondDesc[comollegar][1]);
-          track comollegar2) {
+          @for (mobilities of comollegar.mobilities; track mobilities) {
           <li class="mx-2 md:mx-5 my-2">
-            <a href="{{ tips.llegarsecondDesc[comollegar][1][comollegar2] }}" target="_blank"
+            <a href="{{ mobilities.link }}" target="_blank"
               class="text-[#29252C] text-base font-normal flex items-center flex-row hover:text-primary hover:border-b-primary">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-4 h-4 mr-1">
                 <path stroke-linecap="round" stroke-linejoin="round"
                   d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
               </svg>
-              {{ comollegar2 }}
+              {{ mobilities.name }}
             </a>
           </li>
           }
@@ -58,10 +57,10 @@
       }
     </ul>
   </div>
-  <div class="col-span-5 md:col-span-1  md:mx-4 global-center">
-    <!-- <google-map class="w-full rounded-lg border shadow-lg" height="300px" width="auto" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"
-      (mapMousemove)="move($event)">
-    </google-map> -->
+  <div class="col-span-5 md:col-span-2  md:mx-4 global-center">
+    <google-map class="w-full rounded-lg border shadow-lg" height="300px" width="auto" [center]="center" [zoom]="zoom"
+      (mapClick)="moveMap($event)" (mapMousemove)="move($event)">
+    </google-map>
   </div>
 
   <!-- <div class="col-span-5 md:global-center text-justify md:text-center">
@@ -84,15 +83,15 @@
 
   <div class="col-span-5 md:pr-5">
     <div class="list-disc">
-      @for (temporadas of keys; track temporadas) {
+      @for (temporada of tips.llevarTemporada; track $index) {
       <li class=" py-3 ">
         <strong class="text-[#29252C] text-base text-center">
-          En {{ temporadas }}:
+          En {{ temporada.nameSeason }}:
         </strong>
         <div class="list-disc list-inside  ">
-          @for (temp of tips.llevarTemporada[temporadas]; track temp) {
+          @for (temp of temporada.recomendations; track temp) {
           <div class="mx-2 md:mx-5 mt-2 text-justify text-xs md:text-sm">
-            - {{temp}}
+            - {{temp.name}}
           </div>
           }
         </div>
@@ -107,6 +106,8 @@
       {{ tips.llevarConsejo }}
     </p>
   </div>
+
+  <hr class="h-px my-2 md:my-4 bg-white border-0" />
   <div class="col-span-5 md:pr-5">
     <h3 class="text-secondary text-xl md:text-2xl text-center font-bold tracking-tight">
       ¿Cómo movilizarme en {{ lugar.nombre }} ?
@@ -117,6 +118,8 @@
       {{ tips.movilizacionDesc }}
     </p>
   </div>
+
+  <hr class="h-px my-2 md:my-4 bg-white border-0" />
   <div class="col-span-5 md:pr-5">
     <h3 class="text-secondary text-xl md:text-2xl text-center font-bold tracking-tight">
       ¿Necesitas ayuda?

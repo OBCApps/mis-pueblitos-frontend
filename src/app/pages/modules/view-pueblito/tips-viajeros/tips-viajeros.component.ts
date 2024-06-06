@@ -13,7 +13,7 @@ import { TitleService } from '../view-pueblito.service';
   styleUrl: './tips-viajeros.component.scss',
 })
 export class TipsViajerosComponent {
-Object: object;
+  Object: object;
   constructor(
     private tipsViajeroService: TipsViajerosService,
     private titleService: TitleService
@@ -45,21 +45,19 @@ Object: object;
     this.loading = true;
     if (typeof localStorage !== 'undefined') {
       this.lugar = JSON.parse(localStorage.getItem('lugar'));
-      this.tipsViajeroService
-        .getTipsByLugarId(this.lugar.id)
-        .subscribe((data: any) => {
-          this.tips = data;
-          console.log('tips', this.tips);
-          this.latitud = this.tips.latitud;
-          this.longitud = this.tips.longitud;
-          this.center = {
-            lat: this.latitud,
-            lng: this.longitud,
-          };
-          this.keys = Object.keys(this.tips.llevarTemporada);
-          this.keys_comollegar = Object.keys(this.tips.llegarsecondDesc);
-          this.loading = false;
-        });
+      this.tipsViajeroService.getTipsByLugarId(this.lugar.id).subscribe((data: any) => {
+        this.tips = data;
+        console.log('tips', this.tips);
+        this.latitud = this.tips.latitud;
+        this.longitud = this.tips.longitud;
+        this.center = {
+          lat: this.latitud,
+          lng: this.longitud,
+        };
+        /* this.keys = Object.keys(this.tips.llevarTemporada);
+        this.keys_comollegar = Object.keys(this.tips.llegarsecondDesc); */
+        this.loading = false;
+      });
     }
 
 
