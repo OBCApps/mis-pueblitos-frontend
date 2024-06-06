@@ -11,6 +11,7 @@ import moment from 'moment';
 import { SwiperContainer } from 'swiper/element';
 import { SwiperOptions } from 'swiper/types';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ServicesActivitiesServices } from '../services-activities/services-activities.service';
 
 @Component({
   selector: 'app-pueblito-detail',
@@ -29,7 +30,8 @@ export class PueblitoDetailComponent implements OnInit {
     private festivitiesService: FestivitiesService,
     private cdr: ChangeDetectorRef,
     private route: ActivatedRoute,
-    private router : Router
+    private router : Router,
+    private serviceServicios: ServicesActivitiesServices
   ) { }
 
   routesCreated : RoutesCreated = new RoutesCreated()
@@ -244,5 +246,8 @@ export class PueblitoDetailComponent implements OnInit {
     } else {
       this.router.navigate(['home', routeCreated.departamento, routeCreated.lugar, routeCreated.action])
     }
+  }
+  cambiarTipoServicio(tipo: string): void {
+    this.serviceServicios.setTipoServicio(tipo);
   }
 }

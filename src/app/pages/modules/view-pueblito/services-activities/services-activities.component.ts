@@ -18,6 +18,7 @@ import { ResturanteService } from '../../../../services/restaurante.service';
 import { LoadingService } from '../../../../functions/loadings/loading-service.service';
 import { AtractivoTuristicoService } from '../../../../services/atractivos-turisticos.service';
 import { Dropdown, DropdownInterface, DropdownOptions, InstanceOptions } from 'flowbite';
+import { ServicesActivitiesServices } from './services-activities.service';
 
 @Component({
   selector: 'app-services-activities',
@@ -33,9 +34,9 @@ export class ServicesActivitiesComponent implements OnInit {
     private habitacionService: HabitacionService,
     private toursService: ToursService,
     private restauranteService: ResturanteService,
-    private atractivoTuristicoService: AtractivoTuristicoService,
     private router: Router,
-    private loading: LoadingService
+    private loading: LoadingService,
+    private serviceServicios: ServicesActivitiesServices
   ) { }
 
   ngOnInit() {
@@ -46,7 +47,10 @@ export class ServicesActivitiesComponent implements OnInit {
     this.transferedDataToNavar(dataNavar);
 
     // ------ GET FIRST FILTER
-    this.filtroBusqueda.typeServicio = 'HOSP';
+    this.serviceServicios.tipoServicio$.subscribe(tipoServicio => {
+      this.filtroBusqueda.typeServicio = tipoServicio;
+    });
+
     this.get_list_filters(this.filtroBusqueda);
   }
 
@@ -225,7 +229,7 @@ export class ServicesActivitiesComponent implements OnInit {
   }
 
   selectService(service: any) {
-    this.filtroBusqueda.typeServicio = service; 
+    this.filtroBusqueda.typeServicio = service;
     this.get_list_filters(this.filtroBusqueda);
     this.openDropDown(false)
   }
