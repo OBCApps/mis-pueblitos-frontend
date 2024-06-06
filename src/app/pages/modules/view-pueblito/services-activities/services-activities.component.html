@@ -53,7 +53,7 @@
 
       </button>
       <div id="dropdownMenu"
-        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow max-w-72 dark:bg-gray-700">
         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownButton">
           <li>
             <a (click)="selectService('HOSP')"
@@ -170,7 +170,7 @@
             {{ item.nombre }}
           </h5>
           <div class="text-base font-bold font-Battambang leading-none text-terceary">
-            Nombre de la Agencia
+            {{ item.agencia.nombre }}
           </div>
           <div class="flex justify-start items-start gap-6">
             <div class="flex text-base justify-start items-center gap-1">
