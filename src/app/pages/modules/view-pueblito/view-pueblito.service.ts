@@ -12,3 +12,9 @@ export class TitleService {
     this.titleSubject.next(newTitle);
   }
 }
+export class RoutesCreated {
+  departamento : string;
+  lugar : string;
+  action : string; // tips-viajero / festividades / servicios / etc
+
+}

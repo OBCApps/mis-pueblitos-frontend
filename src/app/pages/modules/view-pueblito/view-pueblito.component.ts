@@ -163,15 +163,12 @@ export class ViewPueblitoComponent implements OnInit {
   }
 
   // ------ GO TO ROUTE SELECTED ----------- \\
-  goToRoute(departament: any, lugar: any, action: any) {
-    console.log("Gooos");
-
+  goToRoute(departament: any, lugar: any, action: any) {  
     if (action == 'location') {
       this.router.navigate(['home', departament, lugar])
     } else {
       this.router.navigate(['home', departament, lugar, action])
     }
-
   }
 
   goToInit(departament: any, lugar: any) {

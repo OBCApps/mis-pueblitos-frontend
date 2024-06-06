@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef, Component, Inject, OnInit, P
 import { FooterComponent } from '../../../footer/footer.component';
 import { CarouselModule } from 'primeng/carousel';
 import { isPlatformBrowser } from '@angular/common';
-import { TitleService } from '../view-pueblito.service';
+import { RoutesCreated, TitleService } from '../view-pueblito.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ModalProveedorService } from '../../../../functions/modal-proveedor/modal-proveedor.service';
 import { ModalProveedorComponent } from '../../../../functions/modal-proveedor/modal-proveedor.component';
@@ -10,11 +10,12 @@ import { FestivitiesService } from '../../../../services/festivities.service';
 import moment from 'moment';
 import { SwiperContainer } from 'swiper/element';
 import { SwiperOptions } from 'swiper/types';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pueblito-detail',
   standalone: true,
-  imports: [CarouselModule, ModalProveedorComponent],
+  imports: [CarouselModule, ModalProveedorComponent, RouterLink],
   templateUrl: './pueblito-detail.component.html',
   styleUrl: './pueblito-detail.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -26,16 +27,16 @@ export class PueblitoDetailComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private modalProveedorFotos: ModalProveedorService,
     private festivitiesService: FestivitiesService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private route: ActivatedRoute,
+    private router : Router
   ) { }
 
+  routesCreated : RoutesCreated = new RoutesCreated()
 
   ngOnInit() {
     this.loading = true;
     if (isPlatformBrowser(this.platformId)) {
-
-
-
       if (localStorage.getItem('lugar')) {
         this.lugarDetalle = JSON.parse(localStorage.getItem('lugar') || '{}');
         if (this.lugarDetalle.video) {
@@ -45,7 +46,13 @@ export class PueblitoDetailComponent implements OnInit {
         }
       }
     }
-    console.log('PueblitoDetailComponent:', this.lugarDetalle);
+
+    this.route.params.subscribe((params) => {
+      this.routesCreated.departamento = params['departamento'];
+      this.routesCreated.lugar = params['lugar'];
+      
+    });
+
     this.loading = false;
 
     // Set value sidebar
@@ -61,8 +68,6 @@ export class PueblitoDetailComponent implements OnInit {
   lugarDetalle: any = {};
   urlSegura: any = this.sanitizer.bypassSecurityTrustResourceUrl("");
   transferedDataToNavar(value: any): void {
-    console.log('CAMBIO');
-
     this.titleService.setTitle(value);
   }
 
@@ -205,7 +210,7 @@ export class PueblitoDetailComponent implements OnInit {
             prevEl: '.swiper-buttonFestivities-prev'
           },
           breakpoints: {
-            320: { slidesPerView: 2},
+            320: { slidesPerView: 2 },
             640: { slidesPerView: 3 },
             1024: { slidesPerView: 4 },
             1280: { slidesPerView: 5 },
@@ -231,5 +236,13 @@ export class PueblitoDetailComponent implements OnInit {
       })
     }
     return events;
+  }
+
+  goToRoute(routeCreated : RoutesCreated) {  
+    if (routeCreated.action == 'location') {
+      this.router.navigate(['home', routeCreated.departamento, routeCreated.lugar])
+    } else {
+      this.router.navigate(['home', routeCreated.departamento, routeCreated.lugar, routeCreated.action])
+    }
   }
 }
