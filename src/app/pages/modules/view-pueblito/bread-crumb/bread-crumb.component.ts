@@ -13,34 +13,27 @@ import { filter } from 'rxjs';
 
 export class BreadCrumbComponent {
   rutaActual: string = '';
-  breadcrumbs: any[] = []
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  breadcrumbs: string[] = [];
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
-    this.rutaActual = this.router.url;
-    this.breadcrumbs = this.rutaActual.split('/').filter(segment => segment !== '');
-   
-    
+    this.updateBreadcrumbs();
+
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      this.rutaActual = this.router.url;
-      this.breadcrumbs = this.rutaActual.split('/').filter(segment => segment !== '');
-      console.log("LISTA DESPUES: ", this.breadcrumbs);
-    });
+    ).subscribe(() => this.updateBreadcrumbs());
   }
 
-  goToRoute(item : any){
-    
-    const indice = this.breadcrumbs.indexOf(item);
+  updateBreadcrumbs() {
+    this.breadcrumbs = this.router.url.split('?')[0].split('/').filter(Boolean);
+  }
 
-    // Verifica si el ítem está presente en la lista
-    if (indice !== -1) {
-      // Filtra la lista para incluir solo las rutas hasta el ítem actual
-      const rutasHastaItem = this.breadcrumbs.slice(0, indice + 1);
-
-      // Navega a la ruta construida
-      this.router.navigate(rutasHastaItem);
+  goToRoute(item: string) {
+    const index = this.breadcrumbs.indexOf(item);
+    if (index !== -1) {
+      const routePath = this.breadcrumbs.slice(0, index + 1).join('/');
+      this.router.navigate([routePath]);
     } else {
       console.error('El ítem no se encontró en la lista de rutas.');
     }
