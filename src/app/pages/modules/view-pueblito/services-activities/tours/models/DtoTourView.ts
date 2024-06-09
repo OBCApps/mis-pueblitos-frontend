@@ -20,5 +20,8 @@ export class DtoTourView {
     minPerson: string;
     maxPerson: string;
     agencia: DtoAgenciaView = new DtoAgenciaView();
+    flagTipeTour : string
 
+    // More NEgocios
+    moreBussines : any [] = []
 }
