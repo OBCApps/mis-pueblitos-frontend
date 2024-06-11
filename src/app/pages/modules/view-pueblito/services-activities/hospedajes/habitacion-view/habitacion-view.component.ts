@@ -27,9 +27,9 @@ export class HabitacionViewComponent {
   dtoHabitacionInfo: DtoHabitacion = new DtoHabitacion();
   loading = false;
 
-  Params : any;
+  Params: any;
   ngOnInit() {
-    
+
     this.name_route = this.router.url.split('/').pop();
     this.loading = true;
 
@@ -42,8 +42,8 @@ export class HabitacionViewComponent {
       (response: DtoHabitacion) => {
         this.dtoHabitacionInfo = response;
 
-        this.cdr.detectChanges(); 
-        this.createCarrusel();
+        this.cdr.detectChanges();
+        this.createinfoPhotosCarrusel();
         this.loading = false;
       },
       (error) => {
@@ -62,34 +62,39 @@ export class HabitacionViewComponent {
     }
   }
 
-  swiperElement = signal<SwiperContainer | null>(null);
+  swiperElement1 = signal<SwiperContainer | null>(null);
+  createinfoPhotosCarrusel() {
+    if (typeof document !== 'undefined') {
+      const swiperElemConstructor = document.getElementById('infoPhotos');
+      if (swiperElemConstructor) {
+        const swiperOPtions: SwiperOptions = {
+          spaceBetween: 10,
+          pagination: false,
+          navigation: {
+            enabled: true,
+            nextEl: '.swiperinfoPhotos-button-next',
+            prevEl: '.swiperinfoPhotos-button-prev'
+          },
+          autoplay: {
+            delay: 5000, // 3 segundos
+            disableOnInteraction: false // Para que el autoplay no se detenga al interactuar con el carrusel
+          },
+          breakpoints: {
+            320: { slidesPerView: 1 },
+            640: { slidesPerView: 1 },
+            1024: { slidesPerView: 1 },
+            1280: { slidesPerView: 1 },
 
-
-  createCarrusel() {
-    const swiperElemConstructor = document.getElementById('perfilPhotos');
-    if (swiperElemConstructor) {
-      const swiperOptions: SwiperOptions = {        
-        pagination: false,        
-        navigation: {
-          enabled: true,
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        },
-        breakpoints: {
-          320: { slidesPerView: 1 },
-          640: { slidesPerView: 1 },
-          1024: { slidesPerView: 2 },
-          1280: { slidesPerView: 2 },
+          }
         }
-      };
-      
-      Object.assign(swiperElemConstructor, swiperOptions);
-      this.swiperElement.set(swiperElemConstructor as SwiperContainer)
-      this.swiperElement()?.initialize()
+        Object.assign(swiperElemConstructor, swiperOPtions);
+        this.swiperElement1.set(swiperElemConstructor as SwiperContainer)
+        this.swiperElement1().initialize()
+      }
     }
   }
 
-  goToHotel(){
+  goToHotel() {
     console.log("Params", this.Params);
     const routeHotel = this.router.url.split('/').slice(0, -1).join('/');
     this.router.navigate([routeHotel])

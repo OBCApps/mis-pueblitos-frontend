@@ -4,14 +4,15 @@ import { ResturanteService } from '../../../../../../services/restaurante.servic
 import { DtoRestaurante } from '../entities/DtoRestaurante';
 import { SwiperContainer } from 'swiper/element';
 import { SwiperOptions } from 'swiper/types';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-restaurant-view',
   standalone: true,
-  imports: [],
+  imports: [NgFor],
   templateUrl: './restaurant-view.component.html',
   styleUrl: './restaurant-view.component.scss',
-  schemas : [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class RestaurantViewComponent {
   constructor(
@@ -19,20 +20,20 @@ export class RestaurantViewComponent {
     private router: Router,
     private readonly route: ActivatedRoute,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.load_restaurante(params['restaurante_name']);
     });
   }
   restaurante: DtoRestaurante;
-  load_restaurante(name_route){
+  load_restaurante(name_route) {
     this.restauranteService.get_restaurante_by_name_route(name_route).subscribe(
-      (data:any) => {
+      (data: any) => {
         this.restaurante = data;
-        
-        this.cdr.detectChanges();        
-        this.createCarrusel();
+
+        this.cdr.detectChanges();
+        this.createinfoPhotosCarrusel();
         this.createMenuCarrusel()
       }, err => {
         console.error(err);
@@ -40,22 +41,26 @@ export class RestaurantViewComponent {
     );
   }
 
-  get_Keys(data:any){
+  get_Keys(data: any) {
     console.log(Object.keys(data));
     return Object.keys(data);
   }
-  swiperElement = signal<SwiperContainer | null>(null);
-  createCarrusel() {
+  swiperElement1 = signal<SwiperContainer | null>(null);
+  createinfoPhotosCarrusel() {
     if (typeof document !== 'undefined') {
-      const swiperElemConstructor = document.getElementById('perfilPhotos');
+      const swiperElemConstructor = document.getElementById('infoPhotos');
       if (swiperElemConstructor) {
         const swiperOPtions: SwiperOptions = {
-        
+          spaceBetween: 10,
           pagination: false,
           navigation: {
             enabled: true,
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
+            nextEl: '.swiperinfoPhotos-button-next',
+            prevEl: '.swiperinfoPhotos-button-prev'
+          },
+          autoplay: {
+            delay: 5000, // 3 segundos
+            disableOnInteraction: false // Para que el autoplay no se detenga al interactuar con el carrusel
           },
           breakpoints: {
             320: { slidesPerView: 1 },
@@ -66,8 +71,8 @@ export class RestaurantViewComponent {
           }
         }
         Object.assign(swiperElemConstructor, swiperOPtions);
-        this.swiperElement.set(swiperElemConstructor as SwiperContainer)
-        this.swiperElement().initialize()
+        this.swiperElement1.set(swiperElemConstructor as SwiperContainer)
+        this.swiperElement1().initialize()
       }
     }
   }

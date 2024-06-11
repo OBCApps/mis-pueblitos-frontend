@@ -37,7 +37,7 @@
 
   <!-- // --------------- GALLERY  --------------- \\ -->
 
-  <div class="md:mx-10">
+  <!-- <div class="md:mx-10">
     <swiper-container id="perfilPhotos" init="false" class="bg-transparent flex items-center justify-center">
       @for (item of dtoHabitacionInfo?.fotos?.gallery; track $index) {
       <swiper-slide class="flex items-center justify-center ">
@@ -51,13 +51,117 @@
       </div>
       }
     </swiper-container>
+  </div> -->
+  <div class="grid grid-cols-4 gap-3">
+    <div class="col-span-4 xl:col-span-3 ">
+      <swiper-container id="infoPhotos" init="false">
+        <swiper-slide *ngFor="let item of dtoHabitacionInfo?.fotos?.gallery">
+          <div class="border-1 surface-border border-round text-center md:mx-5 rounded-lg">
+            <div class="global-center">
+              <div class="buscadosCard w-full h-56 md:h-96 rounded-xl bg-cover bg-center flex justify-start items-end"
+                style="
+              background-image: url({{item}})">
+                <div
+                  class="w-full h-48 md:h-96 p-5  rounded-3xl flex justify-start items-end text-fondo">
+                  <!-- {{ item.nombre }} -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </swiper-slide>
+      </swiper-container>
+      <div class="flex flex-col lg:flex-row gap-1 lg:gap-2 font-bold">
+        <p class="px-1">#{{dtoHabitacionInfo.hotel.tipo}}</p>
+        <p class="px-1">#{{dtoHabitacionInfo.hotel.lugar}}</p>
+      </div>
+      <div class="mt-2 flex items-center justify-center">
+        <button type="button"
+          class="swiperinfoPhotos-button-prev text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300  rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 ">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+            <path fill-rule="evenodd"
+              d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
+              clip-rule="evenodd" />
+          </svg>
+
+
+          <span class="sr-only">Icon description</span>
+        </button>
+
+        <button type="button"
+          class="swiperinfoPhotos-button-next text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300  rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 ">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+            <path fill-rule="evenodd"
+              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+              clip-rule="evenodd" />
+          </svg>
+
+          <span class="sr-only">Icon description</span>
+        </button>
+      </div>
+
+    </div>
+    <div class="col-span-4 xl:col-span-1 ">
+      <div class="w-full ">
+        <div class="bg-white border p-2 border-primary rounded-xl shadow-lg">
+          <div class="hidden md:flex col-span-2 pb-2">
+            <h1 class="text-secondary font-bold">Detalles </h1>
+          </div>
+          <div class="flex flex-col gap-2">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
+                <a target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
+                    <path fill-rule="evenodd"
+                      d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z"
+                      clip-rule="evenodd" />
+                  </svg>
+
+                </a>
+              </div>
+              <div>{{ dtoHabitacionInfo.camas}} {{dtoHabitacionInfo.camas == 1 ? 'Cama disponible' : 'Camas
+                disponibles'}}</div>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
+                <a target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M8.00065 6.66658C9.47341 6.66658 10.6673 5.47268 10.6673 3.99992C10.6673 2.52716 9.47341 1.33325 8.00065 1.33325C6.52789 1.33325 5.33398 2.52716 5.33398 3.99992C5.33398 5.47268 6.52789 6.66658 8.00065 6.66658Z"
+                      fill="#FEFBFB" />
+                    <path
+                      d="M13.3327 11.6665C13.3327 13.3232 13.3327 14.6665 7.99935 14.6665C2.66602 14.6665 2.66602 13.3232 2.66602 11.6665C2.66602 10.0098 5.05402 8.6665 7.99935 8.6665C10.9447 8.6665 13.3327 10.0098 13.3327 11.6665Z"
+                      fill="#FEFBFB" />
+                  </svg>
+                </a>
+              </div>
+              {{dtoHabitacionInfo.personas}} Personas
+            </div>
+
+            <div class="flex items-center gap-2 font-bold justify-center">
+              Precio: S/.{{ dtoHabitacionInfo.precio }} / Noche
+            </div>
+            <div class="flex items-center justify-center">
+              <a href="https://api.whatsapp.com/send?phone=900649509&text=Hola%2C%20quiero%20reservar%20una%20experiencia"
+                target="_blank"
+                class="text-white bg-[#1AC816] hover:bg-[#1AC816]/90 focus:ring-4 focus:outline-none focus:ring-[#1AC816]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1AC816]/55">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 me-2" viewBox="0 0 24 24" fill="none"
+                  stroke-width="1.5">
+                  <path
+                    d="M19.05 4.91006C18.1332 3.98399 17.0412 3.24973 15.8377 2.75011C14.6341 2.25049 13.3432 1.99552 12.04 2.00006C6.58005 2.00006 2.13005 6.45006 2.13005 11.9101C2.13005 13.6601 2.59005 15.3601 3.45005 16.8601L2.05005 22.0001L7.30005 20.6201C8.75005 21.4101 10.38 21.8301 12.04 21.8301C17.5 21.8301 21.9501 17.3801 21.9501 11.9201C21.9501 9.27006 20.92 6.78006 19.05 4.91006ZM12.04 20.1501C10.56 20.1501 9.11005 19.7501 7.84005 19.0001L7.54005 18.8201L4.42005 19.6401L5.25005 16.6001L5.05005 16.2901C4.2278 14.977 3.79119 13.4593 3.79005 11.9101C3.79005 7.37006 7.49005 3.67006 12.03 3.67006C14.23 3.67006 16.3 4.53006 17.85 6.09006C18.6175 6.85402 19.2257 7.76272 19.6394 8.76348C20.0531 9.76425 20.2641 10.8372 20.26 11.9201C20.2801 16.4601 16.58 20.1501 12.04 20.1501ZM16.56 13.9901C16.31 13.8701 15.09 13.2701 14.87 13.1801C14.64 13.1001 14.48 13.0601 14.31 13.3001C14.14 13.5501 13.67 14.1101 13.53 14.2701C13.39 14.4401 13.24 14.4601 12.99 14.3301C12.74 14.2101 11.94 13.9401 11 13.1001C10.26 12.4401 9.77005 11.6301 9.62005 11.3801C9.48005 11.1301 9.60005 11.0001 9.73005 10.8701C9.84005 10.7601 9.98005 10.5801 10.1 10.4401C10.22 10.3001 10.27 10.1901 10.35 10.0301C10.43 9.86006 10.39 9.72006 10.33 9.60006C10.27 9.48006 9.77005 8.26006 9.57005 7.76006C9.37005 7.28006 9.16005 7.34006 9.01005 7.33006H8.53005C8.36005 7.33006 8.10005 7.39006 7.87005 7.64006C7.65005 7.89006 7.01005 8.49006 7.01005 9.71006C7.01005 10.9301 7.90005 12.1101 8.02005 12.2701C8.14005 12.4401 9.77005 14.9401 12.25 16.0101C12.84 16.2701 13.3 16.4201 13.66 16.5301C14.25 16.7201 14.79 16.6901 15.22 16.6301C15.7 16.5601 16.69 16.0301 16.89 15.4501C17.1 14.8701 17.1 14.3801 17.03 14.2701C16.96 14.1601 16.81 14.1101 16.56 13.9901Z"
+                    fill="white" />
+                </svg>
+                Reserva Ahora
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 
-  <div class="flex flex-col lg:flex-row gap-1 lg:gap-2 font-bold">
-    <p class="px-1">#{{dtoHabitacionInfo.hotel.tipo}}</p>
-    <p class="px-1">#{{dtoHabitacionInfo.hotel.lugar}}</p>
-  </div>
+
   <hr class="h-px bg-terceary my-8 bg-opacity-30 border-0" />
 
 
@@ -89,7 +193,7 @@
   <hr class="h-px my-2 md:my-4 bg-white border-0">
   <!-- // --------------- DESCRIPTION DE HABITACIÓN  --------------- \\ -->
   <div class="md:flex ">
-    <div class="w-full flex flex-col gap-8 md:gap-12 md:w-[70%] ">
+    <div class="w-full flex flex-col gap-8 md:gap-12 ">
       <div class="flex flex-col gap-4 md:gap-8">
         <h3 class="subtitle">
           Descripción
@@ -99,12 +203,12 @@
         </h3>
       </div>
 
-<!-- // --------------- CONTACTOS  --------------- \\ -->
-<div class="flex flex-col gap-4 md:gap-8">
-  <h3 class="subtitle">Contactos</h3>
-  <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:px-2">
+      <!-- // --------------- CONTACTOS  --------------- \\ -->
+      <div class="flex flex-col gap-4 md:gap-8">
+        <h3 class="subtitle">Contactos</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:px-2">
 
-    <!-- <div class="col-span-1 flex items-center gap-2 self-stretch">
+          <!-- <div class="col-span-1 flex items-center gap-2 self-stretch">
       <div class="text-white bg-primary rounded-xl ">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
           stroke="currentColor" class="w-8 h-8 p-1">
@@ -121,45 +225,45 @@
         </h3>
       </div>
     </div> -->
-    @for (item of dtoHabitacionInfo.hotel.hotelDetalle.mc_redes_sociales; track $index) {
-      <div class="col-span-1 flex items-center gap-2 self-stretch">
-        <div class="text-white bg-[#00D757] rounded-full ">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="w-8 h-8 p-1">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-          </svg>
-        </div>
-        <div>
-          <h3 class="text-description font-bold md:pr-2 capitalize">
-            {{item.usuario }}
-          </h3>
-          <h3 class="text-description  md:pr-2 capitalize">
-            {{item.valor }}
-          </h3>
-        </div>
-      </div>
-      }
-    <div class="col-span-1 flex items-center gap-2 self-stretch">
-      <div class="text-white bg-primary rounded-xl ">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-          stroke="currentColor" class="w-8 h-8 p-1">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-        </svg>
+          @for (item of dtoHabitacionInfo.hotel.hotelDetalle.mc_redes_sociales; track $index) {
+          <div class="col-span-1 flex items-center gap-2 self-stretch">
+            <div class="text-white bg-[#00D757] rounded-full ">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-8 h-8 p-1">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-description font-bold md:pr-2 capitalize">
+                {{item.usuario }}
+              </h3>
+              <h3 class="text-description  md:pr-2 capitalize">
+                {{item.valor }}
+              </h3>
+            </div>
+          </div>
+          }
+          <div class="col-span-1 flex items-center gap-2 self-stretch">
+            <div class="text-white bg-primary rounded-xl ">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-8 h-8 p-1">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+              </svg>
 
+            </div>
+            <div>
+              <h3 class="text-description font-bold md:pr-2 capitalize">
+                Correo
+              </h3>
+              <h3 class="text-description  md:pr-2 capitalize">
+                {{ dtoHabitacionInfo.hotel.correo ? dtoHabitacionInfo.hotel.correo : 'No agregado' }}
+              </h3>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <h3 class="text-description font-bold md:pr-2 capitalize">
-          Correo
-        </h3>
-        <h3 class="text-description  md:pr-2 capitalize">
-          {{ dtoHabitacionInfo.hotel.correo ? dtoHabitacionInfo.hotel.correo : 'No agregado' }}
-        </h3>
-      </div>
-    </div>
-  </div>
-</div>
 
       <!-- // --------------- SERVICES  --------------- \\ -->
 
@@ -220,61 +324,7 @@
       </div>
     </div>
 
-    <div class="w-full md:w-[30%] flex items-start justify-center">
-      <div class=" bg-white border p-2 border-primary rounded-xl shadow-lg">
-        <div class="hidden md:flex col-span-2 pb-2">
-          <h1 class="text-secondary font-bold">Datos</h1>
-        </div>
-        <div class="flex flex-col  gap-2">
-          <div class="flex items-center gap-2">
-            <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
-              <a target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="none">
-                  <path
-                    d="M1.33398 12.6667V8.66671C1.33398 8.36671 1.3951 8.09448 1.51732 7.85004C1.63954 7.6056 1.80065 7.38893 2.00065 7.20004V5.33337C2.00065 4.77782 2.1951 4.3056 2.58398 3.91671C2.97287 3.52782 3.4451 3.33337 4.00065 3.33337H6.66732C6.92287 3.33337 7.16176 3.38071 7.38398 3.47537C7.60621 3.57004 7.81176 3.70049 8.00065 3.86671C8.18954 3.70004 8.3951 3.5696 8.61732 3.47537C8.83954 3.38115 9.07843 3.33382 9.33398 3.33337H12.0007C12.5562 3.33337 13.0284 3.52782 13.4173 3.91671C13.8062 4.3056 14.0007 4.77782 14.0007 5.33337V7.20004C14.2007 7.38893 14.3618 7.6056 14.484 7.85004C14.6062 8.09448 14.6673 8.36671 14.6673 8.66671V12.6667H13.334V11.3334H2.66732V12.6667H1.33398ZM8.66732 6.66671H12.6673V5.33337C12.6673 5.14448 12.6033 4.98626 12.4753 4.85871C12.3473 4.73115 12.1891 4.66715 12.0007 4.66671H9.33398C9.14509 4.66671 8.98687 4.73071 8.85932 4.85871C8.73176 4.98671 8.66776 5.14493 8.66732 5.33337V6.66671ZM3.33398 6.66671H7.33398V5.33337C7.33398 5.14448 7.26998 4.98626 7.14198 4.85871C7.01398 4.73115 6.85576 4.66715 6.66732 4.66671H4.00065C3.81176 4.66671 3.65354 4.73071 3.52598 4.85871C3.39843 4.98671 3.33443 5.14493 3.33398 5.33337V6.66671Z"
-                    fill="#FEFBFB" />
-                </svg>
-              </a>
-            </div>
-            <div>
-              {{dtoHabitacionInfo.camas}} cama disponible
-            </div>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
-              <a target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="none">
-                  <path
-                    d="M8.00065 6.66658C9.47341 6.66658 10.6673 5.47268 10.6673 3.99992C10.6673 2.52716 9.47341 1.33325 8.00065 1.33325C6.52789 1.33325 5.33398 2.52716 5.33398 3.99992C5.33398 5.47268 6.52789 6.66658 8.00065 6.66658Z"
-                    fill="#FEFBFB" />
-                  <path
-                    d="M13.3327 11.6665C13.3327 13.3232 13.3327 14.6665 7.99935 14.6665C2.66602 14.6665 2.66602 13.3232 2.66602 11.6665C2.66602 10.0098 5.05402 8.6665 7.99935 8.6665C10.9447 8.6665 13.3327 10.0098 13.3327 11.6665Z"
-                    fill="#FEFBFB" />
-                </svg>
-              </a>
-            </div>
-            {{dtoHabitacionInfo.personas}} personas
-          </div>
 
-          <div class="flex items-center gap-2 font-bold justify-center">
-            s/. {{dtoHabitacionInfo.precio}} / Noche
-          </div>
-          <!-- <div class="flex items-center justify-center">
-            <button type="button"
-              class="text-white bg-[#1AC816] hover:bg-[#1AC816]/90 focus:ring-4 focus:outline-none focus:ring-[#1AC816]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1AC816]/55">
-
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-4 h-4 me-2">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-              </svg>
-
-              Reserva Ahora
-            </button>
-          </div> -->
-        </div>
-      </div>
-    </div>
   </div>
 
 

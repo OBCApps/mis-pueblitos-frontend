@@ -10,7 +10,7 @@
         </h3>
       </div>
       <!-- ESTRELLAS  -->
-      <div class="flex items-center">
+      <!-- <div class="flex items-center">
         @for (item of [1,2,3,4,5]; track $index) {
 
         <svg class="w-4 h-4 {{item <= agenciaView.estrellas ? 'text-yellow-300' : 'text-gray-300'}} ms-1"
@@ -19,7 +19,7 @@
             d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
         </svg>
         }
-      </div>
+      </div> -->
     </div>
     <div class="flex items-center justify-between md:justify-start">
       <h3 class="text-description">
@@ -38,42 +38,110 @@
 
   <hr class="h-px my-2 md:my-4 bg-white border-0" />
   <!-- // --------------- GALLERY  --------------- \\ -->
-  <!-- <div class="mx-10">
-    <swiper-container style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="mySwiper"
-      thumbs-swiper=".mySwiper2" space-between="10" navigation="true">
-      @for (item of get_Keys(dtoHotelInfo?.fotos?.gallery); track $index) {
-      <swiper-slide>
-        <div>
-          <img src="{{dtoHotelInfo.fotos.gallery[item]}}" class="h-56 w-56 max-w-full rounded-lg" alt="">
-        </div>
-      </swiper-slide>
-      }
-    </swiper-container>
 
-    <swiper-container class="mySwiper2" space-between="10" slides-per-view="4" free-mode="true"
-      watch-slides-progress="true">
-      @for (item of get_Keys(dtoHotelInfo?.fotos?.gallery); track $index) {
-      <swiper-slide>
-        <div>
-          <img src="{{dtoHotelInfo.fotos.gallery[item]}}" class="h-24 w-24 max-w-full rounded-lg" alt="">
+
+  <div class="grid grid-cols-4 gap-3">
+    <div class="col-span-4 xl:col-span-4 ">
+      <swiper-container id="infoPhotos" init="false">
+        <swiper-slide *ngFor="let item of agenciaView?.fotos?.gallery">
+          <div class="border-1 surface-border border-round text-center md:mx-5 rounded-lg">
+            <div class="global-center">
+              <div class="buscadosCard w-full h-56 md:h-96 rounded-xl bg-cover bg-center flex justify-start items-end"
+                style="
+              background-image: url({{item}})">
+                <div
+                  class="w-full h-64 p-5  rounded-3xl flex justify-start items-end text-fondo">
+                  <!-- {{ item.nombre }} -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </swiper-slide>
+      </swiper-container>
+
+      <div class="mt-2 flex items-center justify-center">
+        <button type="button"
+          class="swiperinfoPhotos-button-prev text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300  rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 ">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+            <path fill-rule="evenodd"
+              d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
+              clip-rule="evenodd" />
+          </svg>
+
+
+          <span class="sr-only">Icon description</span>
+        </button>
+
+        <button type="button"
+          class="swiperinfoPhotos-button-next text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300  rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 ">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+            <path fill-rule="evenodd"
+              d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+              clip-rule="evenodd" />
+          </svg>
+
+          <span class="sr-only">Icon description</span>
+        </button>
+      </div>
+
+    </div>
+    <div class="col-span-4 xl:col-span-1">
+      <!--  <div class="w-full ">
+        <div class="bg-white border p-2 border-primary rounded-xl shadow-lg">
+          <div class="hidden md:flex col-span-2 pb-2">
+            <h1 class="text-secondary font-bold">Detalles </h1>
+          </div>
+          <div class="flex flex-col gap-2">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
+                <a target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
+                    <path fill-rule="evenodd"
+                      d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z"
+                      clip-rule="evenodd" />
+                  </svg>
+
+                </a>
+              </div>
+              <div>{{ agenciaView.duracion }}</div>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
+                <a target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M8.00065 6.66658C9.47341 6.66658 10.6673 5.47268 10.6673 3.99992C10.6673 2.52716 9.47341 1.33325 8.00065 1.33325C6.52789 1.33325 5.33398 2.52716 5.33398 3.99992C5.33398 5.47268 6.52789 6.66658 8.00065 6.66658Z"
+                      fill="#FEFBFB" />
+                    <path
+                      d="M13.3327 11.6665C13.3327 13.3232 13.3327 14.6665 7.99935 14.6665C2.66602 14.6665 2.66602 13.3232 2.66602 11.6665C2.66602 10.0098 5.05402 8.6665 7.99935 8.6665C10.9447 8.6665 13.3327 10.0098 13.3327 11.6665Z"
+                      fill="#FEFBFB" />
+                  </svg>
+                </a>
+              </div>
+              {{agenciaView.minPerson}} - {{agenciaView.maxPerson}} Personas
+            </div>
+
+            <div class="flex items-center gap-2 font-bold justify-center">
+              Precio: S/.{{ agenciaView.precio }} c/u
+            </div>
+            <div class="flex items-center justify-center">
+              <a href="https://api.whatsapp.com/send?phone=900649509&text=Hola%2C%20quiero%20reservar%20una%20experiencia"
+                target="_blank"
+                class="text-white bg-[#1AC816] hover:bg-[#1AC816]/90 focus:ring-4 focus:outline-none focus:ring-[#1AC816]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1AC816]/55">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 me-2" viewBox="0 0 24 24" fill="none"
+                  stroke-width="1.5">
+                  <path
+                    d="M19.05 4.91006C18.1332 3.98399 17.0412 3.24973 15.8377 2.75011C14.6341 2.25049 13.3432 1.99552 12.04 2.00006C6.58005 2.00006 2.13005 6.45006 2.13005 11.9101C2.13005 13.6601 2.59005 15.3601 3.45005 16.8601L2.05005 22.0001L7.30005 20.6201C8.75005 21.4101 10.38 21.8301 12.04 21.8301C17.5 21.8301 21.9501 17.3801 21.9501 11.9201C21.9501 9.27006 20.92 6.78006 19.05 4.91006ZM12.04 20.1501C10.56 20.1501 9.11005 19.7501 7.84005 19.0001L7.54005 18.8201L4.42005 19.6401L5.25005 16.6001L5.05005 16.2901C4.2278 14.977 3.79119 13.4593 3.79005 11.9101C3.79005 7.37006 7.49005 3.67006 12.03 3.67006C14.23 3.67006 16.3 4.53006 17.85 6.09006C18.6175 6.85402 19.2257 7.76272 19.6394 8.76348C20.0531 9.76425 20.2641 10.8372 20.26 11.9201C20.2801 16.4601 16.58 20.1501 12.04 20.1501ZM16.56 13.9901C16.31 13.8701 15.09 13.2701 14.87 13.1801C14.64 13.1001 14.48 13.0601 14.31 13.3001C14.14 13.5501 13.67 14.1101 13.53 14.2701C13.39 14.4401 13.24 14.4601 12.99 14.3301C12.74 14.2101 11.94 13.9401 11 13.1001C10.26 12.4401 9.77005 11.6301 9.62005 11.3801C9.48005 11.1301 9.60005 11.0001 9.73005 10.8701C9.84005 10.7601 9.98005 10.5801 10.1 10.4401C10.22 10.3001 10.27 10.1901 10.35 10.0301C10.43 9.86006 10.39 9.72006 10.33 9.60006C10.27 9.48006 9.77005 8.26006 9.57005 7.76006C9.37005 7.28006 9.16005 7.34006 9.01005 7.33006H8.53005C8.36005 7.33006 8.10005 7.39006 7.87005 7.64006C7.65005 7.89006 7.01005 8.49006 7.01005 9.71006C7.01005 10.9301 7.90005 12.1101 8.02005 12.2701C8.14005 12.4401 9.77005 14.9401 12.25 16.0101C12.84 16.2701 13.3 16.4201 13.66 16.5301C14.25 16.7201 14.79 16.6901 15.22 16.6301C15.7 16.5601 16.69 16.0301 16.89 15.4501C17.1 14.8701 17.1 14.3801 17.03 14.2701C16.96 14.1601 16.81 14.1101 16.56 13.9901Z"
+                    fill="white" />
+                </svg>
+                Reserva Ahora
+              </a>
+            </div>
+
+          </div>
         </div>
-      </swiper-slide>
-      }
-    </swiper-container>
-  </div> -->
-  <div class="md:mx-10">
-    <swiper-container style="
-        --swiper-navigation-color: #f33535;
-        --swiper-pagination-color: #f33535;
-      " class="mySwiper" thumbs-swiper=".mySwiper2" space-between="10" navigation="true" slides-per-view="3">
-      @for (item of agenciaView?.fotos?.gallery; track $index) {
-      <swiper-slide>
-        <div>
-          <img src="{{item}}" class="h-60 w-60 max-w-full rounded-lg" alt="" />
-        </div>
-      </swiper-slide>
-      }
-    </swiper-container>
+      </div> -->
+    </div>
   </div>
 
   <hr class="h-px my-1 md:my-2 bg-white border-0" />
@@ -84,85 +152,115 @@
   <div class="flex flex-col gap-8 md:gap-12">
 
     <!-- // --------------- DESCRIPCION - MISION VISION  --------------- \\ -->
-    <div class="flex flex-col gap-4 md:gap-8">
+    <div class="flex flex-col gap-4 md:gap-8 text-description">
       <h2 class="subtitle">Descripción</h2>
       <p>{{agenciaView.descripcion}}</p>
-      <div class="flex flex-row">
-        <div class="flex flex-col">
-          <span>Mision</span>
-          <p>{{agenciaView.mision}}</p>
-        </div>
-        <div class="flex flex-col">
-          <span>Vision</span>
-          <p>{{agenciaView.vision}}</p>
-        </div>
-      </div>
-    </div>
 
-    <!-- // --------------- EQUIPOS Y GUIAS TURISTICOS  --------------- \\ -->
-    <div class="flex flex-col gap-4 md:gap-8">
-      <h2 class="subtitle">Equipo y Guias Turísticos</h2>
-      <p>{{agenciaView.equipo}}</p>
-    </div>
+      <div class="grid grid-cols-2 gap-8 text-description">
+        <div class="col-span-2 lg:col-span-1 flex flex-col gap-2">
+          <div class="flex items-center gap-2">
+            <div class="w-12 h-12 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
+              <a target="_blank">
 
-    <!-- // --------------- INFORMACIÓN ADICIONAL  --------------- \\ -->
-    <div class="flex flex-col gap-4 md:gap-8">
-      <h3 class="subtitle">Información adicional</h3>
-      <ul class="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
-        @for(item of agenciaView.infoAdicional; track $index){
-        <li class="text-description text-justify md:pr-2 pb-1">
-          <strong>{{item.name }}:</strong>
-          <span>{{item.desc }}</span>
-        </li>
-        }
-      </ul>
-    </div>
-
-    <!-- // --------------- TOURS y EXPERIENCIAS  --------------- \\ -->
-    <div class="flex flex-col gap-4 md:gap-8">
-      <h3 class="subtitle">Tours y Experiencias</h3>
-      <div class=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-center items-center gap-8">
-        @for (item of agenciaView.tours; track $index) {
-        <!--  <swiper-slide> -->
-        <div (click)="gotoTour(item.name_route)"
-          class="bg-fondo border col-span-1 w-fit border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
-          <a>
-            <img class="rounded-t-lg" src="{{ item?.fotos?.principal }}" alt="" />
-          </a>
-          <div class="p-4 flex flex-col items-start gap-2">
-            <h5 class="text-xl font-bold font-Battambang leading-normal text-secondary">
-              {{ item.nombre }}
-            </h5>
-            @if (item.flagTipeTour != 'EXPE' ) {
-            <div class="flex justify-start items-start gap-6">
-              <div class="flex text-base justify-start items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24">
-                  <path fill="currentColor"
-                    d="M2 19v-6q0-.675.275-1.225T3 10.8V8q0-1.25.875-2.125T6 5h4q.575 0 1.075.213T12 5.8q.425-.375.925-.587T14 5h4q1.25 0 2.125.875T21 8v2.8q.45.425.725.975T22 13v6h-2v-2H4v2zm11-9h6V8q0-.425-.288-.712T18 7h-4q-.425 0-.712.288T13 8zm-8 0h6V8q0-.425-.288-.712T10 7H6q-.425 0-.712.288T5 8z" />
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" class="size-9">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M26.2513 0.866691C26.2026 0.670188 26.1025 0.490161 25.9613 0.34503C25.8202 0.199899 25.643 0.0948739 25.4479 0.0406985C25.2528 -0.013477 25.0469 -0.0148575 24.8511 0.036698C24.6553 0.0882536 24.4767 0.190894 24.3336 0.33412L19.7622 4.90555C19.6228 5.04526 19.5219 5.21869 19.4694 5.40896C19.417 5.59923 19.4147 5.79984 19.4628 5.99126L20.2856 9.29183C20.2748 9.30235 20.2641 9.31302 20.2536 9.32383L14.7885 14.789C14.4857 15.1139 14.3208 15.5438 14.3286 15.9879C14.3365 16.432 14.5164 16.8557 14.8305 17.1698C15.1446 17.4839 15.5683 17.6638 16.0124 17.6717C16.4565 17.6795 16.8864 17.5146 17.2113 17.2118L22.681 11.749C22.6919 11.7377 22.7025 11.7263 22.713 11.7147L26.0113 12.5398C26.2028 12.5879 26.4034 12.5856 26.5936 12.5331C26.7839 12.4807 26.9573 12.3798 27.097 12.2404L31.6685 7.66898C31.8123 7.52594 31.9155 7.3472 31.9674 7.15111C32.0193 6.95502 32.018 6.74865 31.9638 6.55319C31.9096 6.35773 31.8043 6.18022 31.6588 6.03889C31.5133 5.89755 31.3329 5.79749 31.1359 5.74898L27.2296 4.77526L26.2513 0.866691ZM16.7245 1.73526C16.7559 2.18868 16.6059 2.63601 16.3076 2.97891C16.0093 3.3218 15.587 3.5322 15.1336 3.56383C12.7455 3.72933 10.4551 4.57694 8.53454 6.00592C6.61399 7.43491 5.14404 9.38521 4.29936 11.6251C3.45468 13.865 3.27077 16.3002 3.76949 18.6416C4.26822 20.9829 5.4286 23.1318 7.11276 24.833C8.79693 26.5342 10.9341 27.7162 13.2703 28.2384C15.6064 28.7607 18.0434 28.6013 20.2917 27.7792C22.54 26.9572 24.505 25.5069 25.9532 23.6009C27.4015 21.6948 28.2721 19.413 28.4616 17.0267C28.4977 16.5732 28.7124 16.1527 29.0585 15.8576C29.4047 15.5624 29.8539 15.4169 30.3073 15.453C30.7608 15.489 31.1813 15.7038 31.4764 16.0499C31.7716 16.396 31.9171 16.8452 31.881 17.2987C31.6392 20.3392 30.5295 23.2463 28.684 25.6748C26.8385 28.1032 24.3347 29.9508 21.47 30.9981C18.6054 32.0454 15.5003 32.2483 12.5237 31.5828C9.54705 30.9173 6.82404 29.4113 4.67815 27.2438C2.53226 25.0762 1.05368 22.3382 0.418097 19.3551C-0.217489 16.3719 0.0166278 13.269 1.09263 10.415C2.16864 7.56102 4.0413 5.07588 6.48814 3.25485C8.93497 1.43382 11.8531 0.353462 14.8959 0.14212C15.3493 0.110717 15.7966 0.260658 16.1395 0.558978C16.4824 0.857298 16.6928 1.28186 16.7245 1.73526ZM15.1885 9.27584C15.2706 9.4855 15.3106 9.70928 15.3063 9.93442C15.3019 10.1596 15.2532 10.3816 15.163 10.5879C15.0728 10.7942 14.9428 10.9808 14.7805 11.1368C14.6182 11.2929 14.4267 11.4155 14.217 11.4975C13.4674 11.7916 12.8029 12.2678 12.2835 12.8831C11.7642 13.4985 11.4063 14.2335 11.2424 15.0219C11.0784 15.8102 11.1135 16.627 11.3444 17.3984C11.5754 18.1698 11.9949 18.8715 12.5651 19.4401C13.1353 20.0086 13.8382 20.4261 14.6103 20.6548C15.3823 20.8835 16.1992 20.9162 16.9871 20.7499C17.775 20.5837 18.509 20.2237 19.1228 19.7025C19.7366 19.1814 20.2109 18.5154 20.5028 17.765C20.5844 17.5552 20.7066 17.3635 20.8623 17.2009C21.018 17.0383 21.2042 16.9079 21.4103 16.8173C21.6164 16.7267 21.8384 16.6775 22.0634 16.6727C22.2885 16.6678 22.5124 16.7073 22.7222 16.789C22.932 16.8706 23.1237 16.9928 23.2863 17.1485C23.4489 17.3042 23.5792 17.4905 23.6698 17.6966C23.7605 17.9026 23.8096 18.1246 23.8145 18.3497C23.8193 18.5748 23.7798 18.7986 23.6982 19.0084C23.1997 20.29 22.3896 21.4271 21.3413 22.3169C20.2929 23.2068 19.0393 23.8214 17.6938 24.1051C16.3483 24.3887 14.9533 24.3326 13.6349 23.9418C12.3165 23.5509 11.1163 22.8376 10.1428 21.8664C9.16935 20.8952 8.45326 19.6967 8.05931 18.3793C7.66536 17.0618 7.60597 15.6669 7.8865 14.3207C8.16703 12.9746 8.77865 11.7195 9.66605 10.6691C10.5535 9.61864 11.6887 8.80592 12.969 8.30441C13.3922 8.13923 13.8636 8.14876 14.2798 8.3309C14.6959 8.51304 15.0227 8.8529 15.1885 9.27584Z"
+                    fill="white" />
                 </svg>
-                <span>1</span>
-              </div>
-              <div class="flex text-base justify-start items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24">
-                  <circle cx="12" cy="6" r="4" fill="currentColor" />
-                  <path fill="currentColor"
-                    d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5" />
-                </svg>
-                <span>2</span>
-              </div>
+              </a>
             </div>
-            }
-
-            <p class="font-base font-bold text-primary">
-              S/. {{ item.precio }} / noche
-            </p>
+            <div>
+              <p><b>Misión</b></p>
+              {{ agenciaView.mision }}
+            </div>
           </div>
+
         </div>
+        <div class="col-span-2 lg:col-span-1 flex flex-col gap-2">
+          <div class="flex items-center gap-2">
+            <div class="w-12 h-12 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
+              <a target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" class="size-9">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M26.2513 0.866691C26.2026 0.670188 26.1025 0.490161 25.9613 0.34503C25.8202 0.199899 25.643 0.0948739 25.4479 0.0406985C25.2528 -0.013477 25.0469 -0.0148575 24.8511 0.036698C24.6553 0.0882536 24.4767 0.190894 24.3336 0.33412L19.7622 4.90555C19.6228 5.04526 19.5219 5.21869 19.4694 5.40896C19.417 5.59923 19.4147 5.79984 19.4628 5.99126L20.2856 9.29183C20.2748 9.30235 20.2641 9.31302 20.2536 9.32383L14.7885 14.789C14.4857 15.1139 14.3208 15.5438 14.3286 15.9879C14.3365 16.432 14.5164 16.8557 14.8305 17.1698C15.1446 17.4839 15.5683 17.6638 16.0124 17.6717C16.4565 17.6795 16.8864 17.5146 17.2113 17.2118L22.681 11.749C22.6919 11.7377 22.7025 11.7263 22.713 11.7147L26.0113 12.5398C26.2028 12.5879 26.4034 12.5856 26.5936 12.5331C26.7839 12.4807 26.9573 12.3798 27.097 12.2404L31.6685 7.66898C31.8123 7.52594 31.9155 7.3472 31.9674 7.15111C32.0193 6.95502 32.018 6.74865 31.9638 6.55319C31.9096 6.35773 31.8043 6.18022 31.6588 6.03889C31.5133 5.89755 31.3329 5.79749 31.1359 5.74898L27.2296 4.77526L26.2513 0.866691ZM16.7245 1.73526C16.7559 2.18868 16.6059 2.63601 16.3076 2.97891C16.0093 3.3218 15.587 3.5322 15.1336 3.56383C12.7455 3.72933 10.4551 4.57694 8.53454 6.00592C6.61399 7.43491 5.14404 9.38521 4.29936 11.6251C3.45468 13.865 3.27077 16.3002 3.76949 18.6416C4.26822 20.9829 5.4286 23.1318 7.11276 24.833C8.79693 26.5342 10.9341 27.7162 13.2703 28.2384C15.6064 28.7607 18.0434 28.6013 20.2917 27.7792C22.54 26.9572 24.505 25.5069 25.9532 23.6009C27.4015 21.6948 28.2721 19.413 28.4616 17.0267C28.4977 16.5732 28.7124 16.1527 29.0585 15.8576C29.4047 15.5624 29.8539 15.4169 30.3073 15.453C30.7608 15.489 31.1813 15.7038 31.4764 16.0499C31.7716 16.396 31.9171 16.8452 31.881 17.2987C31.6392 20.3392 30.5295 23.2463 28.684 25.6748C26.8385 28.1032 24.3347 29.9508 21.47 30.9981C18.6054 32.0454 15.5003 32.2483 12.5237 31.5828C9.54705 30.9173 6.82404 29.4113 4.67815 27.2438C2.53226 25.0762 1.05368 22.3382 0.418097 19.3551C-0.217489 16.3719 0.0166278 13.269 1.09263 10.415C2.16864 7.56102 4.0413 5.07588 6.48814 3.25485C8.93497 1.43382 11.8531 0.353462 14.8959 0.14212C15.3493 0.110717 15.7966 0.260658 16.1395 0.558978C16.4824 0.857298 16.6928 1.28186 16.7245 1.73526ZM15.1885 9.27584C15.2706 9.4855 15.3106 9.70928 15.3063 9.93442C15.3019 10.1596 15.2532 10.3816 15.163 10.5879C15.0728 10.7942 14.9428 10.9808 14.7805 11.1368C14.6182 11.2929 14.4267 11.4155 14.217 11.4975C13.4674 11.7916 12.8029 12.2678 12.2835 12.8831C11.7642 13.4985 11.4063 14.2335 11.2424 15.0219C11.0784 15.8102 11.1135 16.627 11.3444 17.3984C11.5754 18.1698 11.9949 18.8715 12.5651 19.4401C13.1353 20.0086 13.8382 20.4261 14.6103 20.6548C15.3823 20.8835 16.1992 20.9162 16.9871 20.7499C17.775 20.5837 18.509 20.2237 19.1228 19.7025C19.7366 19.1814 20.2109 18.5154 20.5028 17.765C20.5844 17.5552 20.7066 17.3635 20.8623 17.2009C21.018 17.0383 21.2042 16.9079 21.4103 16.8173C21.6164 16.7267 21.8384 16.6775 22.0634 16.6727C22.2885 16.6678 22.5124 16.7073 22.7222 16.789C22.932 16.8706 23.1237 16.9928 23.2863 17.1485C23.4489 17.3042 23.5792 17.4905 23.6698 17.6966C23.7605 17.9026 23.8096 18.1246 23.8145 18.3497C23.8193 18.5748 23.7798 18.7986 23.6982 19.0084C23.1997 20.29 22.3896 21.4271 21.3413 22.3169C20.2929 23.2068 19.0393 23.8214 17.6938 24.1051C16.3483 24.3887 14.9533 24.3326 13.6349 23.9418C12.3165 23.5509 11.1163 22.8376 10.1428 21.8664C9.16935 20.8952 8.45326 19.6967 8.05931 18.3793C7.66536 17.0618 7.60597 15.6669 7.8865 14.3207C8.16703 12.9746 8.77865 11.7195 9.66605 10.6691C10.5535 9.61864 11.6887 8.80592 12.969 8.30441C13.3922 8.13923 13.8636 8.14876 14.2798 8.3309C14.6959 8.51304 15.0227 8.8529 15.1885 9.27584Z"
+                    fill="white" />
+                </svg>
 
-        }
+              </a>
+            </div>
+            <div>
+              <p><b>Visión</b></p>
+              {{ agenciaView.vision }}
+            </div>
+          </div>
 
+        </div>
       </div>
 
+      <!-- // --------------- EQUIPOS Y GUIAS TURISTICOS  --------------- \\ -->
+      <div class="flex flex-col gap-4 md:gap-8">
+        <h2 class="subtitle">Equipo y Guias </h2>
+        <p class="text-description">{{agenciaView.equipo}}</p>
+      </div>
+
+      <!-- // --------------- INFORMACIÓN ADICIONAL  --------------- \\ -->
+      <div class="flex flex-col gap-4 md:gap-8">
+        <h3 class="subtitle">Información adicional</h3>
+        <ul class="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+          @for(item of agenciaView.infoAdicional; track $index){
+          <li class="text-description text-justify md:pr-2 pb-1">
+            <strong>{{item.name }}:</strong>
+            <span>{{item.desc }}</span>
+          </li>
+          }
+        </ul>
+      </div>
+
+      <!-- // --------------- TOURS y EXPERIENCIAS  --------------- \\ -->
+      <div class="flex flex-col gap-4 md:gap-8">
+        <h3 class="subtitle">Tours y Experiencias</h3>
+        <div class=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-center items-center gap-8">
+          @for (item of agenciaView.tours; track $index) {
+          <!--  <swiper-slide> -->
+          <div (click)="gotoTour(item.name_route)"
+            class="bg-fondo border col-span-1 w-fit border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
+            <a>
+              <img class="rounded-t-lg" src="{{ item?.fotos?.principal }}" alt="" />
+            </a>
+            <div class="p-4 flex flex-col items-start gap-2">
+              <h5 class="text-xl font-bold font-Battambang leading-normal text-secondary">
+                {{ item.nombre }}
+              </h5>
+              @if (item.flagTipeTour != 'EXPE' ) {
+              <div class="flex justify-start items-start gap-6">
+                <div class="flex text-base justify-start items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                      d="M2 19v-6q0-.675.275-1.225T3 10.8V8q0-1.25.875-2.125T6 5h4q.575 0 1.075.213T12 5.8q.425-.375.925-.587T14 5h4q1.25 0 2.125.875T21 8v2.8q.45.425.725.975T22 13v6h-2v-2H4v2zm11-9h6V8q0-.425-.288-.712T18 7h-4q-.425 0-.712.288T13 8zm-8 0h6V8q0-.425-.288-.712T10 7H6q-.425 0-.712.288T5 8z" />
+                  </svg>
+                  <span>1</span>
+                </div>
+                <div class="flex text-base justify-start items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24">
+                    <circle cx="12" cy="6" r="4" fill="currentColor" />
+                    <path fill="currentColor"
+                      d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5" />
+                  </svg>
+                  <span>2</span>
+                </div>
+              </div>
+              }
+
+              <p class="font-base font-bold text-primary">
+                S/. {{ item.precio }} / noche
+              </p>
+            </div>
+          </div>
+
+          }
+
+        </div>
+
+      </div>
     </div>
   </div>
-</div>
