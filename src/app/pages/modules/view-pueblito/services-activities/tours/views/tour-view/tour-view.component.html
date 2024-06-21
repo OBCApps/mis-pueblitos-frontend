@@ -115,14 +115,15 @@
             <div class="flex items-center gap-2 font-bold justify-center">
               Precio: S/.{{ tourView.precio }} c/u
             </div>
-            <button class="flex items-center justify-center" (click)="reservarAhora()">
+            <!-- <button class="flex items-center justify-center" (click)="reservarAhora()">
               <a
                
                 class="text-white bg-[#1AC816] hover:bg-[#1AC816]/90 focus:ring-4 focus:outline-none focus:ring-[#1AC816]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1AC816]/55">
                 
                 Reserva Ahora
               </a>
-            </button>
+            </button> -->
+            <div #googleCalendarButton style="display:none;"></div>
 
           </div>
         </div>
@@ -311,3 +312,12 @@
 src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ39SoK7uLrHc0LgCZHY1BrMfS4-K4Ok5HuryGgwm6sAaY2PJJrsS6vg8RntEEQ7aPxj_MrFfEJp?gv=true"
 style="border: 0" width="100%" height="600" frameborder="0"></iframe>
  -->
+<!-- reservar.component.html -->
+<!-- <button class="flex items-center justify-center" (click)="reservarAhora()">
+  <a class="text-white bg-[#1AC816] hover:bg-[#1AC816]/90 focus:ring-4 focus:outline-none focus:ring-[#1AC816]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1AC816]/55">
+    Reserva Ahora
+  </a>
+</button> -->
+
+<!-- Elemento oculto que será el target para el modal de Google Calendar -->
+

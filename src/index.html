@@ -12,13 +12,16 @@
   <meta name="trustpilot-one-time-domain-verification-id" content="26496956-3f97-448f-b851-0fb4671e8e01" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
   <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEM4RMU2aGB-cNPGMgG58SKjbz07pSwxU"></script>
+
+  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
 </head>
 
 <body class="global-scroll-y">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
   <!-- <script src="../path/to/flowbite/dist/flowbite.min.js"></script> -->
-  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+
   <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HM2Y9FYZC7"></script>
   <script>
@@ -31,15 +34,23 @@
   </script>
 
   <!-- // -------------- DELETE FBCLID -------------- \\ -->
-  <!-- <script>
+  <!-- Google Calendar Appointment Scheduling begin -->
+  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+  <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+  <script>
     (function () {
-      if (window.location.search.indexOf('fbclid') !== -1) {
-        var url = new URL(window.location);
-        url.searchParams.delete('fbclid');
-        window.history.replaceState({}, document.title, url.pathname + url.search);
-      }
+      var target = document.currentScript;
+      window.addEventListener('load', function () {
+        calendar.schedulingButton.load({
+          url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ39SoK7uLrHc0LgCZHY1BrMfS4-K4Ok5HuryGgwm6sAaY2PJJrsS6vg8RntEEQ7aPxj_MrFfEJp?gv=true',
+          color: '#039BE5',
+          label: 'Reservar una cita',
+          target,
+        });
+      });
     })();
-  </script> -->
+  </script>
+  <!-- end Google Calendar Appointment Scheduling -->
   <app-root></app-root>
 
 

@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef, Component, signal } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef, Component, ElementRef, ViewChild, signal } from '@angular/core';
 import { ToursService } from '../../../../../../../services/tours.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RoutesCreated } from '../../../../view-pueblito.service';
@@ -7,7 +7,7 @@ import { LoadingService } from '../../../../../../../functions/loadings/loading-
 import { SwiperContainer } from 'swiper/element';
 import { SwiperOptions } from 'swiper/types';
 import { LowerCasePipe, NgClass, NgFor } from '@angular/common';
-
+declare const calendar: any;
 @Component({
   selector: 'app-tour-view',
   standalone: true,
@@ -32,6 +32,37 @@ export class TourViewComponent {
 
       this.loadTour(this.routesCreated.tour_name);
     });
+  }
+  // --------- IMPLEMENTACION DE LA RESERVA 
+  @ViewChild('googleCalendarButton', { static: false }) googleCalendarButton!: ElementRef;
+  ngAfterViewInit(): void {
+    this.loadGoogleCalendarScript();
+  }
+  loadGoogleCalendarScript() {
+    if (typeof calendar !== 'undefined' && calendar.schedulingButton) {
+      this.initializeGoogleCalendar();
+    } else {
+      const script = document.createElement('script');
+      script.src = 'https://calendar.google.com/calendar/scheduling-button-script.js';
+      script.onload = () => this.initializeGoogleCalendar();
+      document.head.appendChild(script);
+    }
+  }
+
+  initializeGoogleCalendar() {
+    if (this.googleCalendarButton && this.googleCalendarButton.nativeElement) {
+      calendar.schedulingButton.load({
+        url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ39SoK7uLrHc0LgCZHY1BrMfS4-K4Ok5HuryGgwm6sAaY2PJJrsS6vg8RntEEQ7aPxj_MrFfEJp?gv=true',
+        color: '#039BE5',
+        label: 'Reservar una cita',
+        target: this.googleCalendarButton.nativeElement
+      });
+    }
+  }
+
+  reservarAhora() {
+    // Llama a la función para abrir el modal de Google Calendar
+    this.initializeGoogleCalendar();
   }
   tourView: DtoTourView = new DtoTourView();
   loadTour(tour_name: string) {
@@ -109,67 +140,5 @@ export class TourViewComponent {
     }
   }
 
-  reservarAhora() {
-    // Check if the modal already exists to avoid creating multiple instances
-    let modal = document.getElementById('googleCalendarModal');
-    
-    if (!modal) {
-      modal = document.createElement('div');
-      modal.id = 'googleCalendarModal'; // Unique ID for the modal
-      modal.style.display = 'none'; // Initially hidden
-      modal.style.position = 'fixed';
-      modal.style.top = '0';
-      modal.style.left = '0';
-      modal.style.width = '100%';
-      modal.style.height = '100%';
-      modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-      modal.style.zIndex = '1000'; // Ensure it appears on top
-  
-      const modalContent = document.createElement('div');
-      modalContent.style.position = 'relative';
-      modalContent.style.margin = '10% auto';
-      modalContent.style.padding = '20px';
-      modalContent.style.backgroundColor = 'white';
-      modalContent.style.width = '80%';
-      modalContent.style.maxWidth = '600px';
-      
-      modalContent.innerHTML = `
-        <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
-        <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
-        <script>
-          (function() {
-            window.addEventListener('load', function() {
-              calendar.schedulingButton.load({
-                url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ39SoK7uLrHc0LgCZHY1BrMfS4-K4Ok5HuryGgwm6sAaY2PJJrsS6vg8RntEEQ7aPxj_MrFfEJp?gv=true',
-                color: '#039BE5',
-                label: 'Reservar una cita',
-                target: document.getElementById('googleCalendarModal'),
-              });
-            });
-          })();
-        </script>
-      `;
-  
-      // Append content to modal
-      modal.appendChild(modalContent);
-  
-      // Append the modal to the body
-      document.body.appendChild(modal);
-  
-      // Add a close button functionality
-      const closeButton = document.createElement('button');
-      closeButton.textContent = 'Cerrar';
-      closeButton.style.position = 'absolute';
-      closeButton.style.top = '10px';
-      closeButton.style.right = '10px';
-      closeButton.addEventListener('click', () => {
-        modal.style.display = 'none';
-      });
-      modalContent.appendChild(closeButton);
-    }
-  
-    // Display the modal
-    modal.style.display = 'block';
-  }
-  
+
 }
