@@ -188,8 +188,8 @@ export class ViewPueblitoComponent implements OnInit {
           //centeredSlides: true,
           navigation: {
             enabled: true,
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
+            nextEl: '.swiper-navarbutton-next',
+            prevEl: '.swiper-navarbutton-prev'
           },
           breakpoints: {
             320: { slidesPerView: 3 },//3
