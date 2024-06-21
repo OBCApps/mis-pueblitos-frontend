@@ -29,10 +29,14 @@ export class AgenciaViewComponent {
 
   routesCreated: RoutesCreated = new RoutesCreated()
   ngOnInit() {
-    this.route.params.subscribe((params) => {
-      this.routesCreated.agencia_name = params['agencia_name'];
-
+    this.route.params.subscribe((params) => {    
+      this.routesCreated.agencia_name = params['agencia_name'];      
       this.loadAgencia(this.routesCreated.agencia_name);
+    });
+
+    this.route.parent.params.subscribe(params => {
+      this.routesCreated.departamento = params['departamento'];
+      this.routesCreated.lugar = params['lugar'];
     });
   }
 
@@ -55,11 +59,11 @@ export class AgenciaViewComponent {
   gotoTour(item: any) {
     this.router.navigate([
       'home',
-      'Ancash',
-      'Chacas',
+      this.routesCreated.departamento,
+      this.routesCreated.lugar,
       'servicios',
       'tour',
-      item.agencia.name_route,
+      this.agenciaView.name_route,
       item.name_route,
     ]);
   }

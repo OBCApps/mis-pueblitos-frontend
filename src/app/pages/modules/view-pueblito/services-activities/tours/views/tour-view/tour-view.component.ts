@@ -39,7 +39,7 @@ export class TourViewComponent {
     this.toursService.get_tour_by_name_route(tour_name).subscribe(
       (data: DtoTourView) => {
         this.tourView = data;
-        this.cdr.detectChanges();   
+        this.cdr.detectChanges();
         this.createinfoPhotosCarrusel()
         this.createinfoMoreBussinesCarrusel();
 
@@ -62,7 +62,7 @@ export class TourViewComponent {
         const swiperOPtions: SwiperOptions = {
           spaceBetween: 10,
           pagination: false,
-          
+
           breakpoints: {
             320: { slidesPerView: 1 },
             640: { slidesPerView: 2 },
@@ -108,4 +108,68 @@ export class TourViewComponent {
       }
     }
   }
+
+  reservarAhora() {
+    // Check if the modal already exists to avoid creating multiple instances
+    let modal = document.getElementById('googleCalendarModal');
+    
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'googleCalendarModal'; // Unique ID for the modal
+      modal.style.display = 'none'; // Initially hidden
+      modal.style.position = 'fixed';
+      modal.style.top = '0';
+      modal.style.left = '0';
+      modal.style.width = '100%';
+      modal.style.height = '100%';
+      modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+      modal.style.zIndex = '1000'; // Ensure it appears on top
+  
+      const modalContent = document.createElement('div');
+      modalContent.style.position = 'relative';
+      modalContent.style.margin = '10% auto';
+      modalContent.style.padding = '20px';
+      modalContent.style.backgroundColor = 'white';
+      modalContent.style.width = '80%';
+      modalContent.style.maxWidth = '600px';
+      
+      modalContent.innerHTML = `
+        <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+        <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+        <script>
+          (function() {
+            window.addEventListener('load', function() {
+              calendar.schedulingButton.load({
+                url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ39SoK7uLrHc0LgCZHY1BrMfS4-K4Ok5HuryGgwm6sAaY2PJJrsS6vg8RntEEQ7aPxj_MrFfEJp?gv=true',
+                color: '#039BE5',
+                label: 'Reservar una cita',
+                target: document.getElementById('googleCalendarModal'),
+              });
+            });
+          })();
+        </script>
+      `;
+  
+      // Append content to modal
+      modal.appendChild(modalContent);
+  
+      // Append the modal to the body
+      document.body.appendChild(modal);
+  
+      // Add a close button functionality
+      const closeButton = document.createElement('button');
+      closeButton.textContent = 'Cerrar';
+      closeButton.style.position = 'absolute';
+      closeButton.style.top = '10px';
+      closeButton.style.right = '10px';
+      closeButton.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+      modalContent.appendChild(closeButton);
+    }
+  
+    // Display the modal
+    modal.style.display = 'block';
+  }
+  
 }

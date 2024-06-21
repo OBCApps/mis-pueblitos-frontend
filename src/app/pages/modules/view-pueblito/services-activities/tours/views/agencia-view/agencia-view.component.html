@@ -222,13 +222,13 @@
         <div class=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-center items-center gap-8">
           @for (item of agenciaView.tours; track $index) {
           <!--  <swiper-slide> -->
-          <div (click)="gotoTour(item.name_route)"
+          <div (click)="gotoTour(item)"
             class="bg-fondo border col-span-1 w-fit border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
             <a>
               <img class="rounded-t-lg" src="{{ item?.fotos?.principal }}" alt="" />
             </a>
             <div class="p-4 flex flex-col items-start gap-2">
-              <h5 class="text-xl font-bold font-Battambang leading-normal text-secondary">
+              <h5 class="text-xl font-bold font-Battambang leading-normal text-secondary text-start">
                 {{ item.nombre }}
               </h5>
               @if (item.flagTipeTour != 'EXPE' ) {
