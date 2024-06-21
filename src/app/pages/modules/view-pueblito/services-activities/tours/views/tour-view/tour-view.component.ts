@@ -29,41 +29,17 @@ export class TourViewComponent {
     this.route.params.subscribe((params) => {
       this.routesCreated.agencia_name = params['agencia_name'];
       this.routesCreated.tour_name = params['tour_name'];
-
       this.loadTour(this.routesCreated.tour_name);
     });
-  }
-  // --------- IMPLEMENTACION DE LA RESERVA 
-  @ViewChild('googleCalendarButton', { static: false }) googleCalendarButton!: ElementRef;
-  ngAfterViewInit(): void {
-    this.loadGoogleCalendarScript();
-  }
-  loadGoogleCalendarScript() {
-    if (typeof calendar !== 'undefined' && calendar.schedulingButton) {
-      this.initializeGoogleCalendar();
-    } else {
-      const script = document.createElement('script');
-      script.src = 'https://calendar.google.com/calendar/scheduling-button-script.js';
-      script.onload = () => this.initializeGoogleCalendar();
-      document.head.appendChild(script);
-    }
+
+    this.route.parent.params.subscribe(params => {
+      this.routesCreated.departamento = params['departamento'];
+      this.routesCreated.lugar = params['lugar'];
+    });
   }
 
-  initializeGoogleCalendar() {
-    if (this.googleCalendarButton && this.googleCalendarButton.nativeElement) {
-      calendar.schedulingButton.load({
-        url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ39SoK7uLrHc0LgCZHY1BrMfS4-K4Ok5HuryGgwm6sAaY2PJJrsS6vg8RntEEQ7aPxj_MrFfEJp?gv=true',
-        color: '#039BE5',
-        label: 'Reservar una cita',
-        target: this.googleCalendarButton.nativeElement
-      });
-    }
-  }
 
-  reservarAhora() {
-    // Llama a la función para abrir el modal de Google Calendar
-    this.initializeGoogleCalendar();
-  }
+
   tourView: DtoTourView = new DtoTourView();
   loadTour(tour_name: string) {
     this.loading.show();
@@ -73,7 +49,7 @@ export class TourViewComponent {
         this.cdr.detectChanges();
         this.createinfoPhotosCarrusel()
         this.createinfoMoreBussinesCarrusel();
-
+        this.reservarAhora('https://calendar.google.com/calendar/appointments/schedules/AcZssZ39SoK7uLrHc0LgCZHY1BrMfS4-K4Ok5HuryGgwm6sAaY2PJJrsS6vg8RntEEQ7aPxj_MrFfEJp?gv=true')
         this.loading.hide();
       }, err => {
         this.loading.hide();
@@ -82,7 +58,7 @@ export class TourViewComponent {
   }
 
   gotoAgencia() {
-    this.router.navigate(['home', 'Ancash', 'Chacas', 'servicios', 'tour', this.routesCreated.agencia_name]);
+    this.router.navigate(['home', this.routesCreated.departamento, this.routesCreated.lugar, 'servicios', 'tour', this.routesCreated.agencia_name]);
   }
 
   swiperElement = signal<SwiperContainer | null>(null);
@@ -139,6 +115,23 @@ export class TourViewComponent {
       }
     }
   }
+  // --------- IMPLEMENTACION DE LA RESERVA 
+  @ViewChild('googleCalendarButton', { static: false }) googleCalendarButton!: ElementRef;
 
+
+  initializeGoogleCalendar(url) {
+    if (this.googleCalendarButton && this.googleCalendarButton.nativeElement) {
+      calendar.schedulingButton.load({
+        url: url,
+        color: '#1AC816',
+        label: 'Reservar',
+        target: this.googleCalendarButton.nativeElement
+      });
+    }
+  }
+
+  reservarAhora(url: any) {
+    this.initializeGoogleCalendar(url);
+  }
 
 }
