@@ -55,11 +55,11 @@
         <swiper-slide *ngFor="let item of restaurante?.fotos?.gallery">
           <div class="border-1 surface-border border-round text-center md:mx-5 rounded-lg">
             <div class="global-center">
-              <div class="buscadosCard w-full h-56 md:h-96 rounded-xl bg-cover bg-center flex justify-start items-end"
+              <div
+                class="buscadosCard w-full h-56 md:h-[75vh] rounded-xl bg-cover bg-center flex justify-start items-end"
                 style="
               background-image: url({{item}})">
-                <div
-                  class="w-full h-48 md:h-96 p-5 rounded-3xl flex justify-start items-end text-fondo">
+                <div class="w-full h-48 md:h-96 p-5 rounded-3xl flex justify-start items-end text-fondo">
                   <!-- {{ item.nombre }} -->
                 </div>
               </div>
@@ -67,7 +67,7 @@
           </div>
         </swiper-slide>
       </swiper-container>
-      
+
       <div class="mt-2 flex items-center justify-center">
         <button type="button"
           class="swiperinfoPhotos-button-prev text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300  rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 ">
@@ -194,9 +194,9 @@
           </div>
         </div>
         }
-       
 
-        
+
+
       </div>
     </div>
     <!------------HORARIO---------------->
@@ -372,5 +372,49 @@
         }
       </ul>
     </div>
+
+    @if (restaurante.moreBussines.length > 0) {
+    <div class="flex flex-col gap-4 md:gap-8">
+      <h3 class="subtitle">Más negocios relacionados</h3>
+
+      <div>
+        <swiper-container id="infoMoreBussines" init="false" class="flex items-center justify-center">
+          @for (item of restaurante.moreBussines; track $index) {
+          <swiper-slide>
+            <div class="bg-fondo border border-terceary rounded-3xl shadow overflow-hidden">
+              <div class="relative">
+                <img class="rounded-t-lg w-full h-48" src="{{ item?.fotos?.principal }}" alt="" />
+                <div [ngClass]="{
+                    'bg-orange-400': item.tipo === 'REST',
+                    'bg-green-400': item.tipo === 'TOUR',
+                    'bg-red-400': item.tipo === 'HOSP'
+                  }"
+                  class="absolute capitalize top-0 right-0 text-white text-xs px-2 py-1 m-2 rounded-bl-lg font-Battambang">
+                  {{ item.tipo === 'REST' ? 'Restaurante' : (item.tipo === 'TOUR' ? 'Experiencia' : (item.tipo ===
+                  'HOSP' ? 'Hospedaje' : item.tipo)) | lowercase}}
+
+                </div>
+              </div>
+              <div class="min-h-28 p-4 flex flex-col items-start gap-2">
+                <h5 class="text-xl font-bold font-Battambang leading-5 text-secondary">
+                  {{ item.nombre }}
+                </h5>
+                @if (item.precio) {
+                <h5 class="text-sm font-bold font-Battambang leading-5 text-primary">
+                  S/.{{ item.precio }}
+                </h5>
+                }
+              </div>
+            </div>
+          </swiper-slide>
+          }
+        </swiper-container>
+
+      </div>
+
+    </div>
+    }
   </div>
+
+
 </div>

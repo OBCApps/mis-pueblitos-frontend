@@ -118,7 +118,7 @@
               Precio: S/.{{ tourView.precio }} c/u
             </div>
             <div class="col-span-1 lg:col-span-2 flex items-center justify-center">
-              <div #googleCalendarButton ></div>
+              <div #googleCalendarButton></div>
             </div>
 
           </div>
@@ -282,6 +282,11 @@
                   <h5 class="text-xl font-bold font-Battambang leading-5 text-secondary">
                     {{ item.nombre }}
                   </h5>
+                  @if (item.precio) {
+                  <h5 class="text-sm font-bold font-Battambang leading-5 text-primary">
+                    S/.{{ item.precio }}
+                  </h5>
+                  }
                 </div>
               </div>
             </swiper-slide>

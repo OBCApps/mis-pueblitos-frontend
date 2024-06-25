@@ -7,6 +7,7 @@ import { LoadingService } from '../../../../../../../functions/loadings/loading-
 import { SwiperContainer } from 'swiper/element';
 import { SwiperOptions } from 'swiper/types';
 import { LowerCasePipe, NgClass, NgFor } from '@angular/common';
+import { BaseComponenst } from '../../../../../../../functions/base-components/BaseComponents';
 declare const calendar: any;
 @Component({
   selector: 'app-tour-view',
@@ -16,14 +17,16 @@ declare const calendar: any;
   styleUrl: './tour-view.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class TourViewComponent {
+export class TourViewComponent extends BaseComponenst {
   constructor(
     private readonly toursService: ToursService,
     private readonly router: Router,
     private readonly route: ActivatedRoute,
     private readonly loading: LoadingService,
     private cdr: ChangeDetectorRef
-  ) { }
+  ) {
+    super();
+  }
   routesCreated: RoutesCreated = new RoutesCreated()
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -47,8 +50,11 @@ export class TourViewComponent {
       (data: DtoTourView) => {
         this.tourView = data;
         this.cdr.detectChanges();
-        this.createinfoPhotosCarrusel()
-        this.createinfoMoreBussinesCarrusel();
+        this.initializeCarruselsSwipes();
+        //this.createinfoPhotosCarrusel()
+        //this.createinfoMoreBussinesCarrusel();
+
+
         this.reservarAhora('https://calendar.google.com/calendar/appointments/schedules/AcZssZ39SoK7uLrHc0LgCZHY1BrMfS4-K4Ok5HuryGgwm6sAaY2PJJrsS6vg8RntEEQ7aPxj_MrFfEJp?gv=true')
         this.loading.hide();
       }, err => {
@@ -60,8 +66,40 @@ export class TourViewComponent {
   gotoAgencia() {
     this.router.navigate(['home', this.routesCreated.departamento, this.routesCreated.lugar, 'servicios', 'tour', this.routesCreated.agencia_name]);
   }
+  initializeCarruselsSwipes() {
+    this.initializeSwiper('infoPhotos', {
+      spaceBetween: 10,
+      pagination: false,
+      navigation: {
+        enabled: true,
+        nextEl: '.swiperinfoPhotos-button-next',
+        prevEl: '.swiperinfoPhotos-button-prev'
+      },
+      autoplay: {
+        delay: 5000, // 5 segundos
+        disableOnInteraction: false // Para que el autoplay no se detenga al interactuar con el carrusel
+      },
+      breakpoints: {
+        320: { slidesPerView: 1 },
+        640: { slidesPerView: 1 },
+        1024: { slidesPerView: 1 },
+        1280: { slidesPerView: 1 }
+      }
+    });
 
-  swiperElement = signal<SwiperContainer | null>(null);
+    this.initializeSwiper('infoMoreBussines', {
+      spaceBetween: 10,
+      pagination: false,
+      breakpoints: {
+        320: { slidesPerView: 1 },
+        640: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+        1280: { slidesPerView: 4 }
+      }
+    });
+  }
+
+  /* swiperElement = signal<SwiperContainer | null>(null);
   createinfoMoreBussinesCarrusel() {
     if (typeof document !== 'undefined') {
       const swiperElemConstructor = document.getElementById('infoMoreBussines');
@@ -83,8 +121,8 @@ export class TourViewComponent {
         this.swiperElement().initialize()
       }
     }
-  }
-  swiperElement1 = signal<SwiperContainer | null>(null);
+  } */
+  /* swiperElement1 = signal<SwiperContainer | null>(null);
   createinfoPhotosCarrusel() {
     if (typeof document !== 'undefined') {
       const swiperElemConstructor = document.getElementById('infoPhotos');
@@ -114,7 +152,7 @@ export class TourViewComponent {
         this.swiperElement1().initialize()
       }
     }
-  }
+  } */
   // --------- IMPLEMENTACION DE LA RESERVA 
   @ViewChild('googleCalendarButton', { static: false }) googleCalendarButton!: ElementRef;
 

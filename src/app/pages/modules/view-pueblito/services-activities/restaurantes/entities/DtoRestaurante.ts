@@ -16,7 +16,7 @@ export class DtoRestaurante {
     };
     gallery: []
   };
-  
+
   contactos: any
   descripcion: string;
   servicios: any
@@ -36,4 +36,5 @@ export class DtoRestaurante {
     }
   ];
   minPrice: number;
+  moreBussines: any[] = [];
 }
