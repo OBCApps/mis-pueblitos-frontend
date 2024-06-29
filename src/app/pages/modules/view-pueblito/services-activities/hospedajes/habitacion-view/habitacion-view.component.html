@@ -61,8 +61,7 @@
               <div class="buscadosCard w-full h-56 md:h-96 rounded-xl bg-cover bg-center flex justify-start items-end"
                 style="
               background-image: url({{item}})">
-                <div
-                  class="w-full h-48 md:h-96 p-5  rounded-3xl flex justify-start items-end text-fondo">
+                <div class="w-full h-48 md:h-96 p-5  rounded-3xl flex justify-start items-end text-fondo">
                   <!-- {{ item.nombre }} -->
                 </div>
               </div>
@@ -101,13 +100,13 @@
 
     </div>
     <div class="col-span-4 xl:col-span-1 ">
-      <div class="w-full ">
+      <div class="w-full static-reserve">
         <div class="bg-white border p-2 border-primary rounded-xl shadow-lg">
           <div class="hidden md:flex col-span-2 pb-2">
             <h1 class="text-secondary font-bold">Detalles </h1>
           </div>
-          <div class="flex flex-col gap-2">
-            <div class="flex items-center gap-2">
+          <div class="grid grid-cols-2 gap-2">
+            <div class="col-span-1 lg:col-span-2 flex items-center gap-2">
               <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
                 <a target="_blank">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
@@ -118,10 +117,12 @@
 
                 </a>
               </div>
-              <div>{{ dtoHabitacionInfo.camas}} {{dtoHabitacionInfo.camas == 1 ? 'Cama disponible' : 'Camas
-                disponibles'}}</div>
+              <div>
+                {{ dtoHabitacionInfo.camas}} {{dtoHabitacionInfo.camas == 1?'Cama disponible':'Camas disponibles'}}
+              </div>
             </div>
-            <div class="flex items-center gap-2">
+            
+            <div class="col-span-1 lg:col-span-2 flex items-center gap-2">
               <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
                 <a target="_blank">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="none">
@@ -137,10 +138,11 @@
               {{dtoHabitacionInfo.personas}} Personas
             </div>
 
-            <div class="flex items-center gap-2 font-bold justify-center">
+            <div class="col-span-1 lg:col-span-2 flex items-center gap-2 font-bold justify-center">
               Precio: S/.{{ dtoHabitacionInfo.precio }} / Noche
             </div>
-            <div class="flex items-center justify-center">
+
+            <div class="col-span-1 lg:col-span-2 flex items-center justify-center">
               <a href="https://api.whatsapp.com/send?phone=900649509&text=Hola%2C%20quiero%20reservar%20una%20experiencia"
                 target="_blank"
                 class="text-white bg-[#1AC816] hover:bg-[#1AC816]/90 focus:ring-4 focus:outline-none focus:ring-[#1AC816]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1AC816]/55">

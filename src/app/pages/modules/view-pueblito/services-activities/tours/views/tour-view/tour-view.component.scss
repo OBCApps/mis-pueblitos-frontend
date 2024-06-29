@@ -11,13 +11,3 @@
     @apply text-terceary text-xs md:text-sm text-justify font-normal font-Battambang leading-normal
 }
 
-@media (max-width: 768px) {
-    .static {
-        position: fixed !important;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        transition: padding 1s;
-        z-index: 10;
-    }
-}

@@ -6,6 +6,7 @@ import { SwiperContainer } from 'swiper/element';
 import { SwiperOptions } from 'swiper/types';
 import { LowerCasePipe, NgClass, NgFor } from '@angular/common';
 import { BaseComponenst } from '../../../../../../functions/base-components/BaseComponents';
+import { RoutesCreated } from '../../../view-pueblito.service';
 
 @Component({
   selector: 'app-restaurant-view',
@@ -24,7 +25,14 @@ export class RestaurantViewComponent extends BaseComponenst {
   ) {
     super();
   }
+  routesCreated: RoutesCreated = new RoutesCreated()
   ngOnInit(): void {
+
+    this.route.parent.params.subscribe(params => {
+      this.routesCreated.departamento = params['departamento'];
+      this.routesCreated.lugar = params['lugar'];
+    });
+
     this.route.params.subscribe((params) => {
       this.load_restaurante(params['restaurante_name']);
     });
@@ -98,5 +106,15 @@ export class RestaurantViewComponent extends BaseComponenst {
 
     }
   }
+  gotoNegocio(item: any) {
+    let url: string;
 
+    if (item.tipo == 'REST') {
+      url = `home/${this.routesCreated.departamento}/${this.routesCreated.lugar}/servicios/restaurante/${item.name_route}`;
+    } else {
+      url = `home/${this.routesCreated.departamento}/${this.routesCreated.lugar}/servicios/tour/${item.agenciadesc}/${item.name_route}`;
+    }
+
+    window.location.href = url;
+  }
 }

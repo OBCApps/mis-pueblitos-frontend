@@ -172,4 +172,16 @@ export class TourViewComponent extends BaseComponenst {
     this.initializeGoogleCalendar(url);
   }
 
+  gotoNegocio(item: any) {
+    let url: string;
+  
+    if (item.tipo == 'REST') {
+      url = `home/${this.routesCreated.departamento}/${this.routesCreated.lugar}/servicios/restaurante/${item.name_route}`;
+    } else {
+      url = `home/${this.routesCreated.departamento}/${this.routesCreated.lugar}/servicios/tour/${item.agenciadesc}/${item.name_route}`;
+    }
+  
+    window.location.href = url;
+  }
+
 }

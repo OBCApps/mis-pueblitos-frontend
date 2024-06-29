@@ -14,8 +14,19 @@ export class BaseComponenst {
                 const signalElement = signal<SwiperContainer | null>(null);
                 Object.assign(swiperElemConstructor, options);
                 signalElement.set(swiperElemConstructor as SwiperContainer);
-                signalElement().initialize();
-                this.swipers.set(elementId, signalElement);
+                try {
+                    const swiperInstance = signalElement();
+                    if (swiperInstance) {
+                        swiperInstance.initialize();
+                        this.swipers.set(elementId, signalElement);
+                    } else {
+                        console.error("Error: swiperInstance es null");
+                    }
+                } catch (error) {
+                    console.error("Error al inicializar el Swiper", error);
+                }
+            } else {
+                console.error(`Elemento con id ${elementId} no encontrado`);
             }
         }
     }
