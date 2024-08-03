@@ -184,4 +184,11 @@ export class TourViewComponent extends BaseComponenst {
     window.location.href = url;
   }
 
+  getTitleExperience(): string {
+    const message = 'Hola quiero reservar esta experiencia:%0A';
+    const name = encodeURIComponent(this.tourView.nombre);
+    return message + name;
+  }
+  
+  
 }
