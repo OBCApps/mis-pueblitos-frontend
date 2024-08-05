@@ -8,6 +8,7 @@ import { SwiperContainer } from 'swiper/element';
 import { SwiperOptions } from 'swiper/types';
 import { LowerCasePipe, NgClass, NgFor } from '@angular/common';
 import { BaseComponenst } from '../../../../../../../functions/base-components/BaseComponents';
+import Swal from 'sweetalert2';
 declare const calendar: any;
 @Component({
   selector: 'app-tour-view',
@@ -174,13 +175,13 @@ export class TourViewComponent extends BaseComponenst {
 
   gotoNegocio(item: any) {
     let url: string;
-  
+
     if (item.tipo == 'REST') {
       url = `home/${this.routesCreated.departamento}/${this.routesCreated.lugar}/servicios/restaurante/${item.name_route}`;
     } else {
       url = `home/${this.routesCreated.departamento}/${this.routesCreated.lugar}/servicios/tour/${item.agenciadesc}/${item.name_route}`;
     }
-  
+
     window.location.href = url;
   }
 
@@ -189,6 +190,43 @@ export class TourViewComponent extends BaseComponenst {
     const name = encodeURIComponent(this.tourView.nombre);
     return message + name;
   }
-  
-  
+
+  openReservationOptions(): void {
+    Swal.fire({
+      title: '¿Cómo desea reservar?',
+      showCancelButton: true,
+      confirmButtonText: 'Por la Web',
+      cancelButtonText: 'Por WhatsApp',
+      customClass: {
+        title: 'text-xl',
+        confirmButton: 'bg-green-500 text-sm text-white hover:bg-green-600 px-4 py-2 rounded',
+        cancelButton: 'bg-green-500 text-sm text-white hover:bg-green-600 px-4 py-2 rounded'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.openGoogleCalendarModal();
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        this.openWhatsAppLink();
+      }
+    });
+  }
+
+  openGoogleCalendarModal(): void {
+    Swal.fire({      
+      html: '<iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ39SoK7uLrHc0LgCZHY1BrMfS4-K4Ok5HuryGgwm6sAaY2PJJrsS6vg8RntEEQ7aPxj_MrFfEJp?gv=true" width="100%" height="500" frameborder="0"></iframe>',
+      showCloseButton: true,
+      showConfirmButton: false,      
+      padding: '0',
+      customClass: {
+        popup: 'w-full lg:w-[80%] '
+      }
+    });
+  }
+
+  openWhatsAppLink(): void {
+    const titleExperience = this.getTitleExperience(); // Asegúrate de tener este método implementado
+    const whatsappUrl = `https://wa.me/51900649509?text=${encodeURIComponent(titleExperience)}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
 }
