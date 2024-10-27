@@ -9,12 +9,11 @@ import { BreadCrumbComponent } from './bread-crumb/bread-crumb.component';
 import { ModalProveedorComponent } from '../../../functions/modal-proveedor/modal-proveedor.component';
 import { ModalProveedorService } from '../../../functions/modal-proveedor/modal-proveedor.service';
 import { ModalRedesSocialesComponent } from '../../../functions/modal-redes-sociales/modal-redes-sociales.component';
-import { stringify } from 'querystring';
 import { LoadingService } from '../../../functions/loadings/loading-service.service';
-import { SwiperOptions } from 'swiper/types';
-import { SwiperContainer } from 'swiper/element';
-import { DomSanitizer } from '@angular/platform-browser';
 
+import { SwiperContainer } from 'swiper/element';
+import { SwiperOptions } from 'swiper/types';
+import Swiper from 'swiper';
 @Component({
   selector: 'app-view-pueblito',
   standalone: true,
@@ -47,11 +46,11 @@ export class ViewPueblitoComponent implements OnInit {
     private modalProveedorFotos: ModalProveedorService,
     private router: Router,
     private loading: LoadingService,
-    private el: ElementRef, 
+    private el: ElementRef,
     private renderer: Renderer2
   ) { }
   title: any = '';
-  
+
   getSafeIcon(icon: string) {
     //return this.sanitizer.bypassSecurityTrustHtml(icon);
     return icon
@@ -72,12 +71,12 @@ export class ViewPueblitoComponent implements OnInit {
     this.createCarrusel()
   }
 
-  navbarStatic : boolean = false;
+  navbarStatic: boolean = false;
   @HostListener('window:scroll', [])
   onWindowScroll() {
     const menu = document.getElementById('navar-static');
-    this.navbarStatic = window.pageYOffset >= menu.offsetTop;    
-    
+    this.navbarStatic = window.pageYOffset >= menu.offsetTop;
+
   }
 
 
@@ -118,7 +117,7 @@ export class ViewPueblitoComponent implements OnInit {
   lugarDetalle: any = {};
   private updateTitle(newTitle: any) {
     this.title = newTitle;
-    
+
 
   }
 
@@ -137,7 +136,7 @@ export class ViewPueblitoComponent implements OnInit {
   }
 
   // ------ GO TO ROUTE SELECTED ----------- \\
-  goToRoute(departament: any, lugar: any, action: any) {  
+  goToRoute(departament: any, lugar: any, action: any) {
     if (action == 'location') {
       this.router.navigate(['home', departament, lugar])
     } else {
@@ -152,12 +151,13 @@ export class ViewPueblitoComponent implements OnInit {
 
   // ------------- CARUSEL MODULE ------------ \\
   swiperElement = signal<SwiperContainer | null>(null);
+  swiperInstance: Swiper;
   createCarrusel() {
     if (typeof document !== 'undefined') {
       const swiperElemConstructor = document.getElementById('navarOptions');
       if (swiperElemConstructor) {
         const swiperOPtions: SwiperOptions = {
-          
+
           pagination: false,
           //centeredSlides: true,
           navigation: {
@@ -175,9 +175,17 @@ export class ViewPueblitoComponent implements OnInit {
         }
         Object.assign(swiperElemConstructor, swiperOPtions);
         this.swiperElement.set(swiperElemConstructor as SwiperContainer)
+        /* if (swiperElemConstructor instanceof HTMLElement) {
+          this.swiperInstance = new Swiper(swiperElemConstructor, swiperOPtions);
+        } */
         this.swiperElement().initialize()
+
+
       }
     }
   }
-
+  goToSlide(index: number) {
+    // Verifica que la instancia de swiper esté inicializada antes de intentar el cambio
+    this.swiperInstance.slideTo(6)
+  }
 }
