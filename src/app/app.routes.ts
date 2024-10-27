@@ -19,6 +19,9 @@ import { HotelViewComponent } from './pages/modules/view-pueblito/services-activ
 import { TourViewComponent } from './pages/modules/view-pueblito/services-activities/tours/views/tour-view/tour-view.component';
 import { AgenciaViewComponent } from './pages/modules/view-pueblito/services-activities/tours/views/agencia-view/agencia-view.component';
 import { AtractivosTuristicosComponent } from './pages/modules/view-pueblito/services-activities/atractivos-turisticos/atractivos-turisticos.component';
+import { HospedajesListComponent } from './pages/modules/view-pueblito/services-activities/hospedajes/hospedajes-list/hospedajes-list.component';
+import { RestaurantesListComponent } from './pages/modules/view-pueblito/services-activities/restaurantes/restaurantes-list/restaurantes-list.component';
+import { ToursListComponent } from './pages/modules/view-pueblito/services-activities/tours/views/tours-list/tours-list.component';
 
 export const routes: Routes = [
   {
@@ -64,27 +67,35 @@ export const routes: Routes = [
         component: LugaresTuristicosComponent,
       },
       {
-        path: 'servicios',
-        component: ServicesActivitiesComponent,
+        path: 'hospedajes',
+        component: HospedajesListComponent,
       },
       {
-        path: 'servicios/hospedaje/:hotel_name',
+        path: 'hospedajes/:hotel_name',
         component: HotelViewComponent,
       },
       {
-        path: 'servicios/hospedaje/:hotel_name/:habitacion_detail',
+        path: 'hospedajes/:hotel_name/:habitacion_detail',
         component: HabitacionViewComponent,
       },
       {
-        path: 'servicios/tour/:agencia_name',
+        path: 'tours-experiencias',
+        component: ToursListComponent,
+      },
+      {
+        path: 'tours-experiencias/:agencia_name',
         component: AgenciaViewComponent,
       },
       {
-        path: 'servicios/tour/:agencia_name/:tour_name',
+        path: 'tours-experiencias/:agencia_name/:tour_name',
         component: TourViewComponent,
       },
       {
-        path: 'servicios/restaurante/:restaurante_name',
+        path: 'restaurantes',
+        component: RestaurantesListComponent,
+      },
+      {
+        path: 'restaurantes/:restaurante_name',
         component: RestaurantViewComponent,
       },
       {

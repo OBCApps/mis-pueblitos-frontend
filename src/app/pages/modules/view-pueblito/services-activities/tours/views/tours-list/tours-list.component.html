@@ -1,0 +1,78 @@
+<div class="flex flex-col gap-12 py-12 items-center font-Battambang">
+    <div class="searchs flex flex-col gap-4 bg-fondo mt-5">
+        <h3 class="text-secondary text-xl md:text-2xl font-black font-Battambang leading-6">
+            Tours y Experiencias
+        </h3>
+        <p class="text-terceary text-xs md:text-sm text-justify font-normal font-Battambang leading-normal">
+            Sumérgete en la aventura y descubre los secretos de cada destino con nuestros tours y experiencias. Ya sea
+            que busques explorar la naturaleza, conocer la historia local o disfrutar de actividades culturales, tenemos
+            el recorrido perfecto para ti. ¡Haz que cada día de tu viaje sea una nueva aventura!
+        </p>
+    </div>
+
+
+    <div>
+        <br />
+
+
+        @if (filtroBusqueda.typeServicio == 'TOUR') {
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            @for (item of list_resultadoBusqueda; track $index) {
+            <div 
+                class="flex flex-col max-w-sm bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div class="relative">
+                    <img class="w-full h-48 object-cover" [src]="item.fotos.principal || './assets/notFound.png'"
+                         [alt]="item.nombre" />
+                </div>
+                <div class="flex flex-col flex-grow p-6">
+                    <div class="flex-grow">
+                        <h5 class="text-xl font-bold font-Battambang leading-tight text-secondary mb-2 line-clamp-2">
+                            {{ item.nombre }}
+                        </h5>
+                        <p class="text-base font-bold font-Battambang leading-snug text-terceary mb-3 line-clamp-1">
+                            {{ item.agencia.nombre }}
+                        </p>
+                        <div class="flex items-center gap-2 text-sm text-gray-600 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="w-5 h-5 flex-shrink-0">
+                                <path fill-rule="evenodd"
+                                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span>{{item.duracion}}</span>
+                        </div>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="flex justify-start items-center mb-4">
+                            <span class="text-lg font-bold text-primary">
+                                S/. {{ item.precio }}
+                            </span>
+                            <span class="text-sm pl-2 text-gray-600">
+                                por persona
+                            </span>
+                        </div>
+                        <button (click)="gotoTour(item)"
+                            class="w-full bg-primary text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors duration-300">
+                            Ver detalles
+                        </button>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+        @if (list_resultadoBusqueda.length == 0) {
+        <div class="flex items-center justify-center">
+            <p>Aún no tenemos experiencias disponibles</p>
+        </div>
+        }
+
+        }
+
+
+
+    </div>
+
+
+
+
+</div>

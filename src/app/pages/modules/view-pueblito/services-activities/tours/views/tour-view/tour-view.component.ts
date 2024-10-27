@@ -65,7 +65,7 @@ export class TourViewComponent extends BaseComponenst {
   }
 
   gotoAgencia() {
-    this.router.navigate(['home', this.routesCreated.departamento, this.routesCreated.lugar, 'servicios', 'tour', this.routesCreated.agencia_name]);
+    this.router.navigate(['home', this.routesCreated.departamento, this.routesCreated.lugar,  'tours-experiencias', this.routesCreated.agencia_name]);
   }
   initializeCarruselsSwipes() {
     this.initializeSwiper('infoPhotos', {
@@ -91,6 +91,11 @@ export class TourViewComponent extends BaseComponenst {
     this.initializeSwiper('infoMoreBussines', {
       spaceBetween: 10,
       pagination: false,
+      navigation: {
+        enabled: true,
+        nextEl: '.swiperinfoMoreBussines-button-next',
+        prevEl: '.swiperinfoMoreBussines-button-prev'
+      },
       breakpoints: {
         320: { slidesPerView: 1 },
         640: { slidesPerView: 2 },
@@ -177,9 +182,9 @@ export class TourViewComponent extends BaseComponenst {
     let url: string;
 
     if (item.tipo == 'REST') {
-      url = `home/${this.routesCreated.departamento}/${this.routesCreated.lugar}/servicios/restaurante/${item.name_route}`;
+      url = `home/${this.routesCreated.departamento}/${this.routesCreated.lugar}/restaurantes/${item.name_route}`;
     } else {
-      url = `home/${this.routesCreated.departamento}/${this.routesCreated.lugar}/servicios/tour/${item.agenciadesc}/${item.name_route}`;
+      url = `home/${this.routesCreated.departamento}/${this.routesCreated.lugar}/tours-experiencias/${item.agenciadesc}/${item.name_route}`;
     }
 
     window.location.href = url;
