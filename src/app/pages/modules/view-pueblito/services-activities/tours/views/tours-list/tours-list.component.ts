@@ -7,11 +7,12 @@ import { ToursService } from '../../../../../../../services/tours.service';
 import { Router } from '@angular/router';
 import { LoadingService } from '../../../../../../../functions/loadings/loading-service.service';
 import { ServicesActivitiesServices } from '../../../services-activities.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-tours-list',
   standalone: true,
-  imports: [],
+  imports: [NgIf],
   templateUrl: './tours-list.component.html',
   styleUrl: './tours-list.component.scss'
 })

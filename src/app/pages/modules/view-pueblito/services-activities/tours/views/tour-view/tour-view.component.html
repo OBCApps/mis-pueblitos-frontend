@@ -144,15 +144,15 @@
         <h2 class="subtitle">
           {{ tourView.agencia.nombre }}
         </h2>
-        <button (click)="gotoAgencia()" class="text-sm px-3 py-1 bg-primary text-white rounded-full hover:bg-primary-dark transition duration-300">
+        <!-- <button (click)="gotoAgencia()" class="text-sm px-3 py-1 bg-primary text-white rounded-full hover:bg-primary-dark transition duration-300">
           Ver Perfil
-        </button>
+        </button> -->
       </div>
     </div>
-  
+
     <div class="grid grid-cols-1 xl:grid-cols-4 gap-8">
       <div class="xl:col-span-3">
-        <div >
+        <div>
           <swiper-container id="infoPhotos" init="false" class="rounded-xl overflow-hidden">
             <swiper-slide *ngFor="let item of tourView?.fotos?.gallery">
               <img [src]="item" [alt]="tourView.nombre" class="w-full h-[40vh] lg:h-[60vh] object-cover" />
@@ -166,11 +166,11 @@
                   d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
                   clip-rule="evenodd" />
               </svg>
-    
-    
+
+
               <span class="sr-only">Icon description</span>
             </button>
-    
+
             <button type="button"
               class="swiperinfoPhotos-button-next text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300  rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 ">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
@@ -178,13 +178,13 @@
                   d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
                   clip-rule="evenodd" />
               </svg>
-    
+
               <span class="sr-only">Icon description</span>
             </button>
           </div>
         </div>
       </div>
-      
+
       <div class="xl:col-span-1">
         <div class="bg-white border border-primary rounded-xl shadow-lg p-6">
           <h3 class="text-xl font-bold text-secondary mb-4">Detalles del Tour</h3>
@@ -192,7 +192,9 @@
             <div class="flex items-center space-x-3">
               <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                  <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clip-rule="evenodd" />
+                  <path fill-rule="evenodd"
+                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z"
+                    clip-rule="evenodd" />
                 </svg>
               </div>
               <span class="text-gray-700">{{ tourView.duracion }}</span>
@@ -200,8 +202,12 @@
             <div class="flex items-center space-x-3">
               <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 16 16" fill="none">
-                  <path d="M8.00065 6.66658C9.47341 6.66658 10.6673 5.47268 10.6673 3.99992C10.6673 2.52716 9.47341 1.33325 8.00065 1.33325C6.52789 1.33325 5.33398 2.52716 5.33398 3.99992C5.33398 5.47268 6.52789 6.66658 8.00065 6.66658Z" fill="currentColor" />
-                  <path d="M13.3327 11.6665C13.3327 13.3232 13.3327 14.6665 7.99935 14.6665C2.66602 14.6665 2.66602 13.3232 2.66602 11.6665C2.66602 10.0098 5.05402 8.6665 7.99935 8.6665C10.9447 8.6665 13.3327 10.0098 13.3327 11.6665Z" fill="currentColor" />
+                  <path
+                    d="M8.00065 6.66658C9.47341 6.66658 10.6673 5.47268 10.6673 3.99992C10.6673 2.52716 9.47341 1.33325 8.00065 1.33325C6.52789 1.33325 5.33398 2.52716 5.33398 3.99992C5.33398 5.47268 6.52789 6.66658 8.00065 6.66658Z"
+                    fill="currentColor" />
+                  <path
+                    d="M13.3327 11.6665C13.3327 13.3232 13.3327 14.6665 7.99935 14.6665C2.66602 14.6665 2.66602 13.3232 2.66602 11.6665C2.66602 10.0098 5.05402 8.6665 7.99935 8.6665C10.9447 8.6665 13.3327 10.0098 13.3327 11.6665Z"
+                    fill="currentColor" />
                 </svg>
               </div>
               <span class="text-gray-700">{{tourView.minPerson}} - {{tourView.maxPerson}} Personas</span>
@@ -211,12 +217,13 @@
             </div>
             <div class="w-[90%] mx-auto">
 
-              <button (click)="openGoogleCalendarModal()" class="w-full bg-secondary text-white py-1 rounded-lg hover:bg-secondary-dark transition duration-300 mb-4">
+              <!--   <button (click)="openGoogleCalendarModal()" class="w-full bg-secondary text-white py-1 rounded-lg hover:bg-secondary-dark transition duration-300 mb-4">
                 Ver Disponibilidad
-              </button>
+              </button> -->
             </div>
-            <button (click)="openWhatsAppLink()" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
-              Reservar 
+            <button (click)="openWhatsAppLink()"
+              class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
+              Reservar
             </button>
           </div>
         </div>
@@ -354,56 +361,68 @@
       <!-- // --------------- MAS NEGOCIOS RELACIONADOS  --------------- \\ -->
       @if (tourView.moreBussines.length > 0) {
       <div class="flex flex-col gap-4 md:gap-8">
-        <h3 class="subtitle">Más negocios relacionados</h3>
+        <h3 class="subtitle">Relacionados</h3>
 
         <div>
           <swiper-container id="infoMoreBussines" init="false" class="flex items-center justify-center py-4">
             @for (item of tourView.moreBussines; track $index) {
             <swiper-slide class="px-2">
-              <div 
-                   class="bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer transition duration-300 ease-in-out transform hover:shadow-lg hover:-translate-y-1">
+              <div *ngIf="item.estado == 'A'"
+                class="flex flex-col max-w-sm bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                 <div class="relative">
-                  <img class="rounded-t-lg w-full h-48 object-cover" 
-                       [src]="item?.fotos?.principal || './assets/placeholder.jpg'" 
-                       [alt]="item.nombre"
-                      />
-                  <div [ngClass]="{
-                    'bg-orange-400': item.tipo === 'REST',
-                    'bg-green-400': item.tipo === 'TOUR',
-                    'bg-red-400': item.tipo === 'HOSP'
-                  }"
-                    class="absolute capitalize top-0 right-0 text-white text-xs px-3 py-1 m-2 rounded-full font-Battambang transition-all duration-300 ease-in-out hover:opacity-90">
-                    {{ item.tipo === 'REST' ? 'Restaurante' : (item.tipo === 'TOUR' ? 'Experiencia' : (item.tipo === 'HOSP' ? 'Hospedaje' : item.tipo)) | lowercase }}
-                  </div>
+                  <img class="w-full h-48 object-cover" [src]="item.fotos.principal || './assets/notFound.png'"
+                    [alt]="item.nombre" />
                 </div>
-                <div class="min-h-28 p-5 flex flex-col items-start gap-3">
-                  <h5 class="text-xl font-bold font-Battambang leading-tight text-secondary line-clamp-2">
-                    {{ item.nombre }}
-                  </h5>
-                  @if (item.precio) {
-                  <h5 class="text-sm font-bold font-Battambang leading-5 text-primary">
-                    S/.{{ item.precio }} 
-                  </h5>
-                  } @else {
-                    <br>
-                  }
-                  <button (click)="gotoNegocio(item)" class="mt-2 px-4 py-2 bg-primary text-white rounded-full text-sm font-semibold transition duration-300 ease-in-out hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50">
-                    Ver detalles
-                  </button>
+                <div class="flex flex-col flex-grow p-6">
+                  <div class="flex-grow">
+                    <h5 class="text-xl font-bold font-Battambang leading-tight text-secondary mb-2 line-clamp-2">
+                      {{ item.nombre }}
+                    </h5>
+                    <p class="text-base font-bold font-Battambang leading-snug text-terceary mb-3 line-clamp-1">
+                      {{ item.agenciadesc }}
+                    </p>
+                    <div class="flex items-center gap-2 text-sm text-gray-600 mb-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                        class="w-5 h-5 flex-shrink-0">
+                        <path fill-rule="evenodd"
+                          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z"
+                          clip-rule="evenodd" />
+                      </svg>
+                      <span>{{item.duracion}}</span>
+                    </div>
+                  </div>
+                  <div class="mt-auto">
+                    <div class="flex justify-start items-center mb-4">
+                      <span class="text-lg font-bold text-primary">
+                        S/. {{ item.precio }}
+                      </span>
+                      <span class="text-sm pl-2 text-gray-600">
+                        por persona
+                      </span>
+                    </div>
+                    <button (click)="gotoNegocio(item)"
+                      class="w-full bg-primary text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors duration-300">
+                      Ver detalles
+                    </button>
+                  </div>
                 </div>
               </div>
             </swiper-slide>
             }
           </swiper-container>
-          
+
           <div class="flex justify-center mt-4 space-x-4">
-            <button class="swiperinfoMoreBussines-button-prev bg-primary text-white rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition duration-300 ease-in-out hover:bg-opacity-90">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+            <button
+              class="swiperinfoMoreBussines-button-prev bg-primary text-white rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition duration-300 ease-in-out hover:bg-opacity-90">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            <button class="swiperinfoMoreBussines-button-next bg-primary text-white rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition duration-300 ease-in-out hover:bg-opacity-90">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+            <button
+              class="swiperinfoMoreBussines-button-next bg-primary text-white rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition duration-300 ease-in-out hover:bg-opacity-90">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             </button>

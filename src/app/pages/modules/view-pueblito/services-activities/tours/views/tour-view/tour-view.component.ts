@@ -6,14 +6,14 @@ import { DtoTourView } from '../../models/DtoTourView';
 import { LoadingService } from '../../../../../../../functions/loadings/loading-service.service';
 import { SwiperContainer } from 'swiper/element';
 import { SwiperOptions } from 'swiper/types';
-import { LowerCasePipe, NgClass, NgFor } from '@angular/common';
+import { LowerCasePipe, NgClass, NgFor, NgIf } from '@angular/common';
 import { BaseComponenst } from '../../../../../../../functions/base-components/BaseComponents';
 import Swal from 'sweetalert2';
 declare const calendar: any;
 @Component({
   selector: 'app-tour-view',
   standalone: true,
-  imports: [LowerCasePipe, NgClass, NgFor],
+  imports: [LowerCasePipe, NgClass, NgFor, NgIf],
   templateUrl: './tour-view.component.html',
   styleUrl: './tour-view.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -65,7 +65,7 @@ export class TourViewComponent extends BaseComponenst {
   }
 
   gotoAgencia() {
-    this.router.navigate(['home', this.routesCreated.departamento, this.routesCreated.lugar,  'tours-experiencias', this.routesCreated.agencia_name]);
+    this.router.navigate(['home', this.routesCreated.departamento, this.routesCreated.lugar, 'tours-experiencias', this.routesCreated.agencia_name]);
   }
   initializeCarruselsSwipes() {
     this.initializeSwiper('infoPhotos', {
@@ -179,22 +179,37 @@ export class TourViewComponent extends BaseComponenst {
   }
 
   gotoNegocio(item: any) {
-    let url: string;
-
-    if (item.tipo == 'REST') {
-      url = `home/${this.routesCreated.departamento}/${this.routesCreated.lugar}/restaurantes/${item.name_route}`;
+    if (item.tipo === 'REST') {
+      this.router.navigate([
+        'home',
+        this.routesCreated.departamento,
+        this.routesCreated.lugar,
+        'restaurantes',
+        item.name_route
+      ]).then(() => {
+        window.location.reload();
+      });
     } else {
-      url = `home/${this.routesCreated.departamento}/${this.routesCreated.lugar}/tours-experiencias/${item.agenciadesc}/${item.name_route}`;
+      this.router.navigate([
+        'home',
+        this.routesCreated.departamento,
+        this.routesCreated.lugar,
+        'tours-experiencias',
+        item.agenciadesc,
+        item.name_route
+      ]).then(() => {
+        window.location.reload();
+      });
     }
-
-    window.location.href = url;
   }
 
   getTitleExperience(): string {
-    const message = 'Hola quiero reservar esta experiencia:%0A';
-    const name = encodeURIComponent(this.tourView.nombre);
-    return message + name;
+    const message = 'Hola, quiero reservar la siguiente experiencia: ';
+    const name = this.tourView?.nombre || 'Experiencia sin nombre';
+    return message + name; // 🏔🍀
   }
+
+
 
   openReservationOptions(): void {
     Swal.fire({
@@ -217,10 +232,10 @@ export class TourViewComponent extends BaseComponenst {
   }
 
   openGoogleCalendarModal(): void {
-    Swal.fire({      
+    Swal.fire({
       html: '<iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ39SoK7uLrHc0LgCZHY1BrMfS4-K4Ok5HuryGgwm6sAaY2PJJrsS6vg8RntEEQ7aPxj_MrFfEJp?gv=true" width="100%" height="500" frameborder="0"></iframe>',
       showCloseButton: true,
-      showConfirmButton: false,      
+      showConfirmButton: false,
       padding: '0',
       customClass: {
         popup: 'w-full lg:w-[80%] '

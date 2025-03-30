@@ -19,11 +19,12 @@ import { LoadingService } from '../../../../functions/loadings/loading-service.s
 import { AtractivoTuristicoService } from '../../../../services/atractivos-turisticos.service';
 import { Dropdown, DropdownInterface, DropdownOptions, InstanceOptions } from 'flowbite';
 import { ServicesActivitiesServices } from './services-activities.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-services-activities',
   standalone: true,
-  imports: [ModalFiltrosComponent, FormsModule],
+  imports: [ModalFiltrosComponent, FormsModule, NgIf],
   templateUrl: './services-activities.component.html',
   styleUrl: './services-activities.component.scss',
 })

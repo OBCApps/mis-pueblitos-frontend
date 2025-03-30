@@ -18,7 +18,7 @@
         @if (filtroBusqueda.typeServicio == 'TOUR') {
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             @for (item of list_resultadoBusqueda; track $index) {
-            <div 
+            <div  *ngIf="item.estado == 'A'"
                 class="flex flex-col max-w-sm bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                 <div class="relative">
                     <img class="w-full h-48 object-cover" [src]="item.fotos.principal || './assets/notFound.png'"
