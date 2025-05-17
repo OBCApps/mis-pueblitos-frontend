@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { TitleService } from '../view-pueblito.service';
 import { AtractivoTuristicoService } from '../../../../services/atractivos-turisticos.service';
-import { LoadingService } from '../../../../functions/loadings/loading-service.service';
 import { Router } from '@angular/router';
+import { LoadingService } from '../../../../shared/global-components/loadings/loading-service.service';
 
 @Component({
   selector: 'app-lugares-turisticos',

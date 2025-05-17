@@ -6,12 +6,14 @@ import Swiper from 'swiper';
 import { SwiperContainer } from 'swiper/element';
 import { SwiperOptions } from 'swiper/types';
 import { NgFor, NgIf } from '@angular/common';
+import { BaseServices } from '../../../../../../shared/global-components/BaseServices';
+import { UsuariosContactadosMastService } from '../../../../../../services/usuarios-contactados.service';
 
 
 @Component({
   selector: 'app-hotel-view',
   standalone: true,
-  imports: [NgIf, NgFor],
+  imports: [NgFor, NgIf],
   templateUrl: './hotel-view.component.html',
   styleUrl: './hotel-view.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -20,7 +22,9 @@ export class HotelViewComponent {
   constructor(
     private readonly hotelesService: HotelesService,
     private router: Router,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private baseServices: BaseServices,
+    private usuariosContactadosMastService: UsuariosContactadosMastService,
   ) { }
 
   dtoHotelInfo: DtoHoteles = new DtoHoteles();
@@ -33,16 +37,18 @@ export class HotelViewComponent {
   }
 
   getHotel(name_route: string) {
-    this.loading = true;
-    console.log('name_route', name_route);
-    this.hotelesService.get_hotel_by_name_route(name_route)
-      .subscribe((response) => {
+    this.baseServices.showLoading();
+    this.hotelesService.get_hotel_by_name_route(name_route).subscribe(
+      (response) => {
+        this.baseServices.hideLoading();
         this.dtoHotelInfo = response;
         this.loading = false;
 
         // Forzar detección de cambios
         this.cdr.detectChanges();
         this.createinfoPhotosCarrusel();
+      }, err => {
+        this.baseServices.hideLoading();
       });
   }
 
@@ -90,6 +96,36 @@ export class HotelViewComponent {
         this.swiperElement1().initialize()
       }
     }
+  }
+
+  contactarNegocio() {
+    if (!this.dtoHotelInfo.celular || this.dtoHotelInfo.celular == "") {
+      this.baseServices.showMessageWarning('El negocio no tiene un contacto agreado.')
+    }
+
+    const inputCreate = { tipoNegocio: "HOSP", nameRoute: this.dtoHotelInfo.name_route }
+
+    this.baseServices.showLoading();
+    this.usuariosContactadosMastService.create(inputCreate).subscribe(
+      response => {
+        this.baseServices.hideLoading();
+
+        const numero = this.dtoHotelInfo.celular; // Reemplaza con el número real en formato internacional
+        const mensaje = '“¡Hola! \n Encontré su hospedaje en la página Mis Pueblitos. \n\n Me gustaría saber la disponibilidad y los precios, por favor.';
+        const mensajeCodificado = encodeURIComponent(mensaje);
+
+        const url = `https://wa.me/${numero}?text=${mensajeCodificado}`;
+        window.open(url, '_blank');
+
+
+      },
+      err => {
+        this.baseServices.showLoading();
+        console.log("ERROR AL REGISTRAR", err);
+
+      }
+    )
+
   }
 }
 

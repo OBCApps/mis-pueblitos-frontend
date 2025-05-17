@@ -7,8 +7,8 @@ import moment from 'moment';
 import { FestivitiesService } from '../../../../../services/festivities.service';
 import { register } from 'swiper/element/bundle';
 import { Router } from '@angular/router';
-import { LoadingService } from '../../../../../functions/loadings/loading-service.service';
 import localeEs from '@angular/common/locales/es';
+import { LoadingService } from '../../../../../shared/global-components/loadings/loading-service.service';
 
 register();
 

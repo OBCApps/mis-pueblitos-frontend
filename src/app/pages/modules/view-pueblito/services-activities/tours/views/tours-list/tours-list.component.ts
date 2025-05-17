@@ -5,9 +5,9 @@ import { ModalFiltrosService } from '../../../modal-filtros/modal-filtros.servic
 import { HabitacionService } from '../../../../../../../services/habitacion.service';
 import { ToursService } from '../../../../../../../services/tours.service';
 import { Router } from '@angular/router';
-import { LoadingService } from '../../../../../../../functions/loadings/loading-service.service';
 import { ServicesActivitiesServices } from '../../../services-activities.service';
 import { NgIf } from '@angular/common';
+import { LoadingService } from '../../../../../../../shared/global-components/loadings/loading-service.service';
 
 @Component({
   selector: 'app-tours-list',

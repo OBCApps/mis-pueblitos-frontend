@@ -15,11 +15,11 @@ import {
 import { HabitacionService } from '../../../../services/habitacion.service';
 import { ToursService } from '../../../../services/tours.service';
 import { ResturanteService } from '../../../../services/restaurante.service';
-import { LoadingService } from '../../../../functions/loadings/loading-service.service';
 import { AtractivoTuristicoService } from '../../../../services/atractivos-turisticos.service';
 import { Dropdown, DropdownInterface, DropdownOptions, InstanceOptions } from 'flowbite';
 import { ServicesActivitiesServices } from './services-activities.service';
 import { NgIf } from '@angular/common';
+import { LoadingService } from '../../../../shared/global-components/loadings/loading-service.service';
 
 @Component({
   selector: 'app-services-activities',

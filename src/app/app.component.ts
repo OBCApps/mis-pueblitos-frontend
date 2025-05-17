@@ -2,7 +2,8 @@ import { Component, importProvidersFrom } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { LoadingsComponent } from './functions/loadings/loadings.component';
+import { LoadingsComponent } from './shared/global-components/loadings/loadings.component';
+
 
 
 

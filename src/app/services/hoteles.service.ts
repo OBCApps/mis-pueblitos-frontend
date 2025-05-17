@@ -19,14 +19,20 @@ export class HotelesService {
     );
   }
 
+  filter_pagination(data: any): Observable<any> {
+    return this.http.post<any>(this.SERVER_HOTEL + '/filter_pagination', data).pipe(
+      map((response) => { return response })
+    );
+  }
+
   get_hotel_by_id(data: any): Observable<any> {
-    return this.http.get<any>(this.SERVER_HOTEL + '/' + data).pipe(
+    return this.http.get<any>(this.SERVER_HOTEL + '/findDto_byId/' + data).pipe(
       map((response) => { return response })
     );
   }
 
   get_hotel_by_name_route(name_route: any): Observable<any> {
-    return this.http.get<any>(this.SERVER_HOTEL + '/name_route/' + name_route).pipe(
+    return this.http.get<any>(this.SERVER_HOTEL + '/findDto_byNameRoute/' + name_route).pipe(
       map((response) => { return response })
     );
   }

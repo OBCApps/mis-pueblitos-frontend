@@ -2,18 +2,20 @@ export class FiltroGeneralServicios {
   typeServicio: string;
 
   filtroHabitaciones: FiltroHabitaciones = new FiltroHabitaciones();
+  
   filtroTurs: FiltroTours = new FiltroTours();
   filtroRestaurantes: FiltroRestaurantes = new FiltroRestaurantes();
 }
 
 export class FiltroHabitaciones {
-  // ------ FILTRO HOSPEDAJE
-  precio: number ;
+  precio: number;
   tipoHospedaje: string[];
   tipoHabitacion: string[];
   servicios: string[];
   idioma: string[];
 }
+
+
 
 export class FiltroTours {
   // ------ FILTRO TOUR

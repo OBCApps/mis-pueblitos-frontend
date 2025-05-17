@@ -3,9 +3,9 @@ import { Component, Inject, Input, LOCALE_ID, PLATFORM_ID } from '@angular/core'
 import { FestivitiesService } from '../../../../../services/festivities.service';
 import { Router } from '@angular/router';
 import moment from 'moment';
-import { LoadingService } from '../../../../../functions/loadings/loading-service.service';
 import localeEs from '@angular/common/locales/es';
 import { SearchPipeModule } from '../search-pipe.module';
+import { LoadingService } from '../../../../../shared/global-components/loadings/loading-service.service';
 
 @Component({
   selector: 'app-calendar-list',

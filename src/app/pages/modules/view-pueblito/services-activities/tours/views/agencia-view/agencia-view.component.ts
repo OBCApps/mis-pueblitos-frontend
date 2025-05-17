@@ -2,11 +2,11 @@ import { ChangeDetectorRef, Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@a
 import { ToursService } from '../../../../../../../services/tours.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RoutesCreated } from '../../../../view-pueblito.service';
-import { LoadingService } from '../../../../../../../functions/loadings/loading-service.service';
 import { DtoAgenciaView } from '../../models/DtoAgenciaView';
 import { NgFor } from '@angular/common';
 import { SwiperContainer } from 'swiper/element';
 import { SwiperOptions } from 'swiper/types';
+import { LoadingService } from '../../../../../../../shared/global-components/loadings/loading-service.service';
 
 @Component({
   selector: 'app-agencia-view',

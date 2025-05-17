@@ -4,25 +4,23 @@ export class DtoHoteles {
   tipo: string;
   lugar: string;
   ubicacion: string;
-  hotelDetalle: HotelDetalle = new HotelDetalle();
+
   redes_sociales: any[] = [];
   descripcion: string;
   name_route: string;
   estrellas: number;
   habitaciones: DtoHabitacionesInfo[] = [];
-  servicios : any [] = [];
+  servicios: any[] = [];
   plan: number;
   correo: string;
   direccion: string;
+  status: string;
   celular: string;
-
+  info_adicional : any
+  fotos : any
 }
 
-export class HotelDetalle {
-  fotos: any;
-  mc_info_adicional: any[] = []
-  mc_redes_sociales: any[] = []
-}
+
 
 
 export class DtoHabitacionesInfo {
@@ -43,6 +41,7 @@ export class DtoHabitacionesInfo {
   personas: number;
   camas: number;
   tipo: string;
+  status : string
   fotos: {
     gallery: {
       url: string;

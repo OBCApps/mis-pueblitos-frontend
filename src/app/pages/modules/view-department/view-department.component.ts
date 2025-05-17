@@ -7,7 +7,7 @@ import { LugarService } from '../../../services/lugar.service';
 import { FooterComponent } from "../../footer/footer.component";
 import { BreadCrumbComponent } from '../view-pueblito/bread-crumb/bread-crumb.component';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { LoadingService } from '../../../functions/loadings/loading-service.service';
+import { LoadingService } from '../../../shared/global-components/loadings/loading-service.service';
 
 @Component({
   selector: 'app-view-department',

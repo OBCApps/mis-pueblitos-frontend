@@ -34,7 +34,7 @@ export class HabitacionService {
   }
 
   get_habitacion_by_name_route(name_route: any): Observable<DtoHabitacion> {
-    return this.http.get<DtoHabitacion>(this.SERVER_HABITACION + '/name_route/' + name_route).pipe(
+    return this.http.get<DtoHabitacion>(this.SERVER_HABITACION + '/findDto_byNameRoute/' + name_route).pipe(
       map((response) => { return response })
     );
   }

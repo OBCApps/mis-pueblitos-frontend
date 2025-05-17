@@ -6,8 +6,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { register } from 'swiper/element';
 import { Router } from '@angular/router';
 import { FestivitiesService } from '../../../../../services/festivities.service';
-import { LoadingService } from '../../../../../functions/loadings/loading-service.service';
-import localeEs from '@angular/common/locales/es';
+import { LoadingService } from '../../../../../shared/global-components/loadings/loading-service.service';
 
 register();
 

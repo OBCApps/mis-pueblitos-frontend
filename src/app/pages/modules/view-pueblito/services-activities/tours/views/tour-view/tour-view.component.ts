@@ -3,17 +3,15 @@ import { ToursService } from '../../../../../../../services/tours.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RoutesCreated } from '../../../../view-pueblito.service';
 import { DtoTourView } from '../../models/DtoTourView';
-import { LoadingService } from '../../../../../../../functions/loadings/loading-service.service';
-import { SwiperContainer } from 'swiper/element';
-import { SwiperOptions } from 'swiper/types';
-import { LowerCasePipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { BaseComponenst } from '../../../../../../../functions/base-components/BaseComponents';
 import Swal from 'sweetalert2';
+import { LoadingService } from '../../../../../../../shared/global-components/loadings/loading-service.service';
 declare const calendar: any;
 @Component({
   selector: 'app-tour-view',
   standalone: true,
-  imports: [LowerCasePipe, NgClass, NgFor, NgIf],
+  imports: [NgFor, NgIf],
   templateUrl: './tour-view.component.html',
   styleUrl: './tour-view.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

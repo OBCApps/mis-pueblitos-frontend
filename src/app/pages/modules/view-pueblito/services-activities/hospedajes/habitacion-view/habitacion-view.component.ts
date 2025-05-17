@@ -6,6 +6,10 @@ import { SwiperOptions } from 'swiper/types';
 import { NgFor } from '@angular/common';
 import Swiper from 'swiper';
 import { SwiperContainer } from 'swiper/element';
+import { HotelesService } from '../../../../../../services/hoteles.service';
+import { DtoHoteles } from '../entities/DtoHoteles';
+import { UsuariosContactadosMastService } from '../../../../../../services/usuarios-contactados.service';
+import { BaseServices } from '../../../../../../shared/global-components/BaseServices';
 
 @Component({
   selector: 'app-habitacion-view',
@@ -19,12 +23,16 @@ export class HabitacionViewComponent {
   constructor(
     private router: Router,
     private habitacionService: HabitacionService,
+    private hotelesService: HotelesService,
     private cdr: ChangeDetectorRef,
     private route: ActivatedRoute,
+    private baseServices: BaseServices,
+    private usuariosContactadosMastService: UsuariosContactadosMastService
   ) { }
 
   name_route = '';
   dtoHabitacionInfo: DtoHabitacion = new DtoHabitacion();
+  dtoHospedaje: DtoHoteles = new DtoHoteles();
   loading = false;
 
   Params: any;
@@ -42,24 +50,38 @@ export class HabitacionViewComponent {
       (response: DtoHabitacion) => {
         this.dtoHabitacionInfo = response;
 
+
+
         this.cdr.detectChanges();
         this.createinfoPhotosCarrusel();
+        this.load_hospedajeById();
         this.loading = false;
       },
       (error) => {
-        console.log('error', error);
+
         this.loading = false;
       }
     );
   }
 
-  get_Keys(obj: any) {
-    if (obj === undefined || obj === null) {
-      return [];
-    } else {
-      return Object.keys(obj);
+  load_hospedajeById() {
+    if (!this.dtoHabitacionInfo.hotelId) {
+      console.log("mensaje: 'La habitación no tiene un Hospedaje asignado'",);
 
     }
+
+    this.hotelesService.get_hotel_by_id(this.dtoHabitacionInfo.hotelId).subscribe(
+      (response: DtoHoteles) => {
+
+        this.dtoHospedaje = response;
+        this.cdr.detectChanges();
+        this.loading = false;
+      },
+      (error) => {
+
+        this.loading = false;
+      }
+    );
   }
 
   swiperElement1 = signal<SwiperContainer | null>(null);
@@ -95,8 +117,37 @@ export class HabitacionViewComponent {
   }
 
   goToHotel() {
-    console.log("Params", this.Params);
     const routeHotel = this.router.url.split('/').slice(0, -1).join('/');
     this.router.navigate([routeHotel])
+  }
+
+  contactarNegocio() {
+    if (!this.dtoHospedaje.celular || this.dtoHospedaje.celular == "") {
+      this.baseServices.showMessageWarning('El negocio no tiene un contacto agreado.')
+    }
+
+    const inputCreate = { tipoNegocio: "HOSP", nameRoute: this.dtoHospedaje.name_route }
+
+    this.baseServices.showLoading();
+    this.usuariosContactadosMastService.create(inputCreate).subscribe(
+      response => {
+        this.baseServices.hideLoading();
+
+        const numero = this.dtoHospedaje.celular; // Reemplaza con el número real en formato internacional
+        const mensaje = '“¡Hola! \n Encontré su hospedaje en la página Mis Pueblitos. \n\n Me gustaría saber la disponibilidad y los precios, por favor.';
+        const mensajeCodificado = encodeURIComponent(mensaje);
+
+        const url = `https://wa.me/${numero}?text=${mensajeCodificado}`;
+        window.open(url, '_blank');
+
+
+      },
+      err => {
+        this.baseServices.showLoading();
+        console.log("ERROR AL REGISTRAR", err);
+
+      }
+    )
+
   }
 }

@@ -9,11 +9,11 @@ import { BreadCrumbComponent } from './bread-crumb/bread-crumb.component';
 import { ModalProveedorComponent } from '../../../functions/modal-proveedor/modal-proveedor.component';
 import { ModalProveedorService } from '../../../functions/modal-proveedor/modal-proveedor.service';
 import { ModalRedesSocialesComponent } from '../../../functions/modal-redes-sociales/modal-redes-sociales.component';
-import { LoadingService } from '../../../functions/loadings/loading-service.service';
 
 import { SwiperContainer } from 'swiper/element';
 import { SwiperOptions } from 'swiper/types';
 import Swiper from 'swiper';
+import { LoadingService } from '../../../shared/global-components/loadings/loading-service.service';
 @Component({
   selector: 'app-view-pueblito',
   standalone: true,
@@ -21,9 +21,7 @@ import Swiper from 'swiper';
     NavarComponent,
     CommonModule,
     RouterOutlet,
-    RouterLink,
     FooterComponent,
-    NgClass,
     BreadCrumbComponent,
     ModalProveedorComponent,
     ModalRedesSocialesComponent,

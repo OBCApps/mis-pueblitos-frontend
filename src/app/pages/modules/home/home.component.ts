@@ -15,12 +15,12 @@ import {
 } from '@angular/forms';
 import { LugarService } from '../../../services/lugar.service';
 import Swal from 'sweetalert2';
-import { LoadingService } from '../../../functions/loadings/loading-service.service';
 import { ModalRedesSocialesComponent } from '../../../functions/modal-redes-sociales/modal-redes-sociales.component';
 import { ModalRedesSocialesService } from '../../../functions/modal-redes-sociales/modal-redes-sociales.service';
 import Swiper from 'swiper';
 import { SwiperContainer } from 'swiper/element';
 import { SwiperOptions } from 'swiper/types';
+import { LoadingService } from '../../../shared/global-components/loadings/loading-service.service';
 
 @Component({
   selector: 'app-home',

@@ -6,8 +6,10 @@ import { HabitacionService } from '../../../../../../services/habitacion.service
 import { ToursService } from '../../../../../../services/tours.service';
 import { ResturanteService } from '../../../../../../services/restaurante.service';
 import { Router } from '@angular/router';
-import { LoadingService } from '../../../../../../functions/loadings/loading-service.service';
 import { ServicesActivitiesServices } from '../../services-activities.service';
+import { HotelesService } from '../../../../../../services/hoteles.service';
+import { FiltroHospedaje } from '../models/FiltroHospedajes';
+import { LoadingService } from '../../../../../../shared/global-components/loadings/loading-service.service';
 
 @Component({
   selector: 'app-hospedajes-list',
@@ -17,41 +19,30 @@ import { ServicesActivitiesServices } from '../../services-activities.service';
   styleUrl: './hospedajes-list.component.scss'
 })
 export class HospedajesListComponent {
-  filtroBusqueda: FiltroGeneralServicios = new FiltroGeneralServicios();
+  filtroBusqueda: FiltroHospedaje = new FiltroHospedaje();
   list_resultadoBusqueda: any[] = [];
   constructor(
     private titleService: TitleService,
-    private modalService: ModalFiltrosService,
-    private habitacionService: HabitacionService,
-    private toursService: ToursService,
-    private restauranteService: ResturanteService,
+    private hotelesService: HotelesService,
     private router: Router,
     private loading: LoadingService,
-    private serviceServicios: ServicesActivitiesServices
   ) { }
   ngOnInit(): void {
-    const dataNavar = {
-      sidebar: 'hospedajes',
-    };
+    const dataNavar = { sidebar: 'hospedajes' };
     this.transferedDataToNavar(dataNavar);
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    this.filtroBusqueda.typeServicio = 'HOSP';
-    this.load_habitaciones(this.filtroBusqueda.filtroHabitaciones);
+    this.filtroBusqueda.status = 'AC';
+    this.load_hospedajes();
   }
-  load_habitaciones(item: FiltroHabitaciones) {
+  load_hospedajes() {
     this.loading.show();
-    console.log('item', item);
-    item.precio = +item.precio;
-    this.habitacionService.get_habitaciones_byFiltro(item).subscribe(
-      (data: any) => {
-        console.log('habitaciones:', data);
-        this.list_resultadoBusqueda = data;
+
+    this.hotelesService.filter_pagination(this.filtroBusqueda).subscribe(
+      (response: any) => {
+        this.list_resultadoBusqueda = response.paginationresult.result;
         this.loading.hide();
-        //console.log(data);
+
       },
       (err) => {
-        console.log('NO ENCONTRO', err);
         this.loading.hide();
       }
     );
@@ -59,15 +50,14 @@ export class HospedajesListComponent {
   transferedDataToNavar(value: any): void {
     this.titleService.setTitle(value);
   }
-  gotoHabitacion(item: any) {
+  goToHospedaje(item: any) {
     this.router.navigate([
       'home',
       'Ancash',
       'Chacas',
       'hospedajes',
-    
-      item.hotel.name_route,
       item.name_route,
+      
     ]);
   }
 }

@@ -12,19 +12,20 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideRouter(routes),
-    provideClientHydration(),
-    provideHttpClient(withFetch()),
-    { provide: LocationStrategy, useClass: HashLocationStrategy }, // Activar Hash (#)
-    importProvidersFrom(
-      TranslateModule.forRoot({
-        loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient],
-        },
-      })
-    ),
-  ],
+    providers: [
+      provideRouter(routes),
+      provideClientHydration(),
+      provideHttpClient(withFetch()),
+      { provide: LocationStrategy, useClass: HashLocationStrategy }, // Activar Hash (#)
+      
+      importProvidersFrom(
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient],
+          },
+        })
+      ),
+    ],
 };

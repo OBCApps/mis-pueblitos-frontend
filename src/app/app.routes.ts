@@ -11,8 +11,6 @@ import { SubEventoDetailComponent } from './pages/modules/view-pueblito/festivit
 import { TipsViajerosComponent } from './pages/modules/view-pueblito/tips-viajeros/tips-viajeros.component';
 import { ServicesActivitiesComponent } from './pages/modules/view-pueblito/services-activities/services-activities.component';
 import { LugaresTuristicosComponent } from './pages/modules/view-pueblito/lugares-turisticos/lugares-turisticos.component';
-import { HotelesComponent } from './pages/modules/view-pueblito/hoteles/hoteles.component';
-import { HabitacionComponent } from './pages/modules/view-pueblito/habitacion/habitacion.component';
 import { RestaurantViewComponent } from './pages/modules/view-pueblito/services-activities/restaurantes/restaurant-view/restaurant-view.component';
 import { HabitacionViewComponent } from './pages/modules/view-pueblito/services-activities/hospedajes/habitacion-view/habitacion-view.component';
 import { HotelViewComponent } from './pages/modules/view-pueblito/services-activities/hospedajes/hotel-view/hotel-view.component';
