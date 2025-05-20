@@ -111,7 +111,7 @@ export class HotelViewComponent {
         this.baseServices.hideLoading();
 
         const numero = this.dtoHotelInfo.celular; // Reemplaza con el número real en formato internacional
-        const mensaje = '“¡Hola! \n Encontré su hospedaje en la página Mis Pueblitos. \n\n Me gustaría saber la disponibilidad y los precios, por favor.';
+        const mensaje = '¡Hola! \n Encontré su hospedaje en la página Mis Pueblitos. \n Me gustaría saber la disponibilidad y los precios, por favor.';
         const mensajeCodificado = encodeURIComponent(mensaje);
 
         const url = `https://wa.me/${numero}?text=${mensajeCodificado}`;
