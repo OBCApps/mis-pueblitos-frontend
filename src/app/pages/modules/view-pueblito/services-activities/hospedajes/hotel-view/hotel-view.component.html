@@ -130,11 +130,11 @@
                   </a>
                 </div> -->
                 <div>
-                  ¿Deseas más información? Estamos aquí para ayudarte.  
+                  ¿Deseas más información? Estamos aquí para ayudarte.
                 </div>
               </div>
 
-              
+
 
               <div class="col-span-1 lg:col-span-2 flex items-center justify-center">
                 <a (click)="contactarNegocio()"
@@ -234,7 +234,7 @@
           </div>
           <div>
             <h3 class="text-description font-bold md:pr-">
-              {{ item.nombreServicio }}
+              {{ item.descripcion }}
             </h3>
           </div>
         </div>
@@ -265,7 +265,8 @@
         <div *ngIf="item.status == 'AC'" (click)="gotoHabitacion(item.name_route, item.name_route)"
           class="bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
           <a>
-            <img class="rounded-t-lg h-56 w-full" src="{{ item.fotos[0].url ?? './assets/notFound.png'  }}"
+            <img class="rounded-t-lg h-56 w-full"
+              src="{{ item.fotos && item.fotos.length >0 ?item.fotos[0].url : './assets/notFound.png'  }}"
               (error)="'./assets/notFound.png'" alt="" />
           </a>
           <div class="p-4 flex flex-col items-start gap-2">
@@ -297,15 +298,14 @@
             </p>
           </div>
         </div>
-        <!--</swiper-slide> -->
+
+        } @empty {
+        <div class="col-span-4 global-center">
+          <span class="text-center text-xs">Habitaciones no agregadas</span>
+        </div>
         }
-        <!-- </swiper-container> -->
       </div>
-      <!-- <div class="w-full items-center flex justify-center">
-        <button class="bg-primary text-fondo p-4 rounded-xl w-fit">
-          Mostrar más
-        </button>
-      </div> -->
+
     </div>
   </div>
 </div>

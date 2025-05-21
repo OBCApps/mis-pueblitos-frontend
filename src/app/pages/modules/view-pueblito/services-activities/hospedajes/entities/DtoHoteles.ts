@@ -16,8 +16,8 @@ export class DtoHoteles {
   direccion: string;
   status: string;
   celular: string;
-  info_adicional : any
-  fotos : any
+  info_adicional: any
+  fotos: any
 }
 
 
@@ -41,15 +41,8 @@ export class DtoHabitacionesInfo {
   personas: number;
   camas: number;
   tipo: string;
-  status : string
-  fotos: {
-    gallery: {
-      url: string;
-    };
-    principal: {
-      url: string;
-    };
-  };
+  status: string
+  fotos: any[]
   hotelId: string;
   hotelNombre: string;
   estrellas: number;
