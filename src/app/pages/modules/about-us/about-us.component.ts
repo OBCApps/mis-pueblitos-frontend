@@ -28,7 +28,7 @@ export class AboutUsComponent {
             description:
                 "Fuimos reconocidos como 'Runner-Up' en el EMI Mark Mobius Pitch Competition 2024, destacando el impacto y la pasión de nuestro proyecto 'Mis Pueblitos'.",
             date: "Octubre 2024",
-            organization: "Cornell Emerging Markets Institute",
+            organization: "Cornell University - EE.UU",
             category: "award",
             position: "6° Lugar",
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx_sJk9hV7gZDGqSN_MU-ZlpcShEjdNSvdXg&s", // reemplazar por imagen real si tienes

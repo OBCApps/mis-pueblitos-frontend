@@ -116,7 +116,70 @@
 
 
 </div>
+<div class=" m-auto  bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header Section -->
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Nuestros <span class="text-primary">Logros</span>
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Cada paso que damos nos acerca más a nuestros objetivos. Estos son los hitos que hemos alcanzado en
+        nuestro camino emprendedor.
+      </p>
+    </div>
 
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div *ngFor="let item of list_logros; "
+        class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+        <div class="p-6 border-b border-gray-100">
+          <div class="flex items-start justify-between">
+            <div class="flex items-center space-x-4">
+              <div class="w-36  flex items-center justify-center p-2">
+                <img [src]="item.image" alt="Logo de la empresa" class="w-full rounded-full">
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                  {{ item.title }}
+                </h3>
+                <p class="text-sm text-gray-500">{{ item.date }}</p>
+              </div>
+            </div>
+            <div *ngIf="item.position"
+              class="text-center bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              {{ item.position }}
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6">
+          <p class="text-gray-700 mb-4 leading-relaxed">
+            {{ item.description }}
+          </p>
+
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                </path>
+              </svg>
+              <span class="text-sm text-gray-600">{{ item.organization }}</span>
+            </div>
+
+            <span *ngIf="item.link" (click)="openLink(item.link)"
+              class="px-3 py-1 cursor-pointer rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+              Ver Resultados
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
 <app-modal-redes-sociales></app-modal-redes-sociales>
 <!-- Footer -->
 <div><app-footer></app-footer></div>
