@@ -1,189 +1,316 @@
-<div class="content font-Battambang">
+<div class="max-w-6xl mx-auto ">
+
   <hr class="h-px my-2 md:my-4 bg-white border-0" />
-
-  <!-- ------------- TITLESS ATRACTIVO ---------------  -->
-  <div class="flex flex-col gap-4">
-    <div class="flex gap-4">
-      <h3 class="title">
-        {{ dtoAtractivoTuristicoInfo.nombre }}
-      </h3>
+  <!-- Hero Section with Main Photo -->
+  <div class="relative h-[50vh] md:h-[60vh] overflow-hidden rounded-t-lg">
+    <img
+      *ngIf="dtoAtractivoTuristicoInfo && dtoAtractivoTuristicoInfo.fotos  && dtoAtractivoTuristicoInfo.fotos.length > 0"
+      [src]="dtoAtractivoTuristicoInfo.fotos[activePhotoIndex].url"
+      [alt]="dtoAtractivoTuristicoInfo.fotos[activePhotoIndex].alt" class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+      <div class="p-6 text-white">
+        <span
+          class="bg-red-600 text-white text-xs px-2 py-1 rounded-md uppercase">{{dtoAtractivoTuristicoInfo.tipo}}</span>
+        <h1 class="text-3xl md:text-4xl font-bold mt-2">{{dtoAtractivoTuristicoInfo.nombre}}</h1>
+      </div>
     </div>
-    <div class="flex gap-4 items-center justify-between md:justify-start">
-      <h3 class="text-description">
-        {{ dtoAtractivoTuristicoInfo.ubicacion }}
-      </h3>
-      <div class="flex items-center justify-center text-primary">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-          <path fill-rule="evenodd"
-            d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
-            clip-rule="evenodd" />
-        </svg>
 
-        <a class="text-sm">Ver Mapa</a>
+    <!-- Navigation arrows -->
+    <button
+      *ngIf="dtoAtractivoTuristicoInfo && dtoAtractivoTuristicoInfo.fotos && dtoAtractivoTuristicoInfo.fotos.length > 1"
+      (click)="prevPhoto()"
+      class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-red-600 text-white p-2 rounded-full"
+      aria-label="Foto anterior">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button
+      *ngIf="dtoAtractivoTuristicoInfo && dtoAtractivoTuristicoInfo.fotos  && dtoAtractivoTuristicoInfo.fotos.length > 1"
+      (click)="nextPhoto()"
+      class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-red-600 text-white p-2 rounded-full"
+      aria-label="Siguiente foto">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Photo thumbnails -->
+  <div class="bg-black p-4 overflow-x-auto">
+    <div class="flex space-x-2">
+      <div *ngFor="let photo of dtoAtractivoTuristicoInfo.fotos; let i = index" (click)="setActivePhoto(i)"
+        class="flex-shrink-0 cursor-pointer transition-all duration-200"
+        [ngClass]="{'ring-2 ring-red-600': i === activePhotoIndex, 'opacity-60 hover:opacity-100': i !== activePhotoIndex}">
+        <img [src]="photo.url" [alt]="photo.alt" class="h-16 w-24 object-cover" />
       </div>
     </div>
   </div>
 
-  <!-- // --------------- GALLERY  --------------- \\ -->
-  <!-- <div class="mx-10">
-    <swiper-container
-      style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
-      class="mySwiper"
-      thumbs-swiper=".mySwiper2"
-      space-between="10"
-      navigation="true"
-    >
-      @for (item of get_Keys(dtoAtractivoTuristicoInfo?.fotos?.gallery); track
-      $index) {
-      <swiper-slide>
-        <div>
-          <img
-            src="{{ dtoAtractivoTuristicoInfo.fotos.gallery[item] }}"
-            class="h-56 w-56 max-w-full rounded-lg"
-            alt=""
-          />
-        </div>
-      </swiper-slide>
-      }
-    </swiper-container>
-
-    <swiper-container
-      class="mySwiper2"
-      space-between="10"
-      slides-per-view="4"
-      free-mode="true"
-      watch-slides-progress="true"
-    >
-      @for (item of get_Keys(dtoAtractivoTuristicoInfo?.fotos?.gallery); track
-      $index) {
-      <swiper-slide>
-        <div>
-          <img
-            src="{{ dtoAtractivoTuristicoInfo.fotos.gallery[item] }}"
-            class="h-24 w-24 max-w-full rounded-lg"
-            alt=""
-          />
-        </div>
-      </swiper-slide>
-      }
-    </swiper-container>
-  </div>-->
-
-  <div class="md:mx-10 my-8">
-    <swiper-container style="
-        --swiper-navigation-color: #f33535;
-        --swiper-pagination-color: #f33535;
-      " class="mySwiper" thumbs-swiper=".mySwiper2" space-between="10" navigation="true" slides-per-view="3" >
-      @for (item of get_Keys(dtoAtractivoTuristicoInfo?.fotos?.gallery); track $index) {
-      <swiper-slide>
-        <div>
-          <img src="{{ dtoAtractivoTuristicoInfo.fotos.gallery[item] }}" class="h-60 w-60 max-w-full rounded-lg"
-            alt="" />
-        </div>
-      </swiper-slide>
-      }
-    </swiper-container>
+  <!-- Tags Section -->
+  <div *ngIf="dtoAtractivoTuristicoInfo.etiquetas" class="bg-white border-b border-gray-200 p-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-wrap gap-2">
+        <span *ngFor="let item of dtoAtractivoTuristicoInfo.etiquetas"
+          class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full border border-red-200">
+          {{item.name}}
+        </span>
+      </div>
+    </div>
   </div>
 
-  <div class="w-full my-8 flex flex-col gap-8 md:gap-12">
-    <!-- // --------------- DESCRIPTION ATRACTIVO  --------------- \\ -->
-    <div class="flex flex-col gap-4 md:gap-8">
-      <h3 class="subtitle">Descripción</h3>
-      <h3 class="text-description text-justify md:pr-2">
-        {{ dtoAtractivoTuristicoInfo.descripcion }}
-      </h3>
-    </div>
+  <!-- Main content -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
+    <!-- Left column: Description and features -->
+    <div class="md:col-span-2 space-y-6">
+      <div>
+        <h2 class="text-xl font-bold border-l-4 border-red-600 pl-3 mb-4">Descripción</h2>
+        <p class="text-sm text-gray-700">{{dtoAtractivoTuristicoInfo.descripcion ?? 'Descripción no agregada'}}</p>
+      </div>
 
-    <!------------HORARIO---------------->
-
-    <div class="flex flex-col gap-4 md:gap-4">
-      <h3 class="subtitle">Horario</h3>
-      <div class="grid grid-cols-1 gap-4 md:gap-8 md:grid-cols-3">
-        <div class="flex gap-4">
-          <div class="rounded-full p-2 h-fit w-fit bg-primary items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <g clip-path="url(#clip0_1364_1031)">
-                <path
-                  d="M12 2.00024C17.523 2.00024 22 6.47724 22 12.0002C22 17.5232 17.523 22.0002 12 22.0002C6.477 22.0002 2 17.5232 2 12.0002C2 6.47724 6.477 2.00024 12 2.00024ZM12 6.00024C11.7348 6.00024 11.4804 6.1056 11.2929 6.29314C11.1054 6.48067 11 6.73503 11 7.00024V12.0002C11.0001 12.2654 11.1055 12.5198 11.293 12.7072L14.293 15.7072C14.4816 15.8894 14.7342 15.9902 14.9964 15.9879C15.2586 15.9856 15.5094 15.8805 15.6948 15.6951C15.8802 15.5097 15.9854 15.2588 15.9877 14.9966C15.99 14.7344 15.8892 14.4818 15.707 14.2932L13 11.5862V7.00024C13 6.73503 12.8946 6.48067 12.7071 6.29314C12.5196 6.1056 12.2652 6.00024 12 6.00024Z"
-                  fill="#FEFBFB" />
-              </g>
-              <defs>
-                <clipPath id="clip0_1364_1031">
-                  <rect width="24" height="24" fill="white" />
-                </clipPath>
-              </defs>
+      <div>
+        <h2 class="text-xl font-bold border-l-4 border-red-600 pl-3 mb-4">Características</h2>
+        <ul
+          *ngIf="dtoAtractivoTuristicoInfo.caracteristicas && dtoAtractivoTuristicoInfo.caracteristicas.length > 0; else noCaracteristicas"
+          class="grid grid-cols-2 gap-2 text-sm">
+          <li *ngFor="let item of dtoAtractivoTuristicoInfo.caracteristicas" class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2" viewBox="0 0 20 20"
+              fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd" />
             </svg>
+            {{item.name ?? 'name'}}
+          </li>
+        </ul>
+        <ng-template #noCaracteristicas>
+          <div>
+            <p class="text-sm text-gray-500 ">No hay características disponibles.</p>
           </div>
-          <div class="text-description flex flex-col">
-            <p>{{ dtoAtractivoTuristicoInfo.horario }}</p>
+        </ng-template>
+      </div>
+
+      <!-- Additional Information -->
+      <div>
+        <h2 class="text-xl font-bold border-l-4 border-red-600 pl-3 mb-4">Información Adicional</h2>
+        <div class="space-y-3 text-sm">
+          <div class="flex items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2 mt-0.5" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <div>
+              <span class="font-medium">Mejor época para visitar:</span>
+              <p class="text-gray-600">{{dtoAtractivoTuristicoInfo.mejorEpocaVisita ?? 'Información en proceso'}}</p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2 mt-0.5" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.4 4.4 0 003 15z" />
+            </svg>
+            <div>
+              <span class="font-medium">Clima:</span>
+              <p class="text-gray-600">{{dtoAtractivoTuristicoInfo.clima ?? 'Información en proceso'}}</p>
+            </div>
+          </div>
+
+          <div *ngIf="dtoAtractivoTuristicoInfo.altitud" class="flex items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 mr-2 mt-0.5" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l14 9-14 9V3z" />
+            </svg>
+            <div>
+              <span class="font-medium">Altitud:</span>
+              <p class="text-gray-600">{{dtoAtractivoTuristicoInfo.altitud ?? 'Información en proceso'}}</p>
+            </div>
+          </div>
+
+          <div>
+            <span class="font-medium">Recomendaciones:</span>
+            <ul class="mt-1 space-y-1"
+              *ngIf="dtoAtractivoTuristicoInfo.recomendaciones && dtoAtractivoTuristicoInfo.recomendaciones.length > 0; else norecomendaciones">
+              <li *ngFor="let item of dtoAtractivoTuristicoInfo.recomendaciones"
+                class="text-gray-600 text-xs flex items-start">
+                <span class="text-red-600 mr-1">•</span>
+                {{item.name ?? 'name'}}
+              </li>
+            </ul>
+            <ng-template #norecomendaciones>
+              <div>
+                <p class="text-sm text-gray-500 ">No hay recomendaciones agregadas.</p>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+      <!-- Travel Recommendations -->
+      <div>
+        <h2 class="text-xl font-bold border-l-4 border-red-600 pl-3 mb-4">Cómo Llegar</h2>
+        <div class="space-y-4"
+          *ngIf="dtoAtractivoTuristicoInfo.recomendacionesViaje && dtoAtractivoTuristicoInfo.recomendacionesViaje.length > 0; else norecomendacionesViaje">
+          <div *ngFor="let item of dtoAtractivoTuristicoInfo.recomendacionesViaje"
+            class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-medium text-sm">{{item.transport ?? 'transport'}}</h3>
+              <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">{{item.duration ?? 'duration'}}</span>
+            </div>
+            <p class="text-xs text-gray-600 mb-2">{{item.description ?? 'description'}}</p>
+            <div *ngIf="item.cost" class="text-xs font-medium text-red-600 mb-2">Costo aproximado: {{item.cost ??
+              'cost'}}
+            </div>
+            <div *ngIf="item.tips && item.tips.length > 0">
+              <span class="text-xs font-medium">Consejos:</span>
+              <ul class="mt-1 space-y-1">
+                <li *ngFor="let item of item.tips" class="text-xs text-gray-600 flex items-start">
+                  <span class="text-red-600 mr-1">•</span>
+                  {{item.name ?? 'name'}}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <ng-template #norecomendacionesViaje>
+          <div>
+            <p class="text-sm text-gray-500 ">No hay recomendaciones agregadas.</p>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <!-- Right column: Practical information -->
+    <div class="space-y-6">
+      <div *ngIf="dtoAtractivoTuristicoInfo.precio != 0">
+        <!-- Tickets section -->
+        <div *ngIf="dtoAtractivoTuristicoInfo.entradas && dtoAtractivoTuristicoInfo.entradas.length > 0"
+          class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+          <h2 class="text-xl font-bold border-l-4 border-red-600 pl-3 mb-4">Entradas</h2>
+          <div *ngFor="let ticket of dtoAtractivoTuristicoInfo.entradas"
+            class="flex justify-between items-center py-2 border-b border-gray-200 last:border-0">
+            <span class="text-sm">{{ticket.type ?? 'type'}}</span>
+            <span class="font-bold text-red-600">{{ticket.price ?? 'type'}} {{ticket.currency ?? 'currency'}}</span>
+          </div>
+        </div>
+        <ng-template #norecomendacionesViaje>
+          <div>
+            <p class="text-sm text-gray-500 ">Entradas no agregadas.</p>
+          </div>
+        </ng-template>
+      </div>
+      <div *ngIf="dtoAtractivoTuristicoInfo.precio == 0">
+        <!-- Tickets section -->
+        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+          <h2 class="text-xl font-bold border-l-4 border-red-600 pl-3 mb-4">Entradas</h2>
+          <div class="flex justify-between items-center py-2 border-b border-gray-200 last:border-0">
+            <span class="text-sm">Ingreso Libre</span>
+            <span class="font-bold text-red-600">Gratis</span>
+
+          </div>
+        </div>
+        <ng-template #norecomendacionesViaje>
+          <div>
+            <p class="text-sm text-gray-500 ">Entradas no agregadas.</p>
+          </div>
+        </ng-template>
+      </div>
+
+      <!-- Schedule section -->
+      <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+        <h2 class="text-xl font-bold border-l-4 border-red-600 pl-3 mb-4">Horarios</h2>
+        <div *ngIf="dtoAtractivoTuristicoInfo.horarios && dtoAtractivoTuristicoInfo.horarios.length > 0">
+          <div *ngFor="let schedule of dtoAtractivoTuristicoInfo.horarios"
+            class="flex justify-between items-center py-2 border-b border-gray-200 last:border-0">
+            <span class="text-sm">{{schedule.day ?? 'day'}}</span>
+            <span class="text-sm font-medium">{{schedule.hours ?? 'hours'}}</span>
+          </div>
+        </div>
+        <ng-template #norecomendacionesViaje>
+          <div>
+            <p class="text-sm text-gray-500 ">Horarios no agregadas.</p>
+          </div>
+        </ng-template>
+      </div>
+
+      <!-- Location section -->
+      <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+        <h2 class="text-xl font-bold border-l-4 border-red-600 pl-3 mb-4">Ubicación</h2>
+        <p class="text-sm mb-3">{{dtoAtractivoTuristicoInfo.direccion}}</p>
+        <!-- <div class="bg-gray-200 h-40 flex items-center justify-center">
+          <span class="text-sm text-gray-500">Mapa de ubicación</span>
+          <google-map class="w-full rounded-lg border shadow-lg" height="auto" width="auto" [center]="center"
+            [zoom]="zoom" (mapClick)="moveMap($event)" (mapMousemove)="move($event)">
+          </google-map>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Tours Section -->
+  <!-- <div *ngIf="dtoAtractivoTuristicoInfo.availableTours.length > 0" class="bg-gray-50 p-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold border-l-4 border-red-600 pl-3 mb-6">Tours Disponibles</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div *ngFor="let tour of dtoAtractivoTuristicoInfo.availableTours"
+          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          <img [src]="tour.image" [alt]="tour.name" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-bold text-sm">{{tour.name}}</h3>
+              <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded" [ngClass]="{
+                      'bg-green-100 text-green-800': tour.difficulty === 'Fácil',
+                      'bg-yellow-100 text-yellow-800': tour.difficulty === 'Moderado',
+                      'bg-red-100 text-red-800': tour.difficulty === 'Difícil'
+                    }">
+                {{tour.difficulty}}
+              </span>
+            </div>
+
+            <div class="flex items-center mb-2">
+              <div class="flex items-center mr-2">
+                <span *ngFor="let star of generateStars(tour.rating)" class="text-yellow-400">
+                  <svg *ngIf="star === 'full'" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path
+                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <svg *ngIf="star === 'empty'" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                  </svg>
+                </span>
+              </div>
+              <span class="text-xs text-gray-600">({{tour.reviews}} reseñas)</span>
+            </div>
+
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs text-gray-600">Duración: {{tour.duration}}</span>
+              <span class="font-bold text-red-600">{{tour.price}} {{tour.currency}}</span>
+            </div>
+
+            <div class="mb-3">
+              <span class="text-xs font-medium">Incluye:</span>
+              <ul class="mt-1 space-y-1">
+                <li *ngFor="let include of tour.includes.slice(0, 3)" class="text-xs text-gray-600 flex items-start">
+                  <span class="text-red-600 mr-1">•</span>
+                  {{include}}
+                </li>
+                <li *ngIf="tour.includes.length > 3" class="text-xs text-gray-500">
+                  +{{tour.includes.length - 3}} más...
+                </li>
+              </ul>
+            </div>
+
+            <button class="w-full bg-red-600 hover:bg-red-700 text-white text-xs py-2 px-4 rounded transition-colors">
+              Ver Detalles
+            </button>
           </div>
         </div>
       </div>
     </div>
-    <!-- // --------------- TARIFAS --------------- \\ -->
-
-    <div class="flex flex-col gap-4 md:gap-8">
-      <h3 class="subtitle">Tarifas</h3>
-      <p class="text-description">{{ dtoAtractivoTuristicoInfo.tarifa}}</p>
-    </div>
-    <!-- // --------------- TOURS QUE LO INCLUYEN --------------- \\ -->
-    <!-- <div class="flex flex-col gap-4 md:gap-8">
-      <h3 class="subtitle">Tours que incluye este atractivo</h3>
-      <div class="">
-        <swiper-container style="
-            --swiper-navigation-color: #f33535;
-            --swiper-pagination-color: #f33535;
-          " class="mySwiper" thumbs-swiper=".mySwiper2" space-between="10" navigation="true" slides-per-view="4">
-          @for (item of dtoAtractivoTuristicoInfo.tours; track item.id) {
-          <swiper-slide>
-            <div class="bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
-              <a>
-                <img class="rounded-t-lg" src="{{ item.fotos.principal.url }}" alt="{{ item.nombre }}" />
-              </a>
-              <div class="p-4 flex flex-col items-start gap-2">
-                <h5 class="text-xl font-bold font-Battambang leading-normal text-secondary">
-                  {{ item.nombre }}
-                </h5>
-                <div class="text-sm font-Battambang leading-normal text-terceary">
-                  {{ item.agencia.nombre }}
-                </div>
-
-                <div class="flex text-base justify-start items-center gap-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
-                    <path fill-rule="evenodd"
-                      d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z"
-                      clip-rule="evenodd" />
-                  </svg>
-                  <span>{{ item.duracion }}</span>
-                </div>
-
-                <p class="text-base font-bold text-primary">
-                  S/. {{ item.precio }} /persona
-                </p>
-              </div>
-            </div>
-          </swiper-slide>
-          }
-        </swiper-container>
-      </div>
-      <div class="w-full h-fit flex justify-center">
-        <button class="p-4 bg-primary rounded-xl text-fondo text-base">
-          Ver Tours y Experiencias
-        </button>
-      </div>
-    </div> -->
-
-    <!-- // --------------- INFORMACIÓN ADICIONAL  --------------- \\ -->
-    <div class="flex flex-col gap-4 md:gap-8">
-      <h3 class="subtitle">Información adicional</h3>
-      <ul class="text-terceary list-disc list-inside dark:text-gray-400">
-        @for (item of dtoAtractivoTuristicoInfo.InfoAdicional; track item) {
-        <li class="text-description text-justify md:pr-2 pb-1">
-          <strong>{{ item.split(":")[0] }}: </strong>
-          {{ item.split(":")[1] }}
-        </li>
-        }
-      </ul>
-    </div>
-  </div>
+  </div> -->
 </div>

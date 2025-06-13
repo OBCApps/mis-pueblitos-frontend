@@ -8,19 +8,19 @@ import { DtoAtractivo, DtoAtractivos } from '../pages/modules/view-pueblito/serv
   providedIn: 'root'
 })
 export class AtractivoTuristicoService {
-  private SERVER_ATRACTIVOS = API_SERVICE_WEB + '/atractivos-turisticos';
+  private SERVER_ATRACTIVOS = API_SERVICE_WEB + '/atractivos-turisticos/';
 
   constructor(
     private http: HttpClient,
   ) { }
 
-  get_atractivos_turisticos(): Observable<DtoAtractivos> {
-    return this.http.get<DtoAtractivos>(this.SERVER_ATRACTIVOS).pipe(
+  get_atractivos_turisticospaginado(data: any): Observable<any> {
+    return this.http.post<any>(`${this.SERVER_ATRACTIVOS}filter_pagination`, data).pipe(
       map((response) => { return response })
     );
   }
-  get_atractivos_turisticos_by_name_route(data: any): Observable<DtoAtractivo> {
-    return this.http.get<DtoAtractivo>(this.SERVER_ATRACTIVOS + '/name_route/'+data).pipe(
+  get_atractivos_turisticos_by_name_route(name_route: any): Observable<DtoAtractivo> {
+    return this.http.get<DtoAtractivo>(`${this.SERVER_ATRACTIVOS}findDto_byNameRoute/${name_route}`).pipe(
       map((response) => { return response })
     );
   }

@@ -10,16 +10,16 @@ import { AboutUsComponent } from './pages/modules/about-us/about-us.component';
 import { SubEventoDetailComponent } from './pages/modules/view-pueblito/festivities/sub-evento-detail/sub-evento-detail.component';
 import { TipsViajerosComponent } from './pages/modules/view-pueblito/tips-viajeros/tips-viajeros.component';
 import { ServicesActivitiesComponent } from './pages/modules/view-pueblito/services-activities/services-activities.component';
-import { LugaresTuristicosComponent } from './pages/modules/view-pueblito/lugares-turisticos/lugares-turisticos.component';
 import { RestaurantViewComponent } from './pages/modules/view-pueblito/services-activities/restaurantes/restaurant-view/restaurant-view.component';
 import { HabitacionViewComponent } from './pages/modules/view-pueblito/services-activities/hospedajes/habitacion-view/habitacion-view.component';
 import { HotelViewComponent } from './pages/modules/view-pueblito/services-activities/hospedajes/hotel-view/hotel-view.component';
 import { TourViewComponent } from './pages/modules/view-pueblito/services-activities/tours/views/tour-view/tour-view.component';
 import { AgenciaViewComponent } from './pages/modules/view-pueblito/services-activities/tours/views/agencia-view/agencia-view.component';
-import { AtractivosTuristicosComponent } from './pages/modules/view-pueblito/services-activities/atractivos-turisticos/atractivos-turisticos.component';
 import { HospedajesListComponent } from './pages/modules/view-pueblito/services-activities/hospedajes/hospedajes-list/hospedajes-list.component';
 import { RestaurantesListComponent } from './pages/modules/view-pueblito/services-activities/restaurantes/restaurantes-list/restaurantes-list.component';
 import { ToursListComponent } from './pages/modules/view-pueblito/services-activities/tours/views/tours-list/tours-list.component';
+import { AtractivosTuristicosListComponent } from './pages/modules/view-pueblito/services-activities/atractivos-turisticos/atractivos-turisticos.list.component';
+import { AtractivosTuristicosComponent } from './pages/modules/view-pueblito/services-activities/atractivos-turisticos/atractivos-turisticos.component';
 
 export const routes: Routes = [
   {
@@ -47,7 +47,7 @@ export const routes: Routes = [
         path: 'meet',
         component: PueblitoDetailComponent,
       },
-    
+
       {
         path: 'festividades',
         component: FestivitiesComponent,
@@ -62,7 +62,11 @@ export const routes: Routes = [
       },
       {
         path: 'lugares-turisticos',
-        component: LugaresTuristicosComponent,
+        component: AtractivosTuristicosListComponent,
+      },
+      {
+        path: 'lugares-turisticos/:atractivo_name',
+        component: AtractivosTuristicosComponent,
       },
       {
         path: 'hospedajes',
@@ -95,12 +99,12 @@ export const routes: Routes = [
       {
         path: 'restaurantes/:restaurante_name',
         component: RestaurantViewComponent,
-      },
+      },/* 
       {
         path: 'servicios/atractivo-turistico/:atractivo_name',
-        component: AtractivosTuristicosComponent,
+        component: AtractivosTuristicosListComponent,
       }
-      /* {
+      {
         path: 'servicios/restaurante/:restaurante_name',
         component: RestaurantViewComponent,
       },
