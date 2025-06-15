@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Observable, Subject, map } from "rxjs";
 import { HttpClient } from "@angular/common/http";
-import { API_SERVICE_WEB } from "../../../environments/environment.prod";
+import { API_SERVICE_WEB } from "../../../environments/environment";
+
 
 @Injectable({
     providedIn: 'root', // O especifica un módulo específico si es necesario

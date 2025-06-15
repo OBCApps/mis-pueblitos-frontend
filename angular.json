@@ -42,7 +42,13 @@
             }
           },
           "configurations": {
-            "production": {
+            "prod": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -57,25 +63,39 @@
               ],
               "outputHashing": "all"
             },
-            "development": {
+            "qa": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.qa.ts"
+                }
+              ],
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false
+            },
+            "dev": {
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "prod"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": {
-              "buildTarget": "mis-pueblitos-frontend:build:production"
+            "prod": {
+              "buildTarget": "mis-pueblitos-frontend:build:prod"
             },
-            "development": {
-              "buildTarget": "mis-pueblitos-frontend:build:development"
+            "dev": {
+              "buildTarget": "mis-pueblitos-frontend:build:dev"
+            },
+            "qa": {
+              "buildTarget": "mis-pueblitos-frontend:build:qa"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "prod"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
