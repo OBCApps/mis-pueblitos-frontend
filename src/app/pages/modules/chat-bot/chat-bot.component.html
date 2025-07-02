@@ -1,0 +1,95 @@
+<!-- Chat Toggle Button (Bottom Right) -->
+<div *ngIf="!isChatOpen" class="fixed bottom-6 right-6 z-50">
+    <button (click)="toggleChat()"
+        class="bg-primary hover:bg-red-800 text-white rounded-full p-4 shadow-lg transition-all duration-300 transform hover:scale-110"
+        [class.rotate-180]="isChatOpen">
+        <svg *ngIf="!isChatOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-3.582 8-8 8a8.959 8.959 0 01-4.906-1.681L3 21l2.681-5.094A8.959 8.959 0 013 12c0-4.418 3.582-8 8-8s8 3.582 8 8z">
+            </path>
+        </svg>
+        <svg *ngIf="isChatOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    </button>
+</div>
+
+<!-- Chat Sidebar -->
+<div class="fixed top-0 right-0 h-full w-96 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-40"
+    [class.translate-x-full]="!isChatOpen" [class.translate-x-0]="isChatOpen">
+    <!-- Chat Header -->
+    <div class="bg-primary text-white p-4 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                </svg>
+            </div>
+            <div>
+                <h3 class="font-semibold">Asistente Virtual</h3>
+                <p class="text-sm text-blue-100">En línea</p>
+            </div>
+        </div>
+        <button (click)="toggleChat()" class="text-blue-100 hover:text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+
+    
+    <div class="flex-1 overflow-y-auto p-4 h-[80vh] relative" #messagesContainer>
+        <div *ngIf="messages.length === 0" class="text-center text-gray-500 mt-8">
+            <svg class="w-12 h-12 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-3.582 8-8 8a8.959 8.959 0 01-4.906-1.681L3 21l2.681-5.094A8.959 8.959 0 013 12c0-4.418 3.582-8 8-8s8 3.582 8 8z">
+                </path>
+            </svg>
+            <p>¡Hola! ¿En qué puedo ayudarte hoy?</p>
+        </div>
+
+        <div *ngFor="let message of messages" class="mb-4">
+            <div class="flex" [class.justify-end]="message.role === 'user'"
+                [class.justify-start]="message.role === 'assistant'">
+                <div class="max-w-xs lg:max-w-md px-4 py-2 rounded-lg" [class.bg-primary]="message.role === 'user'"
+                    [class.text-white]="message.role === 'user'" [class.bg-gray-200]="message.role === 'assistant'"
+                    [class.text-gray-800]="message.role === 'assistant'">
+                    <p class="text-sm">{{ message.content }}</p>
+                    <p class="text-xs mt-1 opacity-70">
+                        {{ message.timestamp | date:'short' }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="isTyping" class="flex justify-start mb-4">
+            <div class="bg-gray-200 text-gray-800 max-w-xs lg:max-w-md px-4 py-2 rounded-lg">
+                <div class="flex space-x-1">
+                    <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
+                    <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                    <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Input Area -->
+    <div class="absolute bottom-1 left-0 right-0 border-t p-4">
+        <div  class="flex space-x-2">
+            <input type="text" (keydown.enter)="sendMessage()" [(ngModel)]="currentMessage" placeholder="Escribe tu mensaje..."
+                class="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                [disabled]="isTyping" />
+            <button (click)="sendMessage()" [disabled]="!currentMessage.trim() || isTyping"
+                class="bg-primary hover:bg-red-800 disabled:bg-gray-400 text-white rounded-lg px-4 py-2 transition-colors duration-200">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Overlay -->
+<div *ngIf="isChatOpen" class="fixed inset-0 bg-black bg-opacity-50 z-30" (click)="toggleChat()"></div>

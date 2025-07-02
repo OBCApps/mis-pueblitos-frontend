@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { LoadingsComponent } from './shared/global-components/loadings/loadings.component';
+import { ChatBotComponent } from './pages/modules/chat-bot/chat-bot.component';
 
 
 
@@ -11,7 +12,7 @@ import { LoadingsComponent } from './shared/global-components/loadings/loadings.
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, TranslateModule, LoadingsComponent],
+  imports: [CommonModule, RouterOutlet, TranslateModule, LoadingsComponent, ChatBotComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
