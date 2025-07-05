@@ -4,11 +4,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LanguagesService } from '../../services/languages.service';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Constants } from '../../shared/global-components/Constants';
 
 @Component({
   selector: 'app-navar',
   standalone: true,
-  imports: [CommonModule, TranslateModule, RouterLink ],
+  imports: [CommonModule, TranslateModule, RouterLink],
   templateUrl: './navar.component.html',
   styleUrl: './navar.component.scss'
 })
@@ -16,13 +17,13 @@ export class NavarComponent {
   constructor(
     public translate: LanguagesService,
     private sanitizer: DomSanitizer,
-    private router : Router
+    private router: Router
   ) {
     this.changeLanguage(this.list_languages[0])
   }
   ngOnInit() {
   }
-  
+
   list_languages: any[] = [
     {
       value: 'es',
@@ -43,7 +44,11 @@ export class NavarComponent {
     this.translate.changeLanguage(language.value);
   }
 
-  goToAbout(){
-    this.router.navigate(['/about'])
+  goToAbout() {
+    this.router.navigate([Constants.ABOUT_US])
+  }
+
+  goToBlogTuristico() {
+    this.router.navigate([Constants.BLOG_TURISTICO_LIST])
   }
 }

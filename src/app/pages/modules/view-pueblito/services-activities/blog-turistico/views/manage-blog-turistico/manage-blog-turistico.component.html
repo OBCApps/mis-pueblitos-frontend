@@ -1,0 +1,314 @@
+<div class="flex flex-col h-fit items-center w-full bg-fondo">
+  <div class="relative w-full h-fit bg-center bg-cover overflow-hidden"
+    style="background-image: url('./../../../../assets/general-images/home-image.jpeg')">
+    <div class="w-full h-full bg-terceary flex flex-col justify-start items-center bg-opacity-50">
+      <div class="nav-header p-5 h-fit w-full">
+        <app-navar></app-navar>
+      </div>
+      <div
+        class="w-fit h-fit flex flex-col text-center mx-4 mt-10  mb-20 md:mx-8 md:my-20 lg:mx-20 lg:my-40 xl:mx-40 xl:my-30 gap-6 md:gap-10">
+        <div class="Bienvenido">
+          <span class="text-fondo text-xl md:text-4xl font-normal font-['Battambang']">Bienvenido a <b>Blogs
+              Turísticos</b>
+          </span>
+          <span class="text-primary text-xl md:text-4xl font-normal font-['Battambang']"> Mis
+            Pueblitos</span>
+        </div>
+
+        <br>
+      </div>
+    </div>
+    <svg class="absolute bottom-0 left-0 w-full h-16 md:h-24 lg:h-24 " viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#ffffff"
+        d="M0,96L80,112C160,128,320,160,480,154.7C640,149,800,107,960,101.3C1120,96,1280,128,1360,144L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z">
+      </path>
+    </svg>
+  </div>
+</div>
+
+<div class="min-h-screen bg-gray-50 ">
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="flex justify-center items-center min-h-screen">
+    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"></div>
+  </div>
+
+  <!-- Content -->
+  <div *ngIf="!isLoading && dto" class="max-w-5xl mx-auto px-4 py-8">
+    <!-- Back Button -->
+    <button (click)="goBack()"
+      class="mb-6 inline-flex items-center text-primary dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors">
+      <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+      Volver al blog
+    </button>
+
+    <!-- Header -->
+    <header class="mb-8">
+      <div class="flex flex-wrap items-center gap-2 mb-4">
+        <span class="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+          {{ getCategory(dto.category) }}
+        </span>
+        <span *ngIf="dto.featured" class="bg-yellow-500 text-white px-2 py-1 rounded-full text-xs">
+          ⭐ Destacado
+        </span>
+        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+          <span>{{ dto.views | number }} visualizaciones</span>
+        </div>
+      </div>
+
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        {{ dto.nombre }}
+      </h1>
+
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+        <div class="flex items-center text-gray-600 dark:text-gray-400">
+          <div class="flex items-center mr-6">
+            <div
+              class="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white font-semibold mr-3">
+              {{ dto.author.charAt(0) }}
+            </div>
+            <div>
+              <p class="font-medium text-gray-900 dark:text-white">{{ dto.author }}</p>
+              <p class="text-sm">{{ dto.date | date:'dd/MM/yyyy' }}</p>
+            </div>
+          </div>
+          <div class="flex items-center text-sm">
+            <svg class="mr-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            {{ dto.readTime }} min de lectura
+          </div>
+        </div>
+
+        <!-- Rating -->
+        <div *ngIf="dto.rating" class="flex items-center">
+          <div class="flex mr-2">
+
+            <svg *ngFor="let filled of getStarArray(dto.ratingMP)" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24" fill="currentColor" class="size-4"
+              [class]="filled ? 'text-primary' : 'text-gray-300'">
+              <path
+                d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+            </svg>
+
+          </div>
+          <span class="text-sm text-gray-600 dark:text-gray-400">{{ dto.rating }}/5</span>
+        </div>
+      </div>
+
+      <!-- Share Buttons -->
+      <div class="flex items-center gap-2 mb-6">
+        <span class="text-sm text-gray-600 dark:text-gray-400 mr-2">Compartir:</span>
+        <button (click)="sharePost('facebook')"
+          class="p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+          </svg>
+        </button>
+        <button (click)="sharePost('twitter')"
+          class="p-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors">
+          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+          </svg>
+        </button>
+        <button (click)="sharePost('whatsapp')"
+          class="p-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors">
+          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Image -->
+    <div class="mb-8">
+      <img [src]="dto.imageUrl" [alt]="dto.nombre"
+        class="w-full h-64 md:h-96 object-cover rounded-2xl shadow-lg cursor-pointer" (click)="openImageModal(0)">
+    </div>
+
+    <!-- Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Main Content -->
+      <div class="lg:col-span-2">
+        <!-- Article Content -->
+        <div class="prose prose-lg max-w-none dark:prose-invert mb-8" [innerHTML]="dto.content">
+        </div>
+
+        <!-- Image Gallery -->
+        <div *ngIf="dto.fotos && dto.fotos.length > 1" class="mb-8">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Galería de Imágenes</h3>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <img *ngFor="let image of dto.fotos; let i = index" [src]="image.value" [alt]="'Imagen ' + (i + 1)"
+              class="w-full h-32 object-cover rounded-lg cursor-pointer hover:opacity-80 transition-opacity"
+              (click)="openImageModal(i)">
+          </div>
+        </div>
+
+        <!-- Highlights -->
+        <div *ngIf="dto.highlights" class="mb-8">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Lo Más Destacado</h3>
+          <div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-6">
+            <ul class="space-y-2">
+              <li *ngFor="let highlight of dto.highlights" class="flex items-start">
+                <svg class="mr-2 h-5 w-5 text-emerald-600 dark:text-emerald-400 mt-0.5 flex-shrink-0"
+                  fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300">{{ highlight.value }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Tips -->
+        <div *ngIf="dto.tips" class="mb-8">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Consejos y Recomendaciones</h3>
+          <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-6">
+            <ul class="space-y-3">
+              <li *ngFor="let tip of dto.tips" class="flex items-start">
+                <svg class="mr-2 h-5 w-5 text-yellow-600 dark:text-yellow-400 mt-0.5 flex-shrink-0" fill="currentColor"
+                  viewBox="0 0 20 20">
+                  <path fill-rule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300">{{ tip.value }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="mb-8">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Etiquetas</h3>
+          <div class="flex flex-wrap gap-2">
+            <span *ngFor="let tag of dto.tags"
+              class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-3 py-1 rounded-full text-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors cursor-pointer">
+              #{{ tag.value }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="lg:col-span-1">
+        <!-- Location Info -->
+        <div *ngIf="dto.lugar" class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 mb-6">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+            <svg class="mr-2 h-5 w-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+            Ubicación
+          </h3>
+          <div class="space-y-2">
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-medium">Lugar:</span> {{ dto.lugar.nombre }}
+            </p>
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-medium">Departamento:</span> {{ dto.lugar.departamento?.nombre }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Practical Information -->
+        <!-- <div *ngIf="dto.practicalInfo" class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 mb-6">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+            <svg class="mr-2 h-5 w-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            Información Práctica
+          </h3>
+          <div class="space-y-3">
+            <div>
+              <span class="font-medium text-gray-900 dark:text-white">Mejor época:</span>
+              <p class="text-gray-700 dark:text-gray-300 text-sm">{{ dto.practicalInfo.bestTimeToVisit }}</p>
+            </div>
+            <div>
+              <span class="font-medium text-gray-900 dark:text-white">Presupuesto:</span>
+              <p class="text-gray-700 dark:text-gray-300 text-sm">{{ dto.practicalInfo.estimatedBudget }}</p>
+            </div>
+            <div>
+              <span class="font-medium text-gray-900 dark:text-white">Duración:</span>
+              <p class="text-gray-700 dark:text-gray-300 text-sm">{{ dto.practicalInfo.duration }}</p>
+            </div>
+            <div>
+              <span class="font-medium text-gray-900 dark:text-white">Dificultad:</span>
+              <p class="text-gray-700 dark:text-gray-300 text-sm">{{ dto.practicalInfo.difficulty }}</p>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- Related Posts -->
+        <!--  <div *ngIf="relatedPosts.length > 0" class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Artículos Relacionados</h3>
+          <div class="space-y-4">
+            <article *ngFor="let relatedPost of relatedPosts" class="group cursor-pointer"
+              [routerLink]="['/blog', relatedPost.slug]">
+              <div class="flex space-x-3">
+                <img [src]="relatedPost.imageUrl" [alt]="relatedPost.title" class="w-16 h-16 object-cover rounded-lg">
+                <div class="flex-1">
+                  <h4
+                    class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-2">
+                    {{ relatedPost.title }}
+                  </h4>
+                  <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    {{ relatedPost.date | date:'dd/MM/yyyy' }} • {{ relatedPost.readTime }} min
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Image Modal -->
+  <div *ngIf="showImageModal && dto?.fotos"
+    class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4" (click)="closeImageModal()">
+    <div class="relative max-w-4xl max-h-full">
+      <img [src]="dto.fotos[currentImageIndex].value" [alt]="'Imagen ' + (currentImageIndex + 1)"
+        class="max-w-full max-h-full object-contain">
+
+      <!-- Navigation Buttons -->
+      <button *ngIf="dto.fotos.length > 1" (click)="prevImage(); $event.stopPropagation()"
+        class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-2 rounded-full transition-all">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+
+      <button *ngIf="dto.fotos.length > 1" (click)="nextImage(); $event.stopPropagation()"
+        class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-2 rounded-full transition-all">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+
+      <!-- Close Button -->
+      <button (click)="closeImageModal(); $event.stopPropagation()"
+        class="absolute top-4 right-4 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-2 rounded-full transition-all">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <!-- Image Counter -->
+      <div
+        class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-20 text-white px-3 py-1 rounded-full text-sm">
+        {{ currentImageIndex + 1 }} / {{ dto.fotos.length }}
+      </div>
+    </div>
+  </div>
+</div>

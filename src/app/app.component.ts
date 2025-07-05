@@ -21,5 +21,16 @@ import { ChatBotComponent } from './pages/modules/chat-bot/chat-bot.component';
 export class AppComponent {
   title = 'mis-pueblitos-frontend';
 
-
+  posts = [
+    {
+      id: 1,
+      title: 'Primera entrada del blog',
+      summary: 'Un resumen de lo que trata este post.',
+      content: 'Contenido completo del post...',
+      author: 'Wanly',
+      date: '2024-09-01',
+      imageUrl: 'https://source.unsplash.com/800x400/?nature'
+    },
+    // Más entradas...
+  ];
 }

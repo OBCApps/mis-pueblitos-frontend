@@ -6,6 +6,7 @@ export class DtoLugar {
   video: string;
   masDestacado: boolean;
   departamentoId: string;
+  departamento: any;
   eventos: [
     {
       id: string;

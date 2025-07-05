@@ -186,4 +186,10 @@ export class ViewPueblitoComponent implements OnInit {
     // Verifica que la instancia de swiper esté inicializada antes de intentar el cambio
     this.swiperInstance.slideTo(6)
   }
+
+  scrollTo(id: string) {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  }
+  toggleGuide = false;
+
 }

@@ -14,7 +14,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 export const appConfig: ApplicationConfig = {
     providers: [
       provideRouter(routes),
-      provideClientHydration(),
+      provideClientHydration(),// Al client le llega un html y el navegador lo inicializa todo
       provideHttpClient(withFetch()),
       { provide: LocationStrategy, useClass: HashLocationStrategy }, // Activar Hash (#)
       

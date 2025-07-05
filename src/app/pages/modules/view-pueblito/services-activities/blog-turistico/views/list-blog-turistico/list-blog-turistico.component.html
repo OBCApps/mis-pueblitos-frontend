@@ -1,0 +1,285 @@
+<div class="flex flex-col h-fit items-center w-full ">
+    <div class="w-full h-fit bg-center bg-cover"
+        style="background-image: url('./../../../../assets/general-images/home-image.jpeg')">
+        <div class="w-full h-full bg-terceary flex flex-col justify-start items-center bg-opacity-50">
+            <div class="nav-header p-5 h-fit w-full">
+                <app-navar></app-navar>
+            </div>
+            <div
+                class="w-fit h-fit flex flex-col text-center mx-4 mt-10  mb-20 md:mx-8 md:my-20 lg:mx-20 lg:my-40 xl:mx-40 xl:my-30 gap-6 md:gap-10">
+                <div class="Bienvenido">
+                    <span class="text-fondo text-xl md:text-4xl font-normal font-['Battambang']">Bienvenido a <b>Blogs
+                            Turísticos</b>
+                    </span>
+                    <span class="text-primary text-xl md:text-4xl font-normal font-['Battambang']"> Mis
+                        Pueblitos</span>
+                </div>
+                <!-- <div
+                    class="p-2 py-4 md:px-10 text-fondo text-2xl md:text-4xl  font-extrabold font-['Montserrat'] uppercase">
+                    Tu sitio ideal para conocer los pueblitos mágicos en el Perú
+                </div> -->
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="relative transform bottom-20  w-fit h-fit border rounded-3xl shadow justify-start items-center gap-6 lg:gap-10 flex font-['Battambang'] flex-col md:flex-row">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+
+                <div class=" relative lg:col-span-3">
+                    <input type="text" [(ngModel)]="filter.nombre" placeholder="Buscar blogs..."
+                        class="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 dark:bg-gray-700 dark:text-white transition-all duration-200" />
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- <select [(ngModel)]="filter.category"
+                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 dark:bg-gray-700 dark:text-white transition-all duration-200">
+                    <option value="">Todas las categorías</option>
+                    <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+                </select>
+ -->
+                <!-- <select [(ngModel)]="sortBy"
+                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 dark:bg-gray-700 dark:text-white transition-all duration-200">
+                    <option value="date">Ordenar por fecha</option>
+                    <option value="title">Ordenar por título</option>
+                    <option value="readTime">Ordenar por tiempo de lectura</option>
+                </select> -->
+
+                <div class="flex gap-2">
+                    <button (click)="toggleViewMode()"
+                        class="flex-1 px-4 py-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200 flex items-center justify-center">
+                        <svg *ngIf="viewMode === 'grid'" class="h-5 w-5" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                        </svg>
+                        <svg *ngIf="viewMode === 'list'" class="h-5 w-5" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="flex gap-2">
+                        <button (click)="coreSearch()"
+                            class="px-4 py-3 text-primary bg-red-100 hover:bg-red-200 dark:hover:bg-emerald-900/20 rounded-xl transition-all duration-200">
+                            Buscar
+                        </button>
+                        <button (click)="coreClearFilter()"
+                            class="px-4 py-3 text-emerald-600 bg-emerald-100  hover:bg-emerald-200 dark:hover:bg-emerald-900/20 rounded-xl transition-all duration-200">
+                            Limpiar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end items-center text-sm text-gray-600 dark:text-gray-400">
+                <!-- <span>
+                    {{ list_resultadoBusqueda.length === 0
+                    ? 'No se encontraron blogs que coincidan con tu búsqueda'
+                    : 'Mostrando ' + list_resultadoBusqueda.length + ' de ' + filter.paginationresult.totalRegistros
+                    + ' blogs' }}
+                </span> -->
+                <span *ngIf="filter.paginationresult.result.length > 0">
+                    Página {{ filter.paginationresult.page }} de {{filter.paginationresult.totalPaginas}}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class=" flex flex-col gap-12 max-w-7xl mx-auto px-4 mb-16">
+    <div class="mx-auto">
+
+        <!-- Header -->
+
+        <div class="flex flex-col gap-4  mb-5">
+            <h3 class="text-black text-xl md:text-2xl font-black font-Battambang leading-6">
+                Blogs de Viajes
+            </h3>
+            <p class="text-gray-700 text-xs md:text-sm text-justify font-normal font-Battambang leading-normal">
+                Descubre historias inspiradoras, destinos asombrosos y consejos prácticos en cada artículo. Desde guías
+                completas hasta anécdotas inolvidables, nuestros blogs están pensados para motivarte a explorar,
+                aprender y vivir experiencias auténticas. Sumérgete en el conocimiento de viajeros apasionados, descubre
+                rincones poco conocidos y encuentra la chispa para planear tu próxima aventura.
+
+            </p>
+        </div>
+
+
+
+        <!-- Loading State -->
+        <div *ngIf="isLoading" class="flex justify-center items-center py-20">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"></div>
+        </div>
+
+        <!-- Blog Grid/List -->
+        <ng-container *ngIf="!isLoading && list_resultadoBusqueda.length > 0">
+
+            <!-- Vista Grid -->
+            <div *ngIf="viewMode === 'grid'"
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 4xl:grid-cols-4 gap-6 mb-10">
+                <article *ngFor="let item of list_resultadoBusqueda"
+                    class="group bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+
+                    <div class="relative overflow-hidden">
+                        <img [src]="item.imageUrl"
+                            class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105" />
+                        <div class="absolute top-3 left-3">
+                            <span class="bg-emerald-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+                                {{ getCategory(item.category) }}
+                            </span>
+                        </div>
+                        <div *ngIf="item.featured" class="absolute top-3 right-3">
+                            <span class="bg-yellow-500 text-white px-2 py-1 rounded-full text-xs">
+                                ⭐ Destacado
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="p-5">
+                        <h2
+                            class="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                            {{ item.nombre }}
+                        </h2>
+
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
+                            <span>Por {{ item.author }}</span>
+                            <span class="mx-2">•</span>
+                            <span>{{ item.date | date:'dd/MM/yyyy' }}</span>
+                            <span class="mx-2">•</span>
+                            <span>{{ item.readTime }} min</span>
+                        </div>
+
+                        <p class="text-gray-700 dark:text-gray-300 text-sm mb-4 line-clamp-3">
+                            {{ item.summary }}
+                        </p>
+
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span *ngFor="let tag of item.tags"
+                                class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded-md text-xs">
+                                #{{ tag.value }}
+                            </span>
+                        </div>
+
+                        <a (click)="goToDetailBlog(item)"
+                            class="cursor-pointer inline-flex items-center text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 font-medium text-sm transition-colors group">
+                            Leer más
+                            <svg class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Vista Lista -->
+            <div *ngIf="viewMode === 'list'" class="space-y-6 mb-10">
+                <article *ngFor="let item of list_resultadoBusqueda"
+                    class="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
+                    <div class="md:flex">
+                        <div class="md:w-1/3">
+                            <img [src]="item.imageUrl" class="w-full h-48 md:h-full object-cover" />
+                        </div>
+                        <div class="p-6 md:w-2/3">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="bg-emerald-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+                                    {{ getCategory(item.category) }}
+                                </span>
+                                <span *ngIf="item.featured"
+                                    class="bg-yellow-500 text-white px-2 py-1 rounded-full text-xs">
+                                    ⭐ Destacado
+                                </span>
+                            </div>
+
+                            <h2
+                                class="text-xl font-bold text-gray-900 dark:text-white mb-3 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                                {{ item.nombre }}
+                            </h2>
+
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
+                                <span>Por {{ item.author }}</span>
+                                <span class="mx-2">•</span>
+                                <span>{{ item.date | date:'dd/MM/yyyy' }}</span>
+                                <span class="mx-2">•</span>
+                                <span>{{ item.readTime }} min de lectura</span>
+                            </div>
+
+                            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                                {{ item.summary }}
+                            </p>
+
+                            <div class="flex flex-wrap gap-1 mb-4">
+                                <span *ngFor="let tag of item.tags"
+                                    class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded-md text-xs">
+                                    #{{ tag }}
+                                </span>
+                            </div>
+
+                            <a (click)="goToDetailBlog(item)"
+                                class="cursor-pointer inline-flex items-center text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 font-medium transition-colors group">
+                                Leer artículo completo
+                                <svg class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Paginación -->
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div class="flex items-center space-x-2">
+                    <button (click)="setCurrentPage(filter.paginationresult.page  - 1)"
+                        [disabled]="filter.paginationresult.page <= 1"
+                        class="px-4 py-2 text-sm font-medium text-gray-500 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200">
+                        Anterior
+                    </button>
+
+
+                    <button (click)="setCurrentPage(filter.paginationresult.page + 1)"
+                        [disabled]="filter.paginationresult.page >= filter.paginationresult.totalPaginas"
+                        class="px-4 py-2 text-sm font-medium text-gray-500 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200">
+                        Siguiente
+                    </button>
+                </div>
+
+                <div class="text-sm text-gray-600 dark:text-gray-400">
+                    <span>
+                        {{ list_resultadoBusqueda.length === 0
+                        ? 'No se encontraron blogs que coincidan con tu búsqueda'
+                        : 'Mostrando ' + list_resultadoBusqueda.length + ' de ' + filter.paginationresult.totalRegistros
+                        + ' blogs' }}
+                    </span>
+                </div>
+            </div>
+        </ng-container>
+
+        <!-- Estado sin resultados -->
+        <div *ngIf="!isLoading && list_resultadoBusqueda.length === 0" class="text-center py-20">
+            <div class="text-8xl mb-6">🔍</div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">No se encontraron resultados</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-6 max-w-md mx-auto">
+                No pudimos encontrar blogs que coincidan con tus criterios de búsqueda. Prueba con otros términos o
+                filtros.
+            </p>
+            <button (click)="coreClearFilter()"
+                class="px-6 py-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-colors duration-200 font-medium">
+                Limpiar filtros
+            </button>
+        </div>
+
+    </div>
+</div>

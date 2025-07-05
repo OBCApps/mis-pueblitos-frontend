@@ -1,3 +1,4 @@
+
 <!-- HEADER -->
 <div class="flex flex-col h-fit items-center w-full relative bg-fondo">
   <div class="w-full h-fit bg-center bg-cover" style="background-image: url('{{ lugarDetalle?.foto?.url }}')">
@@ -128,7 +129,7 @@
               <div class="flex items-center justify-center">
                 <div [class]="title == 'lugares-turisticos' ?'navar-selected':'navar-not-selected'  ">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
-                    <g fill="none" stroke="currentColor" stroke-width="4">
+                    <g stroke="currentColor" stroke-width="4" fill-rule="evenodd" clip-rule="evenodd">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M4 44h40" />
                       <path stroke-linejoin="round" d="M8 8.364L24 4l16 4.364V14H8z" />
                       <path stroke-linecap="round" d="M10 14v24m7-24v24m7-24v24m7-24v24m7-24v24" />
@@ -142,37 +143,38 @@
           </div>
         </swiper-slide>
 
-        <!-- <swiper-slide>
+        <swiper-slide>
           <div class="p-1 flex items-center justify-center">
             <div class="w-38 cursor-pointer" (click)="
                 goToRoute(
                   lugarDetalle.departamento.name_route,
                   lugarDetalle.name_route,
-                  'servicios'
+                  'blog-turistico'
                 )
               ">
               <div class="flex items-center justify-center">
                 <div [class]="
-                    title == 'servicios'
+                    title == 'blog-turistico'
                       ? 'navar-selected'
                       : 'navar-not-selected'
                   ">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24">
-                    <g fill="none" fill-rule="evenodd">
-                      <path
-                        d="M24 0v24H0V0zM12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036c-.01-.003-.019 0-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z" />
-                      <path fill="currentColor"
-                        d="M3 5a1 1 0 0 1 .993.883L4 6v7h7V8a1 1 0 0 1 .883-.993L12 7h7a3 3 0 0 1 2.995 2.824L22 10v8a1 1 0 0 1-1.993.117L20 18v-3H4v3a1 1 0 0 1-1.993.117L2 18V6a1 1 0 0 1 1-1m16 4h-6v4h7v-3a1 1 0 0 0-1-1M7.5 7a2.5 2.5 0 1 1 0 5a2.5 2.5 0 0 1 0-5m0 2a.5.5 0 1 0 0 1a.5.5 0 0 0 0-1" />
-                    </g>
+
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path fill-rule="evenodd"
+                      d="M8.25 6.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM15.75 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM2.25 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM6.31 15.117A6.745 6.745 0 0 1 12 12a6.745 6.745 0 0 1 6.709 7.498.75.75 0 0 1-.372.568A12.696 12.696 0 0 1 12 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 0 1-.372-.568 6.787 6.787 0 0 1 1.019-4.38Z"
+                      clip-rule="evenodd" />
+                    <path
+                      d="M5.082 14.254a8.287 8.287 0 0 0-1.308 5.135 9.687 9.687 0 0 1-1.764-.44l-.115-.04a.563.563 0 0 1-.373-.487l-.01-.121a3.75 3.75 0 0 1 3.57-4.047ZM20.226 19.389a8.287 8.287 0 0 0-1.308-5.135 3.75 3.75 0 0 1 3.57 4.047l-.01.121a.563.563 0 0 1-.373.486l-.115.04c-.567.2-1.156.349-1.764.441Z" />
                   </svg>
+
                 </div>
               </div>
               <h1 class="text-center text-xs md:text-sm">
-                Servicios
+                Blogs Turísticos
               </h1>
             </div>
           </div>
-        </swiper-slide> -->
+        </swiper-slide>
 
         <swiper-slide>
           <div class="p-1 flex items-center justify-center">
@@ -294,6 +296,7 @@
     }
   </div>
 </div>
+
 
 <app-modal-proveedor></app-modal-proveedor>
 

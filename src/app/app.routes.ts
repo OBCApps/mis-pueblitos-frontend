@@ -20,6 +20,8 @@ import { RestaurantesListComponent } from './pages/modules/view-pueblito/service
 import { ToursListComponent } from './pages/modules/view-pueblito/services-activities/tours/views/tours-list/tours-list.component';
 import { AtractivosTuristicosListComponent } from './pages/modules/view-pueblito/services-activities/atractivos-turisticos/atractivos-turisticos.list.component';
 import { AtractivosTuristicosComponent } from './pages/modules/view-pueblito/services-activities/atractivos-turisticos/atractivos-turisticos.component';
+import { ListBlogTuristicoComponent } from './pages/modules/view-pueblito/services-activities/blog-turistico/views/list-blog-turistico/list-blog-turistico.component';
+import { ManageBlogTuristicoComponent } from './pages/modules/view-pueblito/services-activities/blog-turistico/views/manage-blog-turistico/manage-blog-turistico.component';
 
 export const routes: Routes = [
   {
@@ -68,6 +70,7 @@ export const routes: Routes = [
         path: 'lugares-turisticos/:atractivo_name',
         component: AtractivosTuristicosComponent,
       },
+
       {
         path: 'hospedajes',
         component: HospedajesListComponent,
@@ -99,24 +102,26 @@ export const routes: Routes = [
       {
         path: 'restaurantes/:restaurante_name',
         component: RestaurantViewComponent,
-      },/* 
-      {
-        path: 'servicios/atractivo-turistico/:atractivo_name',
-        component: AtractivosTuristicosListComponent,
-      }
-      {
-        path: 'servicios/restaurante/:restaurante_name',
-        component: RestaurantViewComponent,
       },
-      {
-        path: 'servicios/restaurante/:hotel_name/:habitacion_name',
-        component: HabitacionComponent,
-      } */
     ],
   },
 
   {
     path: 'about',
     component: AboutUsComponent,
+  },
+  {
+    path: 'blog-turistico',
+    children: [
+      {
+        path: 'list',
+        component: ListBlogTuristicoComponent,
+      },
+      {
+        path: 'info/:name_route',
+        component: ManageBlogTuristicoComponent,
+      },
+    ]
+    
   },
 ];
