@@ -24,6 +24,8 @@ import { ListBlogTuristicoComponent } from './pages/modules/view-pueblito/servic
 import { ManageBlogTuristicoComponent } from './pages/modules/view-pueblito/services-activities/blog-turistico/views/manage-blog-turistico/manage-blog-turistico.component';
 import { RegisterComponent } from './shared/navigations/auths/register/views/register/register.component';
 import { LoginComponent } from './shared/navigations/auths/login/views/login/login.component';
+import { RevistasListComponent } from './pages/modules/revistas/views/revistas-list/revistas-list.component';
+import { RevistasDetailComponent } from './pages/modules/revistas/views/revistas-detail/revistas-detail.component';
 
 export const routes: Routes = [
   {
@@ -132,6 +134,21 @@ export const routes: Routes = [
       {
         path: 'info/:name_route',
         component: ManageBlogTuristicoComponent,
+      },
+    ]
+
+  },
+
+  {
+    path: 'revistas',
+    children: [
+      {
+        path: 'list',
+        component: RevistasListComponent,
+      },
+      {
+        path: 'info/:name_route',
+        component: RevistasDetailComponent,
       },
     ]
 

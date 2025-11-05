@@ -60,6 +60,10 @@ export class NavarComponent {
     this.router.navigate([Constants.BLOG_TURISTICO_LIST])
   }
 
+  goToRevistas() {
+    this.router.navigate([Constants.BLOG_REVISTAS_LIST])
+  }
+
   goToRegister() {
     this.router.navigate([Constants.REGISTER_USERCONSUMER])
   }

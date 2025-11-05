@@ -8,5 +8,6 @@ export class Constants {
 
 
     static readonly BLOG_TURISTICO_LIST = '/blog-turistico/list';
+    static readonly BLOG_REVISTAS_LIST = '/revistas/list';
     static readonly BLOG_TURISTICO_INFO_NAMEROUTE = '/blog-turistico/info';
 }
