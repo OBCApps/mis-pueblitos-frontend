@@ -24,12 +24,26 @@
                 REGISTRAR
             </button>
 
-            <button *ngIf="isLoged" type="button"
-                class="block bg-primary hover:bg-red-600 w-fit md:w-fit text-fondo text-base font-normal py-3 px-4 rounded-xl">
-                VER PERFIL
-            </button>
 
-            
+            <div class="flex items-center" *ngIf="isLoged">
+                <button id="dropdownUserAvatarButton" (click)="menu.toggle($event)"
+                    class="relative p-1 rounded-full border border-gray-300 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all duration-200 ease-in-out"
+                    [ngClass]="{'ring-2 ring-primary-500': menu.overlayVisible}">
+                    <img src="https://img.freepik.com/foto-gratis/retrato-joven-cabello-rizado-cerca_176532-8156.jpg?t=st=1727620188~exp=1727623788~hmac=85b290b08ba2d5bf439b2103d218ce83e817d41e612b0dd3029629575108ec00&w=826"
+                        alt="User Avatar" class="w-8 h-8 rounded-full object-cover">
+                    <span class="sr-only">Open user menu</span>
+                </button>
+
+                <p-menu #menu [model]="items" [popup]="true" appendTo="body"
+                    [showTransitionOptions]="'0.12s cubic-bezier(0, 0, 0.2, 1)'" [hideTransitionOptions]="'0.1s linear'"
+                    (onItemClick)="handleMenuClick($event)">
+                </p-menu>
+
+
+
+
+            </div>
+
         </div>
 
     </div>

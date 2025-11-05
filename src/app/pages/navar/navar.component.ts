@@ -6,11 +6,13 @@ import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Constants } from '../../shared/global-components/Constants';
 import { AuthorizationService } from '../../shared/global-components/authorization/auth.service';
-
+import { ButtonModule } from 'primeng/button';
+import { MenuModule } from 'primeng/menu';
+import { MenuItem } from 'primeng/api';
 @Component({
   selector: 'app-navar',
   standalone: true,
-  imports: [CommonModule, TranslateModule, RouterLink,],
+  imports: [CommonModule, TranslateModule, RouterLink, MenuModule, ButtonModule],
   templateUrl: './navar.component.html',
   styleUrl: './navar.component.scss'
 })
@@ -64,5 +66,34 @@ export class NavarComponent {
 
   goToLogin() {
     this.router.navigate([Constants.LOGIN_USERCONSUMER])
+  }
+
+  items: MenuItem[] = [
+    {
+      label: 'Mis datos',
+      icon: 'pi pi-fw pi-user',
+      command: () => {
+        this.router.navigate(['student', 'my-dates']);
+
+      }
+    },
+
+    { separator: true },
+    {
+      label: 'Salir',
+      icon: 'pi pi-fw pi-sign-out',
+      command: () => {
+
+        this.authorizationService.clear_all();
+        this.router.navigate([Constants.LOGIN_USERCONSUMER]);
+      }
+    }
+  ];
+
+  handleMenuClick(event: any): void {
+    const item = event.item;
+    if (item && item.command) {
+      item.command(); // Ejecuta el comando manualmente
+    }
   }
 }

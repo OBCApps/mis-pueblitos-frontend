@@ -7,6 +7,7 @@ import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -27,5 +28,6 @@ export const appConfig: ApplicationConfig = {
           },
         })
       ),
+      provideAnimations()
     ],
 };
