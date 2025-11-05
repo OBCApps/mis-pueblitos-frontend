@@ -22,6 +22,8 @@ import { AtractivosTuristicosListComponent } from './pages/modules/view-pueblito
 import { AtractivosTuristicosComponent } from './pages/modules/view-pueblito/services-activities/atractivos-turisticos/atractivos-turisticos.component';
 import { ListBlogTuristicoComponent } from './pages/modules/view-pueblito/services-activities/blog-turistico/views/list-blog-turistico/list-blog-turistico.component';
 import { ManageBlogTuristicoComponent } from './pages/modules/view-pueblito/services-activities/blog-turistico/views/manage-blog-turistico/manage-blog-turistico.component';
+import { RegisterComponent } from './shared/navigations/auths/register/views/register/register.component';
+import { LoginComponent } from './shared/navigations/auths/login/views/login/login.component';
 
 export const routes: Routes = [
   {
@@ -32,6 +34,16 @@ export const routes: Routes = [
     path: 'home',
     component: HomeComponent,
   },
+
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+
 
   {
     path: 'home/:departamento',
@@ -122,6 +134,6 @@ export const routes: Routes = [
         component: ManageBlogTuristicoComponent,
       },
     ]
-    
+
   },
 ];

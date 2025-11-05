@@ -33,4 +33,18 @@ export class BaseServices {
 
     hideLoading() { this.loadingService.hide(); }
 
+
+
+    checkTransactionMessages(response: any): boolean {
+        if (response != null) {
+            if (response.transaccionEstado == 'ER' || response.transaccionEstado == 'VA') {
+                this.showMessageError(response.message)
+                return false;
+            } else if (response.transaccionEstado == 'OK') {
+
+                return true;
+            }
+        }
+        return false;
+    }
 }

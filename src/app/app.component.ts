@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { LoadingsComponent } from './shared/global-components/loadings/loadings.component';
 import { ChatBotComponent } from './pages/modules/chat-bot/chat-bot.component';
+import { AlertsToastComponent } from "./shared/global-components/toast/alerts-toast/alerts-toast.component";
 
 
 
@@ -12,7 +13,7 @@ import { ChatBotComponent } from './pages/modules/chat-bot/chat-bot.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, TranslateModule, LoadingsComponent, ChatBotComponent],
+  imports: [CommonModule, RouterOutlet, TranslateModule, LoadingsComponent, ChatBotComponent, AlertsToastComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

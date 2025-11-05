@@ -95,7 +95,7 @@
               "buildTarget": "mis-pueblitos-frontend:build:qa"
             }
           },
-          "defaultConfiguration": "prod"
+          "defaultConfiguration": "dev"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

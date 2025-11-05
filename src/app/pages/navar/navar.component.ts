@@ -51,4 +51,12 @@ export class NavarComponent {
   goToBlogTuristico() {
     this.router.navigate([Constants.BLOG_TURISTICO_LIST])
   }
+
+  goToRegister() {
+    this.router.navigate([Constants.REGISTER_USERCONSUMER])
+  }
+
+  goToLogin() {
+    this.router.navigate([Constants.LOGIN_USERCONSUMER])
+  }
 }

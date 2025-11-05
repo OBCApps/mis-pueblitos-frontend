@@ -2,6 +2,8 @@ export class Constants {
     static readonly HOME = '/home';
     static readonly ABOUT_US = '/about';
     static readonly ATRACTIVOSTURISTICOS = '/lugares-turisticos';
+    static readonly LOGIN_USERCONSUMER = 'login';
+    static readonly REGISTER_USERCONSUMER = '/register';
 
 
 
