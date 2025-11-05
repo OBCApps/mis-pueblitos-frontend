@@ -37,10 +37,10 @@ export class BaseServices {
 
     checkTransactionMessages(response: any): boolean {
         if (response != null) {
-            if (response.transaccionEstado == 'ER' || response.transaccionEstado == 'VA') {
+            if (response.status == 'ER' || response.status == 'VA') {
                 this.showMessageError(response.message)
                 return false;
-            } else if (response.transaccionEstado == 'OK') {
+            } else if (response.status == 'OK') {
 
                 return true;
             }

@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Constants } from '../../../../../global-components/Constants';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../auths.service';
+import { BaseServices } from '../../../../../global-components/BaseServices';
+import { AuthorizationService } from '../../../../../global-components/authorization/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,14 +14,20 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
-}) 
+})
 export class LoginComponent {
   loginForm: FormGroup;
   showPassword = false;
   isLoading = false;
   errorMessage = '';
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService,
+    private baseServices: BaseServices,
+    private authorizationService: AuthorizationService,
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -35,11 +46,30 @@ export class LoginComponent {
       const credentials = this.loginForm.value;
       console.log('Login data:', credentials);
 
-      // Aquí irá tu llamada al backend
+      /* // Aquí irá tu llamada al backend
       setTimeout(() => {
         this.isLoading = false;
         // Manejar respuesta del backend
-      }, 2000);
+      }, 2000); */
+      this.authService.login_service(credentials).subscribe(
+        response => {
+          this.isLoading = false;
+
+          if (this.baseServices.checkTransactionMessages(response)) {
+
+            //this.baseServices.showMessageSucces('Registrado correctamente.');
+            this.authorizationService.setUserSesion(JSON.stringify(response.data));
+            this.router.navigate([Constants.HOME])
+          }
+
+        }, err => {
+          console.log("err", err);
+
+          this.isLoading = false;
+          this.baseServices.showMessageError(err.error.message);
+        }
+      );
+
     }
   }
 
@@ -63,5 +93,9 @@ export class LoginComponent {
       return 'La contraseña debe tener al menos 6 caracteres';
     }
     return '';
+  }
+
+  goToRegister() {
+    this.router.navigate([Constants.REGISTER_USERCONSUMER])
   }
 }

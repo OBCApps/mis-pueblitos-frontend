@@ -26,7 +26,7 @@ export class AuthService {
 
     login_service(data: any): Observable<any> {
         const headers = { 'No-Auth': 'True' };
-        return this.http.put<any>(this.SERVER_LOGIN + 'login/ingresar', data, { headers });
+        return this.http.post<any>(this.SERVER_LOGIN + '/user-consumer/login', data, { headers });
     }
 
     sent_email_recovery_service(data: any): Observable<any> {

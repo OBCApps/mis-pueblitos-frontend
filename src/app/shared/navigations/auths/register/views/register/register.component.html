@@ -1,24 +1,22 @@
-<div class="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50 flex items-center justify-center px-4 py-12">
+<div class="min-h-screen bg-gradient-to-br from-red-50 to-red-100 flex items-center justify-center px-4 py-12">
     <div class="w-full max-w-2xl">
         <!-- Header -->
         <div class="text-center mb-8">
-            <div class="flex items-center justify-center mb-4">
-                <svg class="w-12 h-12 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20H7m6-4h.01M9 20h6" />
-                </svg>
-            </div>
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">TravelHub</h1>
+           
+            <a class=" flex items-center justify-center mb-4">
+                <img src="./assets/Logo.png" class="h-12 cursor-pointer" alt="Mis Pueblitos Logo" />
+
+            </a>
             <p class="text-gray-600">Comienza tu próxima aventura hoy</p>
         </div>
 
         <!-- Progress indicator -->
         <div class="flex items-center justify-center mb-8">
             <div class="flex items-center w-full max-w-md">
-                <div [class]="'flex-1 h-2 rounded-full transition ' + (step >= 1 ? 'bg-amber-600' : 'bg-gray-300')">
+                <div [class]="'flex-1 h-2 rounded-full transition ' + (step >= 1 ? 'bg-primary' : 'bg-gray-300')">
                 </div>
-                <div class="flex-1 h-2 mx-2 rounded-full transition"
-                    [class]="step >= 2 ? 'bg-amber-600' : 'bg-gray-300'"></div>
+                <div class="flex-1 h-2 mx-2 rounded-full transition" [class]="step >= 2 ? 'bg-primary' : 'bg-gray-300'">
+                </div>
             </div>
         </div>
 
@@ -36,7 +34,7 @@
                                 Nombre
                             </label>
                             <input type="text" id="nombre" formControlName="nombre"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
                                 placeholder="Juan" />
                             <p *ngIf="signupForm.get('nombre')?.invalid && signupForm.get('nombre')?.touched"
                                 class="mt-1 text-sm text-red-500">
@@ -50,7 +48,7 @@
                                 Apellido Paterno
                             </label>
                             <input type="text" id="apellido_paterno" formControlName="apellido_paterno"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
                                 placeholder="García" />
                             <p *ngIf="signupForm.get('apellido_paterno')?.invalid && signupForm.get('apellido_paterno')?.touched"
                                 class="mt-1 text-sm text-red-500">
@@ -65,7 +63,7 @@
                             Apellido Materno
                         </label>
                         <input type="text" id="apellido_materno" formControlName="apellido_materno"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
                             placeholder="López" />
                         <p *ngIf="signupForm.get('apellido_materno')?.invalid && signupForm.get('apellido_materno')?.touched"
                             class="mt-1 text-sm text-red-500">
@@ -75,7 +73,7 @@
 
                     <!-- Next Button -->
                     <button type="button" (click)="nextStep()" [disabled]="!validateStep1()"
-                        class="w-full bg-gradient-to-r from-amber-600 to-orange-600 text-white font-semibold py-3 rounded-lg hover:from-amber-700 hover:to-orange-700 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                        class="w-full bg-gradient-to-r from-primary to-red-800 text-white font-semibold py-3 rounded-lg hover:from-primary hover:to-red-800 transition disabled:opacity-50 disabled:cursor-not-allowed">
                         Siguiente
                     </button>
                 </div>
@@ -90,7 +88,7 @@
                             Correo Electrónico
                         </label>
                         <input type="email" id="email" formControlName="email"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
                             placeholder="tu@email.com" />
                         <p *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched"
                             class="mt-1 text-sm text-red-500">
@@ -104,7 +102,7 @@
                             Celular (10 dígitos)
                         </label>
                         <input type="tel" id="celular" formControlName="celular"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
                             placeholder="5551234567" />
                         <p *ngIf="signupForm.get('celular')?.invalid && signupForm.get('celular')?.touched"
                             class="mt-1 text-sm text-red-500">
@@ -120,7 +118,7 @@
                         <div class="relative">
                             <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
                                 (input)="calculatePasswordStrength()"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
                                 placeholder="••••••••" />
                             <button type="button" (click)="togglePasswordVisibility()"
                                 class="absolute right-3 top-3 text-gray-500 hover:text-gray-700">
@@ -167,7 +165,7 @@
                         <div class="relative">
                             <input [type]="showConfirmPassword ? 'text' : 'password'" id="confirmPassword"
                                 formControlName="confirmPassword"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
                                 placeholder="••••••••" />
                             <button type="button" (click)="toggleConfirmPasswordVisibility()"
                                 class="absolute right-3 top-3 text-gray-500 hover:text-gray-700">
@@ -206,19 +204,19 @@
                     <div class="flex items-start space-x-2">
                         <input type="checkbox" id="terms" class="mt-1 rounded" required />
                         <label for="terms" class="text-sm text-gray-600">
-                            Acepto los <a href="#" class="text-amber-600 hover:underline">Términos y Condiciones</a> y
-                            la <a href="#" class="text-amber-600 hover:underline">Política de Privacidad</a>
+                            Acepto los <a href="#" class="text-primary hover:underline">Términos y Condiciones</a> y
+                            la <a href="#" class="text-primary hover:underline">Política de Privacidad</a>
                         </label>
                     </div>
 
                     <!-- Buttons -->
                     <div class="flex gap-4">
                         <button type="button" (click)="previousStep()"
-                            class="flex-1 border-2 border-amber-600 text-amber-600 font-semibold py-3 rounded-lg hover:bg-amber-50 transition">
+                            class="flex-1 border-2 border-amber-600 text-primary font-semibold py-3 rounded-lg hover:bg-amber-50 transition">
                             Anterior
                         </button>
                         <button type="submit" [disabled]="signupForm.invalid || isLoading"
-                            class="flex-1 bg-gradient-to-r from-amber-600 to-orange-600 text-white font-semibold py-3 rounded-lg hover:from-amber-700 hover:to-orange-700 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center">
+                            class="flex-1 bg-gradient-to-r from-primary to-red-800 text-white font-semibold py-3 rounded-lg hover:from-primary hover:to-red-800 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center">
                             <span *ngIf="!isLoading">Crear Cuenta</span>
                             <span *ngIf="isLoading" class="flex items-center">
                                 <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
@@ -237,7 +235,7 @@
                     <!-- Login Link -->
                     <p class="text-center text-gray-600 text-sm">
                         ¿Ya tienes cuenta?
-                        <a href="/login" class="text-amber-600 font-semibold hover:text-amber-700 transition">
+                        <a href="/login" class="text-primary font-semibold hover:text-amber-700 transition">
                             Inicia sesión
                         </a>
                     </p>

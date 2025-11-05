@@ -5,23 +5,29 @@ import { LanguagesService } from '../../services/languages.service';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Constants } from '../../shared/global-components/Constants';
+import { AuthorizationService } from '../../shared/global-components/authorization/auth.service';
 
 @Component({
   selector: 'app-navar',
   standalone: true,
-  imports: [CommonModule, TranslateModule, RouterLink],
+  imports: [CommonModule, TranslateModule, RouterLink,],
   templateUrl: './navar.component.html',
   styleUrl: './navar.component.scss'
 })
 export class NavarComponent {
+
+  isLoged: boolean = false;
   constructor(
     public translate: LanguagesService,
     private sanitizer: DomSanitizer,
-    private router: Router
+    private router: Router,
+    private authorizationService: AuthorizationService,
   ) {
     this.changeLanguage(this.list_languages[0])
   }
   ngOnInit() {
+    this.isLoged = this.authorizationService.getUserSesion() ? true : false;
+
   }
 
   list_languages: any[] = [

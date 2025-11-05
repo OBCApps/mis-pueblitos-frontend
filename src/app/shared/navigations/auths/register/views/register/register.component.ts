@@ -113,16 +113,21 @@ export class RegisterComponent {
 
       this.authService.register(formData).subscribe(
         response => {
-
           this.isLoading = false;
-          this.baseServices.showMessageSucces('Registrado correctamente.');
-          this.router.navigate([Constants.LOGIN_USERCONSUMER])
+
+          if (this.baseServices.checkTransactionMessages(response)) {
+
+            this.baseServices.showMessageSucces('Registrado correctamente.');
+            this.router.navigate([Constants.LOGIN_USERCONSUMER])
+          }
+
         }, err => {
           console.log("err", err);
 
           this.isLoading = false;
           this.baseServices.showMessageError(err.error.message);
-        })
+        }
+      );
     }
   }
 

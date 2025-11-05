@@ -15,15 +15,21 @@
                 Nosotros
             </button>
 
-            <button type="button" (click)="goToLogin()"
+            <button *ngIf="!isLoged" type="button" (click)="goToLogin()"
                 class="block bg-primary hover:bg-red-600 w-fit md:w-fit text-fondo text-base font-normal py-3 px-4 rounded-xl">
                 INGRESAR
             </button>
-            <button type="button" (click)="goToRegister()"
+            <button *ngIf="!isLoged" type="button" (click)="goToRegister()"
                 class="block bg-primary hover:bg-red-600 w-fit md:w-fit text-fondo text-base font-normal py-3 px-4 rounded-xl">
                 REGISTRAR
             </button>
 
+            <button *ngIf="isLoged" type="button"
+                class="block bg-primary hover:bg-red-600 w-fit md:w-fit text-fondo text-base font-normal py-3 px-4 rounded-xl">
+                VER PERFIL
+            </button>
+
+            
         </div>
 
     </div>
