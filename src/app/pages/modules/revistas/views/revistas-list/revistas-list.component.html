@@ -1,1 +1,18 @@
 <p>revistas-list works!</p>
+<div class="p-10">
+
+    <!-- 
+    FUNCIONA CORRECTAMENTE CON TODAS LAS FUNCIONALIDADES
+    <ngx-extended-pdf-viewer [src]="'assets/Pregonero_42.pdf'"></ngx-extended-pdf-viewer> -->
+    <!-- 
+    FUNCIONA SIN LA OPCION DE DESCARGA
+    <ngx-extended-pdf-viewer [src]="'https://s3.us-east-2.amazonaws.com/bucket-mispueblitos.pe/SETTINGSMP/Pregonero_42.pdf'" [showToolbar]="true"
+        [textLayer]="true" [showSidebarButton]="false" [showDownloadButton]="false" [showPrintButton]="false"
+        [showOpenFileButton]="false" [showBookModeButton]="true" ></ngx-extended-pdf-viewer> -->
+    <ngx-extended-pdf-viewer
+        [src]="'https://s3.us-east-2.amazonaws.com/bucket-mispueblitos.pe/SETTINGSMP/Pregonero_42.pdf'"  
+        [showPagingButtons]="true" [showToolbar]="true" [showDownloadButton]="false" [showPrintButton]="false"
+        [showSidebarButton]="false" [showOpenFileButton]="false" [showBookModeButton]="true"  >
+    </ngx-extended-pdf-viewer>
+
+</div>
