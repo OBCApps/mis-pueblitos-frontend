@@ -9,10 +9,12 @@
     <ngx-extended-pdf-viewer [src]="'https://s3.us-east-2.amazonaws.com/bucket-mispueblitos.pe/SETTINGSMP/Pregonero_42.pdf'" [showToolbar]="true"
         [textLayer]="true" [showSidebarButton]="false" [showDownloadButton]="false" [showPrintButton]="false"
         [showOpenFileButton]="false" [showBookModeButton]="true" ></ngx-extended-pdf-viewer> -->
-    <ngx-extended-pdf-viewer
-        [src]="'https://s3.us-east-2.amazonaws.com/bucket-mispueblitos.pe/SETTINGSMP/Pregonero_42.pdf'"  
-        [showPagingButtons]="true" [showToolbar]="true" [showDownloadButton]="false" [showPrintButton]="false"
-        [showSidebarButton]="false" [showOpenFileButton]="false" [showBookModeButton]="true"  >
+
+    @if (pdfUrl) {
+    <ngx-extended-pdf-viewer [src]="pdfUrl" [showPagingButtons]="true" [showToolbar]="true" [showDownloadButton]="false"
+        [showPrintButton]="false" [showSidebarButton]="false" [showOpenFileButton]="false" [showBookModeButton]="true">
     </ngx-extended-pdf-viewer>
+    }
+
 
 </div>
