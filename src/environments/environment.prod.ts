@@ -3,7 +3,7 @@ export const environment = {
 };
 
 // Producción
-export const API_SERVICE_WEB='https://backend.mispueblitos.pe';
+export const API_SERVICE_WEB='https://hqo48j0im1.execute-api.us-east-1.amazonaws.com/dev';
 
 // Pre Producción
 //export const API_SERVICE_WEB = 'https://mis-pueblitos-backend.onrender.com'
