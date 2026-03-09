@@ -47,6 +47,7 @@ export class TourViewComponent extends BaseComponenst {
     this.loading.show();
     this.toursService.get_tour_by_name_route(tour_name).subscribe(
       (data: DtoTourView) => {
+         this.loading.hide();
         this.tourView = data;
         this.cdr.detectChanges();
         this.initializeCarruselsSwipes();
@@ -55,7 +56,7 @@ export class TourViewComponent extends BaseComponenst {
 
 
         this.reservarAhora('https://calendar.google.com/calendar/appointments/schedules/AcZssZ39SoK7uLrHc0LgCZHY1BrMfS4-K4Ok5HuryGgwm6sAaY2PJJrsS6vg8RntEEQ7aPxj_MrFfEJp?gv=true')
-        this.loading.hide();
+       
       }, err => {
         this.loading.hide();
       }

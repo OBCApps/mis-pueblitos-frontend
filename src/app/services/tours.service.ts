@@ -15,7 +15,7 @@ export class ToursService {
   ) { }
 
   filter_tours(data: any): Observable<any> {
-    return this.http.post<any>(this.SERVER_TOURS + '/filter', data).pipe(
+    return this.http.post<any>(this.SERVER_TOURS + '/filter_pagination', data).pipe(
       map((response) => { return response })
     );
   }
@@ -33,7 +33,7 @@ export class ToursService {
   }
 
   get_tour_by_name_route(name_route: any): Observable<any> {
-    return this.http.get<any>(this.SERVER_TOURS + '/name_route/' + name_route).pipe(
+    return this.http.get<any>(this.SERVER_TOURS + '/findDto_byNameRoute/' + name_route).pipe(
       map((response) => { return response })
     );
   }

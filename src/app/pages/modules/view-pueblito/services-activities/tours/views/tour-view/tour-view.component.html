@@ -1,7 +1,7 @@
 <div class="content font-Battambang">
-  <hr class="h-px my-2 md:my-4 bg-white border-0" />
+    <hr class="h-px my-2 md:my-4 bg-white border-0" />
 
-  <!-- 
+    <!-- 
   <div>
     <h3 class="title pr-2">
       {{ tourView.nombre }}
@@ -135,32 +135,31 @@
       </div>
     </div>
   </div> -->
-  <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-8">
-    <div class="mb-8">
-      <h1 class="title font-bold  mb-2">
-        {{ tourView.nombre }}
-      </h1>
-      <div class="flex items-center space-x-4">
-        <h2 class="subtitle">
-          {{ tourView.agencia.nombre }}
-        </h2>
-        <!-- <button (click)="gotoAgencia()" class="text-sm px-3 py-1 bg-primary text-white rounded-full hover:bg-primary-dark transition duration-300">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-8">
+        <div class="mb-8">
+            <h1 class="title font-bold  mb-2">
+                {{ tourView.nombre }}
+            </h1>
+            <div class="flex items-center space-x-4">
+                <h2 class="subtitle">
+                    {{ tourView.agencia.nombre }}
+                </h2>
+                <!-- <button (click)="gotoAgencia()" class="text-sm px-3 py-1 bg-primary text-white rounded-full hover:bg-primary-dark transition duration-300">
           Ver Perfil
         </button> -->
-      </div>
-    </div>
+            </div>
+        </div>
 
-    <div class="grid grid-cols-1 xl:grid-cols-4 gap-8">
-      <div class="xl:col-span-3">
-        <div>
-          <swiper-container id="infoPhotos" init="false" class="rounded-xl overflow-hidden">
-            <swiper-slide *ngFor="let item of tourView?.fotos?.gallery">
-              <img [src]="item" [alt]="tourView.nombre" class="w-full h-[40vh] lg:h-[60vh] object-cover" />
-            </swiper-slide>
-          </swiper-container>
-          <div class="mt-2 flex items-center justify-center">
-            <button type="button"
-              class="swiperinfoPhotos-button-prev text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300  rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 ">
+        <div class="grid grid-cols-1 xl:grid-cols-4 gap-8">
+            <div class="xl:col-span-3">
+                <div>
+                    <swiper-container id="infoPhotos" init="false" class="rounded-xl overflow-hidden">
+                        <swiper-slide *ngFor="let item of tourView?.imagenes">
+                            <img [src]="item.url_imagen" [alt]="item.nombre_original" class="w-full h-[40vh] lg:h-[60vh] object-cover" />
+                        </swiper-slide>
+                    </swiper-container>
+                    <div class="mt-2 flex items-center justify-center">
+                        <button type="button" class="swiperinfoPhotos-button-prev text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300  rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 ">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                 <path fill-rule="evenodd"
                   d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
@@ -171,8 +170,7 @@
               <span class="sr-only">Icon description</span>
             </button>
 
-            <button type="button"
-              class="swiperinfoPhotos-button-next text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300  rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 ">
+                        <button type="button" class="swiperinfoPhotos-button-next text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300  rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 ">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                 <path fill-rule="evenodd"
                   d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
@@ -181,27 +179,27 @@
 
               <span class="sr-only">Icon description</span>
             </button>
-          </div>
-        </div>
-      </div>
+                    </div>
+                </div>
+            </div>
 
-      <div class="xl:col-span-1">
-        <div class="bg-white border border-primary rounded-xl shadow-lg p-6">
-          <h3 class="text-xl font-bold text-secondary mb-4">Detalles del Tour</h3>
-          <div class="space-y-4">
-            <div class="flex items-center space-x-3">
-              <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+            <div class="xl:col-span-1">
+                <div class="bg-white border border-primary rounded-xl shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-secondary mb-4">Detalles del Tour</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                   <path fill-rule="evenodd"
                     d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z"
                     clip-rule="evenodd" />
                 </svg>
-              </div>
-              <span class="text-gray-700">{{ tourView.duracion }}</span>
-            </div>
-            <div class="flex items-center space-x-3">
-              <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 16 16" fill="none">
+                            </div>
+                            <span class="text-gray-700">{{ tourView.duracion }}</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 16 16" fill="none">
                   <path
                     d="M8.00065 6.66658C9.47341 6.66658 10.6673 5.47268 10.6673 3.99992C10.6673 2.52716 9.47341 1.33325 8.00065 1.33325C6.52789 1.33325 5.33398 2.52716 5.33398 3.99992C5.33398 5.47268 6.52789 6.66658 8.00065 6.66658Z"
                     fill="currentColor" />
@@ -209,68 +207,67 @@
                     d="M13.3327 11.6665C13.3327 13.3232 13.3327 14.6665 7.99935 14.6665C2.66602 14.6665 2.66602 13.3232 2.66602 11.6665C2.66602 10.0098 5.05402 8.6665 7.99935 8.6665C10.9447 8.6665 13.3327 10.0098 13.3327 11.6665Z"
                     fill="currentColor" />
                 </svg>
-              </div>
-              <span class="text-gray-700">{{tourView.minPerson}} - {{tourView.maxPerson}} Personas</span>
-            </div>
-            <div class="text-2xl font-bold text-primary text-center my-6">
-              S/.{{ tourView.precio }} <span class="text-sm font-normal text-gray-600">por persona</span>
-            </div>
-            <div class="w-[90%] mx-auto">
+                            </div>
+                            <span class="text-gray-700">{{tourView.minPerson}} - {{tourView.maxPerson}} Personas</span>
+                        </div>
+                        <div class="text-2xl font-bold text-primary text-center my-6">
+                            S/.{{ tourView.precio }} <span class="text-sm font-normal text-gray-600">por persona</span>
+                        </div>
+                        <div class="w-[90%] mx-auto">
 
-              <!--   <button (click)="openGoogleCalendarModal()" class="w-full bg-secondary text-white py-1 rounded-lg hover:bg-secondary-dark transition duration-300 mb-4">
+                            <!--   <button (click)="openGoogleCalendarModal()" class="w-full bg-secondary text-white py-1 rounded-lg hover:bg-secondary-dark transition duration-300 mb-4">
                 Ver Disponibilidad
               </button> -->
-            </div>
-            <button (click)="openWhatsAppLink()"
-              class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                        </div>
+                        <button (click)="openWhatsAppLink()" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
               Reservar
             </button>
-          </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <hr class="h-px my-2 md:my-4 bg-white border-0" />
-  <!-- // --------------- DESCRIPTION   --------------- \\ -->
-  <div class="md:flex">
-    <div class="flex flex-col gap-8 md:gap-12 w-full">
-      <div class="flex flex-col gap-4 md:gap-8">
-        <h3 class="subtitle">Descripción</h3>
-        <h3 class="text-description text-justify md:pr-2">
-          {{ tourView.descripcion }}
-        </h3>
-      </div>
+    <hr class="h-px my-2 md:my-4 bg-white border-0" />
+    <!-- // --------------- DESCRIPTION   --------------- \\ -->
+    <div class="md:flex">
+        <div class="flex flex-col gap-8 md:gap-12 w-full">
+            <div class="flex flex-col gap-4 md:gap-8">
+                <h3 class="subtitle">Descripción</h3>
+                <h3 class="text-description text-justify md:pr-2">
+                    {{ tourView.descripcion }}
+                </h3>
+            </div>
 
-      <!-- // --------------- DESTINOS  --------------- \\ -->
+            <!-- // --------------- DESTINOS  --------------- \\ -->
 
-      <div class="flex flex-col gap-4 md:gap-8">
-        <h3 class="subtitle">Destinos</h3>
-        <div class="grid grid-cols-3 gap-4">
-          <div class="col-span-2 grid grid-cols-3 gap-4 md:px-2">
-            @for (item of tourView.destinos; track $index) {
-            <div class="col-span-3 md:col-span-3 flex items-center gap-2 self-stretch">
-              <div>
-                <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <div class="flex flex-col gap-4 md:gap-8">
+                <h3 class="subtitle">Destinos</h3>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="col-span-2 grid grid-cols-3 gap-4 md:px-2">
+                        @for (item of tourView.destinos; track $index) {
+                        <div class="col-span-3 md:col-span-3 flex items-center gap-2 self-stretch">
+                            <div>
+                                <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
                     <path fill-rule="evenodd"
                       d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
                       clip-rule="evenodd" />
                   </svg>
-                </div>
-              </div>
-              <div>
-                <h3 class="text-description font-bold md:pr-2 capitalize">
-                  {{ item.name }}
-                </h3>
-                <h3 class="text-description text-justify md:pr-2">
-                  {{item.desc}}
-                </h3>
-              </div>
-            </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-description font-bold md:pr-2 capitalize">
+                                    {{ item.name }}
+                                </h3>
+                                <h3 class="text-description text-justify md:pr-2">
+                                    {{item.desc}}
+                                </h3>
+                            </div>
+                        </div>
 
-            }
-          </div>
-          <!-- <div class="">
+                        }
+                    </div>
+                    <!-- <div class="">
             <swiper-container style="--swiper-navigation-color: #f33535;--swiper-pagination-color: #f33535;"
               centered-slides="true" class="mySwiper" thumbs-swiper=".mySwiper2" space-between="10" navigation="true"
               slides-per-view="2">
@@ -283,83 +280,81 @@
               }
             </swiper-container>
           </div> -->
-        </div>
-      </div>
+                </div>
+            </div>
 
-      <!-- // --------------- ITINERARIO  --------------- \\ -->
-      <div class="flex flex-col gap-4 md:gap-8">
-        <h3 class="subtitle">Itinerario</h3>
-        @for(itinerario of tourView.itinerary; track $index){
-        <div class="flex flex-col gap-4 px-2 text-description text-justify">
-          <strong class="pl-1">{{ itinerario.title }}:</strong>
-          <ul class="list-disc list-inside">
-            @for(actividad of itinerario.detail; track $index){
-            <li class="pl-2">{{ actividad.desc}}</li>
-            }
-          </ul>
-        </div>
+            <!-- // --------------- ITINERARIO  --------------- \\ -->
+            <div class="flex flex-col gap-4 md:gap-8">
+                <h3 class="subtitle">Itinerario</h3>
+                @for(itinerario of tourView.itinerary; track $index){
+                <div class="flex flex-col gap-4 px-2 text-description text-justify">
+                    <strong class="pl-1">{{ itinerario.title }}:</strong>
+                    <ul class="list-disc list-inside">
+                        @for(actividad of itinerario.detail; track $index){
+                        <li class="pl-2">{{ actividad.desc}}</li>
+                        }
+                    </ul>
+                </div>
 
-        }
-      </div>
+                }
+            </div>
 
-      <!-- (( ------------- QUE INCLUYE)) ---------------  -->
-      <div class="flex flex-col gap-4">
-        <h3 class="subtitle">Que Incluye</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8 px-2 text-description">
-          <ul>
-            @for(item of tourView.includes; track $index){
-            <li class="flex flex-row mt-4">
-              <div class="w-6 h-6 p-1.5 bg-green-600 text-white rounded-full justify-center items-center inline-flex">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                  stroke="currentColor" class="w-4 h-4">
+            <!-- (( ------------- QUE INCLUYE)) ---------------  -->
+            <div class="flex flex-col gap-4">
+                <h3 class="subtitle">Que Incluye</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8 px-2 text-description">
+                    <ul>
+                        @for(item of tourView.includes; track $index){
+                        <li class="flex flex-row mt-4">
+                            <div class="w-6 h-6 p-1.5 bg-green-600 text-white rounded-full justify-center items-center inline-flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
-              </div>
-              <span class="px-2 leading-4 text-justify">{{ item.desc }}</span>
-            </li>
-            }
-          </ul>
-          <ul>
-            @for(item of tourView.notIncludes; track $index){
-            <li class="flex flex-row mt-4">
-              <div class="w-6 h-6 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                  stroke="currentColor" class="w-4 h-4">
+                            </div>
+                            <span class="px-2 leading-4 text-justify">{{ item.desc }}</span>
+                        </li>
+                        }
+                    </ul>
+                    <ul>
+                        @for(item of tourView.notIncludes; track $index){
+                        <li class="flex flex-row mt-4">
+                            <div class="w-6 h-6 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                 </svg>
-              </div>
-              <span class="px-2 leading-4 text-justify">{{ item.desc }}</span>
-            </li>
-            }
-          </ul>
-        </div>
-      </div>
+                            </div>
+                            <span class="px-2 leading-4 text-justify">{{ item.desc }}</span>
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
 
-      <!-- ------------ RECOMENDACIONES ---------------  -->
-      <div class="flex flex-col gap-4 md:gap-8">
-        <h3 class="subtitle">Recomendaciones</h3>
-        <ul class="list-disc list-inside flex flex-col gap-4 px-2 text-description">
-          @for(item of tourView.recomendations; track $index){
-          <li class="pl-2">{{ item.desc }}</li>
-          }
-        </ul>
-      </div>
+            <!-- ------------ RECOMENDACIONES ---------------  -->
+            <div class="flex flex-col gap-4 md:gap-8">
+                <h3 class="subtitle">Recomendaciones</h3>
+                <ul class="list-disc list-inside flex flex-col gap-4 px-2 text-description">
+                    @for(item of tourView.recomendations; track $index){
+                    <li class="pl-2">{{ item.desc }}</li>
+                    }
+                </ul>
+            </div>
 
-      <!-- // --------------- INFORMACIÓN ADICIONAL  --------------- \\ -->
-      <div class="flex flex-col gap-4 md:gap-8">
-        <h3 class="subtitle">Información adicional</h3>
-        <ul class="space-y-1 text-terceary list-disc list-inside text-description px-2">
-          @for (item of tourView.infoAdicional; track $index) {
-          <li class=" text-justify md:pr-2 pb-1 ">
-            <b>{{item.name}}: </b> {{item.desc}}
-          </li>
-          }
-        </ul>
-      </div>
+            <!-- // --------------- INFORMACIÓN ADICIONAL  --------------- \\ -->
+            <div class="flex flex-col gap-4 md:gap-8">
+                <h3 class="subtitle">Información adicional</h3>
+                <ul class="space-y-1 text-terceary list-disc list-inside text-description px-2">
+                    @for (item of tourView.infoAdicional; track $index) {
+                    <li class=" text-justify md:pr-2 pb-1 ">
+                        <b>{{item.name}}: </b> {{item.desc}}
+                    </li>
+                    }
+                </ul>
+            </div>
 
 
-      <!-- // --------------- MAS NEGOCIOS RELACIONADOS  --------------- \\ -->
-      @if (tourView.moreBussines.length > 0) {
+            <!-- // --------------- MAS NEGOCIOS RELACIONADOS  --------------- \\ -->
+            <!-- @if (tourView.moreBussines.length > 0) {
       <div class="flex flex-col gap-4 md:gap-8">
         <h3 class="subtitle">Relacionados</h3>
 
@@ -431,15 +426,15 @@
         </div>
 
       </div>
-      }
+      } -->
+        </div>
+
+
     </div>
 
 
-  </div>
 
-
-
-  <hr class="h-px my-2 md:my-4 bg-white border-0" />
+    <hr class="h-px my-2 md:my-4 bg-white border-0" />
 </div>
 <br />
 

@@ -127,5 +127,20 @@ export class HotelViewComponent {
     )
 
   }
+
+  // En el archivo .ts de tu componente
+  getPrincipalImage(imagenes: any[] | undefined): string {
+    if (!imagenes || imagenes.length === 0) {
+      return './assets/notFound.png';
+    }
+    // Buscamos la principal
+    const principal = imagenes.find(img => img.es_principal);
+    // Si existe principal, retornamos su URL, sino la de la primera imagen
+    return principal ? principal.url_imagen : imagenes[0].url_imagen;
+  }
+
+  handleImageError(event: any) {
+    event.target.src = './assets/notFound.png';
+  }
 }
 

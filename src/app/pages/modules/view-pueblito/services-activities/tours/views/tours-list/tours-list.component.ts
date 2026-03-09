@@ -39,11 +39,10 @@ export class ToursListComponent {
   }
   load_tours(item: FiltroTours) {
     this.loading.show();
-    console.log('item tour', item);
     this.toursService.filter_tours(item).subscribe(
       (data: any) => {
         this.list_resultadoBusqueda = [];
-        this.list_resultadoBusqueda = data;
+        this.list_resultadoBusqueda = data.result;
         console.log('tours:', data);
         this.loading.hide();
       },
@@ -62,11 +61,19 @@ export class ToursListComponent {
     this.router.navigate([
       'home',
       'Ancash',
-      'Chacas',
-     
+      'chacas',
+
       'tours-experiencias',
       item.agencia.name_route,
       item.name_route,
     ]);
+  }
+
+  getPrincipalImage(imagenes: any[]): string {
+    if (!imagenes || imagenes.length === 0) {
+      return './assets/notFound.png';
+    }
+    const principal = imagenes.find(img => img.es_principal);
+    return principal ? principal.url_imagen : imagenes[0].url_imagen;
   }
 }

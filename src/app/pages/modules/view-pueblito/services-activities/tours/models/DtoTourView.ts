@@ -1,3 +1,4 @@
+import { GaleriaNegocioMast } from "../../../../../../shared/global-components/dto/GaleriaNegocioMastDto";
 import { DtoAgenciaView } from "./DtoAgenciaView";
 
 export class DtoTourView {
@@ -24,4 +25,6 @@ export class DtoTourView {
 
     // More NEgocios
     moreBussines : any [] = []
+
+    imagenes : GaleriaNegocioMast[] = []
 }

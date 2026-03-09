@@ -1,93 +1,79 @@
 <div class="content my-8">
-  <hr class="h-px my-2 md:my-4 bg-white border-0" />
+    <hr class="h-px my-2 md:my-4 bg-white border-0" />
 
-  <!-- ------------- TITLESS HOTEL ---------------  -->
-
-
-  <hr class="h-px my-2 md:my-4 bg-white border-0" />
-  <!-- // --------------- GALLERY  --------------- \\ -->
+    <!-- ------------- TITLESS HOTEL ---------------  -->
 
 
+    <hr class="h-px my-2 md:my-4 bg-white border-0" />
+    <!-- // --------------- GALLERY  --------------- \\ -->
 
-  <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-8">
-    <div class="flex flex-col gap-4 mb-8">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <h1 class="title">
-          {{ dtoHotelInfo.nombre }}
-        </h1>
-        <div class="flex items-center space-x-4">
 
-        </div>
-      </div>
-      <div class="flex items-center text-gray-600">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col gap-4 mb-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <h1 class="title">
+                    {{ dtoHotelInfo.nombre }}
+                </h1>
+                <div class="flex items-center space-x-4">
+
+                </div>
+            </div>
+            <div class="flex items-center text-gray-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd"
             d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
             clip-rule="evenodd" />
         </svg>
-        <p class="text-description">
-          {{ dtoHotelInfo.direccion }}
-        </p>
-      </div>
-    </div>
-
-    <hr class="h-px bg-gray-200 my-8" />
-
-    <!-- <div class="relative">
-      <swiper-container id="infoPhotos" init="false" class="rounded-xl overflow-hidden">
-        <swiper-slide *ngFor="let item of dtoHotelInfo?.fotos">
-          <div class="aspect-w-16 aspect-h-9">
-            <img [src]="item.url" [alt]="dtoHotelInfo.nombre" class="w-full h-[50vh] lg:h-[70vh] object-cover" />
-          </div>
-        </swiper-slide>
-      </swiper-container>
-
-    </div>
-
-    
-    <div class="mt-4">
-      <div class="flex flex-wrap gap-2">
-        <span class="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm font-semibold">
-          #{{dtoHotelInfo.tipo}}
-        </span>
-        <span class="bg-secondary bg-opacity-10 text-secondary px-3 py-1 rounded-full text-sm font-semibold">
-          #{{dtoHotelInfo.lugar}}
-        </span>
-
-      </div>
-    </div> -->
-    <div class="grid grid-cols-4 gap-3">
-      <div class="col-span-4 xl:col-span-3 ">
-        <swiper-container id="infoPhotos" init="false">
-          <swiper-slide *ngFor="let item of dtoHotelInfo?.fotos">
-            <div class="border-1 surface-border border-round text-center md:mx-5 rounded-lg">
-              <div class="global-center">
-                <div class="buscadosCard w-full h-56 md:h-96 rounded-xl bg-cover bg-center flex justify-start items-end"
-                  style="
-              background-image: url({{item.url}})">
-                  <div class="w-full h-48 md:h-96 p-5  rounded-3xl flex justify-start items-end text-fondo">
-                    {{ item.nombre }}
-                  </div>
-                </div>
-              </div>
+                <p class="text-description">
+                    {{ dtoHotelInfo.direccion }}
+                </p>
             </div>
-          </swiper-slide>
-        </swiper-container>
+        </div>
 
-        <div class="mt-4">
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm font-semibold">
+        <hr class="h-px bg-gray-200 my-8" />
+
+
+        <div class="grid grid-cols-4 gap-3">
+            <div class="col-span-4 xl:col-span-3 ">
+                @if (dtoHotelInfo?.imagenes && dtoHotelInfo.imagenes.length > 0) {
+                <swiper-container id="infoPhotos" init="false">
+                    <swiper-slide *ngFor="let item of dtoHotelInfo.imagenes">
+                        <div class="border-1 surface-border border-round text-center md:mx-5 rounded-lg">
+                            <div class="global-center">
+                                <div class="buscadosCard w-full h-56 md:h-96 rounded-xl bg-cover bg-center flex justify-start items-end" [style.background-image]="'url(' + item.url_imagen + ')'">
+                                    <div class="w-full h-48 md:h-96 p-5 rounded-3xl flex justify-start items-end text-fondo">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </swiper-slide>
+                </swiper-container>
+                } @else {
+                <div class="border-1 surface-border border-round text-center md:mx-5 rounded-lg">
+                    <div class="global-center">
+                        <div class="buscadosCard w-full h-56 md:h-96 rounded-xl bg-cover bg-center" style="background-image: url('./assets/notFound.png')">
+                            <div class="w-full h-full flex justify-center items-center bg-black/20 rounded-xl">
+                                <span class="text-white font-semibold">Sin fotos disponibles</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+
+                <div class="mt-4">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm font-semibold">
               #{{dtoHotelInfo.tipo}}
             </span>
-            <span class="bg-secondary bg-opacity-10 text-secondary px-3 py-1 rounded-full text-sm font-semibold">
+                        <span class="bg-secondary bg-opacity-10 text-secondary px-3 py-1 rounded-full text-sm font-semibold">
               #{{dtoHotelInfo.lugar}}
             </span>
 
-          </div>
-        </div>
-        <div class="mt-2 flex items-center justify-center">
-          <button type="button"
-            class="swiperinfoPhotos-button-prev text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300  rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 ">
+                    </div>
+                </div>
+                <div class="mt-2 flex items-center justify-center">
+                    <button type="button" class="swiperinfoPhotos-button-prev text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300  rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 ">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
               <path fill-rule="evenodd"
                 d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
@@ -98,8 +84,7 @@
             <span class="sr-only">Icon description</span>
           </button>
 
-          <button type="button"
-            class="swiperinfoPhotos-button-next text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300  rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 ">
+                    <button type="button" class="swiperinfoPhotos-button-next text-primary font-bold bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300  rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 ">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
               <path fill-rule="evenodd"
                 d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
@@ -108,18 +93,16 @@
 
             <span class="sr-only">Icon description</span>
           </button>
-        </div>
+                </div>
 
-      </div>
-      <div class="col-span-4 xl:col-span-1 ">
-        <div class="w-full static-reserve">
-          <div class="bg-white border p-2 border-primary rounded-xl shadow-lg">
-            <!-- <div class="hidden md:flex col-span-2 pb-2">
-              <h1 class="text-secondary font-bold">Detalles </h1>
-            </div> -->
-            <div class="grid grid-cols-2 gap-2">
-              <div class="col-span-1 lg:col-span-2 flex items-center gap-2 text-center">
-                <!-- <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
+            </div>
+            <div class="col-span-4 xl:col-span-1 ">
+                <div class="w-full static-reserve">
+                    <div class="bg-white border p-2 border-primary rounded-xl shadow-lg">
+
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="col-span-1 lg:col-span-2 flex items-center gap-2 text-center">
+                                <!-- <div class="w-7 h-7 p-1.5 bg-primary text-white rounded-full justify-center items-center inline-flex">
                   <a target="_blank">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
                       <path fill-rule="evenodd"
@@ -129,49 +112,46 @@
 
                   </a>
                 </div> -->
-                <div>
-                  ¿Deseas más información? Estamos aquí para ayudarte.
-                </div>
-              </div>
+                                <div>
+                                    ¿Deseas más información? Estamos aquí para ayudarte.
+                                </div>
+                            </div>
 
 
 
-              <div class="col-span-1 lg:col-span-2 flex items-center justify-center">
-                <a (click)="contactarNegocio()"
-                  class="text-white bg-[#1AC816] hover:bg-[#1AC816]/90 focus:ring-4 focus:outline-none focus:ring-[#1AC816]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1AC816]/55">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 me-2" viewBox="0 0 24 24" fill="none"
-                    stroke-width="1.5">
+                            <div class="col-span-1 lg:col-span-2 flex items-center justify-center">
+                                <a (click)="contactarNegocio()" class="text-white bg-[#1AC816] hover:bg-[#1AC816]/90 focus:ring-4 focus:outline-none focus:ring-[#1AC816]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1AC816]/55">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 me-2" viewBox="0 0 24 24" fill="none" stroke-width="1.5">
                     <path
                       d="M19.05 4.91006C18.1332 3.98399 17.0412 3.24973 15.8377 2.75011C14.6341 2.25049 13.3432 1.99552 12.04 2.00006C6.58005 2.00006 2.13005 6.45006 2.13005 11.9101C2.13005 13.6601 2.59005 15.3601 3.45005 16.8601L2.05005 22.0001L7.30005 20.6201C8.75005 21.4101 10.38 21.8301 12.04 21.8301C17.5 21.8301 21.9501 17.3801 21.9501 11.9201C21.9501 9.27006 20.92 6.78006 19.05 4.91006ZM12.04 20.1501C10.56 20.1501 9.11005 19.7501 7.84005 19.0001L7.54005 18.8201L4.42005 19.6401L5.25005 16.6001L5.05005 16.2901C4.2278 14.977 3.79119 13.4593 3.79005 11.9101C3.79005 7.37006 7.49005 3.67006 12.03 3.67006C14.23 3.67006 16.3 4.53006 17.85 6.09006C18.6175 6.85402 19.2257 7.76272 19.6394 8.76348C20.0531 9.76425 20.2641 10.8372 20.26 11.9201C20.2801 16.4601 16.58 20.1501 12.04 20.1501ZM16.56 13.9901C16.31 13.8701 15.09 13.2701 14.87 13.1801C14.64 13.1001 14.48 13.0601 14.31 13.3001C14.14 13.5501 13.67 14.1101 13.53 14.2701C13.39 14.4401 13.24 14.4601 12.99 14.3301C12.74 14.2101 11.94 13.9401 11 13.1001C10.26 12.4401 9.77005 11.6301 9.62005 11.3801C9.48005 11.1301 9.60005 11.0001 9.73005 10.8701C9.84005 10.7601 9.98005 10.5801 10.1 10.4401C10.22 10.3001 10.27 10.1901 10.35 10.0301C10.43 9.86006 10.39 9.72006 10.33 9.60006C10.27 9.48006 9.77005 8.26006 9.57005 7.76006C9.37005 7.28006 9.16005 7.34006 9.01005 7.33006H8.53005C8.36005 7.33006 8.10005 7.39006 7.87005 7.64006C7.65005 7.89006 7.01005 8.49006 7.01005 9.71006C7.01005 10.9301 7.90005 12.1101 8.02005 12.2701C8.14005 12.4401 9.77005 14.9401 12.25 16.0101C12.84 16.2701 13.3 16.4201 13.66 16.5301C14.25 16.7201 14.79 16.6901 15.22 16.6301C15.7 16.5601 16.69 16.0301 16.89 15.4501C17.1 14.8701 17.1 14.3801 17.03 14.2701C16.96 14.1601 16.81 14.1101 16.56 13.9901Z"
                       fill="white" />
-                  </svg>
-                  Contactar
-                </a>
-              </div>
+                  </svg> Contactar
+                                </a>
+                            </div>
 
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  <hr class="h-px bg-terceary my-8 bg-opacity-30 border-0" />
-  <!-- // --------------- REDES AND CONTACT  --------------- \\ -->
+    <hr class="h-px bg-terceary my-8 bg-opacity-30 border-0" />
+    <!-- // --------------- REDES AND CONTACT  --------------- \\ -->
 
 
 
 
-  <div class="flex flex-col gap-8 md:gap-12">
-    <!-- // --------------- DESCRIPTION HOTEL  --------------- \\ -->
-    <div class="flex flex-col gap-4 md:gap-8">
-      <h3 class="subtitle">Descripción</h3>
-      <h3 class="text-description text-justify">
-        {{ dtoHotelInfo.descripcion }}
-      </h3>
-    </div>
+    <div class="flex flex-col gap-8 md:gap-12">
+        <!-- // --------------- DESCRIPTION HOTEL  --------------- \\ -->
+        <div class="flex flex-col gap-4 md:gap-8">
+            <h3 class="subtitle">Descripción</h3>
+            <h3 class="text-description text-justify">
+                {{ dtoHotelInfo.descripcion }}
+            </h3>
+        </div>
 
-    <!-- // --------------- CONTACTOS  --------------- \\ -->
-    <!-- <div class="flex flex-col gap-4 md:gap-8">
+        <!-- // --------------- CONTACTOS  --------------- \\ -->
+        <!-- <div class="flex flex-col gap-4 md:gap-8">
       <h3 class="subtitle">Contactos</h3>
       <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:px-2">
         @for (item of dtoHotelInfo.redes_sociales; track $index) {
@@ -217,34 +197,33 @@
     </div> -->
 
 
-    <!-- // --------------- SERVICES  --------------- \\ -->
-    <div class="flex flex-col gap-4 md:gap-8">
-      <h3 class="subtitle">Te ofrecemos</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 md:px-2">
-        @for (item of dtoHotelInfo.servicios; track $index) {
-        <div class="col-span-1 flex items-center gap-2 self-stretch">
+        <!-- // --------------- SERVICES  --------------- \\ -->
+        <div class="flex flex-col gap-4 md:gap-8">
+            <h3 class="subtitle">Te ofrecemos</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 md:px-2">
+                @for (item of dtoHotelInfo.servicios; track $index) {
+                <div class="col-span-1 flex items-center gap-2 self-stretch">
 
 
-          <div class="text-white bg-green-500 rounded-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="w-6 h-6">
+                    <div class="text-white bg-green-500 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
-          </div>
-          <div>
-            <h3 class="text-description font-bold md:pr-">
-              {{ item.descripcion }}
-            </h3>
-          </div>
+                    </div>
+                    <div>
+                        <h3 class="text-description font-bold md:pr-">
+                            {{ item.descripcion }}
+                        </h3>
+                    </div>
+                </div>
+
+                }
+            </div>
         </div>
 
-        }
-      </div>
-    </div>
-
-    <!-- // --------------- INFORMACIÓN ADICIONAL  --------------- \\ -->
-    <!-- <div class="flex flex-col gap-4 md:gap-8">
+        <!-- // --------------- INFORMACIÓN ADICIONAL  --------------- \\ -->
+        <!-- <div class="flex flex-col gap-4 md:gap-8">
       <h3 class="subtitle">Información adicional</h3>
       <ul class="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
         @for (item of dtoHotelInfo.info_adicional; track $index) {
@@ -255,57 +234,53 @@
         }
       </ul>
     </div> -->
-    <!-- // --------------- HABITACIONES  --------------- \\ -->
-    <div class="flex flex-col gap-4 md:gap-8">
-      <h3 class="subtitle">Habitaciones</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 font-Battambang">
+        <!-- // --------------- HABITACIONES  --------------- \\ -->
+        <div class="flex flex-col gap-4 md:gap-8">
+            <h3 class="subtitle">Habitaciones</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 font-Battambang">
 
-        @for (item of dtoHotelInfo.habitaciones; track $index) {
+                @for (item of dtoHotelInfo.habitaciones; track $index) { @if (item.status == 'AC') {
+                <div (click)="gotoHabitacion(item.name_route, item.name_route)" class="bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
+                    <a>
+                        <img class="rounded-t-lg h-56 w-full object-cover" [src]="getPrincipalImage(item.imagenes)" (error)="handleImageError($event)" [alt]="item.nombre" />
+                    </a>
 
-        <div *ngIf="item.status == 'AC'" (click)="gotoHabitacion(item.name_route, item.name_route)"
-          class="bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer">
-          <a>
-            <img class="rounded-t-lg h-56 w-full"
-              src="{{ item.fotos && item.fotos.length >0 ?item.fotos[0].url : './assets/notFound.png'  }}"
-              (error)="'./assets/notFound.png'" alt="" />
-          </a>
-          <div class="p-4 flex flex-col items-start gap-2">
-            <h5 class="text-xl font-bold font-Battambang leading-normal text-secondary">
-              {{ item.nombre }}
-            </h5>
-            <div class="text-base font-bold font-Battambang leading-none text-terceary">
-              {{ item.hotelNombre }}
+                    <div class="p-4 flex flex-col items-start gap-2">
+                        <h5 class="text-xl font-bold font-Battambang leading-normal text-secondary">
+                            {{ item.nombre }}
+                        </h5>
+                        <div class="text-base font-bold font-Battambang leading-none text-terceary">
+                            {{ item.hotelNombre }}
+                        </div>
+
+                        <div class="flex justify-start items-start gap-6">
+                            <div class="flex text-base justify-start items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M2 19v-6q0-.675.275-1.225T3 10.8V8q0-1.25.875-2.125T6 5h4q.575 0 1.075.213T12 5.8q.425-.375.925-.587T14 5h4q1.25 0 2.125.875T21 8v2.8q.45.425.725.975T22 13v6h-2v-2H4v2zm11-9h6V8q0-.425-.288-.712T18 7h-4q-.425 0-.712.288T13 8zm-8 0h6V8q0-.425-.288-.712T10 7H6q-.425 0-.712.288T5 8z" />
+                            </svg>
+                                <span>{{ item.camas }}</span>
+                            </div>
+                            <div class="flex text-base justify-start items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24">
+                                <circle cx="12" cy="6" r="4" fill="currentColor" />
+                                <path fill="currentColor" d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5" />
+                            </svg>
+                                <span>{{ item.personas }}</span>
+                            </div>
+                        </div>
+
+                        <p class="font-base font-bold text-primary">
+                            S/. {{ item.precio }} / noche
+                        </p>
+                    </div>
+                </div>
+                } } @empty {
+                <div class="col-span-4 global-center">
+                    <span class="text-center text-xs">Habitaciones no agregadas</span>
+                </div>
+                }
             </div>
-            <div class="flex justify-start items-start gap-6">
-              <div class="flex text-base justify-start items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24">
-                  <path fill="currentColor"
-                    d="M2 19v-6q0-.675.275-1.225T3 10.8V8q0-1.25.875-2.125T6 5h4q.575 0 1.075.213T12 5.8q.425-.375.925-.587T14 5h4q1.25 0 2.125.875T21 8v2.8q.45.425.725.975T22 13v6h-2v-2H4v2zm11-9h6V8q0-.425-.288-.712T18 7h-4q-.425 0-.712.288T13 8zm-8 0h6V8q0-.425-.288-.712T10 7H6q-.425 0-.712.288T5 8z" />
-                </svg>
-                <span>{{ item.camas }}</span>
-              </div>
-              <div class="flex text-base justify-start items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24">
-                  <circle cx="12" cy="6" r="4" fill="currentColor" />
-                  <path fill="currentColor"
-                    d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5" />
-                </svg>
-                <span>{{ item.personas }}</span>
-              </div>
-            </div>
-            <p class="font-base font-bold text-primary">
-              S/. {{ item.precio }} / noche
-            </p>
-          </div>
-        </div>
 
-        } @empty {
-        <div class="col-span-4 global-center">
-          <span class="text-center text-xs">Habitaciones no agregadas</span>
         </div>
-        }
-      </div>
-
     </div>
-  </div>
 </div>

@@ -10,6 +10,7 @@ import { ServicesActivitiesServices } from '../../services-activities.service';
 import { HotelesService } from '../../../../../../services/hoteles.service';
 import { FiltroHospedaje } from '../models/FiltroHospedajes';
 import { LoadingService } from '../../../../../../shared/global-components/loadings/loading-service.service';
+import { DtoHoteles } from '../entities/DtoHoteles';
 
 @Component({
   selector: 'app-hospedajes-list',
@@ -20,7 +21,7 @@ import { LoadingService } from '../../../../../../shared/global-components/loadi
 })
 export class HospedajesListComponent {
   filtroBusqueda: FiltroHospedaje = new FiltroHospedaje();
-  list_resultadoBusqueda: any[] = [];
+  list_resultadoBusqueda: DtoHoteles[] = [];
   constructor(
     private titleService: TitleService,
     private hotelesService: HotelesService,
@@ -51,13 +52,23 @@ export class HospedajesListComponent {
     this.titleService.setTitle(value);
   }
   goToHospedaje(item: any) {
+    console.log("item", item);
+
     this.router.navigate([
       'home',
       'Ancash',
-      'Chacas',
+      'chacas',
       'hospedajes',
       item.name_route,
-      
+
     ]);
+  }
+
+  getPrincipalImage(imagenes: any[]): string {
+    if (!imagenes || imagenes.length === 0) {
+      return './assets/notFound.png';
+    }
+    const principal = imagenes.find(img => img.es_principal);
+    return principal ? principal.url_imagen : imagenes[0].url_imagen;
   }
 }

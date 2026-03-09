@@ -1,3 +1,5 @@
+import { GaleriaNegocioMast } from "../../../../../../shared/global-components/dto/GaleriaNegocioMastDto";
+
 export class DtoHoteles {
   id: string;
   nombre: string;
@@ -17,7 +19,7 @@ export class DtoHoteles {
   status: string;
   celular: string;
   info_adicional: any
-  fotos: any
+  imagenes: GaleriaNegocioMast[] = []
 }
 
 
@@ -47,6 +49,7 @@ export class DtoHabitacionesInfo {
   hotelNombre: string;
   estrellas: number;
   name_route: string;
+  imagenes: GaleriaNegocioMast[] = []
 }
 
 
