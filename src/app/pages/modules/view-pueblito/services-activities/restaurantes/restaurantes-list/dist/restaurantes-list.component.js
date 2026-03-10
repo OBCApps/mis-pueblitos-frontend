@@ -36,7 +36,7 @@ var RestaurantesListComponent = /** @class */ (function () {
         var _this = this;
         this.loading.show();
         this.restauranteService.get_restaurantes_byFiltro(item).subscribe(function (data) {
-            _this.list_resultadoBusqueda = data;
+            _this.list_resultadoBusqueda = data.paginationresult.result;
             console.log('restaurantes:', data);
             _this.loading.hide();
         }, function (err) {
@@ -51,10 +51,17 @@ var RestaurantesListComponent = /** @class */ (function () {
         this.router.navigate([
             'home',
             'Ancash',
-            'Chacas',
+            'chacas',
             'restaurantes',
             item.name_route,
         ]);
+    };
+    RestaurantesListComponent.prototype.getPrincipalImage = function (imagenes) {
+        if (!imagenes || imagenes.length === 0) {
+            return './assets/notFound.png';
+        }
+        var principal = imagenes.find(function (img) { return img.es_principal; });
+        return principal ? principal.url_imagen : imagenes[0].url_imagen;
     };
     RestaurantesListComponent = __decorate([
         core_1.Component({

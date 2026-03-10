@@ -117,4 +117,11 @@ export class RestaurantViewComponent extends BaseComponenst {
 
     window.location.href = url;
   }
+  getPrincipalImage(imagenes: any[]): string {
+    if (!imagenes || imagenes.length === 0) {
+      return './assets/notFound.png';
+    }
+    const principal = imagenes.find(img => img.es_principal);
+    return principal ? principal.url_imagen : imagenes[0].url_imagen;
+  }
 }

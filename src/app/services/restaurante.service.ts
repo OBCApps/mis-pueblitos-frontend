@@ -22,7 +22,7 @@ export class ResturanteService {
   }
 
   get_restaurantes_byFiltro(filtro : FiltroRestaurantes): Observable<DtoRestaurante[]> {
-    return this.http.post<DtoRestaurante[]>(`${this.SERVER_REST}/filter`, filtro).pipe(
+    return this.http.post<DtoRestaurante[]>(`${this.SERVER_REST}/filter_pagination`, filtro).pipe(
       map((response) => { return response })
     );
   }
@@ -34,7 +34,7 @@ export class ResturanteService {
   }
 
   get_restaurante_by_name_route(name_route: any): Observable<DtoRestaurante> {
-    return this.http.get<DtoRestaurante>(this.SERVER_REST + '/name_route/' + name_route).pipe(
+    return this.http.get<DtoRestaurante>(this.SERVER_REST + '/findDto_byNameRoute/' + name_route).pipe(
       map((response) => { return response })
     );
   }

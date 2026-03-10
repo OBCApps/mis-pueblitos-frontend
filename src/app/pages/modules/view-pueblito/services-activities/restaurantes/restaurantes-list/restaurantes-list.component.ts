@@ -43,7 +43,7 @@ export class RestaurantesListComponent {
     this.loading.show();
     this.restauranteService.get_restaurantes_byFiltro(item).subscribe(
       (data: any) => {
-        this.list_resultadoBusqueda = data;
+        this.list_resultadoBusqueda = data.paginationresult.result;
         console.log('restaurantes:', data);
         this.loading.hide();
       },
@@ -61,10 +61,18 @@ export class RestaurantesListComponent {
     this.router.navigate([
       'home',
       'Ancash',
-      'Chacas',
-     
+      'chacas',
+
       'restaurantes',
       item.name_route,
     ]);
+  }
+
+  getPrincipalImage(imagenes: any[]): string {
+    if (!imagenes || imagenes.length === 0) {
+      return './assets/notFound.png';
+    }
+    const principal = imagenes.find(img => img.es_principal);
+    return principal ? principal.url_imagen : imagenes[0].url_imagen;
   }
 }

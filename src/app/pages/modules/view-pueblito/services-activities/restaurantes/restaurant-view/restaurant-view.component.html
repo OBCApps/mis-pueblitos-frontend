@@ -1,106 +1,102 @@
 <div class="content font-Battambang">
-  <hr class="h-px my-2 md:my-4 bg-white border-0" />
+    <hr class="h-px my-2 md:my-4 bg-white border-0" />
 
-  <!-- ------------- TITLESS HOTEL ---------------  -->
-  <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-8">
-    <div class="flex flex-col gap-4 mb-8">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <h1 class="title">
-          {{ restaurante.nombre }}
-        </h1>
-        <div class="flex items-center space-x-4">
-          
-        </div>
-      </div>
-      <div class="flex items-center text-gray-600">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+    <!-- ------------- TITLESS HOTEL ---------------  -->
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col gap-4 mb-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <h1 class="title">
+                    {{ restaurante.nombre }}
+                </h1>
+                <div class="flex items-center space-x-4">
+
+                </div>
+            </div>
+            <div class="flex items-center text-gray-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd"
             d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
             clip-rule="evenodd" />
         </svg>
-        <p class="text-description">
-          {{ restaurante.direccion }}
-        </p>
-      </div>
+                <p class="text-description">
+                    {{ restaurante.direccion }}
+                </p>
+            </div>
+        </div>
+
+        <hr class="h-px bg-gray-200 my-8" />
+
+        <div class="relative">
+            <swiper-container id="infoPhotos" init="false" class="rounded-xl overflow-hidden">
+                <swiper-slide *ngFor="let item of restaurante?.imagenes">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <img [src]="item.url_imagen" [alt]="restaurante.nombre" class="w-full h-[50vh] lg:h-[70vh] object-cover" />
+                    </div>
+                </swiper-slide>
+            </swiper-container>
+
+        </div>
+
+        <div class="mt-4">
+            <div class="flex flex-wrap gap-2">
+                <span class="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm font-semibold">#{{restaurante.tags}}</span>
+                <span class="bg-secondary bg-opacity-10 text-secondary px-3 py-1 rounded-full text-sm font-semibold">#{{restaurante.tipo}}</span>
+                <span class="bg-terceary bg-opacity-10 text-terceary px-3 py-1 rounded-full text-sm font-semibold">#{{restaurante.ambiente}}</span>
+            </div>
+        </div>
+
     </div>
+    <!-- // --------------- REDES AND CONTACT  --------------- \\ -->
 
-    <hr class="h-px bg-gray-200 my-8" />
+    <hr class="h-px bg-terceary mt-8 bg-opacity-30 border-0" />
 
-    <div class="relative">
-      <swiper-container id="infoPhotos" init="false" class="rounded-xl overflow-hidden">
-        <swiper-slide *ngFor="let item of restaurante?.fotos?.gallery">
-          <div class="aspect-w-16 aspect-h-9">
-            <img [src]="item" [alt]="restaurante.nombre" class="w-full h-[50vh] lg:h-[70vh] object-cover" />
-          </div>
-        </swiper-slide>
-      </swiper-container>
-      
-    </div>
+    <div class="w-full my-8 flex flex-col gap-8 md:gap-12 ">
+        <!-- // --------------- DESCRIPTION HOTEL  --------------- \\ -->
+        <div class="flex flex-col gap-4 md:gap-8">
+            <h3 class="subtitle">Descripción</h3>
+            <h3 class="text-description text-justify md:pr-2">
+                {{ restaurante.descripcion }}
+            </h3>
+        </div>
 
-    <div class="mt-4">
-      <div class="flex flex-wrap gap-2">
-        <span
-          class="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm font-semibold">#{{restaurante.tags}}</span>
-        <span
-          class="bg-secondary bg-opacity-10 text-secondary px-3 py-1 rounded-full text-sm font-semibold">#{{restaurante.tipo}}</span>
-        <span
-          class="bg-terceary bg-opacity-10 text-terceary px-3 py-1 rounded-full text-sm font-semibold">#{{restaurante.ambiente}}</span>
-      </div>
-    </div>
-
-  </div>
-  <!-- // --------------- REDES AND CONTACT  --------------- \\ -->
-
-  <hr class="h-px bg-terceary mt-8 bg-opacity-30 border-0" />
-
-  <div class="w-full my-8 flex flex-col gap-8 md:gap-12 ">
-    <!-- // --------------- DESCRIPTION HOTEL  --------------- \\ -->
-    <div class="flex flex-col gap-4 md:gap-8">
-      <h3 class="subtitle">Descripción</h3>
-      <h3 class="text-description text-justify md:pr-2">
-        {{ restaurante.descripcion }}
-      </h3>
-    </div>
-
-    <!-- // --------------- CONTACTOS  --------------- \\ -->
-    <div class="flex flex-col gap-4 md:gap-8">
-      <h3 class="subtitle">Contactos</h3>
-      <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:px-2">
-        @for (item of restaurante.contactos; track $index) {
-        <div class="col-span-1 flex items-center gap-2 self-stretch">
-          <div class="text-white bg-[#00D757] rounded-full ">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="w-8 h-8 p-1">
+        <!-- // --------------- CONTACTOS  --------------- \\ -->
+        <div class="flex flex-col gap-4 md:gap-8">
+            <h3 class="subtitle">Contactos</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:px-2">
+                @for (item of restaurante.contactos; track $index) {
+                <div class="col-span-1 flex items-center gap-2 self-stretch">
+                    <div class="text-white bg-[#00D757] rounded-full ">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 p-1">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
             </svg>
-          </div>
-          <div>
-            <h3 class="text-description font-bold md:pr-2 capitalize">
-              {{item.nombre }}
-            </h3>
-            <h3 class="text-description  md:pr-2 capitalize">
-              {{item.valor }}
-            </h3>
-          </div>
+                    </div>
+                    <div>
+                        <h3 class="text-description font-bold md:pr-2 capitalize">
+                            {{item.nombre }}
+                        </h3>
+                        <h3 class="text-description  md:pr-2 capitalize">
+                            {{item.valor }}
+                        </h3>
+                    </div>
+                </div>
+                }
+
+
+
+            </div>
         </div>
-        }
+        <!------------HORARIO---------------->
+
+        <div class="flex flex-col gap-4 md:gap-8">
+            <h3 class="subtitle"> Horario</h3>
+            <div class="grid grid-cols-1 gap-4 md:gap-8 md:grid-cols-3">
+                @for (item of get_Keys(restaurante.horaAtencion); track $index) {
 
 
-
-      </div>
-    </div>
-    <!------------HORARIO---------------->
-
-    <div class="flex flex-col gap-4 md:gap-8">
-      <h3 class="subtitle"> Horario</h3>
-      <div class="grid grid-cols-1 gap-4 md:gap-8 md:grid-cols-3">
-        @for (item of get_Keys(restaurante.horaAtencion); track $index) {
-
-
-        <div class="flex gap-4">
-          <div class="rounded-full p-2 h-fit w-fit bg-primary items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <div class="flex gap-4">
+                    <div class="rounded-full p-2 h-fit w-fit bg-primary items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
               <g clip-path="url(#clip0_1364_1031)">
                 <path
                   d="M12 2.00024C17.523 2.00024 22 6.47724 22 12.0002C22 17.5232 17.523 22.0002 12 22.0002C6.477 22.0002 2 17.5232 2 12.0002C2 6.47724 6.477 2.00024 12 2.00024ZM12 6.00024C11.7348 6.00024 11.4804 6.1056 11.2929 6.29314C11.1054 6.48067 11 6.73503 11 7.00024V12.0002C11.0001 12.2654 11.1055 12.5198 11.293 12.7072L14.293 15.7072C14.4816 15.8894 14.7342 15.9902 14.9964 15.9879C15.2586 15.9856 15.5094 15.8805 15.6948 15.6951C15.8802 15.5097 15.9854 15.2588 15.9877 14.9966C15.99 14.7344 15.8892 14.4818 15.707 14.2932L13 11.5862V7.00024C13 6.73503 12.8946 6.48067 12.7071 6.29314C12.5196 6.1056 12.2652 6.00024 12 6.00024Z"
@@ -112,77 +108,72 @@
                 </clipPath>
               </defs>
             </svg>
-          </div>
-          <div class="flex flex-col">
-            <span class="font-bold">{{item}}</span>
-            <span>{{restaurante.horaAtencion[item]}}</span>
-          </div>
-        </div>
-        }
-      </div>
-    </div>
-
-    <!-- // --------------- MENU  --------------- \\ -->
-    <div class="flex flex-col gap-4 md:gap-8 py-8">
-      <h2 class="subtitle">Menú</h2>
-    
-      <div class="relative px-2 md:px-10">
-        <swiper-container id="menuDates" init="false" class="flex items-center justify-center">
-          @for (item of restaurante.menu; track $index) {
-          <swiper-slide class="p-0 lg:p-2">
-            <div class="bg-fondo border border-terceary rounded-3xl shadow overflow-hidden transition duration-300 ease-in-out transform hover:shadow-lg hover:-translate-y-1 h-full flex flex-col">
-              <div class="relative">
-                <img class="w-full h-48 object-cover" [src]="item.fotos" [alt]="item.nombre" />
-                <div class="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 m-2 rounded-full">
-                  @if(item.precio == 1000000) {
-                    Precio Variable
-                  } @else {
-                    S/. {{ item.precio }}
-                  }
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold">{{item}}</span>
+                        <span>{{restaurante.horaAtencion[item]}}</span>
+                    </div>
                 </div>
-              </div>
-              <div class="p-6 flex flex-col items-start gap-3 flex-grow">
-                <h3 class="text-xl font-bold font-Battambang leading-tight text-secondary">
-                  {{ item.nombre }}
-                </h3>
-                <p class="text-sm font-Battambang leading-normal text-terceary flex-grow">
-                  {{ item.ingredientes }}
-                </p>
-              </div>
+                }
             </div>
-          </swiper-slide>
-          } @empty {
-          <div class="h-60 w-full flex items-center justify-center text-gray-500">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        </div>
+
+        <!-- // --------------- MENU  --------------- \\ -->
+        <div class="flex flex-col gap-4 md:gap-8 py-8">
+            <h2 class="subtitle">Menú</h2>
+
+            <div class="relative px-2 md:px-10">
+                <swiper-container id="menuDates" init="false" class="flex items-center justify-center">
+                    @for (item of restaurante.menu; track $index) {
+                    <swiper-slide class="p-0 lg:p-2">
+                        <div class="bg-fondo border border-terceary rounded-3xl shadow overflow-hidden transition duration-300 ease-in-out transform hover:shadow-lg hover:-translate-y-1 h-full flex flex-col">
+                            <div class="relative">
+                                <!-- <img class="w-full h-48 object-cover" [src]="item.fotos" [alt]="item.nombre" /> -->
+                                <img class="h-48 w-full object-cover" [src]="getPrincipalImage(item.imagenes)" [alt]="item.nombre" />
+                                <div class="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 m-2 rounded-full">
+                                    @if(item.precio == 1000000) { Precio Variable } @else { S/. {{ item.precio }} }
+                                </div>
+                            </div>
+                            <div class="p-6 flex flex-col items-start gap-3 flex-grow">
+                                <h3 class="text-xl font-bold font-Battambang leading-tight text-secondary">
+                                    {{ item.nombre }}
+                                </h3>
+                                <p class="text-sm font-Battambang leading-normal text-terceary flex-grow">
+                                    {{ item.ingredientes }}
+                                </p>
+                            </div>
+                        </div>
+                    </swiper-slide>
+                    } @empty {
+                    <div class="h-60 w-full flex items-center justify-center text-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
             </svg>
-            <p>El restaurante no tiene menús agregados</p>
-          </div>
-          }
-        </swiper-container>
-    
-        <div  class="md:hidden absolute mt-2 left-0 right-0 flex justify-center gap-2 items-center pointer-events-none">
-          <button type="button"
-            class="swiper-buttonMenu-prev pointer-events-auto text-primary bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full p-2 shadow-lg transition duration-300 ease-in-out transform hover:scale-110">
+                        <p>El restaurante no tiene menús agregados</p>
+                    </div>
+                    }
+                </swiper-container>
+
+                <div class="md:hidden absolute mt-2 left-0 right-0 flex justify-center gap-2 items-center pointer-events-none">
+                    <button type="button" class="swiper-buttonMenu-prev pointer-events-auto text-primary bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full p-2 shadow-lg transition duration-300 ease-in-out transform hover:scale-110">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
               <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
             </svg>
             <span class="sr-only">Previous slide</span>
           </button>
-    
-          <button type="button"
-            class="swiper-buttonMenu-next pointer-events-auto text-primary bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full p-2 shadow-lg transition duration-300 ease-in-out transform hover:scale-110">
+
+                    <button type="button" class="swiper-buttonMenu-next pointer-events-auto text-primary bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full p-2 shadow-lg transition duration-300 ease-in-out transform hover:scale-110">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
               <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
             </svg>
             <span class="sr-only">Next slide</span>
           </button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <!-- // --------------- OFERTAS  --------------- \\ -->
-    <!-- <div class="flex flex-col gap-4 md:gap-8">
+        <!-- // --------------- OFERTAS  --------------- \\ -->
+        <!-- <div class="flex flex-col gap-4 md:gap-8">
       <h3 class="subtitle">Ofertas</h3>
       <div class="">
         <swiper-container style="
@@ -220,46 +211,44 @@
       </div>
     </div>
  -->
-    <!-- // --------------- SERVICES  --------------- \\ -->
-    <div class="flex flex-col gap-4 md:gap-8">
-      <h3 class="subtitle">Te ofrecemos</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 md:px-2">
-        @for (item of restaurante.servicios; track $index) {
-        <div class="col-span-1 flex items-center gap-2 self-stretch">
+        <!-- // --------------- SERVICES  --------------- \\ -->
+        <div class="flex flex-col gap-4 md:gap-8">
+            <h3 class="subtitle">Te ofrecemos</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 md:px-2">
+                @for (item of restaurante.servicios; track $index) {
+                <div class="col-span-1 flex items-center gap-2 self-stretch">
 
 
-          <div class="text-white bg-green-500 rounded-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="w-6 h-6">
+                    <div class="text-white bg-green-500 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
-          </div>
-          <div>
-            <h3 class="text-description font-bold md:pr-2">
-              {{ item.nombreServicio }}
-            </h3>
-          </div>
+                    </div>
+                    <div>
+                        <h3 class="text-description font-bold md:pr-2">
+                            {{ item.nombreServicio }}
+                        </h3>
+                    </div>
+                </div>
+
+                }
+            </div>
         </div>
 
-        }
-      </div>
-    </div>
+        <!-- // --------------- INFORMACIÓN ADICIONAL  --------------- \\ -->
+        <div class="flex flex-col gap-4 md:gap-8">
+            <h3 class="subtitle">Información adicional</h3>
+            <ul class="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+                @for (item of get_Keys(restaurante.infoAdicional) ; track $index) {
+                <li class="text-description text-justify md:pr-2 pb-1">
+                    <b>{{item}}: </b> {{restaurante.infoAdicional[item]}}
+                </li>
+                }
+            </ul>
+        </div>
 
-    <!-- // --------------- INFORMACIÓN ADICIONAL  --------------- \\ -->
-    <div class="flex flex-col gap-4 md:gap-8">
-      <h3 class="subtitle">Información adicional</h3>
-      <ul class="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
-        @for (item of get_Keys(restaurante.infoAdicional) ; track $index) {
-        <li class="text-description text-justify md:pr-2 pb-1">
-          <b>{{item}}: </b>
-          {{restaurante.infoAdicional[item]}}
-        </li>
-        }
-      </ul>
-    </div>
-
-    @if (restaurante.moreBussines.length > 0) {
+        <!-- @if (restaurante.moreBussines.length > 0) {
     <div class="flex flex-col gap-4 md:gap-8">
       <h3 class="subtitle">Más negocios relacionados</h3>
 
@@ -300,8 +289,8 @@
       </div>
 
     </div>
-    }
-  </div>
+    } -->
+    </div>
 
 
 </div>

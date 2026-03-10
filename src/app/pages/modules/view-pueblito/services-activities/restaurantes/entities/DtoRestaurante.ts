@@ -1,3 +1,5 @@
+import { GaleriaNegocioMast } from "../../../../../../shared/global-components/dto/GaleriaNegocioMastDto";
+
 export class DtoRestaurante {
   id: string;
   nombre: string;
@@ -10,13 +12,7 @@ export class DtoRestaurante {
   estrellas: number;
   direccion: string;
   mapa: string;
-  fotos: {
-    principal: {
-      url: string;
-    };
-    gallery: []
-  };
-
+ 
   contactos: any
   descripcion: string;
   servicios: any
@@ -33,8 +29,10 @@ export class DtoRestaurante {
       oferta: number;
       name_route: string;
       restauranteId: string;
+      imagenes: GaleriaNegocioMast[] ;
     }
   ];
   minPrice: number;
   moreBussines: any[] = [];
+  imagenes: GaleriaNegocioMast[] = [];
 }

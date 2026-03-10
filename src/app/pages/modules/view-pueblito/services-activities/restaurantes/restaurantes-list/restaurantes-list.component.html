@@ -1,19 +1,17 @@
 <div class="flex flex-col gap-12 py-12 items-center font-Battambang">
-  <div class="searchs flex flex-col gap-4 bg-fondo mt-5">
-    <h3 class="text-secondary text-xl md:text-2xl font-black font-Battambang leading-6">
-      Restaurantes
-    </h3>
-    <p class="text-terceary text-xs md:text-sm text-justify font-normal font-Battambang leading-normal">
-      Déjate llevar por los sabores locales con nuestra selección de restaurantes. Desde la gastronomía tradicional
-      hasta la innovación culinaria, encontrarás platos que deleitarán tu paladar. Saborea cada momento y descubre lo
-      mejor de la cocina local
-    </p>
-  </div>
+    <div class="searchs flex flex-col gap-4 bg-fondo mt-5">
+        <h3 class="text-secondary text-xl md:text-2xl font-black font-Battambang leading-6">
+            Restaurantes
+        </h3>
+        <p class="text-terceary text-xs md:text-sm text-justify font-normal font-Battambang leading-normal">
+            Déjate llevar por los sabores locales con nuestra selección de restaurantes. Desde la gastronomía tradicional hasta la innovación culinaria, encontrarás platos que deleitarán tu paladar. Saborea cada momento y descubre lo mejor de la cocina local
+        </p>
+    </div>
 
 
-  <div>
-    <br />
-    <!-- @if (filtroBusqueda.typeServicio == 'HOSP') {
+    <div>
+        <br />
+        <!-- @if (filtroBusqueda.typeServicio == 'HOSP') {
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 font-Battambang">
         @for (item of list_resultadoBusqueda; track $index) {
         <div 
@@ -67,7 +65,7 @@
       }
       } -->
 
-    <!-- @if (filtroBusqueda.typeServicio == 'TOUR') {
+        <!-- @if (filtroBusqueda.typeServicio == 'TOUR') {
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           @for (item of list_resultadoBusqueda; track $index) {
           <div (click)="gotoTour(item)"
@@ -108,65 +106,57 @@
     
         }-->
 
-    @if (filtroBusqueda.typeServicio == 'REST') {
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        @for (item of list_resultadoBusqueda; track $index) {
-        <div 
-             class="flex flex-col max-w-sm bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-          <div class="relative">
-            <img class="rounded-t-lg h-56 w-full object-cover"
-                 [src]="item.fotos.principal || './assets/notFound.png'"
-                 
-                 [alt]="item.nombre" />
-            <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">
-              @if(item.prec == 1000000) {
-                Precio Variable
-              } @else {
-                Desde: S/.{{ item.minPrice }}
-              }
-            </div>
-          </div>
-          <div class="flex flex-col flex-grow p-6">
-            <div class="flex-grow">
-              <h5 class="text-xl font-bold font-Battambang leading-tight text-secondary mb-3 line-clamp-2">
-                {{ item.nombre }}
-              </h5>
-              <div class="flex flex-col items-start justify-start space-y-2 mb-4">
-                <div class="flex items-center justify-start gap-2 text-sm text-gray-600">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 flex-shrink-0">
+        @if (filtroBusqueda.typeServicio == 'REST') {
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            @for (item of list_resultadoBusqueda; track $index) {
+            <div class="flex flex-col max-w-sm bg-fondo border border-terceary rounded-3xl shadow overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div class="relative">
+                    <img class="h-64 w-full object-cover" [src]="getPrincipalImage(item.imagenes)" [alt]="item.nombre" />
+
+                    <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        @if(item.prec == 1000000) { Precio Variable } @else { Desde: S/.{{ item.minPrice }} }
+                    </div>
+                </div>
+                <div class="flex flex-col flex-grow p-6">
+                    <div class="flex-grow">
+                        <h5 class="text-xl font-bold font-Battambang leading-tight text-secondary mb-3 line-clamp-2">
+                            {{ item.nombre }}
+                        </h5>
+                        <div class="flex flex-col items-start justify-start space-y-2 mb-4">
+                            <div class="flex items-center justify-start gap-2 text-sm text-gray-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 flex-shrink-0">
                     <path fill-rule="evenodd"
                           d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z"
                           clip-rule="evenodd" />
                   </svg>
-                  <span class="line-clamp-1">{{item.horaAtencion['Lunes - Viernes']}}</span>
-                </div>
-                <div class="flex items-center justify-start gap-2 text-sm text-gray-600">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 flex-shrink-0">
+                                <span class="line-clamp-1">{{item.horaAtencion['Lunes - Viernes']}}</span>
+                            </div>
+                            <div class="flex items-center justify-start gap-2 text-sm text-gray-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 flex-shrink-0">
                     <path fill-rule="evenodd"
                           d="M5.25 2.25a3 3 0 0 0-3 3v4.318a3 3 0 0 0 .879 2.121l9.58 9.581c.92.92 2.39 1.186 3.548.428a18.849 18.849 0 0 0 5.441-5.44c.758-1.16.492-2.629-.428-3.548l-9.58-9.581a3 3 0 0 0-2.122-.879H5.25ZM6.375 7.5a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z"
                           clip-rule="evenodd" />
                   </svg>
-                  <span class="line-clamp-1">{{item.tags}}</span>
-                </div>
-              </div>
-            </div>
-            <div class="mt-auto">
-              <button (click)="gotoRestaurante(item)" class="w-full bg-primary text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors duration-300">
+                                <span class="line-clamp-1">{{item.tags}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-auto">
+                        <button (click)="gotoRestaurante(item)" class="w-full bg-primary text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors duration-300">
                 Ver detalles
               </button>
+                    </div>
+                </div>
             </div>
-          </div>
+            }
         </div>
-        }
-      </div>
-    @if (list_resultadoBusqueda.length == 0) {
-    <div class="flex items-center justify-center">
-      <p>Aún no tenemos restaurantes disponibles</p>
-    </div>
-    }
-    }
+        @if (list_resultadoBusqueda.length == 0) {
+        <div class="flex items-center justify-center">
+            <p>Aún no tenemos restaurantes disponibles</p>
+        </div>
+        } }
 
-  </div>
+    </div>
 
 
 
